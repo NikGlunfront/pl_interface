@@ -1,0 +1,96 @@
+.pl-app_darktheme {
+    .pl-promo-filters__btn {
+        background-image: url();
+        background-image: url('../../assets/img/icons/filter_white.svg');
+        background-size: 1.8rem 1.4rem;
+        background-repeat: no-repeat;
+        background-position: 0.75rem center;
+        
+        &_applied {
+            background-image: url('../../assets/img/icons/promo-filter-ico_white.svg');
+            background-size: 1.8rem 1.4rem;
+            background-repeat: no-repeat;
+            background-position: 0.75rem center;
+        }
+    }
+
+    .pl-app-header__returnbtn {
+        background-image: url('../../assets/img/icons/expand_right_white.svg');
+        background-repeat: no-repeat;
+        background-size: 0.8rem 1.6rem;
+        background-position: right center;
+    }
+
+    .pl-app-footer__inner {
+        border-color: #3A3A54;
+    }
+
+    .pl-info-group__title {
+        background-color: var(--pl-primary-popup-background);
+        color: var(--pl-primary-text-color);
+        &::before,
+        &::after {
+            background-color: var(--pl-primary-popup-background);
+        }
+    }
+
+    a.pl-info-group__title,
+    .pl-info-group__title_arrow {
+        background-image: url('../../assets/img/icons/expand_right_white.svg');
+        background-repeat: no-repeat;
+        background-size: 0.7rem;
+        background-position: right center;
+    }
+
+    .pl-promo-page-tags__item_active {
+        color: $black_c;
+    }
+
+    .pl-promo-page-contacts__item {
+        &_phone {
+            &::before {
+                background-image: url('../../assets/img/icons/phone-ico_white.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: left center;
+            }
+        }
+    
+        &_tg {
+            &::before {
+                background-image: url('../../assets/img/icons/tg-ico_white.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: left center;
+            }
+        }
+    
+        &_facebook {
+            &::before {
+                left: 0.3rem;
+                background-image: url('../../assets/img/icons/facebook-ico_white.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: left center;
+            }
+        }
+    
+        &_insta {
+            &::before {
+                background-image: url('../../assets/img/icons/insta-ico_white.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: left center;
+            }
+        }
+    
+        &_www {
+            &::before {
+                background-image: url('../../assets/img/icons/www-ico_white.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: left center;
+            }
+        }
+    }
+}

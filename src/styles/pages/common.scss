@@ -1,0 +1,214 @@
+.pl-return-toppanel {
+    @include flex_row;
+    padding: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 5rem;
+
+    &__return {
+        @include flex_row;
+        align-items: center;
+        width: 4rem;
+        height: 4rem;
+        margin-right: 0.4rem;
+        position: absolute;
+        top: 50%;
+        left: 1.5rem;
+        transform: translate(0, -50%);
+
+        svg {
+            width: 0.8rem;
+            height: 1.6rem;
+            object-fit: contain;
+            transform: scale(-1, 1);
+        }
+    }
+
+    &__title {
+        line-height: 4rem;
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+    }
+}
+
+.pl-rights {
+    font-size: 1.4rem;
+    color: $black_c;
+    display: block;
+    text-align: center;
+    width: 100%;
+    position: static;
+    margin-top: 5rem;
+    bottom: 13rem;
+    left: 0;
+    width: 100%;
+}
+
+.pl-page-container {
+    flex: 1;
+    overflow-x: hidden;
+    padding: 6.5rem 1rem 8rem;
+    background-color: var(--pl-primary-background-color);
+    width: 100%;
+    max-width: 50rem;
+
+    transition: $transition;
+    position: relative;
+    left: 0;
+
+    .pl-promolist-container {
+        display: block;
+    }
+
+    &.pl-page-create-promo {
+        background-color: var(--tg-theme-bg-color);
+    }
+
+    &_hidden {
+        // position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        flex: 1;
+
+        .pl-promolist-container {
+            display: none;
+        }
+        & > .pl-promo-filters {
+            // display: none;
+            position: static;
+        }
+    }
+}
+
+.pl-info-group {
+    margin-bottom: 2rem;
+
+    &__title {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: $black_c;
+        margin-bottom: 1.2rem;
+        padding: 0.8rem 0;
+        background-color: #F3F3F3;
+        position: relative;
+
+        &::before {
+            content: "";
+            height: 100%;
+            background-color: #F3F3F3;
+            width: 1rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-100%, 0);
+            z-index: 1;
+        }
+
+        &::after {
+            content: "";
+            height: 100%;
+            background-color: #F3F3F3;
+            width: 1rem;
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(100%, 0);
+            z-index: 1;
+        }
+
+        &_arrow {
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            background-image: url('../../assets/img/icons/expand_right.svg');
+            background-repeat: no-repeat;
+            background-size: 0.7rem;
+            background-position: right center;
+        }
+    }
+
+    &__content {
+        padding: 0.8rem 0;
+    }
+}
+
+.pl-gallery-item {
+    @include flex_row;
+    max-width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        object-fit: contain;
+    }
+}
+
+
+.pl-filter-tag {
+    font-size: 1.4rem;
+    line-height: 2.5rem;
+    white-space: nowrap;
+    color: var(--pl-primary-text-color);
+    padding: 0 1.3rem;
+    background-color: var(--pl-primary-tag-color);
+    border-radius: 3.6rem;
+    margin-right: 0.6rem;
+    max-width: min-content;
+    transition: $transition;
+    
+    &_custom {
+        padding-left: 1.7rem;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0.6rem;
+            top: 50%;
+            width: 0.6rem;
+            height: 0.6rem;
+            border-radius: 50%;
+            background-color: $red_c;
+            transform: translate(0, -50%);
+        }
+    }
+
+    &_active {
+        color: $white_c;
+        background-color: $black_c;
+
+        &.pl-filter-tag_custom {
+            &::before {
+                background-color: $white_c;
+            }
+        }
+    }
+
+    &_green:not(.pl-filter-tag_active) {
+        background-color: $green_c;
+        color: $black_c;
+    }
+    
+}
+
+.pl-reset-filters {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: $blue_c;
+}
+
+.pl-select__filters {
+    .filters-pl-select__bottom {
+        position: sticky;
+        bottom: 0;
+        margin: 0 auto;
+        width: 100%;
+        z-index: 10;
+    }
+}

@@ -1,0 +1,165 @@
+.pl-input-doublename {
+    @include flex_row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 3.4rem;
+    border-bottom: 0.1rem solid var(--pl-primary-light-border-color);
+
+    &__text {
+        margin-right: 1.5rem;
+
+        span {
+            display: block;
+            font-size: 1.4rem;
+            color: #A3A3A3;
+
+            &:first-child {
+                font-size: 1.6rem;
+                font-weight: 400;
+                color: var(--pl-primary-text-color);
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+
+    &__num {
+        font-size: 1.4rem;
+        font-weight: 500;
+        display: block;
+        position: relative;
+        z-index: 2;
+        margin-left: auto;
+        flex: 0 0 3.5rem;
+        text-align: center;
+        color: var(--pl-reverse-text-color);
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 3.5rem;
+            height: 3.5rem;
+            background-color: $green_c;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+    }
+}
+
+.pl-input-checkbox {
+    @include flex_row;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 0.1rem solid var(--pl-primary-light-border-color);
+
+    &_active {
+        .pl-input-checkbox__checkbox {
+            span {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        .pl-input-checkbox__amount {
+            &::before {
+                background-color: $green_c;
+            }
+        }
+
+        .pl-input-checkbox__name {
+            color: var(--pl-primary-text-color);
+            opacity: 1;
+        }
+    }
+
+    &_yesno {
+        // border-radius: 0.4rem;
+        border: none;
+        
+        &.pl-input-checkbox {
+            // border: none;
+            
+            &_active .pl-input-checkbox__checkbox {
+                span {
+                    background-color: $red_c !important;
+                }
+            }
+            .pl-input-checkbox__checkbox {
+                // border-radius: 0.4rem;
+                border-color: $white_c;
+                
+                span {
+                    // border-radius: 0.3rem;
+                    opacity: 1;
+                    visibility: visible;
+                    background-color: #78779A;
+                }
+
+            }
+        }
+        
+    }
+
+    &__checkbox {
+        width: 1.6rem;
+        height: 1.6rem;
+        flex: 0 0 1.6rem;
+        margin-right: 1.1rem;
+        border-radius: 50%;
+        display: block;
+        position: relative;
+        background-color: $white_c;
+        border: 0.1rem solid #535353;
+
+        span {
+            width: 1rem;
+            height: 1rem;
+            background-color: $red_c;
+            border-radius: 50%;
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            visibility: hidden;
+            transition: $transition;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    &__name {
+        flex: 1;
+        margin-right: 1.5rem;
+        color: var(--pl-primary-text-color);
+        opacity: 0.6;
+    }
+
+    &__amount {
+        font-size: 1.2rem;
+        font-weight: 700;
+        display: block;
+        position: relative;
+        z-index: 2;
+        margin-left: auto;
+        flex: 0 0 2.7rem;
+        width: 2.7rem;
+        text-align: center;
+        color: var(--pl-reverse-text-color);
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2.7rem;
+            height: 2.7rem;
+            background-color: transparent;
+            transition: $transition;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+    }
+}

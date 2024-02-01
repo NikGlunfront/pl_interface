@@ -1,0 +1,41 @@
+#root .pl-app {
+    --pl-primary-white-color: #ffffff;
+    --pl-primary-background-color: #ffffff;
+    --pl-primary-black-color: #000000;
+    --pl-primary-text-color: #000000;
+    --pl-primary-light-border-color: #E1E1E1;
+    --pl-reverse-text-color: #ffffff;
+    --pl-grey-text-color: #8a8a8a;
+    --pl-primary-red-color: #E10001;
+    --pl-primary-green-color: #A8FCBD;
+    --pl-primary-blue-color: #007AFF;
+    --pl-primary-light-grey-color: #F3F3F3;
+    --pl-primary-tag-color: #F3F3F3;
+    --pl-primary-popup-background: #F3F3F3;
+    --pl-primary-input-color: #F3F3F3;
+    --pl-font-family: "Roboto";
+    --pl-transition: all 0.2s linear;
+    
+    &.pl-app_darktheme {
+        --pl-primary-background-color: #1D1D37;
+        --pl-primary-popup-background: #11101F;
+        --pl-primary-light-border-color: #3A3A54;
+        --pl-primary-tag-color: #3A3A54;
+        --pl-grey-text-color: #78779A;
+        --pl-primary-text-color: #ffffff;
+        --pl-reverse-text-color: #000000;
+        --pl-primary-input-color: #11101F;
+        --pl-font-family: "Roboto";
+        --pl-transition: all 0.2s linear;
+    }
+}
+
+$white_c: var(--pl-primary-white-color);
+$black_c: var(--pl-primary-black-color);
+$red_c: var(--pl-primary-red-color);
+$green_c: var(--pl-primary-green-color);
+$blue_c: var(--pl-primary-blue-color);
+$light_grey_c: var(--pl-primary-light-grey-color);
+$font: var(--pl-font-family);
+$transition: var(--pl-transition);
+

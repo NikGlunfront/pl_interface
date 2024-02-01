@@ -1,0 +1,66 @@
+.home-page {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    @include flex_col;
+    justify-content: center;
+    align-items: center;
+    transition: $transition;
+    position: relative;
+    // transform: translate3d(0,0,0);
+    left: 0;
+
+    &_hidden {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        flex: 1;
+    }
+    
+    &__inner {
+        padding: 6rem 0;
+        max-width: 25.3rem;
+    }
+
+    &__logo {
+        margin-bottom: 1.1rem;
+
+        img {
+            display: block;
+            width: 5rem;
+            height: 5rem;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+
+        span {
+            display: block;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-top: 1.1rem;
+            text-align: center;
+        }
+    }
+
+    &__text {
+        font-weight: 300;
+        font-size: 1.4rem;
+        text-align: center;
+        max-width: 27rem;
+        margin-bottom: 2rem;
+    }
+
+    .pl-button {
+        margin: 0 auto 2rem;
+    }
+
+    .pl-select {
+        margin-bottom: 2rem;
+    }
+
+    &__filters {
+        margin-bottom: 4rem;
+    }
+}

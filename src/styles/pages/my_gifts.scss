@@ -1,0 +1,16 @@
+.pl-page-gifts {
+    padding-top: 10rem;
+    &__tags {
+        @include flex_row;
+        align-items: center;
+        position: fixed;
+        top: 5rem;
+        left: 0;
+        z-index: 100;
+        background: var(--pl-primary-background-color);
+        width: 100%;
+        padding: 0.5rem 1rem 0.5rem;
+        width: 100%;
+        overflow-y: auto;
+    }
+}
