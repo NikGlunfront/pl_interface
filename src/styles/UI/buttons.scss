@@ -80,3 +80,16 @@ button.pl-initapp-button {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.pl-media-loader {
+    position: relative;
+    input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+    }
+}

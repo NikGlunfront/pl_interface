@@ -11,16 +11,18 @@ import CreatePromo from './pages/Promos/CreatePromo';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import PartnerPage from './pages/Partner/PartnerPage';
+import ChatPage from './pages/Chat/ChatPage';
 
 const routes = [
     { path: '/', name: 'Home', element: <HomePage />, nodeRef: createRef() },
     { path: '/promos', name: 'PromosPage', element: <PromosPage />, nodeRef: createRef() },
     { path: '/promos/:id', name: 'PromoPage', element: <PromoPage />, nodeRef: createRef() },
-    { path: '/partners/:id', name: 'Partners', element: <PartnerPage />, nodeRef: createRef() },
     { path: '/wishlist', name: 'Wishlist', element: <Wishlist />, nodeRef: createRef() },
     { path: '/my-gifts', name: 'MyGifts', element: <MyGifts />, nodeRef: createRef() },
+    { path: '/partners/:id', name: 'Partners', element: <PartnerPage />, nodeRef: createRef() },
     { path: '/create-promo', name: 'CreatePromo', element: <CreatePromo />, nodeRef: createRef() },
-  ]
+    { path: '/chat/:id', name: 'CreatePromo', element: <ChatPage />, nodeRef: createRef() },
+]
 
 const router = createBrowserRouter([
     {

@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCats, getCatsNums, getCities, getCitiesNums, getTags, getTagsNums } from './store/slices/iniData/initDataSlice';
 import PartnerPage from './pages/Partner/PartnerPage';
 import { setDarkTheme } from './store/slices/pageSlice/pageSlice';
+import ChatPage from './pages/Chat/ChatPage';
 
 const routes = [
     { path: '/', name: 'Home', element: <HomePage />, nodeRef: createRef() },
@@ -25,6 +26,7 @@ const routes = [
     { path: '/my-gifts', name: 'MyGifts', element: <MyGifts />, nodeRef: createRef() },
     { path: '/partners/:id', name: 'Partners', element: <PartnerPage />, nodeRef: createRef() },
     { path: '/create-promo', name: 'CreatePromo', element: <CreatePromo />, nodeRef: createRef() },
+    { path: '/chat/:id', name: 'CreatePromo', element: <ChatPage />, nodeRef: createRef() },
 ]
   
 

@@ -1,16 +1,16 @@
 import React, { useEffect } from "react"
 import Footer from "../Common/Footer";
-import PromoList from "../../components/Promo/PromoList";
 import TagFilter from "../../components/UI/TagFilter/TagFilter";
 import { useDispatch, useSelector } from "react-redux";
 import { setMyGiftsData, setNullMyGiftsData } from "../../store/slices/promos/promosSlice";
 import SpinLoader from "../../components/UI/SpinLoader/SpinLoader";
 import { setActiveMyGiftsTag } from "../../store/slices/filters/filtersSlice";
+import MyGiftsPromoList from "../../components/Promo/MyGiftsView/MyGiftsPromoList";
 
 const tags = [
     {name: 'Ожидают', value: 'waiting'},
     {name: 'Получены', value: 'confirmed'},
-    {name: 'Сгорели', value: 'archived'},
+    // {name: 'Сгорели', value: 'archived'},
 ]
 
 
@@ -56,7 +56,7 @@ const MyGifts = ({
                 ))}
             </div>
             {promosData.length > 0 
-                ? <PromoList promos={promosData}  />
+                ? <MyGiftsPromoList promos={promosData}  />
                 : <SpinLoader />
             }
             <Footer />

@@ -93,4 +93,10 @@
             }
         }
     }
+
+    .pl-input-doublename {
+        &__num {
+            color: var(--pl-reverse-text-color);
+        }
+    }
 }

@@ -15,6 +15,9 @@
     --pl-primary-input-color: #F3F3F3;
     --pl-font-family: "Roboto";
     --pl-transition: all 0.2s linear;
+    --pl-chat-message-grey-color: #F2F2F2;
+    --pl-chat-message-user-color: #E3FFCA;
+    --pl-chat-background-color: linear-gradient(100deg, #A3C895, #78B387);
     
     &.pl-app_darktheme {
         --pl-primary-background-color: #1D1D37;
@@ -27,6 +30,7 @@
         --pl-primary-input-color: #11101F;
         --pl-font-family: "Roboto";
         --pl-transition: all 0.2s linear;
+        --pl-chat-background-color: linear-gradient(100deg, #224f4e, #03141f);
     }
 }
 

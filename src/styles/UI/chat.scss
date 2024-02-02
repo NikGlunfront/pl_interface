@@ -1,0 +1,194 @@
+.pl-chat-message {
+    padding: 1rem 1.5rem;
+    border-radius: 1.2rem;
+    background-color: var(--pl-chat-message-grey-color);
+    color: $black_c;
+    position: relative;
+    width: fit-content;
+    padding-bottom: 2.8rem;
+    min-width: 7rem;
+
+    & > img {
+        max-width: 100%;
+        object-fit: contain;
+    }
+
+    & > svg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translate(-46%, 10%) scale(-1, 1);
+
+        path {
+            fill: var(--pl-chat-message-grey-color);
+        }
+    }
+
+    &_from_user {
+        background-color: var(--pl-chat-message-user-color);
+
+        .pl-chat-message {
+            &__timestamp {
+                right: 2.4rem;
+            }
+        }
+
+        & > svg {
+            position: absolute;
+            bottom: 0;
+            left: unset;
+            right: 0;
+            transform: translate(46%, 10%);
+    
+            path {
+                fill: var(--pl-chat-message-user-color);
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0.9rem;
+            right: 0.2rem;
+            width: 1.8rem;
+            height: 0.8rem;
+            background-image: url('../../assets/img/icons/chat/is_read_message_not.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        
+        &.pl-chat-message_is_read {
+            &::after {
+                background-image: url('../../assets/img/icons/chat/is_read_message.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+        }
+    }
+
+    &__title {
+        font-weight: 700;
+        display: block;
+        margin-bottom: 0.2rem;
+        font-size: 1.6rem;
+    }
+
+    &__text {
+        font-size: 1.4rem;
+        line-height: 1.4;
+    }
+
+    &__timestamp {
+        font-size: 1.2rem;
+        position: absolute;
+        bottom: 0.7rem;
+        right: 1.4rem;
+        color: #a2a2a2;
+        line-height: 1;
+    }
+}
+
+.pl-page-container.pl-page-chat {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: calc(8rem + 6rem);
+}
+
+.pl-page-chat {
+    background: var(--pl-chat-background-color);
+    @include flex_col;
+
+    &__datepoint {
+        font-size: 1.1rem;
+        line-height: 1;
+        color: $white_c;
+        background-color: #709F6F;
+        padding: 0.5rem 0.9rem;
+        border-radius: 5.3rem;
+        margin: 0 auto 1.2rem;
+    }
+
+    &__message-dategroup {
+        @include flex_col;
+        padding: 0 1.5rem;
+    }
+
+    .pl-chat-message {
+        max-width: 90%;
+        margin-right: auto;
+        margin-bottom: 0.7rem;
+
+        &_from_user {
+            margin-left: auto;
+            margin-right: 0;
+        }
+    }
+}
+
+.input-area-chat {
+    position: fixed;
+    bottom: 7.7rem;
+    height: 4rem;
+    width: 100%;
+    background-color: var(--pl-primary-popup-background);
+    margin-top: auto;
+    @include flex_row;
+    align-items: center;
+    padding: 0.6rem 1.3rem 0.7rem;
+
+    &__attach {
+        height: 100%;
+        margin-right: 0.8rem;
+        flex: 0 0 2.2rem;
+        height: 1.9rem;
+        width: 2.2rem;
+        background-image: url('../../assets/img/icons/chat/attach_ico.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+
+        svg {
+            object-fit: contain;
+        }
+    }
+    
+
+    &__input {
+        flex: 1;
+        height: 100%;
+
+        input {
+            height: 100%;
+            width: 100%;
+            line-height: 2.9rem;
+            border-radius: 4.2rem;
+            background-color: var(--pl-primary-background-color);
+            font-size: 1.6rem;
+            padding: 0 1.1rem;
+            color: var(--pl-primary-text-color);
+
+            &::placeholder {
+                color: var(--pl-grey-text-color);
+            }
+        }
+    }
+
+    &__send {
+        flex: 0 0 2.9rem;
+        margin-left: 0.7rem;
+        width: 2.9rem;
+        button {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 2.9rem;
+            border-radius: 50%;
+            background-color: var(--pl-primary-blue-color);
+            background-image: url('../../assets/img/icons/chat/arrow-top-btn.svg');
+            background-repeat: no-repeat;
+            background-size: 2.2rem 1.9rem;
+            background-position: center;
+        }
+    }
+}

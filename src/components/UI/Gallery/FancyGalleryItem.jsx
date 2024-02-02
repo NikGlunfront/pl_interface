@@ -7,7 +7,7 @@ const FancyGalleryItem = ({
 }) => {
     let basicClassName = 'pl-gallery-item '
     return (
-        <a data-fancybox="gallery" href={src} className={basicClassName}>
+        <a data-fancybox="gallery" href={src} className={basicClassName} da>
             <img
                 alt={alt}
                 src={src}

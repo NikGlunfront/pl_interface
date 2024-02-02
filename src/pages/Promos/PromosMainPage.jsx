@@ -32,10 +32,6 @@ const PromosPage = ({
         }
     }, [activeCategoryTag])
 
-    useEffect(() => {
-        console.log(isContentHidden)
-    }, [isContentHidden])
-
     return (
         <div className={"pl-page-container pl-page-listview " + (isContentHidden ? "pl-page-container_hidden" : '')}>
             <PromoListFilter />

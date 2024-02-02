@@ -631,3 +631,20 @@
 .pl-page-wishlist {
     padding-top: 10rem;
 }
+
+.pending-order-list-item {
+    margin-top: 1.2rem;
+
+    .pl-chat-message {
+        padding-bottom: 2.2rem;
+        &__text {
+            -webkit-line-clamp: 3;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            overflow: hidden;
+            height: 5.9rem;
+            word-break: break-word;
+            -webkit-box-orient: vertical;
+        }
+    }
+}
