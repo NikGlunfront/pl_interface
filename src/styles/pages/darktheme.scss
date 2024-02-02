@@ -99,4 +99,54 @@
             color: var(--pl-reverse-text-color);
         }
     }
+
+    .pending-order-list-item {
+    
+        &__btn {
+    
+            &_delete {
+                background-image: url('../../assets/img/icons/chat/delete_white.svg');
+                background-repeat: no-repeat;
+                background-size: 1.8rem;
+                background-position: center;
+            }
+            &_compose {
+                background-image: url('../../assets/img/icons/chat/compose_white.svg');
+                background-repeat: no-repeat;
+                background-size: 1.8rem;
+                background-position: center;
+            }
+            &_upload {
+                background-image: url('../../assets/img/icons/chat/upload_white.svg');
+                background-repeat: no-repeat;
+                background-size: 1.8rem;
+                background-position: center;
+            }
+            &_chat {
+                background-image: url('../../assets/img/icons/chat/chat_white.svg');
+                background-repeat: no-repeat;
+                background-size: 1.8rem;
+                background-position: center;
+                margin-right: 1.2rem;
+            }
+        }
+    }
+
+    .review-list-item {
+        &__btn {
+            &_chat {
+                background-image: url('../../assets/img/icons/chat/chat_white.svg');
+                background-repeat: no-repeat;
+                background-size: 1.8rem;
+                background-position: center;
+                margin-right: 1.2rem;
+            }
+        }
+    }
+
+    .pl-app-header {
+        &_branded {
+            background-color: var(--pl-primary-background-color);
+        }
+    }
 }

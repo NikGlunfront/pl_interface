@@ -212,3 +212,12 @@
         z-index: 10;
     }
 }
+
+.pl-star-rate {
+    @include flex_row;
+    align-items: center;
+
+    &__star {
+        margin-right: 0.3rem;
+    }
+}

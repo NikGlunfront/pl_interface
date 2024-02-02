@@ -1,67 +1,31 @@
-import React, { useEffect, useState } from "react"
-import MediaLoader from "../../../UI/MediaLoader/MediaLoader";
+import React, { useState } from "react"
+import ChatInputField from "./ChatInputField";
+import ChatMediaPreview from "./ChatMediaPreview";
 
 const ChatInputArea = ({
     sendMessage
 }) => {
-    const [inputText, setInputText] = useState('')
-    const [imgPreview, setImgPreview] = useState(null)
 
-    const handleInputChange = (e) => {
-        setInputText(e.target.value)
+    const [previewImgOnLoad, setPreviewImgOnLoad] = useState(null)
+    const setPreview = (img) => {
+        setPreviewImgOnLoad(img)
     }
 
-    const getCurrentTime = () => {
-        let today = new Date();
-        let minutes = today.getMinutes()
-        minutes = minutes > 0 ? minutes : `0${minutes}`
-        let time = today.getHours() + ":" + minutes;
-        return time
+    const resetImg = () => {
+        setPreviewImgOnLoad(null)
     }
-
-    useEffect(() => {
-        console.log(imgPreview)
-    }, [imgPreview])
-
-    const getPreviewImg = (img) => {
-        setImgPreview(img)
-    }
-
-    const sendMessageClick = () => {
-        if (inputText.trim().length === 0) {
-            return
-        }
-        let msg = {
-            from: 'user',
-            timestamp: getCurrentTime(),
-            text: inputText,
-            is_read: false,
-            image: imgPreview !== null ? URL.createObjectURL(imgPreview) : null
-        }
-        sendMessage(msg)
-        setInputText('')
-        setImgPreview(null)
-    }
-
 
     return (
-        <div className="pl-page-chat__inputarea input-area-chat">
-            <MediaLoader getPreview={getPreviewImg} className={'input-area-chat__attach'} />
-            <div className="input-area-chat__input">
-                <input 
-                    type="text" 
-                    placeholder="Сообщение..."
-                    value={inputText}
-                    onChange={handleInputChange}
-                    onKeyDown={e => e.key === 'Enter' ? sendMessageClick(): ''}
-                />
-            </div>
-            <div className="input-area-chat__send">
-                <button 
-                    onClick={sendMessageClick}
-                >
-                </button>
-            </div>
+        <div className="chat-input-area">
+            {previewImgOnLoad !== null
+                ? <ChatMediaPreview previewImgObj={previewImgOnLoad} resetImgObj={resetImg} />
+                : ""
+            }
+            <ChatInputField 
+                sendMessage={sendMessage}
+                getPreviewObj={setPreview}
+            />
+            
         </div>
     )
 };

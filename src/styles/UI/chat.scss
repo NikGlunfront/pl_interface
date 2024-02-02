@@ -82,7 +82,7 @@
         padding: 0 1.5rem 0;
         line-height: 2.2rem;
         transform: translate(0, 0.5rem);
-        line-height: 3.2rem;
+        line-height: 2.4rem;
 
         & ~ a[data-fancybox] {
             border-radius: 0;
@@ -91,12 +91,13 @@
     }
 
     &__inner {
-        padding: 1rem 1.5rem 2.8rem;
+        padding: 1rem 1.5rem 2.4rem;
     }
 
     &__text {
         font-size: 1.4rem;
         line-height: 1.4;
+        word-break: break-word;
     }
 
     &__timestamp {
@@ -144,15 +145,40 @@
             margin-right: 0;
         }
     }
+
+    &_reviews {
+        .pl-chat-message {
+            background-color: var(--pl-review-message-background-color);
+            & > svg {
+                path {
+                    fill: var(--pl-review-message-background-color);
+                }
+            }
+    
+            &_from_user {
+                background-color: var(--pl-review-usermessage-background-color);
+
+                & > svg {
+                    path {
+                        fill: var(--pl-review-usermessage-background-color);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.chat-input-area {
+    position: fixed;
+    bottom: 7.7rem;
+    width: 100%;
+    margin-top: auto;
 }
 
 .input-area-chat {
-    position: fixed;
-    bottom: 7.7rem;
     height: 4rem;
     width: 100%;
     background-color: var(--pl-primary-popup-background);
-    margin-top: auto;
     @include flex_row;
     align-items: center;
     padding: 0.6rem 1.3rem 0.7rem;
@@ -210,6 +236,54 @@
             background-repeat: no-repeat;
             background-size: 2.2rem 1.9rem;
             background-position: center;
+        }
+    }
+
+    &__previewer {
+        @include flex_row;
+        border-radius: 2.5rem 2.5rem 0 0;
+        background-color: var(--pl-primary-popup-background);
+        align-items: center;
+        padding: 1rem 1.5rem;
+        transform: translate(0, 0.1rem);
+
+        img {
+            width: 4rem;
+            height: 4rem;
+            object-fit: contain;
+            border-radius: 0.7rem;
+            margin-right: 1rem;
+        }
+
+        span {
+            @include flex_row;
+            overflow: hidden;
+            max-width: calc(100% - 5rem - 6rem);
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 1;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            overflow: hidden;
+            max-height: 2.1rem;
+            word-break: break-word;
+            -webkit-box-orient: vertical;
+        }
+
+        button {
+            @include flex_row;
+            align-items: center;
+            justify-content: center;
+
+            flex: 0 0 2.5rem;
+            height: 2.5rem;
+            width: 2.5rem;
+            border-radius: 2rem;
+            background-color: $blue_c;
+            margin-left: auto;
+
+            svg {
+                transform: rotate(-45deg);
+            }
         }
     }
 }

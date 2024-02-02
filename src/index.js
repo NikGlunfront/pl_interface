@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import { store } from './store/store';
 import PartnerPage from './pages/Partner/PartnerPage';
 import ChatPage from './pages/Chat/ChatPage';
+import ChatReviewPage from './pages/Chat/ChatReviewPage';
 
 const routes = [
     { path: '/', name: 'Home', element: <HomePage />, nodeRef: createRef() },
@@ -22,6 +23,7 @@ const routes = [
     { path: '/partners/:id', name: 'Partners', element: <PartnerPage />, nodeRef: createRef() },
     { path: '/create-promo', name: 'CreatePromo', element: <CreatePromo />, nodeRef: createRef() },
     { path: '/chat/:brand_id/:promo_id', name: 'CreatePromo', element: <ChatPage />, nodeRef: createRef() },
+    { path: '/chat/review/:brand_id/:promo_id', name: 'ChatReviewPage', element: <ChatReviewPage />, nodeRef: createRef() },
 ]
 
 const router = createBrowserRouter([

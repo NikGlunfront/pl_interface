@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { setPageTitle, setSearchAvailable } from "../../store/slices/pageSlice/pageSlice";
 import PlDateMessageGroup from "../../components/Chat/PlDateMessageGroup/PlDateMessageGroup";
 import PiMessage from "../../components/Chat/PlMessage/PlMessage";

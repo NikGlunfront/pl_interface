@@ -9,12 +9,15 @@ import PromoBio from "../ListPromoView/PromoBio";
 import PromoLike from "../ListPromoView/PromoLike";
 import PromoBrand from "../ListPromoView/PromoBrand";
 import PendingChatPromo from "../../Chat/PendingChatPromo/PendingChatPromo";
+import { useSelector } from "react-redux";
+import ReviewChatPromo from "../../Chat/ReviewChatPromo/ReviewChatPromo";
 register();
 
 const MyGiftsPromoListItem = ({
     promoData
 }) => {
     let className = 'list-item '
+    const { activeMyGiftsTag: giftTag } = useSelector(state => state.filters)
 
     return (
         <div className={className}>
@@ -43,12 +46,23 @@ const MyGiftsPromoListItem = ({
                 />
                 <NavLink to={`/promos/${promoData.id}`} state={{promoData: promoData}} className="list-item__morebtn">Подробнее</NavLink>
             </div>
-            <PendingChatPromo 
-                brandId={promoData.brand_id}
-                brandImg={promoData.brand_img}
-                brandName={promoData.brand_name}
-                promoId={promoData.id}
-            />
+            {giftTag === 'waiting'
+                ?
+                    <PendingChatPromo 
+                        brandId={promoData.brand_id}
+                        brandImg={promoData.brand_img}
+                        brandName={promoData.brand_name}
+                        promoId={promoData.id}
+                    />
+                :
+                    <ReviewChatPromo 
+                        brandId={promoData.brand_id}
+                        brandImg={promoData.brand_img}
+                        brandName={promoData.brand_name}
+                        promoId={promoData.id}
+                    />
+            
+            }
         </div>
     )
 };

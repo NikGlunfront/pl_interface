@@ -12,8 +12,9 @@ const Header = ({
     const navigate = useNavigate()
     const pageMeta = useSelector(state => state.pageMeta)
     const { activeCity } = useSelector(state => state.filters)
-    const { BrandImg } = pageMeta.chatMeta
+    const { brandImg, brandName } = pageMeta.chatMeta
     const [returnPath, setReturnPath] = useState('-1')
+    const [isChatPage, setIsChatPage] = useState(false)
 
     const dispatch = useDispatch()
     let className = 'pl-app-header '
@@ -23,17 +24,22 @@ const Header = ({
     if (pageMeta.searchAvailable) {
         className += 'pl-app-header_searchav '
     }
+    if (isChatPage) {
+        className += 'pl-app-header_branded '
+    }
     if (pageMeta.darkTheme) {
         className += 'pl-app-header_darktheme '
     }
 
     useEffect(() => {
+        setIsChatPage(false)
         if (location.pathname.includes('chat/')) {
-            setReturnPath('-1')
+            setReturnPath(-1)
+            setIsChatPage(true)
             return
         }
         if (location.pathname.includes('promo/')) {
-            setReturnPath('-1')
+            setReturnPath(-1)
             return
         }
         setReturnPath('/promos')
@@ -64,7 +70,7 @@ const Header = ({
     }, [location.pathname])
 
     const returnFunction = () => {
-        navigate(-1)
+        navigate(returnPath)
     }
 
     return (
@@ -78,8 +84,13 @@ const Header = ({
                 ? <HeaderSearchBtn />
                 : ""
             }             
+            {isChatPage 
+                ? <div className="pl-app-header__brand"><img src={brandImg} alt={brandName} /></div>
+                : ""
+            }             
         </div> 
     )
 };
 
 export default Header;
+ 
