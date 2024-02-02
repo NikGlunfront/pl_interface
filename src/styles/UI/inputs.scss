@@ -146,6 +146,7 @@
         width: 2.7rem;
         text-align: center;
         color: var(--pl-reverse-text-color);
+        color: $black_c;
 
         &::before {
             content: "";

@@ -13,7 +13,9 @@ const ChatInputArea = ({
 
     const getCurrentTime = () => {
         let today = new Date();
-        let time = today.getHours() + ":" + today.getMinutes();
+        let minutes = today.getMinutes()
+        minutes = minutes > 0 ? minutes : `0${minutes}`
+        let time = today.getHours() + ":" + minutes;
         return time
     }
 

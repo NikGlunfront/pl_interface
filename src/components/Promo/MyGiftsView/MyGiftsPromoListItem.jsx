@@ -43,7 +43,12 @@ const MyGiftsPromoListItem = ({
                 />
                 <NavLink to={`/promos/${promoData.id}`} state={{promoData: promoData}} className="list-item__morebtn">Подробнее</NavLink>
             </div>
-            <PendingChatPromo />
+            <PendingChatPromo 
+                brandId={promoData.brand_id}
+                brandImg={promoData.brand_img}
+                brandName={promoData.brand_name}
+                promoId={promoData.id}
+            />
         </div>
     )
 };

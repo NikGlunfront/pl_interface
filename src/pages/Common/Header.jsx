@@ -1,17 +1,20 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import HeaderFilterBtn from "./HeaderFilterBtn";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import HeaderSearchBtn from "./HeaderSearchBtn";
 import { setPageTitle, setSearchAvailable } from "../../store/slices/pageSlice/pageSlice";
 
 const Header = ({
-    type,
-    returnFunction = null
+    type
 }) => {
     const location = useLocation()
+    const navigate = useNavigate()
     const pageMeta = useSelector(state => state.pageMeta)
-    const activeCity = useSelector(state => state.filters.activeCity)
+    const { activeCity } = useSelector(state => state.filters)
+    const { BrandImg } = pageMeta.chatMeta
+    const [returnPath, setReturnPath] = useState('-1')
+
     const dispatch = useDispatch()
     let className = 'pl-app-header '
     if (type !== "filter") {
@@ -25,6 +28,16 @@ const Header = ({
     }
 
     useEffect(() => {
+        if (location.pathname.includes('chat/')) {
+            setReturnPath('-1')
+            return
+        }
+        if (location.pathname.includes('promo/')) {
+            setReturnPath('-1')
+            return
+        }
+        setReturnPath('/promos')
+
         switch (location.pathname) {
             case '/promos':
                 dispatch(setPageTitle(activeCity.name))
@@ -50,23 +63,15 @@ const Header = ({
         }
     }, [location.pathname])
 
-    const createReturnButton = () => {
-        if (returnFunction !== null) {
-            return (
-                <div onClick={returnFunction} className="pl-app-header__returnbtn"></div>
-            )
-        } else {
-            return (
-                <Link to={'/promos'} className="pl-app-header__returnbtn" />
-            )
-        }
+    const returnFunction = () => {
+        navigate(-1)
     }
 
     return (
         <div className={className}>
             {type === 'filter'
                 ? <HeaderFilterBtn />
-                : createReturnButton()
+                : <div onClick={returnFunction} className="pl-app-header__returnbtn"></div>
             }
             <div className="pl-app-header__title">{pageMeta.title}</div>
             {pageMeta.searchAvailable 

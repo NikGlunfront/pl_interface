@@ -5,6 +5,12 @@ const initialState = {
     pageStyle: false,
     searchAvailable: false,
     darkTheme: false,
+    chatMeta: {
+        brandId: null,
+        brandName: null,
+        brandImg: null,
+        promoId: null
+    },
     isContentHidden: false,
     pageNotifications: {
         wishlist: 3,
@@ -46,6 +52,12 @@ export const pageSlice = createSlice({
                 ...state,
                 isContentHidden: action.payload
             }
+        },
+        setChatMeta: (state, action) => {
+            return {
+                ...state,
+                chatMeta: action.payload
+            }
         }
     }
 })
@@ -55,7 +67,8 @@ export const {
     togglePageStyle,
     setSearchAvailable,
     setDarkTheme,
-    setIsContentHidden
+    setIsContentHidden,
+    setChatMeta
 } = pageSlice.actions
 
 export default pageSlice.reducer

@@ -1,17 +1,26 @@
 .pl-chat-message {
-    padding: 1rem 1.5rem;
     border-radius: 1.2rem;
     background-color: var(--pl-chat-message-grey-color);
     color: $black_c;
     position: relative;
     width: fit-content;
-    padding-bottom: 2.8rem;
     min-width: 7rem;
+    // overflow: hidden;
 
     & > img {
         max-width: 100%;
         object-fit: contain;
+        margin-bottom: 1.6rem ;
     }
+
+    & > a[data-fancybox] {
+        @include flex_row;
+        height: 20rem;
+        background-color: var(--pl-primary-background-color);
+        border-radius: 1.2rem 1.2rem 0 0;
+    }
+
+    
 
     & > svg {
         position: absolute;
@@ -69,8 +78,20 @@
     &__title {
         font-weight: 700;
         display: block;
-        margin-bottom: 0.2rem;
         font-size: 1.6rem;
+        padding: 0 1.5rem 0;
+        line-height: 2.2rem;
+        transform: translate(0, 0.5rem);
+        line-height: 3.2rem;
+
+        & ~ a[data-fancybox] {
+            border-radius: 0;
+            margin-top: 1rem;
+        }
+    }
+
+    &__inner {
+        padding: 1rem 1.5rem 2.8rem;
     }
 
     &__text {
@@ -102,7 +123,7 @@
         font-size: 1.1rem;
         line-height: 1;
         color: $white_c;
-        background-color: #709F6F;
+        background-color: rgba(0,0,0,0.3);
         padding: 0.5rem 0.9rem;
         border-radius: 5.3rem;
         margin: 0 auto 1.2rem;
