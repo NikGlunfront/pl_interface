@@ -52,7 +52,7 @@ const HomePage = ({
     }
 
     const handleGoToCreate = () => {
-        navigate(PL_APP_ROUTES.PARTNER.CREATE_PROMO, {replace: false})
+        navigate(PL_APP_ROUTES.PARTNER.CREATE_PARTNER, {replace: false})
     }
 
     if (isLoading) {

@@ -9,6 +9,10 @@ const Footer = ({
 }) => {
     const location = useLocation()
 
+    if (location.pathname === '/create-partner') {
+        return
+    }
+
     return (
         <footer className='pl-app-footer'>
             <div className="pl-app-footer__inner">

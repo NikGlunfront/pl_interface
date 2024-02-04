@@ -61,6 +61,13 @@ const Header = ({
                 
             case '/create-promo':
                 dispatch(setPageTitle('Создать промо'))
+                setReturnPath(-1)
+                dispatch(setSearchAvailable(true))
+            break;
+                
+            case '/create-partner':
+                dispatch(setPageTitle('Профиль'))
+                setReturnPath(-1)
                 dispatch(setSearchAvailable(true))
             break;
         
@@ -80,7 +87,7 @@ const Header = ({
                 : <div onClick={returnFunction} className="pl-app-header__returnbtn"></div>
             }
             <div className="pl-app-header__title">{pageMeta.title}</div>
-            {pageMeta.searchAvailable 
+            {pageMeta.searchAvailable
                 ? <HeaderSearchBtn />
                 : ""
             }             

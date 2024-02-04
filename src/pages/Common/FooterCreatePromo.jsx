@@ -7,7 +7,7 @@ const FooterCreatePromo = () => {
     return (
         <Link
             className="pl-app-footer__addpromo"
-            to={'/create-promo'}
+            to={'/create-partner'}
         >
             {isDarkTheme 
                 ?

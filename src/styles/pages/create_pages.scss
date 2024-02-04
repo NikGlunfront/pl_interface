@@ -1,0 +1,13 @@
+.pl-page-create-partner {
+    background-color: var(--pl-primary-popup-background);
+
+    &__title {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    &__bio {
+        margin-bottom: 3.3rem;
+    }
+}

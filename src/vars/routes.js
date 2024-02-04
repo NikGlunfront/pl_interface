@@ -7,6 +7,7 @@ export const PL_APP_ROUTES = {
         MY_GIFTS: '/my-gifts',
     },
     PARTNER: {
-        CREATE_PROMO: '/create-promo'
+        CREATE_PROMO: '/create-promo',
+        CREATE_PARTNER: '/create-partner'
     }
 }

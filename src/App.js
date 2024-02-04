@@ -18,6 +18,7 @@ import PartnerPage from './pages/Partner/PartnerPage';
 import { setDarkTheme } from './store/slices/pageSlice/pageSlice';
 import ChatPage from './pages/Chat/ChatPage';
 import ChatReviewPage from './pages/Chat/ChatReviewPage';
+import CreatePartner from './pages/Create/CreatePartner';
 
 const routes = [
     { path: '/', name: 'Home', element: <HomePage />, nodeRef: createRef() },
@@ -27,6 +28,7 @@ const routes = [
     { path: '/my-gifts', name: 'MyGifts', element: <MyGifts />, nodeRef: createRef() },
     { path: '/partners/:id', name: 'Partners', element: <PartnerPage />, nodeRef: createRef() },
     { path: '/create-promo', name: 'CreatePromo', element: <CreatePromo />, nodeRef: createRef() },
+    { path: '/create-partner', name: 'CreatePartner', element: <CreatePartner />, nodeRef: createRef() },
     { path: '/chat/:brand_id/:promo_id', name: 'ChatPage', element: <ChatPage />, nodeRef: createRef() },
     { path: '/chat/review/:brand_id/:promo_id', name: 'ChatReviewPage', element: <ChatReviewPage />, nodeRef: createRef() },
 ]
