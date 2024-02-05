@@ -31,7 +31,8 @@ const TextArea = ({
                     className='text-textarea' 
                     placeholder={placeholder}
                     onChange={handleOnChange}
-                >{value}</textarea>
+                    value={value}
+                />
             </div>
         </div>
     );

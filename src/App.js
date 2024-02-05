@@ -5,7 +5,6 @@ import { useLocation, useNavigate, useOutlet} from 'react-router-dom'
 import HomePage from './pages/Home/HomePage';
 import PromosPage from './pages/Promos/PromosMainPage';
 import PromoPage from './pages/Promos/PromoPage';
-import CreatePromo from './pages/Promos/CreatePromo';
 import Wishlist from './pages/Wishlist/Wishlist';
 import MyGifts from './pages/MyGifts/MyGifts';
 import ScrollTopRoutes from './containers/ScrollTopRoutes';
@@ -19,6 +18,7 @@ import { setDarkTheme } from './store/slices/pageSlice/pageSlice';
 import ChatPage from './pages/Chat/ChatPage';
 import ChatReviewPage from './pages/Chat/ChatReviewPage';
 import CreatePartner from './pages/Create/CreatePartner';
+import CreatePromo from './pages/Create/CreatePromo';
 
 const routes = [
     { path: '/', name: 'Home', element: <HomePage />, nodeRef: createRef() },

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react"
 
 const MediaLoader = ({
     className,
-    getPreview
+    getPreview,
+    label = null
 }) => {
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState()
@@ -36,6 +37,10 @@ const MediaLoader = ({
     return (
         <label className={'pl-media-loader ' + className}>
             <input type='file' onChange={onSelectFile} />
+            {label !== null
+                ? <span>{label}</span>
+                : ""
+            }
             {/* {selectedFile &&  <img src={preview} /> } */}
         </label>
     )

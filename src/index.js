@@ -7,13 +7,13 @@ import PromosPage from './pages/Promos/PromosMainPage';
 import PromoPage from './pages/Promos/PromoPage';
 import Wishlist from './pages/Wishlist/Wishlist';
 import MyGifts from './pages/MyGifts/MyGifts';
-import CreatePromo from './pages/Promos/CreatePromo';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import PartnerPage from './pages/Partner/PartnerPage';
 import ChatPage from './pages/Chat/ChatPage';
 import ChatReviewPage from './pages/Chat/ChatReviewPage';
 import CreatePartner from './pages/Create/CreatePartner';
+import CreatePromo from './pages/Create/CreatePromo';
 
 const routes = [
     { path: '/', name: 'Home', element: <HomePage />, nodeRef: createRef() },

@@ -60,9 +60,9 @@ const Header = ({
             break;
                 
             case '/create-promo':
-                dispatch(setPageTitle('Создать промо'))
+                dispatch(setPageTitle('Новый подарок'))
                 setReturnPath(-1)
-                dispatch(setSearchAvailable(true))
+                dispatch(setSearchAvailable(false))
             break;
                 
             case '/create-partner':

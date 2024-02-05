@@ -12,6 +12,8 @@ import telegramIco from '../assets/img/icons/tg-ico.svg'
 import telegramIcoWhite from '../assets/img/icons/tg-ico_white.svg'
 import emailIco from '../assets/img/icons/email-ico.svg'
 import emailIcoWhite from '../assets/img/icons/email-ico_white.svg'
+import noImage from '../assets/img/icons/service/no_image.svg'
+import noImageWhite from '../assets/img/icons/service/no_image_white.svg'
 import { useSelector } from 'react-redux'
 
 export function useIcons() {
@@ -24,6 +26,7 @@ export function useIcons() {
         'website': isDarkTheme ? websiteIcoWhite : websiteIco,
         'facebook': isDarkTheme ? facebookIcoWhite : facebookIco,
         'whatsapp': isDarkTheme ? whatsappWhite : whatsappIco,
+        'noimage': isDarkTheme ? noImageWhite : noImage
     }
 
     const getIcon = (iconName) => {

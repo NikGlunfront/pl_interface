@@ -200,6 +200,7 @@
         padding-left: 1.6rem;
         background-color: var(--pl-primary-background-color);
         border-radius: 5rem;
+        font-size: 1.6rem;
 
         &_textarea {
             border-radius: 1.8rem;
@@ -210,6 +211,7 @@
             width: 100%;
             line-height: inherit;
             color: inherit;
+            font-size: inherit;
             background-color: transparent;
         }
 
@@ -219,6 +221,7 @@
             width: 100%;
             line-height: inherit;
             color: inherit;
+            font-size: inherit;
             background-color: transparent;
         }
     }

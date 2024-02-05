@@ -10,4 +10,175 @@
     &__bio {
         margin-bottom: 3.3rem;
     }
+
+    .pl-button {
+        position: fixed;
+        bottom: 7rem;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    &__upload_logo {
+        padding: 2.1rem 0 3.5rem;
+        @include flex_col;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__previewlogo {
+        width: 7.8rem;
+        height: 7.8rem;
+        border-radius: 50%;
+        background-color: var(--pl-primary-background-color);
+        margin-bottom: 1.5rem;
+        @include flex_row;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+
+            &.no-img-ico {
+                width: 3.4rem;
+                height: 2.7rem;
+            }
+        }
+    }
+
+    &__medialoader {
+        &.pl-media-loader {
+            span {
+                font-size: 1.4rem;
+                color: $blue_c;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.pl-page-create-promo {
+    background-color: var(--pl-primary-popup-background);
+}
+
+.steps-pl-page-create-promo {
+    @include flex_row;
+    position: relative;
+    width: 100%;
+
+    &__progress {
+        position: absolute;
+        top: 1.1rem;
+        width: calc(100%);
+        left: 50%;
+        transform: translate(-50%, 0);
+        height: 0.2rem;
+        background-color: var(--pl-primary-background-color);
+
+        &::after {
+            content: "";
+            position: absolute;
+            height: 100%;
+            left: 0;
+            top: 0;
+            width: 0;
+            background-color: $red_c;
+            transition: var(--pl-transition);
+            transform: translate3d(0,0,0);
+        }
+
+        &_1 {
+            &::after {
+                width: 20%;
+            }
+        }
+
+        &_2 {
+            &::after {
+                width: 60%;
+            }
+        }
+
+        &_3 {
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+
+    &__row {
+        @include flex_row;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    &__item {
+        @include flex_col;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+
+        &:first-child {
+            & > div {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0.9rem;
+                    height: 0.4rem;
+                    background-color: var(--pl-primary-popup-background);
+                    left: -0.1rem;
+                    width: 2rem;
+                    transform: translate(-100%, 0);
+                }
+            }
+        }
+
+        &:last-child {
+            & > div {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0.9rem;
+                    height: 0.4rem;
+                    background-color: var(--pl-primary-popup-background);
+                    right: -0.1rem;
+                    width: 2rem;
+                    transform: translate(100%, 0);
+                }
+            }
+        }
+
+        & > div {
+            width: 2.2rem;
+            height: 2.2rem;
+            flex: 0 0 2.2rem;
+            border: 0.1rem solid $red_c;
+            border-radius: 50%;
+            background-color: var(--pl-primary-background-color);
+            margin-bottom: 1.1rem;
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 1.3rem;
+                height: 1.3rem;
+                background-color: $red_c;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        & > span {
+            display: block;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.4rem;
+        }
+    }
 }

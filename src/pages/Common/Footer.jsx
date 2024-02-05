@@ -9,7 +9,7 @@ const Footer = ({
 }) => {
     const location = useLocation()
 
-    if (location.pathname === '/create-partner') {
+    if (location.pathname === '/create-partner' || location.pathname === '/create-promo') {
         return
     }
 

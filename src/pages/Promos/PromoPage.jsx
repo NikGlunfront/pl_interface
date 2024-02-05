@@ -23,7 +23,7 @@ const PromoPage = ({
     const [partnerData, setPartnerData] = useState(null)
 
     const returnFunction = () => {
-        navigate(-1)
+        navigate(-1) 
     }
 
     useEffect(() => {
@@ -62,7 +62,6 @@ const PromoPage = ({
             <PromoDescription>{promoData.description}</PromoDescription>
             <PromoTags>{promoData.tags}</PromoTags>
             <PromoGallery />
-            {/* <Footer /> */}
         </div>
     )
 };

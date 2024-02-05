@@ -4,7 +4,10 @@ const TextInput = ({
     placeholder = "",
     label = null,
     icon = null,
-    iniValue = null
+    iniValue = null,
+    handleChange,
+    validateFunc,
+    required
 }) => {
     const [value, setValue] = useState('')
 
@@ -16,6 +19,7 @@ const TextInput = ({
 
     const handleOnChange = (e) => {
         setValue(e.target.value)
+        handleChange(e.target.value)
     }
 
 

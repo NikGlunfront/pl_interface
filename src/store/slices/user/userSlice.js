@@ -2,7 +2,11 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState ={
     tg_id: '',
-    hasCompany: false
+    hasCompany: false,
+    company: {
+        name: '',
+        icon: ''
+    }
 }
 
 export const userSlice = createSlice({
@@ -14,12 +18,19 @@ export const userSlice = createSlice({
                 ...state,
                 hasCompany: action.payload
             }
+        },
+        setBrand: (state, action) => {
+            return {
+                ...state,
+                company: action.payload
+            }
         }
     }
 })
 
 export const {
-    setHasCompany
+    setHasCompany,
+    setBrand
 } = userSlice.actions
 
 export default userSlice.reducer

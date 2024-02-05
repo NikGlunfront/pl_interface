@@ -5,6 +5,8 @@
     position: relative;
     width: fit-content;
     min-width: 7rem;
+    font-family: 'Open Sans';
+    font-weight: 500;
     // overflow: hidden;
 
     & > img {
@@ -95,7 +97,7 @@
     }
 
     &__text {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         line-height: 1.4;
         word-break: break-word;
     }
