@@ -158,4 +158,27 @@
             background-position: calc(100% - 1rem) center;
         }
     }
+
+    .img-uploader-create-promo {
+        &__row {
+            &_active {
+                .pl-media-loader {
+    
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        background-image: url('../../assets/img/icons/plus_white.svg');
+                        background-size: contain;
+                        background-position: center;
+                        transform: translate(-50%, -50%);
+                    }
+        
+                }
+            }
+        }
+    }
 }

@@ -5,6 +5,7 @@ import CityFilterWindow from '../../../components/Filters/CityFilter/CityFilterW
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsContentHidden } from '../../../store/slices/pageSlice/pageSlice';
 import YesNo from '../../../components/UI/Input/YesNo';
+import CreatePromoImagesUpload from './CreatePromoImagesUpload';
 
 const firstStepInputs = [
     {placeholder: 'Телефон'},
@@ -67,9 +68,10 @@ const CreatePromoFirstStep = ({
             is_remote: isRemote
         })
     }, [name, description, locationReference, city, isRemote])
-    
+
     return (
         <div className='firststep-create-promo'>
+            <CreatePromoImagesUpload />
             <TextInput 
                 placeholder='Название подарка'
                 handleChange={handleNameChange}

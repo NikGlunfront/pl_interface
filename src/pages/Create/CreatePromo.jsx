@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import CreatePromoSteps from "./Promo/CreatePromoSteps";
 import CreatePromoPreview from "./Promo/CreatePromoPreview";
 import CreatePromoFirstStep from "./Promo/CreatePromoFirstStep";
+import SmartButton from "../../components/UI/SmartButton/SmartButton";
 
 const promoCreateSteps = [
     {id: 1, name: 'Превью'},
@@ -17,6 +18,10 @@ const CreatePromo = ({
 
     const getDataFirstStep = (data) => {
         setFirstStepData(data)
+    }
+
+    const handleMainButtonClick = () => {
+
     }
 
     return (
@@ -40,6 +45,13 @@ const CreatePromo = ({
                 />
                 : ""
             }
+            <div className="pl-bottom-button-container">
+                <SmartButton 
+                    color="red"
+                    onClick={handleMainButtonClick}
+                    disabled={true}
+                >Далее</SmartButton>
+            </div>
         </div>
     )
 };
