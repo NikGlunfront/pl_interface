@@ -1,24 +1,76 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import InfoGroup from "../../../containers/InfoGroup";
-import PromoTopper from "../../../components/Promo/PromoView/PromoIntro";
-import PromoContacts from "../../../components/Promo/PromoView/PromoContacts";
-import PromoAdress from "../../../components/Promo/PromoView/PromoAdress";
-import PromoDescription from "../../../components/Promo/PromoView/PromoDescription";
-import PromoTags from "../../../components/Promo/PromoView/PromoTags";
-import PromoGallery from "../../../components/Promo/PromoView/PromoGallery";
+import { useSelector } from "react-redux";
+import PromoStats from "../../../components/Promo/ListPromoView/PromoStats";
+import PromoPreview from "../../../components/Promo/PromoPreview";
 
 const CreatePromoPreview = ({
-    
+    images,
+    name,
+    description,
+    location,
+    locationReference,
+    isRemote
 }) => {
+    const companyMeta = useSelector(state => state.user.company)
+    const [promoData, setPromoData] = useState(null)
+    useEffect(() => {
+        setPromoData({
+            img: [],
+            amount_left:0,
+            name: "",
+            description:"",
+            location:"",
+            acts: {
+                views:0,
+                scs:0,
+                wish:0,
+            },
+            brand_id:3,
+            brand_name: companyMeta.name,
+            brand_img: companyMeta.icon,
+            brand_contacts: {
+                phone: "79995553333",
+                telegram: "https://tg.me/paymeg",
+                whatsapp: "+79995553333",
+                facebook: "facebook.com",
+                website: "google.com"
+            },
+            brand_role:"Магазин электроники"
+        })
+    }, [])
+
+    if (promoData === null) {
+        return
+    }
 
     return (
         <InfoGroup title={'Превью'} className={'pl-page-create-promo__preview'}>
-            {/* <PromoTopper promoData={promoData} />  */}
-            {/* <PromoContacts partner={partnerData} /> */}
-            {/* <PromoAdress /> */}
-            {/* <PromoDescription>{promoData.description}</PromoDescription> */}
-            {/* <PromoTags>{promoData.tags}</PromoTags> */}
-            {/* <PromoGallery /> */}
+            <div className={'pl-promo'}>
+                <PromoPreview
+                    amountLeft={promoData.amount_left}
+                    companyImage={promoData.brand_img}
+                    companyName={promoData.brand_name}
+                    promoDescription={description}
+                    promoImage={promoData.img}
+                    promoLocation={location + (locationReference ? `, ${locationReference}` : '')}
+                    promoName={name}
+                    dateEnd={promoData.date_end}
+                    inactive={promoData.inactive}
+                    isRemote={isRemote}
+                />
+                <div className="list-item__info">
+                    <PromoStats
+                        acts={promoData.acts}
+                    />
+                    <div className="list-item__morebtn">Подробнее</div>
+                </div>
+                {/* <PromoContacts partner={partnerData} /> */}
+                {/* <PromoAdress /> */}
+                {/* <PromoDescription>{promoData.description}</PromoDescription> */}
+                {/* <PromoTags>{promoData.tags}</PromoTags> */}
+                {/* <PromoGallery /> */}
+            </div>
         </InfoGroup>
     )
 };

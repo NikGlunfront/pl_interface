@@ -8,7 +8,7 @@ const PromoBadges = ({
 
     return (
         <div className="badges-list-item">
-            {gifts_amount_left && gifts_amount_left > 0 && inactive !== true 
+            {gifts_amount_left >= 0 && inactive !== true 
                 ? <div className="badges-list-item__gifts_left">Осталось подарков: <span>{gifts_amount_left}</span></div>
                 : ""
             }

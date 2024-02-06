@@ -74,7 +74,7 @@ const CityFilterWindow = ({
                 {visibleFilters.map(city => (
                     <DoubleNameInput 
                         onClickHandler={changeCity}
-                        amount={cityDataNums.filter(item => item.id == city.id)[0].amount}
+                        amount={cityDataNums && cityDataNums.filter(item => item.id == city.id)[0].amount}
                         id={city.id}
                         name={city.name}
                         subname={city.country_name}

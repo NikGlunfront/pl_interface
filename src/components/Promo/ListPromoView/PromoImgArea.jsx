@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from "react"
 import { register } from 'swiper/element/bundle'
-import { Pagination } from 'swiper/modules';
 
 
 const PromoImgArea = ({
-    promoData
+    promoImage,
+    promoName,
+    inactive
 }) => {
     const swiperRef = useRef(null);
 
@@ -17,7 +18,7 @@ const PromoImgArea = ({
             injectStyles: [
                 `
                 .swiper-pagination-bullet-active {
-                  background: rgba(197,197,197,0.5) !important;
+                  background: #E10001 !important;
                 }
                 `,
             ],
@@ -34,19 +35,28 @@ const PromoImgArea = ({
         swiperRef.current.initialize();
     }, [swiperRef])
 
-    if (!promoData) {
+    if (!promoImage && !promoName) {
         return (
-            <div></div>
+            <div className="list-item__thumbs">
+                
+            </div>
+        )
+    }
+    if (promoImage.length === 0) {
+        return (
+            <div className="list-item__thumbs list-item__thumbs_skeleton">
+                
+            </div>
         )
     }
 
-    if (promoData && promoData?.inactive == true) {
+    if (promoImage.length > 0 && promoName && inactive == true) {
         return (
             <div className="list-item__thumbs">
                 <img  
-                    src={promoData.img}
-                    alt={promoData.name}
-                    title={promoData.name}
+                    src={promoImage[0]}
+                    alt={promoName}
+                    title={promoName}
                 />
             </div>
         )
@@ -54,29 +64,26 @@ const PromoImgArea = ({
 
     return (
         <div className="list-item__thumbs">
-            <swiper-container init="false" ref={swiperRef}>
-                <swiper-slide >
-                    <img  
-                        src={promoData.img}
-                        alt={promoData.name}
-                        title={promoData.name}
-                    />
-                </swiper-slide>
-                <swiper-slide >
-                    <img  
-                        src={promoData.img}
-                        alt={promoData.name}
-                        title={promoData.name}
-                    />
-                </swiper-slide>
-                <swiper-slide >
-                    <img  
-                        src={promoData.img}
-                        alt={promoData.name}
-                        title={promoData.name}
-                    />
-                </swiper-slide>
-            </swiper-container>
+            {promoImage.length > 1
+                ?
+                <swiper-container init="false" ref={swiperRef}>
+                    {promoImage.map((img, index) => (
+                        <swiper-slide key={index}>
+                            <img  
+                                src={img}
+                                alt={promoName}
+                                title={promoName}
+                            />
+                        </swiper-slide>
+                    ))}
+                </swiper-container>
+                :
+                <img  
+                    src={promoImage[0]}
+                    alt={promoName}
+                    title={promoName}
+                />
+            }
         </div>
     )
 };

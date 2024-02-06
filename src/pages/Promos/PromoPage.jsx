@@ -56,7 +56,18 @@ const PromoPage = ({
 
     return (
         <div className="pl-page-container pl-promo-page">
-            <PromoTopper promoData={promoData} /> 
+            <PromoTopper 
+                promoData={promoData}
+                promoName={promoData.name}
+                promoImage={promoData.img}
+                promoDescription={promoData.description}
+                promoLocation={promoData.location}
+                promoDataStats={promoData.acts} 
+                companyImage={promoData.brand_img} 
+                companyName={promoData.brand_name}
+                inactive={promoData.inactive}
+                amountLeft={promoData.amount_left}
+            /> 
             <PromoContacts partner={partnerData} />
             <PromoAdress />
             <PromoDescription>{promoData.description}</PromoDescription>

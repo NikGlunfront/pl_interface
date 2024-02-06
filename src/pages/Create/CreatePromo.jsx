@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import CreatePromoSteps from "./Promo/CreatePromoSteps";
 import CreatePromoPreview from "./Promo/CreatePromoPreview";
+import CreatePromoFirstStep from "./Promo/CreatePromoFirstStep";
 
 const promoCreateSteps = [
     {id: 1, name: 'Превью'},
@@ -12,6 +13,11 @@ const CreatePromo = ({
     
 }) => {
     const [step, setStep] = useState(1)
+    const [firstStepData, setFirstStepData] = useState(null)
+
+    const getDataFirstStep = (data) => {
+        setFirstStepData(data)
+    }
 
     return (
         <div className={'pl-page-container pl-page-create-promo'}>
@@ -19,8 +25,19 @@ const CreatePromo = ({
                 stepsData={promoCreateSteps}
                 step={step}
             />
+            <CreatePromoFirstStep 
+                getData={getDataFirstStep}
+            />
+
+
             {step === 1 || step === 2
-                ? <CreatePromoPreview />
+                ? <CreatePromoPreview 
+                    name={firstStepData?.name ? firstStepData.name : ''}
+                    description={firstStepData?.description ? firstStepData.description : ''}
+                    location={firstStepData?.city?.name ? firstStepData.city.name : ''} 
+                    locationReference={firstStepData?.locationReference ? firstStepData.locationReference : ""}
+                    isRemote={firstStepData?.is_remote}
+                />
                 : ""
             }
         </div>

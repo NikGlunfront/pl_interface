@@ -186,9 +186,7 @@
     &__title {
         font-size: 2rem;
         font-weight: 700;
-        // margin: 0 1rem;
         line-height: 2rem;
-        // max-width: calc(100% - 12rem);
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -257,8 +255,8 @@
         border-radius: 1rem;
         position: relative;
 
-        swiper-container, swiper-slide {
-            // width: 100%;
+        &_skeleton {
+            background-color: var(--pl-skeleton-color);
         }
 
     }
@@ -418,12 +416,27 @@
         font-size: 2rem;
         font-weight: 500;
         margin-bottom: 0.5rem;
+        min-height: 2.6rem;
+        width: fit-content;
+        min-width: 40%;
+
+        &_skeleton {
+            background-color: var(--pl-skeleton-color);
+            border-radius: 5.4rem;
+        }
     }
     
     &__description {
         font-size: 1.4rem;
         font-weight: 400;
         margin-bottom: 0.5rem;
+        min-height: 2rem;
+        min-width: 60%;
+
+        &_skeleton {
+            background-color: var(--pl-skeleton-color);
+            border-radius: 5.4rem;
+        }
     }
 
     &__location {
@@ -435,7 +448,24 @@
         background-image: url('../../assets/img/icons/location_red.svg');
         background-size: 1.1rem 1.4rem;
         background-repeat: no-repeat;
-        background-position: left;
+        background-position: left 0.1rem;
+        min-height: 2rem;
+        line-height: 2rem;
+        min-width: 60%;
+        width: fit-content;
+
+        &_remote {
+            background-image: url('../../assets/img/icons/service/remote_job.svg');
+            background-size: 1.5rem 1.5rem;
+            background-repeat: no-repeat;
+            background-position: left 0.1rem;
+        }
+
+        &_skeleton {
+            background-color: var(--pl-skeleton-color);
+            border-radius: 5.4rem;
+            background-image: none;
+        }
     }
 
     &__info {
@@ -470,6 +500,8 @@
                 width: 100%;
                 object-fit: contain;
                 height: 100%;
+                background-color: $white_c;
+                border-radius: 50%;
             }
         }
 
@@ -519,7 +551,8 @@
     }
 
     a.pl-promo__morebtn,
-    a.list-item__morebtn {
+    a.list-item__morebtn,
+    div.list-item__morebtn {
         @include flex_row;
         text-align: center;
         justify-content: center;
@@ -569,10 +602,12 @@
 
 .pl-promo {
     &__img {
-        img {
+        & > img {
             width: 100%;
             height: unset;
             object-fit: contain;
+            background-color: $white_c;
+            border-radius: 50%;
         }
     }
 }
@@ -785,7 +820,7 @@
             text-overflow: ellipsis;
             display: -webkit-box;
             overflow: hidden;
-            max-height: 5.9rem;
+            max-height: 6.9rem;
             word-break: break-word;
             -webkit-box-orient: vertical;
         }

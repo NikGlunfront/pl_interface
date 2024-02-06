@@ -11,6 +11,7 @@ import PromoBrand from "../ListPromoView/PromoBrand";
 import PendingChatPromo from "../../Chat/PendingChatPromo/PendingChatPromo";
 import { useSelector } from "react-redux";
 import ReviewChatPromo from "../../Chat/ReviewChatPromo/ReviewChatPromo";
+import PromoPreview from "../PromoPreview";
 register();
 
 const MyGiftsPromoListItem = ({
@@ -21,24 +22,16 @@ const MyGiftsPromoListItem = ({
 
     return (
         <div className={className}>
-            <div className="list-item__img">
-                <PromoBrand brandImg={promoData.brand_img} brandName={promoData.brand_name} />
-                <PromoLike />
-                <PromoImgArea promoData={promoData} />
-                <PromoBadges 
-                    days_amount_left={'12 апреля'}
-                    gifts_amount_left={promoData?.amount_left}
-                    inactive={promoData?.inactive}
-                />
-                {promoData?.inactive === true
-                    ? <InactivePromoImg />
-                    : ''
-                }
-            </div>
-            <PromoBio 
-                name={promoData.name}
-                description={promoData.description}
-                location={promoData.location}
+            <PromoPreview
+                amountLeft={promoData.amount_left}
+                companyImage={promoData.brand_img}
+                companyName={promoData.brand_name}
+                promoDescription={promoData.description}
+                promoImage={promoData.img}
+                promoLocation={promoData.location}
+                promoName={promoData.name}
+                dateEnd={promoData.date_end}
+                inactive={promoData.inactive}
             />
             <div className="list-item__info">
                 <PromoStats

@@ -4,6 +4,7 @@ const TextArea = ({
     placeholder = "",
     label = null,
     icon = null,
+    handleChange,
     iniValue = null
 }) => {
     const [value, setValue] = useState('')
@@ -16,6 +17,7 @@ const TextArea = ({
 
     const handleOnChange = (e) => {
         setValue(e.target.value)
+        handleChange(e.target.value)
     }
 
 

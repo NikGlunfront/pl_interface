@@ -21,7 +21,10 @@ const DoubleNameInput = ({
                 <span>{name}</span>
                 <span>{subname}</span>
             </div>
-            <div className="pl-input-doublename__num">{amount}</div>
+            {amount
+                ? <div className="pl-input-doublename__num">{amount}</div>
+                : ""
+            }
         </div>
     )
 };

@@ -198,6 +198,7 @@
         color: var(--pl-primary-text-color);
         overflow: hidden;
         padding-left: 1.6rem;
+        padding-right: 1.6rem;
         background-color: var(--pl-primary-background-color);
         border-radius: 5rem;
         font-size: 1.6rem;
@@ -223,6 +224,7 @@
             color: inherit;
             font-size: inherit;
             background-color: transparent;
+            resize: none;
         }
     }
 }
