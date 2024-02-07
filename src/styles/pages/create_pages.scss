@@ -61,6 +61,7 @@
 
 .pl-page-create-promo {
     background-color: var(--pl-primary-popup-background);
+    // padding-bottom: 20rem;
 
     & > .pl-bottom-button-container {
         @include flex_row;
@@ -100,6 +101,29 @@
 
     &__preview {
         margin-top: 2rem;
+        background-color: var(--pl-primary-background-color);
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2rem;
+            height: 100%;
+            background-color: var(--pl-primary-background-color);
+            transform: translate(-100%, 0);
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 2rem;
+            height: 100%;
+            background-color: var(--pl-primary-background-color);
+            transform: translate(100%, 0);
+        }
 
         & > .pl-info-group__title {
             background-color: var(--pl-skeleton-color);
@@ -107,6 +131,14 @@
                 background-color: var(--pl-skeleton-color);
             }
         }
+    }
+    
+    .pl-promo-page-contacts, .pl-info-group {
+        margin-top: 1.5rem;
+    }
+
+    .pl-info-group__title {
+        pointer-events: none;
     }
 }
 

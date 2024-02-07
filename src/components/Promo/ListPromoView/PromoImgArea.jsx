@@ -26,14 +26,14 @@ const PromoImgArea = ({
             pagination: true
 
         };
-        
       
         // Assign it to swiper element
         Object.assign(swiperRef.current, params);
       
         // initialize swiper
         swiperRef.current.initialize();
-    }, [swiperRef])
+    }, [swiperRef, promoImage])
+
 
     if (!promoImage && !promoName) {
         return (

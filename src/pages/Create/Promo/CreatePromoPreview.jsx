@@ -3,16 +3,22 @@ import InfoGroup from "../../../containers/InfoGroup";
 import { useSelector } from "react-redux";
 import PromoStats from "../../../components/Promo/ListPromoView/PromoStats";
 import PromoPreview from "../../../components/Promo/PromoPreview";
+import PromoTags from "../../../components/Promo/PromoView/PromoTags";
+import PromoDescription from "../../../components/Promo/PromoView/PromoDescription";
+import PromoAdress from "../../../components/Promo/PromoView/PromoAdress";
+import PromoContacts from "../../../components/Promo/PromoView/PromoContacts";
+import PromoGallery from "../../../components/Promo/PromoView/PromoGallery";
 
 const CreatePromoPreview = ({
-    images,
     name,
     description,
     location,
     locationReference,
-    isRemote
+    isRemote,
+    step
 }) => {
     const companyMeta = useSelector(state => state.user.company)
+    const { images: promoImages } = useSelector(state => state.createPromo)
     const [promoData, setPromoData] = useState(null)
     useEffect(() => {
         setPromoData({
@@ -52,7 +58,7 @@ const CreatePromoPreview = ({
                     companyImage={promoData.brand_img}
                     companyName={promoData.brand_name}
                     promoDescription={description}
-                    promoImage={promoData.img}
+                    promoImage={promoImages.map(({img_file}) => (img_file))}
                     promoLocation={location + (locationReference ? `, ${locationReference}` : '')}
                     promoName={name}
                     dateEnd={promoData.date_end}
@@ -65,11 +71,26 @@ const CreatePromoPreview = ({
                     />
                     <div className="list-item__morebtn">Подробнее</div>
                 </div>
-                {/* <PromoContacts partner={partnerData} /> */}
-                {/* <PromoAdress /> */}
-                {/* <PromoDescription>{promoData.description}</PromoDescription> */}
-                {/* <PromoTags>{promoData.tags}</PromoTags> */}
-                {/* <PromoGallery /> */}
+                {step === 2
+                    ? <PromoContacts partner={{id: 'test', name: companyMeta.name}} />
+                    : ""
+                }
+                {step === 2
+                    ? <PromoAdress />
+                    : ""
+                }
+                {step === 2
+                    ? <PromoDescription>{description}</PromoDescription>
+                    : ""
+                }
+                {step === 2
+                    ? <PromoTags>{}</PromoTags>
+                    : ""
+                }
+                {step === 2
+                    ? <PromoGallery images={promoImages.map(({img_file}) => (img_file))} />
+                    : ""
+                }
             </div>
         </InfoGroup>
     )

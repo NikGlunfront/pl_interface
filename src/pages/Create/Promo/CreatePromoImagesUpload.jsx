@@ -2,25 +2,36 @@ import React, { useEffect, useState } from 'react';
 import MediaLoader from '../../../components/UI/MediaLoader/MediaLoader';
 import { useIcons } from '../../../hooks/useIcons';
 import PreviewItem from './PreviewItem';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCreatePromoImages } from '../../../store/slices/createPromo/createPromoSlice';
 
-const CreatePromoImagesUpload = () => {
+const CreatePromoImagesUpload = ({
+    completedImages
+}) => {
+    const dispatch = useDispatch()
     const { getIcon } = useIcons()
+    const { images: promoImagesState } = useSelector(state => state.createPromo)
     const [imgPreviews, setImgPreviews] = useState([])
     const [imgAmount, setImgAmount] = useState(0)
 
+    useEffect(() => {
+        if (completedImages.length > 0) {
+            setImgPreviews(completedImages)
+            setImgAmount(completedImages.length)
+        }
+    }, [])
+
     const getPreviewImg = (img) => {
-        setImgPreviews([...imgPreviews, {img_file: img, id: imgAmount + 1}])
+        setImgPreviews([...imgPreviews, {img_file: URL.createObjectURL(img), id: imgAmount + 1}])
+        dispatch(setCreatePromoImages([...promoImagesState, {img_file: URL.createObjectURL(img), id: imgAmount + 1}]))
         setImgAmount(imgAmount + 1)
     }
 
     const removeImage = (id) => {
         setImgPreviews(imgPreviews.filter(item => item.id !== id))
+        dispatch(setCreatePromoImages(promoImagesState.filter(item => item.id !== id)))
         setImgAmount(imgAmount - 1)
     }
-
-    useEffect(() => {
-        console.log(imgPreviews)
-    }, [imgPreviews])
     
     return (
         <div className='img-uploader-create-promo'>

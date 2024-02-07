@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import HeaderSearchBtn from "./HeaderSearchBtn";
 import { setPageTitle, setSearchAvailable } from "../../store/slices/pageSlice/pageSlice";
+import { setCreatePromoStepPosition } from "../../store/slices/createPromo/createPromoSlice";
 
 const Header = ({
     type
@@ -11,6 +12,7 @@ const Header = ({
     const location = useLocation()
     const navigate = useNavigate()
     const pageMeta = useSelector(state => state.pageMeta)
+    const createPromoStep = useSelector(state => state.createPromo.lastStep)
     const { activeCity } = useSelector(state => state.filters)
     const { brandImg, brandName } = pageMeta.chatMeta
     const [returnPath, setReturnPath] = useState('-1')
@@ -61,7 +63,6 @@ const Header = ({
                 
             case '/create-promo':
                 dispatch(setPageTitle('Новый подарок'))
-                setReturnPath(-1)
                 dispatch(setSearchAvailable(false))
             break;
                 
@@ -77,7 +78,15 @@ const Header = ({
     }, [location.pathname])
 
     const returnFunction = () => {
-        navigate(returnPath)
+        if (location.pathname === '/create-promo') {
+            if (createPromoStep > 1) {
+                dispatch(setCreatePromoStepPosition(createPromoStep - 1))
+            } else {
+                navigate(-1)
+            }
+        } else {
+            navigate(returnPath)
+        }
     }
 
     return (

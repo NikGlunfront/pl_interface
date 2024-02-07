@@ -18,7 +18,9 @@ const cities = [
 ]
 
 const CreatePromoFirstStep = ({
-    getData
+    getData,
+    isCompletedFirstStep,
+    completedData
 }) => {
     const dispatch = useDispatch()
     const iniData = useSelector(state => state.iniData)
@@ -28,6 +30,24 @@ const CreatePromoFirstStep = ({
     const [city, setCity] = useState(null)
     const [isRemote, setIsRemote] = useState(false)
     const [listVisible, setListVisible] = useState(false)
+
+    useEffect(() => {
+        if (completedData.isRemote) {
+            setIsRemote(true)
+        }
+        if (completedData.location) {
+            setCity(completedData.location)
+        }
+        if (completedData.locationRef) {
+            setLocationReference(completedData.locationRef)
+        }
+        if (completedData.name) {
+            setName(completedData.name)
+        }
+        if (completedData.shortDescription) {
+            setDescription(completedData.shortDescription)
+        }
+    }, []) 
 
     const handleNameChange = (name) => {
         setName(name)
@@ -59,26 +79,47 @@ const CreatePromoFirstStep = ({
         })
     }
 
+    const validateFirstStepData = () => {
+        if (name === '') {
+            return false
+        }
+        if (description === '') {
+            return false
+        }
+        if (city === null) {
+            return false
+        }
+        if (locationReference === '' && isRemote === false) {
+            return false
+        }
+
+        return true
+    }
+
     useEffect(() => {
+        const isDataCompleted = name !== '' && description !=='' && locationReference !== '' && city && isRemote ? true : false
         getData({
             name: name,
-            description: description,
+            shortDescription: description,
             locationReference: locationReference,
             city: city,
-            is_remote: isRemote
+            isRemote: isRemote
         })
+        isCompletedFirstStep(validateFirstStepData())
     }, [name, description, locationReference, city, isRemote])
 
     return (
         <div className='firststep-create-promo'>
-            <CreatePromoImagesUpload />
+            <CreatePromoImagesUpload completedImages={completedData.images} />
             <TextInput 
                 placeholder='Название подарка'
                 handleChange={handleNameChange}
+                iniValue={name}
             />
             <TextArea 
                 placeholder='Короткое описание вашего предложения'
                 handleChange={handleDescrChange}
+                iniValue={description}
             />
             <div className="firststep-create-promo__city">
                 <div className="firststep-create-promo__filter" onClick={openFilterList}>
@@ -96,6 +137,7 @@ const CreatePromoFirstStep = ({
             <TextInput 
                 placeholder='Ориентир'
                 handleChange={handlelocRefChange}
+                iniValue={locationReference}
             />
         </div>
     );

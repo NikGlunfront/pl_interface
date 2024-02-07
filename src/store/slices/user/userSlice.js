@@ -5,7 +5,9 @@ const initialState ={
     hasCompany: false,
     company: {
         name: '',
-        icon: ''
+        description: '',
+        icon: '',
+        contacts: {}
     }
 }
 
@@ -19,10 +21,20 @@ export const userSlice = createSlice({
                 hasCompany: action.payload
             }
         },
-        setBrand: (state, action) => {
+        setCompany: (state, action) => {
             return {
                 ...state,
-                company: action.payload
+                company: action.payload,
+                hasCompany: true
+            }
+        },
+        setCompanyContacts: (state, action) => {
+            return {
+                ...state,
+                company: {
+                    ...state.company,
+                    contacts: action.payload
+                }
             }
         }
     }
@@ -30,7 +42,8 @@ export const userSlice = createSlice({
 
 export const {
     setHasCompany,
-    setBrand
+    setCompany,
+    setCompanyContacts
 } = userSlice.actions
 
 export default userSlice.reducer

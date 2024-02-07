@@ -15,7 +15,7 @@ const productImages = [
 ]
 
 const PromoGallery = ({
-    
+    images
 }) => {
 
     return (
@@ -28,7 +28,7 @@ const PromoGallery = ({
                 },
                 }}
             >
-                {productImages.map((img, index) => (
+                {images.map((img, index) => (
                     <FancyGalleryItem 
                         src={img}
                         key={index}

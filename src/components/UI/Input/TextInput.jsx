@@ -6,7 +6,8 @@ const TextInput = ({
     icon = null,
     iniValue = null,
     handleChange,
-    validateFunc,
+    tagFunc = null,
+    validateFunc = null,
     required
 }) => {
     const [value, setValue] = useState('')
@@ -15,14 +16,16 @@ const TextInput = ({
         if (iniValue !== null) {
             setValue(iniValue)
         }
-    }, [])
+    }, [iniValue])
 
     const handleOnChange = (e) => {
         setValue(e.target.value)
-        handleChange(e.target.value)
+        if (tagFunc === null) {
+            handleChange(e.target.value)
+        } else {
+            handleChange(tagFunc, e.target.value)
+        }
     }
-
-
 
     return (
         <div className={'input-container ' + (icon !== null ? 'input-container_with_icon' : '')}>

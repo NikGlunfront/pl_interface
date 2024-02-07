@@ -13,7 +13,7 @@ const TextArea = ({
         if (iniValue !== null) {
             setValue(iniValue)
         }
-    }, [])
+    }, [iniValue])
 
     const handleOnChange = (e) => {
         setValue(e.target.value)

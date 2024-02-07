@@ -2,16 +2,26 @@ import React, { useEffect, useState } from "react"
 import MediaLoader from "../../../components/UI/MediaLoader/MediaLoader";
 import noImage from '../../../assets/img/icons/service/no_image.svg'
 import { useIcons } from "../../../hooks/useIcons";
+import { useSelector } from "react-redux";
 
 const PartnerLogoLoader = ({
     changeFunc
 }) => {
     const { getIcon } = useIcons()
+    const companyIcon = useSelector(state => state.user.company.icon)
     const [imgPreview, setImgPreview] = useState(null)
+    const [imgPreviewUrl, setImgPreviewUrl] = useState(null)
 
     const getPreviewImg = (img) => {
         setImgPreview(img)
     }
+
+    useEffect(() => {
+        if (companyIcon) {
+            setImgPreviewUrl(companyIcon)
+            changeFunc(companyIcon)
+        }
+    }, [])
 
     useEffect(() => {
         if (imgPreview !== null) {
@@ -22,9 +32,9 @@ const PartnerLogoLoader = ({
     return (
         <div className="pl-page-create-partner__upload_logo">
             <div className="pl-page-create-partner__previewlogo">
-                {imgPreview === null
+                {imgPreview === null && imgPreviewUrl === null
                     ? <img className="no-img-ico" src={getIcon('noimage')} alt="partner-logo"/>
-                    : <img src={URL.createObjectURL(imgPreview)} alt="partner-logo" style={{backgroundColor: 'white'}}/>
+                    : <img src={imgPreview === null ?  imgPreviewUrl : URL.createObjectURL(imgPreview)} alt="partner-logo" style={{backgroundColor: 'white'}}/>
                 }
             </div>
             <MediaLoader 

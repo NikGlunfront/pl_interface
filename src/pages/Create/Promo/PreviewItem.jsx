@@ -13,7 +13,7 @@ const PreviewItem = ({
     return (
         <div className='img-uploader-create-promo__preview'>
             <button onClick={removeUploadedImg}><img src={getIcon('plus')} alt="remove_image" /></button>
-            <img src={URL.createObjectURL(imgObj)} alt="" />
+            <img src={imgObj} alt="" />
         </div>
     );
 };
