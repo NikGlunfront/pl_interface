@@ -5,12 +5,13 @@ import TagFilter from "../../UI/TagFilter/TagFilter";
 import { useDispatch, useSelector } from "react-redux";
 import SearchTagsField from "./SearchTagsField";
 import { setActiveTags } from "../../../store/slices/filters/filtersSlice";
+import { useTranslate } from "../../../hooks/useTranslate";
 
 const PromoFilterWindow = ({
     visible,
     closeWindow
 }) => {
-
+    const { tr } = useTranslate()
     const active_filters = useSelector(state => state.filters)
     const initData = useSelector(state => state.iniData)
     const pageMeta = useSelector(state => state.pageMeta)
@@ -63,8 +64,8 @@ const PromoFilterWindow = ({
                         <path d="M2.45318 3.52858L0 0.666588L0.571371 0L4 4L3.71431 4.33329L0.571371 8L0 7.33341L2.45318 4.47142L2.79387 4L2.45318 3.52858Z" fill={pageMeta.darkTheme ? "white" : "black"} />
                     </svg>
                 </div>
-                <div className="pl-return-toppanel__title">Настройка ленты</div>
-                <div className="pl-reset-filters" onClick={handleResetFilters}>Сбросить</div>
+                <div className="pl-return-toppanel__title">{tr('Search.Title.SearchSettings')}</div>
+                <div className="pl-reset-filters" onClick={handleResetFilters}>{tr('Reset')}</div>
             </div>
             <div className="filters-pl-select__search">
                 <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +74,7 @@ const PromoFilterWindow = ({
                 </svg>
                 <input 
                     type="text" 
-                    placeholder="Поиск тега" 
+                    placeholder={tr('Search.Placeholder.Tags')} 
                     value={searchQ} 
                     onChange={onChangeSearch} 
                 />
@@ -94,7 +95,7 @@ const PromoFilterWindow = ({
                         customDot={active_filters.tags[cat.id] !== initData.tags[cat.id]} 
                     />
                 ))}
-                <div className="filter-pl-select__tags_more">еще 23</div>
+                <div className="filter-pl-select__tags_more">{tr('More')} 23</div>
             </div>
             <SearchTagsField 
                 tagsData={initData.tags}
@@ -103,7 +104,7 @@ const PromoFilterWindow = ({
             />
             <div className="filters-pl-select__bottom">
                 <SmartButton color="red" number={300}>
-                    Показать подарки
+                    {tr('Button.ShowGifts')}
                 </SmartButton>
             </div>
         </FilterWindow>

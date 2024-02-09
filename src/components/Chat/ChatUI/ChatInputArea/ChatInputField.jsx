@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react"
 import MediaLoader from "../../../UI/MediaLoader/MediaLoader";
+import { useTranslate } from "../../../../hooks/useTranslate";
 
 const ChatInputField = ({
     sendMessage,
     getPreviewObj
 }) => {
+    const { tr } = useTranslate()
     const [inputText, setInputText] = useState('')
     const [imgPreview, setImgPreview] = useState(null)
 
@@ -58,7 +60,7 @@ const ChatInputField = ({
             <div className="input-area-chat__input">
                 <input 
                     type="text" 
-                    placeholder="Сообщение..."
+                    placeholder={tr('Chat.Input.Placeholder.Message') + "..."}
                     value={inputText}
                     onChange={handleInputChange}
                     onKeyDown={e => e.key === 'Enter' ? sendMessageClick(): ''}

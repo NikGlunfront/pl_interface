@@ -6,6 +6,7 @@ import PromoImgArea from "./ListPromoView/PromoImgArea";
 import PromoBrand from "./ListPromoView/PromoBrand";
 import { useLocation } from "react-router";
 import InactivePromoImg from "./ListPromoView/InactivePromoImg";
+import { useTranslate } from "../../hooks/useTranslate";
 
 const PromoPreview = ({
     promoName,
@@ -20,6 +21,7 @@ const PromoPreview = ({
     inactive = false,
 }) => {
     const location = useLocation()
+    const { tr } = useTranslate()
 
     return (
         <div className={'pl-promo__previewarea'}>
@@ -44,7 +46,7 @@ const PromoPreview = ({
                     : ''
                 }
                 {inactive === true && location.pathname.includes('promos/')
-                    ? <div className="list-item-inactive"><span>Временно на паузе</span></div>
+                    ? <div className="list-item-inactive"><span>{tr('PromoItem.OnPause')}</span></div>
                     : ''
                 }
             </div>

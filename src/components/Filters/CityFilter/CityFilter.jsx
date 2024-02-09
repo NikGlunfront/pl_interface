@@ -6,6 +6,7 @@ import citySvgDarkTheme from '../../../assets/img/icons/location_white.svg'
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveCity } from "../../../store/slices/filters/filtersSlice";
 import { setIsContentHidden } from "../../../store/slices/pageSlice/pageSlice";
+import { useTranslate } from "../../../hooks/useTranslate";
 
 const CityFilter = ({
     isDarkTheme
@@ -13,6 +14,7 @@ const CityFilter = ({
 
     const iniData = useSelector(state => state.iniData)
     const dispatch = useDispatch()
+    const { tr } = useTranslate()
 
     const [listVisible, setListVisible] = useState(false)
     const [filterCount, setFilterCount] = useState(0)
@@ -42,7 +44,7 @@ const CityFilter = ({
                 <span
                     className={filterCity !== 0 ? 'pl-app-medium-text' : ''}
                 >
-                    {filterCity !== 0 ? iniData.cities.filter(city => city.id == filterCity)[0].name : 'Город'}
+                    {filterCity !== 0 ? tr(iniData.cities.filter(city => city.id === filterCity)[0].name) : tr('City')}
                 </span>
             </SmartSelect>
             <CityFilterWindow 

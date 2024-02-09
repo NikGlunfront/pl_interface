@@ -1,8 +1,10 @@
 import React from "react"
 import mapImg from '../../../assets/img/map_img.png';
 import LinkOpener from "../../UI/LinkOpener/LinkOpener";
+import { useTranslate } from "../../../hooks/useTranslate";
 
 const PromoAdress = () => {
+    const { tr } = useTranslate()
 
     return (
         <div className={'pl-info-group'}>
@@ -10,7 +12,7 @@ const PromoAdress = () => {
                 className={"pl-info-group__title pl-info-group__title_arrow"}
                 url={"https://yandex.ru/maps/-/CDusqVP6"}
             >
-                Адрес
+                {tr('Promo.InfoGroup.Title.Adress')} 
             </LinkOpener>
             <div className="pl-info-group__content">
                 <div className="pl-promo-page-adress">

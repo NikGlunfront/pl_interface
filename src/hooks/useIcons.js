@@ -16,6 +16,8 @@ import noImage from '../assets/img/icons/service/no_image.svg'
 import noImageWhite from '../assets/img/icons/service/no_image_white.svg'
 import plus from '../assets/img/icons/plus.svg'
 import plusWhite from '../assets/img/icons/plus_white.svg'
+import ruLang from '../assets/img/icons/langs/ru.svg'
+import enLang from '../assets/img/icons/langs/en.svg'
 import { useSelector } from 'react-redux'
 
 export function useIcons() {
@@ -29,7 +31,9 @@ export function useIcons() {
         'facebook': isDarkTheme ? facebookIcoWhite : facebookIco,
         'whatsapp': isDarkTheme ? whatsappWhite : whatsappIco,
         'noimage': isDarkTheme ? noImageWhite : noImage,
-        'plus': isDarkTheme ? plusWhite : plus
+        'plus': isDarkTheme ? plusWhite : plus,
+        'lang-ru': ruLang,
+        'lang-en': enLang,
     }
 
     const getIcon = (iconName) => {

@@ -7,23 +7,26 @@ import brandMts from '../../assets/img/icons/partners/mts.png'
 import brandApple from '../../assets/img/icons/partners/apple.svg'
 import { useDispatch } from "react-redux";
 import { setPageTitle } from "../../store/slices/pageSlice/pageSlice";
+import { useTranslate } from "../../hooks/useTranslate";
 
 const PartnerPage = ({
     data
 }) => {
     const navigate = useNavigate()
+    const { tr } = useTranslate()
     const dispatch = useDispatch()
     const {id} = useParams();
 
     const [partnerData, setPartnerData] = useState({})
 
     useEffect(() => {
-        dispatch(setPageTitle('Профиль'))
-        if (id == 1) {
+        dispatch(setPageTitle('Page.Title.Profile'))
+
+        if (id === 1) {
             setPartnerData({
                 brand_name: "Мегафон", brand_img: brandMegafon, brand_contacts: {phone: "79995553333", telegram: "https://tg.me/paymeg", whatsapp: "+79995553333", facebook: "facebook.com", website: "google.com"}, brand_role: 'Магазин электроники'
             })
-        } else if (id == 3) {
+        } else if (id === 3) {
             setPartnerData({
                 brand_name: "Apple", brand_img: brandApple, brand_contacts: {phone: "79995553333", telegram: "https://tg.me/paymeg", whatsapp: "+79995553333", facebook: "facebook.com", website: "google.com"}, brand_role: 'Магазин электроники'
             })
@@ -49,7 +52,7 @@ const PartnerPage = ({
                 </div>
             </div>
             <InfoGroup 
-                title={'Контакты'} 
+                title={tr('Promo.InfoGroup.Title.Contacts')} 
                 className={'pl-promo-page-contacts'}
             >
                 <a href="tel:89995553333" className="pl-promo-page-contacts__item pl-promo-page-contacts__item_phone">+7 999 555 33 33</a>

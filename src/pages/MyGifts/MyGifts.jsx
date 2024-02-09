@@ -6,17 +6,18 @@ import { setMyGiftsData, setNullMyGiftsData } from "../../store/slices/promos/pr
 import SpinLoader from "../../components/UI/SpinLoader/SpinLoader";
 import { setActiveMyGiftsTag } from "../../store/slices/filters/filtersSlice";
 import MyGiftsPromoList from "../../components/Promo/MyGiftsView/MyGiftsPromoList";
+import { useTranslate } from "../../hooks/useTranslate";
 
 const tags = [
-    {name: 'Ожидают', value: 'waiting'},
-    {name: 'Получены', value: 'confirmed'},
-    // {name: 'Сгорели', value: 'archived'},
+    {name: 'TagFilter.MyGifts.Waiting', value: 'waiting'},
+    {name: 'TagFilter.MyGifts.Recieved', value: 'confirmed'},
 ]
 
 
 const MyGifts = ({
     
 }) => {
+    const { tr } = useTranslate()
     const promosData = useSelector(state => state.promos.my_gifts)
     const activeMyGiftsTag = useSelector(state => state.filters.activeMyGiftsTag)
     const dispatch = useDispatch()
@@ -47,7 +48,7 @@ const MyGifts = ({
             <div className="pl-page-gifts__tags no-scroll-visual">
                 {tags.map(tag => (
                     <TagFilter
-                        name={tag.name} 
+                        name={tr(tag.name)} 
                         filterValue={tag.value} 
                         key={tag.value} 
                         changeActiveTag={handleNewTagFilter} 

@@ -1,3 +1,65 @@
 {
-    "Save": "Save"
+    "Save": "Save",
+    "City": "City",
+    "Category": "Category",
+    "Categories": "Categories",
+    "Menu": "Menu",
+    "Reset": "Reset",
+    "More": "more",
+
+    "Menu.PartnerCabinet": "Partner Cabinet",
+    "Menu.MyGifts": "My Gifts",
+    "Menu.Wishlist": "Wishlist",
+    "Menu.Support": "Support",
+
+    "Page.Title.Certificate": "Gift Certificate",
+    "Page.Title.MyGifts": "My Gifts",
+    "Page.Title.Wishlist": "Wishlist",
+    "Page.Title.NewPromo": "New certificate",
+    "Page.Title.Profile": "Profile",
+
+    "Homepage.Promotext.sib_1": "Receive and give gifts",
+    "Homepage.Promotext.sib_2": "Kindness will save the world",
+
+    "Promo.PreviewImg.OnPause": "Temporarily on pause",
+    "Promo.PreviewImg.GiftsLeft": "Gifts left",
+    "Promo.PreviewImg.Paused": "Paused",
+
+    "Promo.InfoGroup.Title.Adress": "Address",
+    "Promo.InfoGroup.Title.Description": "Description",
+    "Promo.InfoGroup.Title.Tags": "Tags",
+    "Promo.InfoGroup.Title.Gallery": "Gallery",
+    "Promo.InfoGroup.Title.Contacts": "Contacts",
+
+    "Button.ShowGifts": "Show Gifts",
+    "Button.NewGift": "New Gift",
+    "Button.GetFranchise": "Get Franchise",
+    "Button.More": "More",
+    "Button.GetGift": "Get Gift",
+
+    "GetFranchise.DescriptionTitle": "Didn't find your city?",
+    "GetFranchise.DescriptionText": "Open your own advertising business right now",
+
+    "Search.Title.SearchSettings": "Search Settings",
+    "Search.Placeholder.City": "Search city",
+    "Search.Placeholder.Category": "Search category",
+    "Search.Placeholder.Tags": "Search tags",
+    "Search.Result.Noresults": "No results",
+
+    "TagFilter.MyGifts.Waiting": "Waiting",
+    "TagFilter.MyGifts.Recieved": "Recieved",
+    "TagFilter.Categories.All": "All",
+
+    "Country.India": "India",
+    "Country.RussianFederation": "Russian Federation",
+    "Country.Thailand": "Thailand",
+
+    "City.Samui": "Samui",
+    "City.Mumbai": "Mumbai",
+    "City.Mandrem": "Mandrem",
+    "City.Mordjim": "Mordjim",
+    "City.Arambol": "Arambol",
+    "City.Moscow": "Moscow",
+
+    "Chat.Input.Placeholder.Message": "Message"
 }

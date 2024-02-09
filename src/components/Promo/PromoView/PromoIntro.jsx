@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import YesNo from "../../UI/Input/YesNo";
 import PromoStats from "../ListPromoView/PromoStats";
 import PromoPreview from "../PromoPreview";
+import { useTranslate } from "../../../hooks/useTranslate";
 
 const PromoTopper = ({
     promoName,
@@ -16,6 +17,7 @@ const PromoTopper = ({
 }) => {
     let className = 'pl-promo '
     const [notifications, setNotifications] = useState(false)
+    const { tr } = useTranslate()
 
     const toggleFunc = () => {
         setNotifications(!notifications)
@@ -39,7 +41,7 @@ const PromoTopper = ({
                 />
                 {inactive === true
                     ? <div><YesNo toggleFunc={toggleFunc} isChecked={notifications} name={'Напомнить в ЛС'} color="#000000" /><span></span></div>
-                    : <button className="pl-promo__getgift">Получить подарок</button>
+                    : <button className="pl-promo__getgift">{tr('Button.GetGift')}</button>
                 }
             </div>
         </div>

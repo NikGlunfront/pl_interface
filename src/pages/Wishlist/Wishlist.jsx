@@ -6,6 +6,7 @@ import { setNullWishlistData, setWishlistData } from "../../store/slices/promos/
 import SpinLoader from "../../components/UI/SpinLoader/SpinLoader";
 import TagFilter from "../../components/UI/TagFilter/TagFilter";
 import { setActiveWishlistTag } from "../../store/slices/filters/filtersSlice";
+import { useTranslate } from "../../hooks/useTranslate";
 
 const tags = [
     {name: 'Мегафон', value: 'megafon'},
@@ -15,6 +16,7 @@ const tags = [
 const Wishlist = ({
     
 }) => {
+    const { tr } = useTranslate()
     const promosData =  useSelector(state => state.promos.wishlist)
     const activeWishlistTag = useSelector(state => state.filters.activeWishlistTag)
     const dispatch = useDispatch()
@@ -45,7 +47,7 @@ const Wishlist = ({
         <div className="pl-page-container pl-page-wishlist">
             <div className="pl-page-gifts__tags no-scroll-visual">
                 <TagFilter 
-                    name={"Все"} 
+                    name={tr('TagFilter.Categories.All')}
                     filterValue={'all'} 
                     key={'all'} 
                     changeActiveTag={handleNewTagFilter} 

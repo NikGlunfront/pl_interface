@@ -3,10 +3,12 @@ import TagFilter from '../../UI/TagFilter/TagFilter';
 import PromoFilter from './PromoFilter';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveCategoryTag } from '../../../store/slices/filters/filtersSlice';
+import { useTranslate } from '../../../hooks/useTranslate';
 
 const PromoListFilter = ({
     toggleContentVisibility
 }) => {
+    const { tr } = useTranslate()
     const active_filters = useSelector(state => state.filters)
     const initData = useSelector(state => state.iniData)
     const dispatch = useDispatch()
@@ -32,7 +34,7 @@ const PromoListFilter = ({
             <PromoFilter />
             <div className="pl-promo-filters__row no-scroll-visual">
                 <TagFilter 
-                    name={"Все"} 
+                    name={tr('TagFilter.Categories.All')}
                     filterValue={0} 
                     key={'all'} 
                     changeActiveTag={handleNewTagFilter} 

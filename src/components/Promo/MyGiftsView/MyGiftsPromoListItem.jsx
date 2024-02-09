@@ -12,11 +12,13 @@ import PendingChatPromo from "../../Chat/PendingChatPromo/PendingChatPromo";
 import { useSelector } from "react-redux";
 import ReviewChatPromo from "../../Chat/ReviewChatPromo/ReviewChatPromo";
 import PromoPreview from "../PromoPreview";
+import { useTranslate } from "../../../hooks/useTranslate";
 register();
 
 const MyGiftsPromoListItem = ({
     promoData
 }) => {
+    const { tr } = useTranslate()
     let className = 'list-item '
     const { activeMyGiftsTag: giftTag } = useSelector(state => state.filters)
 
@@ -37,7 +39,7 @@ const MyGiftsPromoListItem = ({
                 <PromoStats
                     acts={promoData.acts}
                 />
-                <NavLink to={`/promos/${promoData.id}`} state={{promoData: promoData}} className="list-item__morebtn">Подробнее</NavLink>
+                <NavLink to={`/promos/${promoData.id}`} state={{promoData: promoData}} className="list-item__morebtn">{tr('Button.More')}</NavLink>
             </div>
             {giftTag === 'waiting'
                 ?

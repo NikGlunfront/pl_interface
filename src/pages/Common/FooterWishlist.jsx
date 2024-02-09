@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslate } from '../../hooks/useTranslate';
 
 const FooterWishlist = () => {
     const location = useLocation()
+    const { tr } = useTranslate()
     const { darkTheme: isDarkTheme, pageNotifications: nums } = useSelector(state => state.pageMeta)
     return (
         <Link
@@ -25,7 +27,7 @@ const FooterWishlist = () => {
                 </svg>
 
             }
-            <div>Избранное</div>
+            <div>{tr('Menu.Wishlist')}</div>
             <span>{nums.wishlist}</span>
         </Link>
     );

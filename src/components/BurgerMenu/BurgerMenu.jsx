@@ -4,26 +4,23 @@ import ReturnBtn from "../UI/ReturnBtn/ReturnBtn";
 import { NavLink, useNavigate } from "react-router-dom";
 import giftSvg from '../../assets/img/icons/gift.svg';
 import giftSvgDarkTheme from '../../assets/img/icons/gift_white.svg';
-import WishListIcon from "./WishListIcon";
-import LcIcon from "./LcIcon";
-import SupportIcon from "./SupportIcon";
-import GiftsIcon from "./GiftsIcon";
 import SmartButton from "../UI/SmartButton/SmartButton";
 import { PL_APP_ROUTES } from "../../vars/routes";
 import { useSelector } from "react-redux";
-
-const menuItems = [
-    {name: 'Кабинет партнера', icon: <LcIcon />, pathTo: '/partner', active: false},
-    {name: 'Мои подарки', icon: <GiftsIcon />, pathTo: '/my-gifts', active: true},
-    {name: 'Избранное', icon: <WishListIcon />, pathTo: '/wishlist', active: true},
-    {name: 'Поддержка', icon: <SupportIcon />, pathTo: '/support', active: false},
-]
+import { useMetaData } from "../../hooks/useMetaData";
+import LangItem from "./LangItem";
+import { useTranslate } from "../../hooks/useTranslate";
+import BurgerItemIcon from "./BurgerItemIcon";
 
 const BurgerMenu = ({
     visible,
     closeWindow
 }) => {
     const navigate = useNavigate()
+    const { tr } = useTranslate()
+    const { getLangsData, getMenuData} = useMetaData()
+    const langsData = getLangsData()
+    const menuData = getMenuData()
     const { darkTheme: isDarkTheme } = useSelector(state => state.pageMeta)
 
     const closeList = () => {
@@ -38,31 +35,44 @@ const BurgerMenu = ({
         <FilterWindow visible={visible}>
             <div className="pl-return-toppanel">
                 <ReturnBtn onClickFunc={closeList} className={"pl-return-toppanel__return"} />
-                <div className="pl-return-toppanel__title">Меню</div>
+                <div className="pl-return-toppanel__title">{tr('Menu')}</div>
             </div>
             <div className="filters-pl-select__content">
                 <div className={"pl-burger-list "}>
-                    {menuItems.map(item => (
+                    {menuData.map(item => (
                         <NavLink 
                             to={item.pathTo} 
                             className={"pl-burger-list__item " + (item.active ? "" : "pl-burger-list__item_disabled")} 
-                            key={item.name}
+                            key={item.type}
                         >
-                            {item.icon}
-                            <span>{item.name}</span>
+                            <BurgerItemIcon  
+                                icon={item.icon}
+                                type={item.type}
+                            />
+                            <span>{tr(item.name)}</span>
                         </NavLink>
+                    ))}
+                </div>
+                <div className="pl-burger-langs">
+                    {langsData.map(lang => (
+                        <LangItem 
+                            key={lang.lang_code}
+                            icon={lang.icon}
+                            langCode={lang.lang_code}
+                            text={lang.text}
+                        />
                     ))}
                 </div>
             </div>
             <div className="filters-pl-select__bottom burger-menu-btns">
                 <SmartButton color="red">
-                    Получить франшизу
+                    {tr('Button.GetFranchise')}
                 </SmartButton>
                 <SmartButton
                     onClick={handleGoToCreate}
                     icon={isDarkTheme === true ? giftSvgDarkTheme : giftSvg}
                 >
-                    Новый подарок
+                    {tr('Button.NewGift')}
                 </SmartButton>
             </div>
         </FilterWindow>

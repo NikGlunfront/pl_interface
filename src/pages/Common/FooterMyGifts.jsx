@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslate } from '../../hooks/useTranslate';
 
 const FooterMyGifts = () => {
     const location = useLocation()
+    const { tr } = useTranslate()
     const { darkTheme: isDarkTheme, pageNotifications: nums } = useSelector(state => state.pageMeta)
     return (
         <Link
@@ -33,7 +35,7 @@ const FooterMyGifts = () => {
 
 
             }
-            <div>Мои подарки</div>
+            <div>{tr('Menu.MyGifts')}</div>
             <span>{nums.gifts}</span>
         </Link>
     );

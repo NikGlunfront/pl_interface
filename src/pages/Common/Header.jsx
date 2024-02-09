@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import HeaderSearchBtn from "./HeaderSearchBtn";
 import { setPageTitle, setSearchAvailable } from "../../store/slices/pageSlice/pageSlice";
 import { setCreatePromoStepPosition } from "../../store/slices/createPromo/createPromoSlice";
+import { useTranslate } from "../../hooks/useTranslate";
 
 const Header = ({
     type
@@ -12,6 +13,7 @@ const Header = ({
     const location = useLocation()
     const navigate = useNavigate()
     const pageMeta = useSelector(state => state.pageMeta)
+    const { tr } = useTranslate()
     const createPromoStep = useSelector(state => state.createPromo.lastStep)
     const { activeCity } = useSelector(state => state.filters)
     const { brandImg, brandName } = pageMeta.chatMeta
@@ -44,6 +46,10 @@ const Header = ({
             setReturnPath(-1)
             return
         }
+        if (location.pathname.includes('partners/')) {
+            setReturnPath(-1)
+            return
+        }
         setReturnPath('/promos')
 
         switch (location.pathname) {
@@ -52,22 +58,22 @@ const Header = ({
                 dispatch(setSearchAvailable(true))
                 break;
             case '/wishlist':
-                dispatch(setPageTitle('Избранное'))
+                dispatch(setPageTitle('Page.Title.Wishlist'))
                 dispatch(setSearchAvailable(true))
                 break;
                 
             case '/my-gifts':
-                dispatch(setPageTitle('Мои подарки'))
+                dispatch(setPageTitle('Page.Title.MyGifts'))
                 dispatch(setSearchAvailable(true))
             break;
                 
             case '/create-promo':
-                dispatch(setPageTitle('Новый подарок'))
+                dispatch(setPageTitle('Page.Title.NewPromo'))
                 dispatch(setSearchAvailable(false))
             break;
                 
             case '/create-partner':
-                dispatch(setPageTitle('Профиль'))
+                dispatch(setPageTitle('Page.Title.Profile'))
                 setReturnPath(-1)
                 dispatch(setSearchAvailable(true))
             break;
@@ -95,7 +101,7 @@ const Header = ({
                 ? <HeaderFilterBtn />
                 : <div onClick={returnFunction} className="pl-app-header__returnbtn"></div>
             }
-            <div className="pl-app-header__title">{pageMeta.title}</div>
+            <div className="pl-app-header__title">{tr(pageMeta.title)}</div>
             {pageMeta.searchAvailable
                 ? <HeaderSearchBtn />
                 : ""

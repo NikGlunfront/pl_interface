@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { PL_APP_ROUTES } from "../../vars/routes";
 import { useCategoryChanger } from "../../hooks/useCategoryChanger";
 import { useNavigate } from "react-router-dom";
+import { useTranslate } from "../../hooks/useTranslate";
 // const {data, error, isLoading} = useGetPokemonByNameQuery('bulbasaur')
 // return (
 //     <div className="App">
@@ -33,6 +34,7 @@ const HomePage = ({
     const { isContentHidden } = useSelector(state => state.pageMeta)
     const {setAllCategoriesActive} = useCategoryChanger()
     const navigate = useNavigate()
+    const { tr } = useTranslate()
     const isDarkTheme = useSelector(state => state.pageMeta.darkTheme)
 
     
@@ -75,8 +77,8 @@ const HomePage = ({
                     <span>PayLess.bot</span>
                 </div>
                 <div className="home-page__text">
-                    <p>Получай и дари подарки.</p>
-                    <p>Доброта спасёт мир.</p>
+                    <p>{tr('Homepage.Promotext.sib_1')}</p>
+                    <p>{tr('Homepage.Promotext.sib_2')}</p>
                 </div>
                 <div className="home-page__filters">
                     <CityFilter 
@@ -93,13 +95,13 @@ const HomePage = ({
                         number={236}
                         onClick={handleGoToPromoClick}
                         >
-                        Показать подарки
+                        {tr('Button.ShowGifts')}
                     </SmartButton>
                     <SmartButton
                         onClick={handleGoToCreate}
                         icon={isDarkTheme === true ? giftSvgDarkTheme : giftSvg}
                     >
-                        Новый подарок
+                        {tr('Button.NewGift')}
                     </SmartButton>
                 </div>
             </div>

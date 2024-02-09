@@ -1,3 +1,65 @@
 {
-    "Save": "Сохранить"
+    "Save": "Сохранить",
+    "City": "Город",
+    "Category": "Категория",
+    "Categories": "Категории",
+    "Menu": "Меню",
+    "Reset": "Сбросить",
+    "More": "еще",
+
+    "Menu.PartnerCabinet": "Кабинет партнера",
+    "Menu.MyGifts": "Мои подарки",
+    "Menu.Wishlist": "Избранное",
+    "Menu.Support": "Поддержка",
+
+    "Page.Title.Certificate": "Подарочный сертификат",
+    "Page.Title.MyGifts": "Мои подарки",
+    "Page.Title.Wishlist": "Избранное",
+    "Page.Title.NewPromo": "Новый подарок",
+    "Page.Title.Profile": "Профиль",
+
+    "Homepage.Promotext.sib_1": "Получай и дари подарки",
+    "Homepage.Promotext.sib_2": "Доброта спасёт мир",
+
+    "Promo.PreviewImg.OnPause": "Временно на паузе",
+    "Promo.PreviewImg.GiftsLeft": "Осталось подарков",
+    "Promo.PreviewImg.Paused": "Временно на паузе",
+
+    "Promo.InfoGroup.Title.Adress": "Адрес",
+    "Promo.InfoGroup.Title.Description": "Описание",
+    "Promo.InfoGroup.Title.Tags": "Теги",
+    "Promo.InfoGroup.Title.Gallery": "Галерея",
+    "Promo.InfoGroup.Title.Contacts": "Контакты",
+
+    "Button.ShowGifts": "Показать подарки",
+    "Button.NewGift": "Новый подарок",
+    "Button.GetFranchise": "Получить франшизу",
+    "Button.More": "Подробнее",
+    "Button.GetGift": "Получить подарок",
+
+    "GetFranchise.DescriptionTitle": "Не нашли свой город ?",
+    "GetFranchise.DescriptionText": "Откройте собственный рекламный бизнес прямо сейчас",
+
+    "Search.Title.SearchSettings": "Настройка ленты",
+    "Search.Placeholder.City": "Поиск города",
+    "Search.Placeholder.Category": "Поиск категории",
+    "Search.Placeholder.Tags": "Поиск тега",
+    "Search.Result.Noresults": "Нет результатов",
+
+    "TagFilter.MyGifts.Waiting": "Ожидают",
+    "TagFilter.MyGifts.Recieved": "Получены",
+    "TagFilter.Categories.All": "Все",
+
+    "Country.India": "Индия",
+    "Country.RussianFederation": "РФ",
+    "Country.Thailand": "Тайланд",
+
+    "City.Samui": "Самуи",
+    "City.Mumbai": "Мумбаи",
+    "City.Mandrem": "Мандрем",
+    "City.Mordjim": "Морджим",
+    "City.Arambol": "Арамболь",
+    "City.Moscow": "Москва",
+
+    "Chat.Input.Placeholder.Message": "Сообщение"
 }

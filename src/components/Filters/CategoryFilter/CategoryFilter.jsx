@@ -5,6 +5,7 @@ import catFilterSvg from '../../../assets/img/icons/filter.svg'
 import catFilterSvgDarkTheme from '../../../assets/img/icons/filter_white.svg'
 import { useDispatch, useSelector } from "react-redux";
 import { setIsContentHidden } from "../../../store/slices/pageSlice/pageSlice";
+import { useTranslate } from "../../../hooks/useTranslate";
 
 const CategoryFilter = ({
     isDarkTheme
@@ -12,6 +13,7 @@ const CategoryFilter = ({
     const app_filters = useSelector(state => state.filters)
     const [listVisible, setListVisible] = useState(false)
     const dispatch = useDispatch()
+    const { tr } = useTranslate()
 
     const openFilterList = () => {
         setListVisible(true)
@@ -34,7 +36,7 @@ const CategoryFilter = ({
             >
                 <span
                     className={app_filters.categories?.length > 0 ? 'pl-app-medium-text' : ''}
-                >Категории</span>
+                >{tr('Categories')}</span>
             </SmartSelect>
             <CategoryFilterWindow 
                 visible={listVisible}

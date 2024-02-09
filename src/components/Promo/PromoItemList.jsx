@@ -3,11 +3,13 @@ import { NavLink } from "react-router-dom";
 import { register } from 'swiper/element/bundle'
 import PromoStats from "./ListPromoView/PromoStats";
 import PromoPreview from "./PromoPreview";
+import { useTranslate } from "../../hooks/useTranslate";
 register();
 
 const PromoItemList = ({
     promoData
 }) => {
+    const { tr } = useTranslate()
     let className = 'list-item '
 
     return (
@@ -27,7 +29,7 @@ const PromoItemList = ({
                 <PromoStats
                     acts={promoData.acts}
                 />
-                <NavLink to={`/promos/${promoData.id}`} state={{promoData: promoData}} className="list-item__morebtn">Подробнее</NavLink>
+                <NavLink to={`/promos/${promoData.id}`} state={{promoData: promoData}} className="list-item__morebtn">{tr('Button.More')}</NavLink>
             </div>
         </div>
     )

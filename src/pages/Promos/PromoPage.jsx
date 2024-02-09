@@ -28,7 +28,7 @@ const PromoPage = ({
 
     useEffect(() => {
         dispatch(getCurrentPromo(id))
-        dispatch(setPageTitle('Подарочный сертификат'))
+        dispatch(setPageTitle('Page.Title.Certificate'))
         dispatch(setSearchAvailable(false))
         document.querySelector("#root").scrollTo(0, 0);
     }, [])
@@ -72,7 +72,7 @@ const PromoPage = ({
             <PromoAdress />
             <PromoDescription>{promoData.description}</PromoDescription>
             <PromoTags>{promoData.tags}</PromoTags>
-            <PromoGallery />
+            <PromoGallery images={promoData.img} />
         </div>
     )
 };

@@ -19,6 +19,7 @@ import ChatPage from './pages/Chat/ChatPage';
 import ChatReviewPage from './pages/Chat/ChatReviewPage';
 import CreatePartner from './pages/Create/CreatePartner';
 import CreatePromo from './pages/Create/CreatePromo';
+import { useTranslate } from './hooks/useTranslate';
 
 const routes = [
     { path: '/', name: 'Home', element: <HomePage />, nodeRef: createRef() },
@@ -46,6 +47,7 @@ function App() {
     const currentOutlet = useOutlet()
     const { nodeRef } = routes.find((route) => route.path === location.pathname) ?? {}
     const navigate = useNavigate()
+    const { tr } = useTranslate()
 
     function getInitialData() {
         dispatch(getCities())

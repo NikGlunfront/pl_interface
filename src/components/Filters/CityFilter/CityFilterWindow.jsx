@@ -4,6 +4,7 @@ import SmartButton  from '../../UI/SmartButton/SmartButton';
 import DoubleNameInput from "../../UI/Input/DoubleNameInput";
 import ReturnBtn from "../../UI/ReturnBtn/ReturnBtn";
 import { useSelector } from "react-redux";
+import { useTranslate } from "../../../hooks/useTranslate";
 
 
 
@@ -13,7 +14,7 @@ const CityFilterWindow = ({
     cityData,
     cityDataNums
 }) => {
-
+    const { tr } = useTranslate()
     const [searchQ, setSearchQ] = useState('')
     const [visibleFilters, setVisibleFilters] = useState(cityData)
     const [clearActive, setClearActive] = useState(false)
@@ -58,7 +59,7 @@ const CityFilterWindow = ({
                     </svg>
                     <input 
                         type="text" 
-                        placeholder="Поиск города" 
+                        placeholder={tr('Search.Placeholder.City')} 
                         value={searchQ} 
                         onChange={onChangeSearch} 
                     />
@@ -70,23 +71,23 @@ const CityFilterWindow = ({
                 </div>
             </div>
             <div className="filters-pl-select__filters">
-                {visibleFilters.length === 0 && <div className="filters-pl-select__noresult">Нет результатов</div>}
+                {visibleFilters.length === 0 && <div className="filters-pl-select__noresult">{tr('Search.Result.Noresults')}</div>}
                 {visibleFilters.map(city => (
                     <DoubleNameInput 
                         onClickHandler={changeCity}
                         amount={cityDataNums && cityDataNums.filter(item => item.id == city.id)[0].amount}
                         id={city.id}
-                        name={city.name}
-                        subname={city.country_name}
+                        name={tr(city.name)}
+                        subname={tr(city.country_name)}
                         key={city.id}
                     />
                 ))}
             </div>
             <div className="filters-pl-select__bottom">
-                <strong>Не нашли свой город?</strong>
-                <p>Откройте собственный рекламный бизнес прямо сейчас.</p>
+                <strong>{tr('GetFranchise.DescriptionTitle')}</strong>
+                <p>{tr('GetFranchise.DescriptionText')}</p>
                 <SmartButton color="red">
-                    Получить франшизу
+                    {tr('Button.GetFranchise')}
                 </SmartButton>
             </div>
         </FilterWindow>

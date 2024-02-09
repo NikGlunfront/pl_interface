@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState ={
     tg_id: '',
     hasCompany: false,
+    lang: 'en',
     company: {
         name: '',
         description: '',
@@ -36,6 +37,12 @@ export const userSlice = createSlice({
                     contacts: action.payload
                 }
             }
+        },
+        setInterfaceLang: (state, action) => {
+            return {
+                ...state,
+                lang: action.payload
+            }
         }
     }
 })
@@ -43,7 +50,8 @@ export const userSlice = createSlice({
 export const {
     setHasCompany,
     setCompany,
-    setCompanyContacts
+    setCompanyContacts,
+    setInterfaceLang
 } = userSlice.actions
 
 export default userSlice.reducer

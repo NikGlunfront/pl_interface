@@ -7,6 +7,7 @@ import { useCategoryChanger } from "../../../hooks/useCategoryChanger";
 import ReturnBtn from "../../UI/ReturnBtn/ReturnBtn";
 import { PL_APP_ROUTES } from "../../../vars/routes";
 import { useNavigate } from "react-router-dom";
+import { useTranslate } from "../../../hooks/useTranslate";
 
 const CategoryFilterWindow = ({
     visible,
@@ -20,6 +21,7 @@ const CategoryFilterWindow = ({
     const activeCity = app_filters.activeCity
     const {toggleCategory} = useCategoryChanger()
     const {setAllCategoriesActive} = useCategoryChanger()
+    const { tr } = useTranslate()
     const navigate = useNavigate()
 
 
@@ -58,7 +60,7 @@ const CategoryFilterWindow = ({
             </div>
             <div className="filters-pl-select__bottom">
                 <SmartButton color="red" number={300} onClick={handleGoToPromoClick}>
-                    Показать подарки
+                    {tr('Button.ShowGifts')}
                 </SmartButton>
             </div>
         </FilterWindow>
