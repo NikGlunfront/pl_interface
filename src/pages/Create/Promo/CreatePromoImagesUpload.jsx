@@ -4,11 +4,13 @@ import { useIcons } from '../../../hooks/useIcons';
 import PreviewItem from './PreviewItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCreatePromoImages } from '../../../store/slices/createPromo/createPromoSlice';
+import { useTranslate } from '../../../hooks/useTranslate';
 
 const CreatePromoImagesUpload = ({
     completedImages
 }) => {
     const dispatch = useDispatch()
+    const { tr } = useTranslate()
     const { getIcon } = useIcons()
     const { images: promoImagesState } = useSelector(state => state.createPromo)
     const [imgPreviews, setImgPreviews] = useState([])
@@ -53,7 +55,7 @@ const CreatePromoImagesUpload = ({
                     <MediaLoader 
                         getPreview={getPreviewImg} 
                         className={'pl-page-create-partner__medialoader'} 
-                        label={'Выбрать фотографию'}
+                        label={tr('Default.Input.Placeholder.Image')}
                     />
                     : ""
                 }

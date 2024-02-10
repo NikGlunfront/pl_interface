@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setIsContentHidden } from '../../../store/slices/pageSlice/pageSlice';
 import YesNo from '../../../components/UI/Input/YesNo';
 import CreatePromoImagesUpload from './CreatePromoImagesUpload';
+import { useTranslate } from '../../../hooks/useTranslate';
 
 const firstStepInputs = [
     {placeholder: 'Телефон'},
@@ -23,6 +24,7 @@ const CreatePromoFirstStep = ({
     completedData
 }) => {
     const dispatch = useDispatch()
+    const { tr } = useTranslate()
     const iniData = useSelector(state => state.iniData)
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -112,18 +114,18 @@ const CreatePromoFirstStep = ({
         <div className='firststep-create-promo'>
             <CreatePromoImagesUpload completedImages={completedData.images} />
             <TextInput 
-                placeholder='Название подарка'
+                placeholder={tr('CreatePromo.InputFields.PromoName')}
                 handleChange={handleNameChange}
                 iniValue={name}
             />
             <TextArea 
-                placeholder='Короткое описание вашего предложения'
+                placeholder={tr('CreatePromo.InputFields.ShortDescription')}
                 handleChange={handleDescrChange}
                 iniValue={description}
             />
             <div className="firststep-create-promo__city">
                 <div className="firststep-create-promo__filter" onClick={openFilterList}>
-                    <span>{city?.id ? city.name : 'Город'}</span>
+                    <span>{city?.id ? tr(city.name) : tr('City')}</span>
                 </div>
                 <CityFilterWindow
                     visible={listVisible}
@@ -131,11 +133,11 @@ const CreatePromoFirstStep = ({
                     cityData={iniData.cities}
                 />
                 <div className='firststep-create-promo__remote'>
-                    <YesNo toggleFunc={toggleFunc} isChecked={isRemote} name={'Удаленная работа'} color="#000000" />
+                    <YesNo toggleFunc={toggleFunc} isChecked={isRemote} name={tr('CreatePromo.InputFields.RemoteJob')} color="#000000" />
                 </div>
             </div>
             <TextInput 
-                placeholder='Ориентир'
+                placeholder={tr('CreatePromo.InputFields.LocationReference')}
                 handleChange={handlelocRefChange}
                 iniValue={locationReference}
             />

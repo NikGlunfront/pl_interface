@@ -3,9 +3,11 @@
     "City": "Город",
     "Category": "Категория",
     "Categories": "Категории",
+    "Contacts": "Контакты",
     "Menu": "Меню",
     "Reset": "Сбросить",
     "More": "еще",
+    "Further": "Далее",
 
     "Menu.PartnerCabinet": "Кабинет партнера",
     "Menu.MyGifts": "Мои подарки",
@@ -30,6 +32,7 @@
     "Promo.InfoGroup.Title.Tags": "Теги",
     "Promo.InfoGroup.Title.Gallery": "Галерея",
     "Promo.InfoGroup.Title.Contacts": "Контакты",
+    "Promo.InfoGroup.Title.Preview": "Превью",
 
     "Button.ShowGifts": "Показать подарки",
     "Button.NewGift": "Новый подарок",
@@ -61,5 +64,25 @@
     "City.Arambol": "Арамболь",
     "City.Moscow": "Москва",
 
-    "Chat.Input.Placeholder.Message": "Сообщение"
+    "Chat.Input.Placeholder.Message": "Сообщение",
+    
+    "Default.Input.Placeholder.Image": "Выбрать фотографию",
+
+    "Partner.InputFields.Phone": "Телефон",
+    "Partner.InputFields.Telegram": "Telegram",
+    "Partner.InputFields.WhatsApp": "WhatsApp",
+    "Partner.InputFields.Facebook": "Facebook",
+    "Partner.InputFields.Instagram": "Instagram",
+    "Partner.InputFields.Website": "Сайт",
+    "Partner.InputFields.Email": "E-mail",
+    "Partner.InputFields.PartnerName": "Имя или название компании",
+    "Partner.InputFields.About": "О себе",
+
+    "CreatePromo.Steps.Preview": "Превью",
+    "CreatePromo.Steps.Description": "Описание",
+    "CreatePromo.Steps.Settings": "Настройки",
+    "CreatePromo.InputFields.PromoName": "Название подарка",
+    "CreatePromo.InputFields.ShortDescription": "Короткое описание вашего предложения",
+    "CreatePromo.InputFields.RemoteJob": "Удаленная работа",
+    "CreatePromo.InputFields.LocationReference": "Ориентир"
 }

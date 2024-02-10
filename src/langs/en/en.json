@@ -3,9 +3,11 @@
     "City": "City",
     "Category": "Category",
     "Categories": "Categories",
+    "Contacts": "Contacts",
     "Menu": "Menu",
     "Reset": "Reset",
     "More": "more",
+    "Further": "Further",
 
     "Menu.PartnerCabinet": "Partner Cabinet",
     "Menu.MyGifts": "My Gifts",
@@ -30,6 +32,7 @@
     "Promo.InfoGroup.Title.Tags": "Tags",
     "Promo.InfoGroup.Title.Gallery": "Gallery",
     "Promo.InfoGroup.Title.Contacts": "Contacts",
+    "Promo.InfoGroup.Title.Preview": "Preview",
 
     "Button.ShowGifts": "Show Gifts",
     "Button.NewGift": "New Gift",
@@ -61,5 +64,25 @@
     "City.Arambol": "Arambol",
     "City.Moscow": "Moscow",
 
-    "Chat.Input.Placeholder.Message": "Message"
+    "Chat.Input.Placeholder.Message": "Message",
+    
+    "Default.Input.Placeholder.Image": "Choose photo",
+
+    "Partner.InputFields.Phone": "Phone",
+    "Partner.InputFields.Telegram": "Telegram",
+    "Partner.InputFields.WhatsApp": "WhatsApp",
+    "Partner.InputFields.Facebook": "Facebook",
+    "Partner.InputFields.Instagram": "Instagram",
+    "Partner.InputFields.Website": "Website",
+    "Partner.InputFields.Email": "E-mail",
+    "Partner.InputFields.PartnerName": "Company name",
+    "Partner.InputFields.About": "About company",
+
+    "CreatePromo.Steps.Preview": "Preview",
+    "CreatePromo.Steps.Description": "Description",
+    "CreatePromo.Steps.Settings": "Settings",
+    "CreatePromo.InputFields.PromoName": "Promo name",
+    "CreatePromo.InputFields.ShortDescription": "Short description of your offer",
+    "CreatePromo.InputFields.RemoteJob": "Remote job",
+    "CreatePromo.InputFields.LocationReference": "Landmark"
 }

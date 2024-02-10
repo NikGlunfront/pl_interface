@@ -348,7 +348,7 @@
 
         .badges-list-item {
             position: absolute;
-            bottom: 1.2rem;
+            bottom: 1.3rem;
             right: 0.7rem;
             z-index: 2;
             display: flex;
@@ -362,12 +362,12 @@
                 font-size: 1.2rem;
                 color: $white_c;
                 border-radius: 2.4rem;
-                line-height: 2.5rem;
+                line-height: 2.3rem;
                 background-color: rgba($color: #1D1D37, $alpha: 0.8);
                 padding: 0 0.4rem 0 0.9rem;
-                padding-right: 3.5rem;
+                padding-right: 2.9rem;
                 position: relative;
-                height: 2.5rem;
+                height: 2.3rem;
 
 
                 & > span {
@@ -379,9 +379,9 @@
                     margin-left: 0.5rem;
                     align-items: center;
                     justify-content: center;
-                    width: 3rem;
-                    height: 3rem;
-                    flex: 0 0 3rem;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    flex: 0 0 2.5rem;
                     font-size: 1.2rem;
                     font-weight: 700;
                     color: $black_c;
@@ -395,15 +395,26 @@
                 font-size: 1.2rem;
                 color: $white_c;
                 border-radius: 2.4rem;
-                line-height: 2.5rem;
+                line-height: 2.3rem;
                 background-color: rgba($color: #1D1D37, $alpha: 0.8);
                 padding: 0 0.9rem 0 1.1rem;
                 padding-left: 3.1rem;
-                background-image: url('../../assets/img/icons/fire-ico.svg');
-                background-repeat: no-repeat;
-                background-size: 2.5rem 2.5rem;
-                background-position: left center;
-                height: 2.5rem;
+                position: relative;
+                height: 2.3rem;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: -0.1rem;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    background-image: url('../../assets/img/icons/fire-ico.svg');
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: left center;
+                    transform: translate(0, -50%);
+                }
 
                 & > span {
                     margin-left: 0.5rem;
@@ -483,19 +494,24 @@
 
     &__brand {
         position: absolute;
-        top: 1.4rem;
+        top: 1.2rem;
         left: 1.4rem;
         @include flex_row;
         align-items: center;
         z-index: 2;
         background-color: rgba($color: #1D1D37, $alpha: 0.8);
         border-radius: 2.7rem;
-        
+        height: 2.3rem;
+        line-height: 2.3rem;
+
         &_icon {
             flex: 0 0 2.5rem;
             width: 2.5rem;
             height: 2.5rem;
             border-radius: 50%;
+            position: relative;
+            top:50%;
+            transform: translate(0, -50%);
             @include flex_row;
 
             img {

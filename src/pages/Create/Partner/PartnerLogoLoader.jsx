@@ -3,11 +3,13 @@ import MediaLoader from "../../../components/UI/MediaLoader/MediaLoader";
 import noImage from '../../../assets/img/icons/service/no_image.svg'
 import { useIcons } from "../../../hooks/useIcons";
 import { useSelector } from "react-redux";
+import { useTranslate } from "../../../hooks/useTranslate";
 
 const PartnerLogoLoader = ({
     changeFunc
 }) => {
     const { getIcon } = useIcons()
+    const { tr } = useTranslate()
     const companyIcon = useSelector(state => state.user.company.icon)
     const [imgPreview, setImgPreview] = useState(null)
     const [imgPreviewUrl, setImgPreviewUrl] = useState(null)
@@ -40,7 +42,7 @@ const PartnerLogoLoader = ({
             <MediaLoader 
                 getPreview={getPreviewImg} 
                 className={'pl-page-create-partner__medialoader'} 
-                label={'Выбрать фотографию'}
+                label={tr("Default.Input.Placeholder.Image")}
             />
         </div>
     )

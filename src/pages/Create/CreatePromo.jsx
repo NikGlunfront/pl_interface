@@ -8,9 +8,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCreatePromoFirstStep, setCreatePromoStepPosition } from "../../store/slices/createPromo/createPromoSlice";
 
 const promoCreateSteps = [
-    {id: 1, name: 'Превью'},
-    {id: 2, name: 'Описание'},
-    {id: 3, name: 'Настройки'},
+    {id: 1, name: 'CreatePromo.Steps.Preview'},
+    {id: 2, name: 'CreatePromo.Steps.Description'},
+    {id: 3, name: 'CreatePromo.Steps.Settings'},
 ]
 
 const CreatePromo = ({

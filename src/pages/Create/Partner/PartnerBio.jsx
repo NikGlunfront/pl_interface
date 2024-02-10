@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import TextInput from '../../../components/UI/Input/TextInput';
 import TextArea from '../../../components/UI/Input/TextArea';
 import { useSelector } from 'react-redux';
+import { useTranslate } from '../../../hooks/useTranslate';
 
 const partnerBio = [
     {placeholder: 'Имя или название компании'},
@@ -11,6 +12,7 @@ const partnerBio = [
 const PartnerBio = ({
     changeFunc
 }) => {
+    const { tr } = useTranslate()
     const { name: compName, description: compDescription } = useSelector(state => state.user.company)
     const [companyName, setCompanyName] = useState(null)
     const [companyDescription, setCompanyDescription] = useState(null)
@@ -38,12 +40,12 @@ const PartnerBio = ({
     return (
         <div className='pl-page-create-partner__bio'>
             <TextInput 
-                placeholder={"Имя или название компании"}
+                placeholder={tr("Partner.InputFields.PartnerName")}
                 handleChange={changeCompanyName}
                 iniValue={companyName}
             />
             <TextArea 
-                placeholder={"О себе"}
+                placeholder={tr("Partner.InputFields.About")}
                 handleChange={changeCompanyDescription}
                 iniValue={companyDescription}
             />

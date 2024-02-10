@@ -8,6 +8,7 @@ import PromoDescription from "../../../components/Promo/PromoView/PromoDescripti
 import PromoAdress from "../../../components/Promo/PromoView/PromoAdress";
 import PromoContacts from "../../../components/Promo/PromoView/PromoContacts";
 import PromoGallery from "../../../components/Promo/PromoView/PromoGallery";
+import { useTranslate } from "../../../hooks/useTranslate";
 
 const CreatePromoPreview = ({
     name,
@@ -17,6 +18,7 @@ const CreatePromoPreview = ({
     isRemote,
     step
 }) => {
+    const { tr } = useTranslate()
     const companyMeta = useSelector(state => state.user.company)
     const { images: promoImages } = useSelector(state => state.createPromo)
     const [promoData, setPromoData] = useState(null)
@@ -51,7 +53,7 @@ const CreatePromoPreview = ({
     }
 
     return (
-        <InfoGroup title={'Превью'} className={'pl-page-create-promo__preview'}>
+        <InfoGroup title={tr('Promo.InfoGroup.Title.Preview')} className={'pl-page-create-promo__preview'}>
             <div className={'pl-promo'}>
                 <PromoPreview
                     amountLeft={promoData.amount_left}
@@ -59,7 +61,7 @@ const CreatePromoPreview = ({
                     companyName={promoData.brand_name}
                     promoDescription={description}
                     promoImage={promoImages.map(({img_file}) => (img_file))}
-                    promoLocation={location + (locationReference ? `, ${locationReference}` : '')}
+                    promoLocation={tr(location) + (locationReference ? `, ${locationReference}` : '')}
                     promoName={name}
                     dateEnd={promoData.date_end}
                     inactive={promoData.inactive}
@@ -69,7 +71,7 @@ const CreatePromoPreview = ({
                     <PromoStats
                         acts={promoData.acts}
                     />
-                    <div className="list-item__morebtn">Подробнее</div>
+                    <div className="list-item__morebtn">{tr('Button.More')}</div>
                 </div>
                 {step === 2
                     ? <PromoContacts partner={{id: 'test', name: companyMeta.name}} />

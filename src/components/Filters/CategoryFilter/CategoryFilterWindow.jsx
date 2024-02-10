@@ -44,7 +44,7 @@ const CategoryFilterWindow = ({
         <FilterWindow visible={visible}>
             <div className="pl-return-toppanel">
                 <ReturnBtn onClickFunc={closeList} className={"pl-return-toppanel__return"} />
-                <div className="pl-return-toppanel__title">{activeCity.name}</div>
+                <div className="pl-return-toppanel__title">{tr(activeCity.name)}</div>
             </div>
             <div className="filters-pl-select__filters">
                 {catsData.map(cat => (

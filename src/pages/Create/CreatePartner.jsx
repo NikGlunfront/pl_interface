@@ -8,9 +8,11 @@ import PartnerLogoLoader from './Partner/PartnerLogoLoader';
 import { useNavigate } from 'react-router-dom';
 import { PL_APP_ROUTES } from '../../vars/routes';
 import { setCompany, setCompanyContacts } from '../../store/slices/user/userSlice';
+import { useTranslate } from '../../hooks/useTranslate';
 
 const CreatePartner = () => {
     const dispatch = useDispatch()
+    const { tr } = useTranslate()
     const navigate = useNavigate()
     const [companyImg, setCompanyImg] = useState(null)
     const [partnerBio, setPartnerBio] = useState(null)
@@ -49,7 +51,7 @@ const CreatePartner = () => {
                 color="red"
                 onClick={handleGoToPromoCreate}
                 disabled={(companyImg === null) || (partnerBio === null || partnerBio === '') ? true : false}
-            >Сохранить</SmartButton>
+            >{tr('Save')}</SmartButton>
         </div>
     );
 };

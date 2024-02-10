@@ -2,20 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { useIcons } from '../../../hooks/useIcons';
 import TextInput from '../../../components/UI/Input/TextInput';
 import { useSelector } from 'react-redux';
+import { useTranslate } from '../../../hooks/useTranslate';
 
 const partnerInputs = [
-    {id: 'phone', icon: 'phone', placeholder: 'Телефон'},
-    {id: 'tg', icon: 'tg', placeholder: 'Telegram'},
-    {id: 'whatsapp', icon: 'whatsapp', placeholder: 'WhatsApp'},
-    {id: 'facebook', icon: 'facebook', placeholder: 'Facebook'},
-    {id: 'instagram', icon: 'instagram', placeholder: 'Instagram'},
-    {id: 'website', icon: 'website', placeholder: 'Website'},
-    {id: 'email', icon: 'email', placeholder: 'Email'},
+    {id: 'phone', icon: 'phone', placeholder: 'Partner.InputFields.Phone'},
+    {id: 'tg', icon: 'tg', placeholder: 'Partner.InputFields.Telegram'},
+    {id: 'whatsapp', icon: 'whatsapp', placeholder: 'Partner.InputFields.WhatsApp'},
+    {id: 'facebook', icon: 'facebook', placeholder: 'Partner.InputFields.Facebook'},
+    {id: 'instagram', icon: 'instagram', placeholder: 'Partner.InputFields.Instagram'},
+    {id: 'website', icon: 'website', placeholder: 'Partner.InputFields.Website'},
+    {id: 'email', icon: 'email', placeholder: 'Partner.InputFields.Email'},
 ]
 
 const PartnerInputGroup = ({
     updateContacts
 }) => {
+    const { tr } = useTranslate()
     const { contacts: contactsState } = useSelector(state => state.user.company)
     const { getIcon } = useIcons()
     const [contacts, setContacts] = useState({})
@@ -34,10 +36,10 @@ const PartnerInputGroup = ({
     }
     return (
         <div className='pl-page-create-partner__inputs'>
-            <div className='pl-page-create-partner__title'>Контакты</div>
+            <div className='pl-page-create-partner__title'>{tr('Contacts')}</div>
             {partnerInputs.map(item => (
                 <TextInput 
-                    placeholder={item.placeholder}
+                    placeholder={tr(item.placeholder)}
                     icon={getIcon(item.icon)}
                     key={item.id}
                     tagFunc={item.id}
