@@ -25,7 +25,8 @@
 
     "Promo.PreviewImg.OnPause": "Temporarily on pause",
     "Promo.PreviewImg.GiftsLeft": "Gifts left",
-    "Promo.PreviewImg.Paused": "Paused",
+    "Promo.PreviewImg.Paused": "Temporarily on pause",
+    "Promo.PreviewImg.RemindMe": "Remind me via PM",
 
     "Promo.InfoGroup.Title.Adress": "Address",
     "Promo.InfoGroup.Title.Description": "Description",

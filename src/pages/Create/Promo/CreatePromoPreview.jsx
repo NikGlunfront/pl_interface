@@ -74,7 +74,15 @@ const CreatePromoPreview = ({
                     <div className="list-item__morebtn">{tr('Button.More')}</div>
                 </div>
                 {step === 2
-                    ? <PromoContacts partner={{id: 'test', name: companyMeta.name}} />
+                    ? <PromoContacts partner={{id: 'test', name: companyMeta.name}}
+                        email={companyMeta.contacts.email ? companyMeta.contacts.email : ""}
+                        tg={companyMeta.contacts.tg ? companyMeta.contacts.tg : ""}
+                        phone={companyMeta.contacts.phone ? companyMeta.contacts.phone : ""}
+                        instagram={companyMeta.contacts.instagram ? companyMeta.contacts.instagram : ""}
+                        facebook={companyMeta.contacts.facebook ? companyMeta.contacts.facebook : ""}
+                        whatsapp={companyMeta.contacts.whatsapp ? companyMeta.contacts.whatsapp : ""}
+                        website={companyMeta.contacts.website ? companyMeta.contacts.website : ""}
+                    />
                     : ""
                 }
                 {step === 2

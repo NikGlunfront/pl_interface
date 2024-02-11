@@ -35,7 +35,6 @@ const PromoPage = ({
 
     useEffect(() => {
         if (promoData) {
-            console.log('data: ' + promoData)
             setPartnerData({
                 id: promoData.brand_id,
                 name: promoData.brand_name,

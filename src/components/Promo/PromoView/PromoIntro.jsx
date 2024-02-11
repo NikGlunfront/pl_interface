@@ -40,7 +40,7 @@ const PromoTopper = ({
                     acts={promoDataStats}
                 />
                 {inactive === true
-                    ? <div><YesNo toggleFunc={toggleFunc} isChecked={notifications} name={'Напомнить в ЛС'} color="#000000" /><span></span></div>
+                    ? <div><YesNo toggleFunc={toggleFunc} isChecked={notifications} name={tr('Promo.PreviewImg.RemindMe')} color="#000000" /><span></span></div>
                     : <button className="pl-promo__getgift">{tr('Button.GetGift')}</button>
                 }
             </div>

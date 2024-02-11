@@ -23,8 +23,9 @@ const PartnerInputGroup = ({
     const [contacts, setContacts] = useState({})
 
     useEffect(() => {
-        if (contactsState) {
+        if (contactsState !== null) {
             setContacts(contactsState)
+            updateContacts(contactsState)
         }
     }, [])
     

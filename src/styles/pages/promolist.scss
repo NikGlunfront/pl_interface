@@ -253,8 +253,9 @@
         width: 100%;
         overflow: hidden;
         height: 15.5rem;
-        border-radius: 1rem;
+        // border-radius: 1rem;
         position: relative;
+        width: 100%;
 
         &_skeleton {
             background-color: var(--pl-skeleton-color);
@@ -288,11 +289,12 @@
     }
 
     &__img {
-        width: 100%;
+        width: calc(100% + 2rem);
+        left: -1rem;
         margin-bottom: 0.5rem;
         position: relative;
-        border-radius: 1rem;
-        overflow: hidden;
+        // border-radius: 1rem;
+        // overflow: hidden;
 
         .list-item-inactive {
             @include flex_col;
@@ -354,7 +356,7 @@
             display: flex;
             flex-direction: row-reverse;
             justify-content: space-between;
-            width: calc(100% - 2.5rem);
+            width: calc(100% - 2rem);
 
             &__gifts_left {
                 @include flex_row;

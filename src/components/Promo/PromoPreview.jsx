@@ -46,7 +46,7 @@ const PromoPreview = ({
                     : ''
                 }
                 {inactive === true && location.pathname.includes('promos/')
-                    ? <div className="list-item-inactive"><span>{tr('PromoItem.OnPause')}</span></div>
+                    ? <div className="list-item-inactive"><span>{tr('Promo.PreviewImg.Paused')}</span></div>
                     : ''
                 }
             </div>

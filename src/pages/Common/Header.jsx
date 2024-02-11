@@ -42,7 +42,7 @@ const Header = ({
             setIsChatPage(true)
             return
         }
-        if (location.pathname.includes('promo/')) {
+        if (location.pathname.includes('promos/')) {
             setReturnPath(-1)
             return
         }
