@@ -10,7 +10,7 @@ const InfoGroup = ({
     let basicClassName = 'pl-info-group '
 
     return (
-        <div className={basicClassName + className}>
+        <div className={basicClassName + (className ? ` ${className} ` : '')}>
             {data
                 ? <NavLink to={`/partners/${data.id}`} state={{partner: data}} className="pl-info-group__title">{title}</NavLink>
                 : <div className="pl-info-group__title">{title}</div>

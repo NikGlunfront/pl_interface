@@ -386,3 +386,49 @@
         }
     }
 }
+
+.settings-create-promo {
+    padding-top: 3rem;
+    .pl-info-group {
+        background-color: var(--pl-primary-background-color);
+        position: relative;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-bottom: 2rem;
+        padding-top: 1.5rem;
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        .pl-info-group__title {
+            background-color: var(--pl-skeleton-color);
+
+            &::before,
+            &::after {
+                background-color: var(--pl-skeleton-color);
+            }
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2rem;
+            height: 100%;
+            background-color: var(--pl-primary-background-color);
+            transform: translate(-100%, 0);
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 2rem;
+            height: 100%;
+            background-color: var(--pl-primary-background-color);
+            transform: translate(100%, 0);
+        }
+    }
+}

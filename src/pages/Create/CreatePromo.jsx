@@ -5,7 +5,9 @@ import CreatePromoFirstStep from "./Promo/CreatePromoFirstStep";
 import SmartButton from "../../components/UI/SmartButton/SmartButton";
 import CreatePromoSecondStep from "./Promo/CreatePromoSecondStep";
 import { useDispatch, useSelector } from "react-redux";
-import { setCreatePromoFirstStep, setCreatePromoStepPosition } from "../../store/slices/createPromo/createPromoSlice";
+import { setCreatePromoFirstStep, setCreatePromoSecondStep, setCreatePromoStepPosition } from "../../store/slices/createPromo/createPromoSlice";
+import CreatePromoSettings from "./Promo/CreatePromoSettings";
+import { useTranslate } from "../../hooks/useTranslate";
 
 const promoCreateSteps = [
     {id: 1, name: 'CreatePromo.Steps.Preview'},
@@ -17,14 +19,21 @@ const CreatePromo = ({
     
 }) => {
     const dispatch = useDispatch()
+    const { tr } = useTranslate()
     const createPromoData = useSelector(state => state.createPromo)
     const { lastStep: step } = useSelector(state => state.createPromo)
     const { images: promoCreatedImages } = useSelector(state => state.createPromo)
     const [firstStepData, setFirstStepData] = useState(null)
+    const [secondStepData, setSecondStepData] = useState(null)
     const [isCompletedFirstStep, setIsCompletedFirstStep] = useState(false)
+    const [isCompletedSecondStep, setIsCompletedSecondStep] = useState(false)
 
     const getDataFirstStep = (data) => {
         setFirstStepData(data)
+    }
+
+    const getDataSecondStep = (data) => {
+        setSecondStepData(data)
     }
 
     const handleComplFirstStep = (isCompleted) => {
@@ -33,6 +42,10 @@ const CreatePromo = ({
         } else {
             setIsCompletedFirstStep(false)
         }
+    }
+
+    const handleComplSecondStep = (isCompleted) => {
+        setIsCompletedSecondStep(isCompleted)
     }
 
     const handleMainButtonClick = () => {
@@ -51,12 +64,11 @@ const CreatePromo = ({
         }
         if (step === 2) {
             dispatch(setCreatePromoStepPosition(step + 1))
+            dispatch(setCreatePromoSecondStep({
+                description: secondStepData.description
+            }))
         }
     }
-
-    useEffect(() => {
-        console.log(isCompletedFirstStep)
-    }, [isCompletedFirstStep])
 
     return (
         <div className={'pl-page-container pl-page-create-promo'}>
@@ -76,7 +88,8 @@ const CreatePromo = ({
             {step === 2
                 ? 
                 <CreatePromoSecondStep 
-                    // getData={getDataFirstStep}
+                    getData={getDataSecondStep}
+                    isCompletedSecondStep={handleComplSecondStep}
                 />
                 : ""
             }
@@ -90,15 +103,26 @@ const CreatePromo = ({
                     locationReference={firstStepData?.locationReference ? firstStepData.locationReference : ""}
                     isRemote={firstStepData?.is_remote}
                     step={step}
+                    promoDescription={secondStepData?.description ? secondStepData.description : "" }
                 />
+                : ""
+            }
+
+            {step === 3
+                ?   <CreatePromoSettings />
                 : ""
             }
             <div className="pl-bottom-button-container">
                 <SmartButton 
                     color="red"
                     onClick={handleMainButtonClick}
-                    disabled={(step === 1 && isCompletedFirstStep === true) ? false : true}
-                >Далее</SmartButton>
+                    disabled={
+                        (step === 1 && isCompletedFirstStep === true) ||
+                        (step === 2 && isCompletedSecondStep === true)
+                        ? false 
+                        : true
+                    }
+                >{tr('Further')}</SmartButton>
             </div>
         </div>
     )

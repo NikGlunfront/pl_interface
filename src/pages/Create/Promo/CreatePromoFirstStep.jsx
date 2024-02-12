@@ -21,7 +21,8 @@ const cities = [
 const CreatePromoFirstStep = ({
     getData,
     isCompletedFirstStep,
-    completedData
+    completedData,
+    step
 }) => {
     const dispatch = useDispatch()
     const { tr } = useTranslate()

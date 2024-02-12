@@ -3,13 +3,16 @@ import InfoGroup from "../../../containers/InfoGroup";
 import { useTranslate } from "../../../hooks/useTranslate";
 
 const PromoDescription = ({
-    children
+    children,
+    isSkeleton = false
 }) => {
     const { tr } = useTranslate()
 
     return (
         <InfoGroup title={tr('Promo.InfoGroup.Title.Description')} >
-            Lorem ipsum dolor sit amet consectetur. Eu sed sit elementum lectus vitae leo proin. Leo morbi pellentesque vitae pellentesque sodales nulla risus. Faucibus in feugiat adipiscing in in egestas etiam scelerisque. Eget nullam nisl commodo ut ullamcorper.Lorem ipsum dolor sit amet consectetur. Eu sed sit elementum lectus vitae leo proin. Leo morbi pellentesque vitae pellentesque sodales nulla risus. Faucibus in feugiat adipiscing in in egestas etiam scelerisque. Eget nullam nisl commodo ut ullamcorper.
+            <div className={isSkeleton ? "skeleton-ui" : ""}>
+                {children}
+            </div>
         </InfoGroup>
     )
 };

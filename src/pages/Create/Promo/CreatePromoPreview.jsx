@@ -16,11 +16,12 @@ const CreatePromoPreview = ({
     location,
     locationReference,
     isRemote,
+    promoDescription,
     step
 }) => {
     const { tr } = useTranslate()
     const companyMeta = useSelector(state => state.user.company)
-    const { images: promoImages } = useSelector(state => state.createPromo)
+    const { images: promoImages,} = useSelector(state => state.createPromo)
     const [promoData, setPromoData] = useState(null)
     useEffect(() => {
         setPromoData({
@@ -85,18 +86,18 @@ const CreatePromoPreview = ({
                     />
                     : ""
                 }
-                {step === 2
+                {/* {step === 2
                     ? <PromoAdress />
                     : ""
-                }
+                } */}
                 {step === 2
-                    ? <PromoDescription>{description}</PromoDescription>
+                    ? <PromoDescription isSkeleton={promoDescription ? false : true}>{promoDescription}</PromoDescription>
                     : ""
                 }
-                {step === 2
+                {/* {step === 2
                     ? <PromoTags>{}</PromoTags>
                     : ""
-                }
+                } */}
                 {step === 2
                     ? <PromoGallery images={promoImages.map(({img_file}) => (img_file))} />
                     : ""

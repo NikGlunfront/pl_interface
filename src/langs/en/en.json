@@ -7,7 +7,7 @@
     "Menu": "Menu",
     "Reset": "Reset",
     "More": "more",
-    "Further": "Further",
+    "Further": "Next",
 
     "Menu.PartnerCabinet": "Partner Cabinet",
     "Menu.MyGifts": "My Gifts",
@@ -34,6 +34,9 @@
     "Promo.InfoGroup.Title.Gallery": "Gallery",
     "Promo.InfoGroup.Title.Contacts": "Contacts",
     "Promo.InfoGroup.Title.Preview": "Preview",
+    "Promo.InfoGroup.Title.PromoAmount": "Numbers of gifts",
+    "Promo.InfoGroup.Title.ClickPrice": "Cost per click",
+    "Promo.InfoGroup.Title.ExpirationDate": "Expiration date",
 
     "Button.ShowGifts": "Show Gifts",
     "Button.NewGift": "New Gift",

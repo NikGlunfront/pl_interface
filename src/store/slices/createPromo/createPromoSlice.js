@@ -50,6 +50,15 @@ export const createPromoSlice = createSlice({
                 isRemote: isRemote
             }
         },
+        setCreatePromoSecondStep: (state, action) => {
+            const {
+                description
+            } = action.payload
+            return {
+                ...state,
+                description: description
+            }
+        },
         setCreatePromoStepPosition: (state, action) => {
             return {
                 ...state,
@@ -63,7 +72,8 @@ export const {
     setCreatePromoImages,
     setCreatePromoLocation,
     setCreatePromoFirstStep,
-    setCreatePromoStepPosition
+    setCreatePromoStepPosition,
+    setCreatePromoSecondStep
 } = createPromoSlice.actions
 
 export default createPromoSlice.reducer

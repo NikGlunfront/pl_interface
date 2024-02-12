@@ -36,3 +36,24 @@
         }
     }
 }
+
+@mixin track-styles {
+    appearance: none;
+    background: transparent;
+    border: transparent;
+}
+
+@mixin thumb-styles {
+    appearance: none;
+    pointer-events: all;
+    width: 2.2rem;
+    height: 3rem;
+    border-radius: 0px;
+    border: 0 none;
+    cursor: grab;
+    background-color: red;
+
+    &:active {
+        cursor: grabbing;
+    }
+}

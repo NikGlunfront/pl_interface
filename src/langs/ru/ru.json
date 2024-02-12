@@ -34,6 +34,9 @@
     "Promo.InfoGroup.Title.Gallery": "Галерея",
     "Promo.InfoGroup.Title.Contacts": "Контакты",
     "Promo.InfoGroup.Title.Preview": "Превью",
+    "Promo.InfoGroup.Title.PromoAmount": "Количество подарков",
+    "Promo.InfoGroup.Title.ClickPrice": "Стоимость клика",
+    "Promo.InfoGroup.Title.ExpirationDate": "Дата завершения",
 
     "Button.ShowGifts": "Показать подарки",
     "Button.NewGift": "Новый подарок",
