@@ -367,3 +367,63 @@
         }
     }
 }
+
+.filters-pl-select__filters .react-calendar {
+    width: calc(100% - 2rem);
+    margin: 2rem auto;
+    border-radius: 1.2rem;
+    font-family: var(--pl-font-family);
+    background-color: var(--pl-primary-background-color);
+    padding: 1rem 0 3rem;
+    border: 0.1rem solid var(--pl-primary-text-color);
+
+    &__month-view__weekdays__weekday {
+        font-size: 1.6rem;
+    }
+
+    &__tile {
+        font-size: 1.8rem;
+        padding: 1.6rem;
+        color: var(--pl-primary-text-color);
+
+        &--now {
+            background-color: $red_c;
+            opacity: 0.5;
+            color: $white_c;
+        }
+
+        &--active {
+            color: $white_c;
+            background-color: $red_c;
+            opacity: 1;
+
+            &:enabled:focus {
+                background: $red_c;
+            }
+        }
+    }
+
+    &__navigation {
+        font-size: 1.8rem;
+
+        &__arrow {
+            font-size: 3rem;
+            color: var(--pl-primary-text-color);
+            font-weight: 700;
+        }
+
+        &__label {
+            background-color: var(--pl-primary-background-color);
+            
+            &__labelText {
+                font-size: 2rem;
+                font-weight: 700;
+                color: var(--pl-primary-text-color);
+            }
+        }
+    }
+
+    button {
+        border-radius: 1rem;
+    }
+}

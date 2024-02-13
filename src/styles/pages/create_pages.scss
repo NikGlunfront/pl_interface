@@ -431,4 +431,43 @@
             transform: translate(100%, 0);
         }
     }
+
+    &__date {
+        @include flex_row;
+        align-items: center;
+        justify-content: space-between;
+
+        &_nolimits {
+            & > .pl-datepicker {
+                opacity: 0.3;
+                pointer-events: none;
+            }
+        }
+    }
+
+    &__nolimit {
+        margin-left: 1rem;
+        white-space: nowrap;
+    }
+}
+
+.pl-datepicker {
+    width: 100%;
+    line-height: 3.5rem;
+    color: var(--pl-primary-text-color);
+    overflow: hidden;
+    padding-left: 2.2rem;
+    padding-right: 2.2rem;
+    background-color: var(--pl-primary-popup-background);
+    border-radius: 5rem;
+    font-size: 1.6rem;
+    padding-right: 2rem;
+    background-image: url('../../assets/img/icons/expand_right.svg');
+    background-repeat: no-repeat;
+    background-size: 0.6rem 1.2rem;
+    background-position: calc(100% - 1rem) center;
+
+    svg {
+        margin-right: 2rem;
+    }
 }

@@ -83,6 +83,8 @@ const CreatePromoPreview = ({
                         facebook={companyMeta.contacts.facebook ? companyMeta.contacts.facebook : ""}
                         whatsapp={companyMeta.contacts.whatsapp ? companyMeta.contacts.whatsapp : ""}
                         website={companyMeta.contacts.website ? companyMeta.contacts.website : ""}
+                        rating={0}
+                        reviewCount={0}
                     />
                     : ""
                 }

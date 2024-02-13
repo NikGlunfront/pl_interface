@@ -19,6 +19,9 @@
     "Page.Title.Wishlist": "Избранное",
     "Page.Title.NewPromo": "Новый подарок",
     "Page.Title.Profile": "Профиль",
+    "Page.Title.Datepicker": "Выбор даты",
+    "Page.Title.DateEnd": "Дата завершения",
+    "Page.Title.DateStart": "Дата начала",
 
     "Homepage.Promotext.sib_1": "Получай и дари подарки",
     "Homepage.Promotext.sib_2": "Доброта спасёт мир",
@@ -82,11 +85,14 @@
     "Partner.InputFields.PartnerName": "Имя или название компании",
     "Partner.InputFields.About": "О себе",
 
+    "Datepicker.Placeholder": "дд.мм.гг",
+
     "CreatePromo.Steps.Preview": "Превью",
     "CreatePromo.Steps.Description": "Описание",
     "CreatePromo.Steps.Settings": "Настройки",
     "CreatePromo.InputFields.PromoName": "Название подарка",
     "CreatePromo.InputFields.ShortDescription": "Короткое описание вашего предложения",
     "CreatePromo.InputFields.RemoteJob": "Удаленная работа",
+    "CreatePromo.InputFields.NoEndDate": "Без ограничений",
     "CreatePromo.InputFields.LocationReference": "Ориентир"
 }

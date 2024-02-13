@@ -19,6 +19,9 @@
     "Page.Title.Wishlist": "Wishlist",
     "Page.Title.NewPromo": "New certificate",
     "Page.Title.Profile": "Profile",
+    "Page.Title.Datepicker": "Pick date",
+    "Page.Title.DateEnd": "Expiration date",
+    "Page.Title.DateStart": "Start date",
 
     "Homepage.Promotext.sib_1": "Receive and give gifts",
     "Homepage.Promotext.sib_2": "Kindness will save the world",
@@ -82,11 +85,14 @@
     "Partner.InputFields.PartnerName": "Company name",
     "Partner.InputFields.About": "About company",
 
+    "Datepicker.Placeholder": "dd.mm.yy",
+
     "CreatePromo.Steps.Preview": "Preview",
     "CreatePromo.Steps.Description": "Description",
     "CreatePromo.Steps.Settings": "Settings",
     "CreatePromo.InputFields.PromoName": "Promo name",
     "CreatePromo.InputFields.ShortDescription": "Short description of your offer",
     "CreatePromo.InputFields.RemoteJob": "Remote job",
+    "CreatePromo.InputFields.NoEndDate": "No limits",
     "CreatePromo.InputFields.LocationReference": "Landmark"
 }

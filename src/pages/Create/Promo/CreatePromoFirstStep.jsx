@@ -8,21 +8,10 @@ import YesNo from '../../../components/UI/Input/YesNo';
 import CreatePromoImagesUpload from './CreatePromoImagesUpload';
 import { useTranslate } from '../../../hooks/useTranslate';
 
-const firstStepInputs = [
-    {placeholder: 'Телефон'},
-]
-
-const cities = [
-    {id: 1, name: 'Москва'},
-    {id: 2, name: 'Мумбаи'},
-    {id: 3, name: 'Москва'},
-]
-
 const CreatePromoFirstStep = ({
     getData,
     isCompletedFirstStep,
     completedData,
-    step
 }) => {
     const dispatch = useDispatch()
     const { tr } = useTranslate()

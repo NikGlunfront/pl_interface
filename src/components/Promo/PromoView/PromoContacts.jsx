@@ -12,7 +12,9 @@ const PromoContacts = ({
     facebook,
     instagram,
     website,
-    email
+    email,
+    reviewCount = 94,
+    rating = 4.5
 }) => {
 
     if (!partner) {
@@ -28,11 +30,11 @@ const PromoContacts = ({
                 <div className="pl-promo-page-contacts__reviews">
                     <div>
                         <img src={dialogSvg} alt="Отзывы" />
-                        <span>49</span>
+                        <span>{reviewCount}</span>
                     </div>
                     <div>
                         <img src={starSvg} alt="Оценка" />
-                        <span>4.5</span>
+                        <span>{rating}</span>
                     </div>
                 </div>
             </NavLink>
