@@ -386,6 +386,13 @@
         padding: 1.6rem;
         color: var(--pl-primary-text-color);
 
+        &:enabled {
+
+            &:hover {
+                background: transparent;
+            }
+        }
+
         &--now {
             background-color: $red_c;
             opacity: 0.5;

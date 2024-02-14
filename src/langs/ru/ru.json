@@ -46,6 +46,9 @@
     "Button.GetFranchise": "Получить франшизу",
     "Button.More": "Подробнее",
     "Button.GetGift": "Получить подарок",
+    "Button.Next": "Далее",
+    "Button.Preview": "Предпросмотр",
+    "Button.Publicate": "Опубликовать",
 
     "GetFranchise.DescriptionTitle": "Не нашли свой город ?",
     "GetFranchise.DescriptionText": "Откройте собственный рекламный бизнес прямо сейчас",
@@ -94,5 +97,9 @@
     "CreatePromo.InputFields.ShortDescription": "Короткое описание вашего предложения",
     "CreatePromo.InputFields.RemoteJob": "Удаленная работа",
     "CreatePromo.InputFields.NoEndDate": "Без ограничений",
-    "CreatePromo.InputFields.LocationReference": "Ориентир"
+    "CreatePromo.InputFields.LocationReference": "Ориентир",
+
+    "Alerts.DatePicker.NotValidDate": "Вы выбрали некорректную дату. \nПожалуйста выберите корректную дату завершения промо.",
+    "Alerts.MediaUploader.FileSize": "Ошибка! Размер файла превышает 10 МБ.",
+    "Alerts.MediaUploader.FileTypes": "Ошибка! Разрешены только файлы с расширениями: .png, .jpg, .jpeg, .webp"
 }

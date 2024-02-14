@@ -5,6 +5,7 @@ import { useTranslate } from "../../../hooks/useTranslate";
 import Calendar from "react-calendar";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsContentHidden } from "../../../store/slices/pageSlice/pageSlice";
+import { useTelegram } from "../../../hooks/useTelegram";
 
 
 
@@ -16,15 +17,21 @@ const Datepicker = ({
 }) => {
     const { tr } = useTranslate()
     const dispatch = useDispatch()
+    const { sendAlert } = useTelegram()
     const isDarkTheme = useSelector(state => state.pageMeta.darkTheme)
     const [listVisible, setListVisible] = useState(false)
     const [dateValue, setDateValue] = useState(null)
 
     const onChangeDate = (val) => {
-        setDateValue(val)
-        onChange(val)
-        setListVisible(false)
-        dispatch(setIsContentHidden(false))
+        const currentDate = new Date()
+        if (val. getTime() <= currentDate. getTime()) {
+            sendAlert(tr('Alerts.DatePicker.NotValidDate'))
+        } else {
+            setListVisible(false)
+            dispatch(setIsContentHidden(false))
+            setDateValue(val)
+            onChange(val)
+        }
     }
 
     const openFilterList = () => {

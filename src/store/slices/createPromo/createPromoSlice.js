@@ -64,6 +64,14 @@ export const createPromoSlice = createSlice({
                 ...state,
                 lastStep: action.payload
             }
+        },
+        setCreatePromoSettings: (state, action) => {
+            return {
+                ...state
+            }
+        },
+        resetCreatePromo: (state, action) => {
+            return initialState
         }
     }
 })
@@ -73,7 +81,9 @@ export const {
     setCreatePromoLocation,
     setCreatePromoFirstStep,
     setCreatePromoStepPosition,
-    setCreatePromoSecondStep
+    setCreatePromoSecondStep,
+    resetCreatePromo,
+    setCreatePromoSettings
 } = createPromoSlice.actions
 
 export default createPromoSlice.reducer

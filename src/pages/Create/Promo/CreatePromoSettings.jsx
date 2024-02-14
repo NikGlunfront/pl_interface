@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import RangeSlider from "../../../components/UI/RangeSlider/RangeSlider";
 import InfoGroup from "../../../containers/InfoGroup";
 import { useTranslate } from "../../../hooks/useTranslate";
@@ -10,26 +10,36 @@ import Datepicker from "../../../components/UI/Datepicker/Datepicker";
 import YesNo from "../../../components/UI/Input/YesNo";
 
 const CreatePromoSettings = ({
-    
+    getData,
+    setIsCompleted
 }) => {
     const { tr } = useTranslate()
     const dispatch = useDispatch()
     const langCode = useSelector(state => state.user.lang)
-    const [giftsAmount, setGiftsAmount] = useState(0)
+    const [giftsAmount, setGiftsAmount] = useState(1)
+    const [priceAmount, setPriceAmount] = useState(1)
     const [dateValue, setDateValue] = useState(null)
     const [isNoDate, setIsNoDate] = useState(false)
-
-    const pickDate = (val) => {
-        setDateValue(val)
-    }
 
     const toggleNoDate = () => {
         setIsNoDate(!isNoDate)
     }
 
-    const handleRangeChange = (val) => {
-        setGiftsAmount(val)
+    const validatePromoSettings = () => {
+        if (dateValue === null) {
+            return false
+        }
+        return true
     }
+
+    useEffect(() => {
+        getData({
+            gifts_amount: giftsAmount,
+            price_per_lead: priceAmount,
+            date_end: dateValue,
+        })
+        setIsCompleted(validatePromoSettings())
+    }, [giftsAmount, priceAmount, dateValue])
 
     return (
         <div className="settings-create-promo">
@@ -38,7 +48,7 @@ const CreatePromoSettings = ({
                     max={999}
                     min={1}
                     step={1}
-                    onChange={handleRangeChange}
+                    onChange={setGiftsAmount}
                     type="amount"
                 />
             </InfoGroup>
@@ -47,7 +57,7 @@ const CreatePromoSettings = ({
                     max={999}
                     min={1}
                     step={1}
-                    onChange={handleRangeChange}
+                    onChange={setPriceAmount}
                 />
             </InfoGroup>
             <InfoGroup title={tr('Promo.InfoGroup.Title.ExpirationDate')} >

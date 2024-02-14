@@ -25,8 +25,10 @@ const CreatePromo = ({
     const { images: promoCreatedImages } = useSelector(state => state.createPromo)
     const [firstStepData, setFirstStepData] = useState(null)
     const [secondStepData, setSecondStepData] = useState(null)
+    const [thirdStepData, setThirdStepData] = useState(null)
     const [isCompletedFirstStep, setIsCompletedFirstStep] = useState(false)
     const [isCompletedSecondStep, setIsCompletedSecondStep] = useState(false)
+    const [isCompletedThirdStep, setIsCompletedThirdStep] = useState(false)
 
     const getDataFirstStep = (data) => {
         setFirstStepData(data)
@@ -42,10 +44,6 @@ const CreatePromo = ({
         } else {
             setIsCompletedFirstStep(false)
         }
-    }
-
-    const handleComplSecondStep = (isCompleted) => {
-        setIsCompletedSecondStep(isCompleted)
     }
 
     const handleMainButtonClick = () => {
@@ -89,7 +87,7 @@ const CreatePromo = ({
                 ? 
                 <CreatePromoSecondStep 
                     getData={getDataSecondStep}
-                    isCompletedSecondStep={handleComplSecondStep}
+                    isCompletedSecondStep={setIsCompletedSecondStep}
                 />
                 : ""
             }
@@ -109,7 +107,10 @@ const CreatePromo = ({
             }
 
             {step === 3
-                ?   <CreatePromoSettings />
+                ?   <CreatePromoSettings 
+                        getData={setThirdStepData}
+                        setIsCompleted={setIsCompletedThirdStep}
+                    />
                 : ""
             }
             <div className="pl-bottom-button-container">
@@ -117,12 +118,13 @@ const CreatePromo = ({
                     color="red"
                     onClick={handleMainButtonClick}
                     disabled={
-                        (step === 1 && isCompletedFirstStep === true) ||
-                        (step === 2 && isCompletedSecondStep === true)
+                        (step === 1 && isCompletedFirstStep     === true)   ||
+                        (step === 2 && isCompletedSecondStep    === true)  ||
+                        (step === 3 && isCompletedThirdStep     === true)
                         ? false 
                         : true
                     }
-                >{tr('Further')}</SmartButton>
+                >{step === 3 ? tr('Button.Publicate') : tr('Button.Next')}</SmartButton>
             </div>
         </div>
     )
