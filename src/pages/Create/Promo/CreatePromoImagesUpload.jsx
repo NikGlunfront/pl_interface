@@ -24,8 +24,8 @@ const CreatePromoImagesUpload = ({
     }, [])
 
     const getPreviewImg = (img) => {
-        setImgPreviews([...imgPreviews, {img_file: URL.createObjectURL(img), id: imgAmount + 1}])
-        dispatch(setCreatePromoImages([...promoImagesState, {img_file: URL.createObjectURL(img), id: imgAmount + 1}]))
+        setImgPreviews([...imgPreviews, {img_file: img, id: imgAmount + 1}])
+        dispatch(setCreatePromoImages([...promoImagesState, {img_file: img, id: imgAmount + 1}]))
         setImgAmount(imgAmount + 1)
     }
 
@@ -53,7 +53,10 @@ const CreatePromoImagesUpload = ({
                 {imgAmount < 5
                     ?
                     <MediaLoader 
-                        getPreview={getPreviewImg} 
+                        getPreview={getPreviewImg}
+                        aspectRatio={3 / 1}
+                        cropHeight={155}
+                        cropWidth={414}
                         className={'pl-page-create-partner__medialoader'} 
                         label={tr('Default.Input.Placeholder.Image')}
                     />

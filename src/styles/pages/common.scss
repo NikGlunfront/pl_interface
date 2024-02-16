@@ -138,10 +138,11 @@
     max-width: 100%;
     border-radius: 1rem;
     overflow: hidden;
+    height: 12rem;
 
     img {
         width: 100%;
-        object-fit: contain;
+        object-fit: cover;
     }
 }
 
@@ -222,4 +223,24 @@
     background-color: var(--pl-skeleton-color);
     border-radius: 5.4rem;
     height: 2.7rem;
+}
+
+.cropper-container {
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    flex: 0 0 100%;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    background-color: rgba($color: #000000, $alpha: 0.2);
+    backdrop-filter: blur(20px);
+    @include flex_row;
+    justify-content: center;
+    align-items: flex-end;
+
+    & > .pl-button {
+        margin-bottom: 4rem;
+        line-height: 4.3rem;
+    }
 }

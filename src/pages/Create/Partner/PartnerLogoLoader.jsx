@@ -27,7 +27,7 @@ const PartnerLogoLoader = ({
 
     useEffect(() => {
         if (imgPreview !== null) {
-            changeFunc(URL.createObjectURL(imgPreview))
+            changeFunc(imgPreview)
         }
     }, [imgPreview])
 
@@ -36,13 +36,15 @@ const PartnerLogoLoader = ({
             <div className="pl-page-create-partner__previewlogo">
                 {imgPreview === null && imgPreviewUrl === null
                     ? <img className="no-img-ico" src={getIcon('noimage')} alt="partner-logo"/>
-                    : <img src={imgPreview === null ?  imgPreviewUrl : URL.createObjectURL(imgPreview)} alt="partner-logo" style={{backgroundColor: 'white'}}/>
+                    : <img src={imgPreview === null ?  imgPreviewUrl : imgPreview} alt="partner-logo" style={{backgroundColor: 'white'}}/>
                 }
             </div>
             <MediaLoader 
                 getPreview={getPreviewImg} 
                 className={'pl-page-create-partner__medialoader'} 
                 label={tr("Default.Input.Placeholder.Image")}
+                cropHeight={160}
+                cropWidth={160}
             />
         </div>
     )
