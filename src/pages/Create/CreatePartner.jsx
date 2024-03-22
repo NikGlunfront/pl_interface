@@ -16,11 +16,13 @@ const CreatePartner = () => {
     const navigate = useNavigate()
     const [companyImg, setCompanyImg] = useState(null)
     const [partnerBio, setPartnerBio] = useState(null)
-    const [contacts, setContacts] = useState(null)
+    const [companyInfo, setCompanyInfo] = useState(null)
 
     useEffect(() => {
         dispatch(setSearchAvailable(false))
     }, [])
+
+    useEffect(() => {console.log(companyInfo)}, [companyInfo])
     
     const setImageToCompany = (img) => {
         setCompanyImg(img)
@@ -28,17 +30,17 @@ const CreatePartner = () => {
     const setCompanyBio = (bio) => {
         setPartnerBio(bio)
     }
-    const updateContacts = (contacts) => {
-        setContacts(contacts)
+    const updateCompanyInfo = (companyInfo) => {
+        setCompanyInfo(companyInfo)
     }
     
     const handleGoToPromoCreate = () => {
         dispatch(setCompany({
             name: partnerBio.name,
             description: partnerBio.description,
-            icon: companyImg
+            icon: companyImg,
+            contacts: companyInfo.contacts
         }))
-        dispatch(setCompanyContacts(contacts))
         navigate(PL_APP_ROUTES.PARTNER.CREATE_PROMO, {replace: false})
     }
 
@@ -46,7 +48,7 @@ const CreatePartner = () => {
         <div className={'pl-page-container pl-page-create-partner'}>
             <PartnerLogoLoader changeFunc={setImageToCompany} />
             <PartnerBio changeFunc={setCompanyBio} />
-            <PartnerInputGroup updateContacts={updateContacts} />
+            <PartnerInputGroup updatePartnerInputs={updateCompanyInfo} />
             <SmartButton 
                 color="red"
                 onClick={handleGoToPromoCreate}

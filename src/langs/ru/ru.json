@@ -50,6 +50,7 @@
     "Button.Preview": "Предпросмотр",
     "Button.Choose": "Выбрать",
     "Button.Publicate": "Опубликовать",
+    "Button.AddAdress": "Добавить еще адрес",
 
     "GetFranchise.DescriptionTitle": "Не нашли свой город ?",
     "GetFranchise.DescriptionText": "Откройте собственный рекламный бизнес прямо сейчас",
@@ -88,6 +89,8 @@
     "Partner.InputFields.Email": "E-mail",
     "Partner.InputFields.PartnerName": "Имя или название компании",
     "Partner.InputFields.About": "О себе",
+    "Partner.InputFields.Adress": "Адрес",
+    "Partner.InputFields.GoogleMapsLink": "Ссылка  на Google Maps ",
 
     "Datepicker.Placeholder": "дд.мм.гг",
 
@@ -102,5 +105,6 @@
 
     "Alerts.DatePicker.NotValidDate": "Вы выбрали некорректную дату. \nПожалуйста выберите корректную дату завершения промо.",
     "Alerts.MediaUploader.FileSize": "Ошибка! Размер файла превышает 10 МБ.",
+    "Alerts.MediaUploader.UndefinedType": "не определено",
     "Alerts.MediaUploader.FileTypes": "Ошибка! Разрешены только файлы с расширениями: .png, .jpg, .jpeg, .webp"
 }

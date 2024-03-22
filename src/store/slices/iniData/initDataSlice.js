@@ -11,12 +11,12 @@ const initialState = {
 }
 
 const citiesData = [
-    {id: 1, name: 'City.Mandrem', country_name: 'Country.India'},
-    {id: 2, name: 'City.Moscow', country_name: 'Country.RussianFederation'},
-    {id: 3, name: 'City.Arambol', country_name: 'Country.India'},
-    {id: 4, name: 'City.Samui', country_name: 'Country.Thailand'},
-    {id: 5, name: 'City.Mordjim', country_name: 'Country.India'},
-    {id: 6, name: 'City.Mumbai', country_name: 'Country.India'},
+    {id: 1, name: 'City.Mandrem', country_name: 'Country.India', country_id: 1},
+    {id: 2, name: 'City.Moscow', country_name: 'Country.RussianFederation', country_id: 2},
+    {id: 3, name: 'City.Arambol', country_name: 'Country.India', country_id: 1},
+    {id: 4, name: 'City.Samui', country_name: 'Country.Thailand', country_id: 3},
+    {id: 5, name: 'City.Mordjim', country_name: 'Country.India', country_id: 1},
+    {id: 6, name: 'City.Mumbai', country_name: 'Country.India', country_id: 1},
 ]
 
 const cityDataNums = [

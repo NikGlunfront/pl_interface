@@ -8,7 +8,8 @@ const initialState ={
         name: '',
         description: '',
         icon: '',
-        contacts: {}
+        contacts: {},
+        adress: []
     }
 }
 

@@ -6,6 +6,13 @@ import getCroppedImg from "../../../services/Cropp/cropImage"
 import Cropper from "react-easy-crop"
 import SmartButton from "../SmartButton/SmartButton"
 
+function readFile(file) {
+    return new Promise((resolve) => {
+      const reader = new FileReader()
+      reader.addEventListener('load', () => resolve(reader.result), false)
+      reader.readAsDataURL(file)
+    })
+}
 const dogImg =
   'https://img.huffingtonpost.com/asset/5ab4d4ac2000007d06eb2c56.jpeg?cache=sih0jwle4e&ops=1910_1000'
 
@@ -34,7 +41,7 @@ const MediaLoader = ({
     const showCroppedImage = async () => {
         try {
           const croppedImage = await getCroppedImg(
-                dogImg,
+                selectedFile,
                 croppedAreaPixels
           )
           console.log('donee', { croppedImage })
@@ -50,16 +57,19 @@ const MediaLoader = ({
         setPreview(null)
     }
 
-    const onSelectFile = e => {
+    const onSelectFile = async (e) => {
         if (!e.target.files || e.target.files.length === 0) {
-            setSelectedFile(undefined)
+            setSelectedFile(null)
             getPreview(null)
             return
         }
         let isValidFile = validateUploadedMedia(e.target.files[0])
         if (isValidFile.success) {
             // I've kept this example simple by using the first image instead of multiple
-            setSelectedFile(e.target.files[0])
+            // setSelectedFile(e.target.files[0])
+            let imageDataUrl = await readFile(e.target.files[0])
+            setSelectedFile(imageDataUrl)
+            console.log(e.target.files[0])
             // getPreview(e.target.files[0])
         } else {
             sendAlert(tr(isValidFile.error))
@@ -72,7 +82,7 @@ const MediaLoader = ({
                 ?
                 <div className="cropper-container">
                     <Cropper
-                        image={dogImg}
+                        image={selectedFile}
                         crop={crop}
                         zoom={zoom}
                         cropSize={cropWidth && cropHeight ? {width: cropWidth, height: cropHeight} : ''}

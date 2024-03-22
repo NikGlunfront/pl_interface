@@ -3,6 +3,8 @@ import { useIcons } from '../../../hooks/useIcons';
 import TextInput from '../../../components/UI/Input/TextInput';
 import { useSelector } from 'react-redux';
 import { useTranslate } from '../../../hooks/useTranslate';
+import InfoGroup from '../../../containers/InfoGroup';
+import AdressCreator from '../../../components/Adress/AdressCreator';
 
 const partnerInputs = [
     {id: 'phone', icon: 'phone', placeholder: 'Partner.InputFields.Phone'},
@@ -15,39 +17,52 @@ const partnerInputs = [
 ]
 
 const PartnerInputGroup = ({
-    updateContacts
+    updatePartnerInputs
 }) => {
     const { tr } = useTranslate()
-    const { contacts: contactsState } = useSelector(state => state.user.company)
+    const { contacts: contactsState, adress: adressState } = useSelector(state => state.user.company)
     const { getIcon } = useIcons()
     const [contacts, setContacts] = useState({})
+    const [adressData, setAdressData] = useState(null)
 
     useEffect(() => {
         if (contactsState !== null) {
             setContacts(contactsState)
-            updateContacts(contactsState)
         }
+        if (adressState.length) {
+            setAdressData(adressState)
+        }
+        updatePartnerInputs({contacts: contactsState, adress: [...adressState, adressState]})
     }, [])
+
+    useEffect(() => {
+        updatePartnerInputs({contacts: contacts, adress: [...adressState, adressData]})
+    }, [adressData, contacts])
     
     const handleInputsChange = (id, value) => {
         const newContactsObj = {...contacts}
         newContactsObj[id] = value
         setContacts(newContactsObj)
-        updateContacts(newContactsObj)
     }
     return (
         <div className='pl-page-create-partner__inputs'>
-            <div className='pl-page-create-partner__title'>{tr('Contacts')}</div>
-            {partnerInputs.map(item => (
-                <TextInput 
-                    placeholder={tr(item.placeholder)}
-                    icon={getIcon(item.icon)}
-                    key={item.id}
-                    tagFunc={item.id}
-                    handleChange={handleInputsChange}
-                    iniValue={contacts[item.id] ? contacts[item.id]  : null}
+            <InfoGroup title={tr('Contacts')}>
+                {partnerInputs.map(item => (
+                    <TextInput 
+                        placeholder={tr(item.placeholder)}
+                        icon={getIcon(item.icon)}
+                        key={item.id}
+                        tagFunc={item.id}
+                        handleChange={handleInputsChange}
+                        iniValue={contacts[item.id] ? contacts[item.id]  : null}
+                    />
+                ))}
+            </InfoGroup>
+            <InfoGroup title={tr('Promo.InfoGroup.Title.Adress')}>
+                <AdressCreator 
+                    valueGetter={setAdressData}
                 />
-            ))}
+            </InfoGroup>
         </div>
     );
 };

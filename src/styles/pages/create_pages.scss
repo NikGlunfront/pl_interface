@@ -1,5 +1,5 @@
 .pl-page-create-partner {
-    background-color: var(--pl-primary-popup-background);
+    background-color: var(--pl-primary-background-color);
 
     &__title {
         font-size: 1.6rem;
@@ -60,7 +60,7 @@
 }
 
 .pl-page-create-promo {
-    background-color: var(--pl-primary-popup-background);
+    background-color: var(--pl-primary-background-color);
     // padding-bottom: 20rem;
 
     & > .pl-bottom-button-container {
