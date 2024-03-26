@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux"
+
 const langsData = [
    { lang_code: "ru", text: "РУС", icon: "lang-ru" },
    { lang_code: "en", text: "ENG", icon: "lang-en" },
@@ -11,6 +13,9 @@ const menuItems = [
 ]
 
 export function useMetaData() {
+    const { cities: allCities } = useSelector(state => state.iniData)
+    const partnersCompany = useSelector(state => state.user.company)
+
     const getLangsData = () => {
         return langsData
     }
@@ -19,8 +24,18 @@ export function useMetaData() {
         return menuItems
     }
 
+    const getCityObj = (city_id) => {
+        return allCities.filter(city => city.id === city_id)[0]
+    }
+
+    const getPartnerCompany = () => {
+        return partnersCompany
+    }
+
     return {
         getLangsData,
-        getMenuData
+        getMenuData,
+        getCityObj,
+        getPartnerCompany
     }
 }

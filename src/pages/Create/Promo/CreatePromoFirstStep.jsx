@@ -7,6 +7,11 @@ import { setIsContentHidden } from '../../../store/slices/pageSlice/pageSlice';
 import YesNo from '../../../components/UI/Input/YesNo';
 import CreatePromoImagesUpload from './CreatePromoImagesUpload';
 import { useTranslate } from '../../../hooks/useTranslate';
+import FilterWindow from '../../../components/UI/SmartSelect/FilterWindow';
+import ReturnBtn from '../../../components/UI/ReturnBtn/ReturnBtn';
+import { useMetaData } from '../../../hooks/useMetaData';
+import CheckBoxAdress from '../../../components/Adress/CheckBoxAdress';
+import AdressCityGroup from '../../../components/Adress/AdressCityGroup';
 
 const CreatePromoFirstStep = ({
     getData,
@@ -15,24 +20,14 @@ const CreatePromoFirstStep = ({
 }) => {
     const dispatch = useDispatch()
     const { tr } = useTranslate()
-    const iniData = useSelector(state => state.iniData)
+    const {cities} = useSelector(state => state.iniData)
+    const partnersCompany = useMetaData().getPartnerCompany()
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
-    const [locationReference, setLocationReference] = useState('')
-    const [city, setCity] = useState(null)
-    const [isRemote, setIsRemote] = useState(false)
+    const [adressList, setAdressList] = useState([])
     const [listVisible, setListVisible] = useState(false)
 
     useEffect(() => {
-        if (completedData.isRemote) {
-            setIsRemote(true)
-        }
-        if (completedData.location) {
-            setCity(completedData.location)
-        }
-        if (completedData.locationRef) {
-            setLocationReference(completedData.locationRef)
-        }
         if (completedData.name) {
             setName(completedData.name)
         }
@@ -45,16 +40,18 @@ const CreatePromoFirstStep = ({
         setName(name)
     }
 
-    const handlelocRefChange = (locRef) => {
-        setLocationReference(locRef)
-    }
-
-    const toggleFunc = () => {
-        setIsRemote(!isRemote)
-    }
-
     const handleDescrChange = (descr) => {
         setDescription(descr)
+    }
+
+    const updateAdressList = (id, oldState) => {
+        let newList = adressList
+        if (oldState === true) {
+            newList = newList.filter(item => item !== id)
+        } else {
+            newList = [...newList, id]
+        }
+        setAdressList(newList)
     }
 
     const openFilterList = () => {
@@ -65,10 +62,10 @@ const CreatePromoFirstStep = ({
     const updateFilterData = (data = 0) => {
         setListVisible(false)
         dispatch(setIsContentHidden(false))
-        setCity({
-            id: data ? data : 0,
-            name: data ? iniData.cities.filter(dataCity => dataCity.id == data)[0].name : ''      
-        })
+    }
+
+    const getAdressByCityId = (id) => {
+        return partnersCompany.adress.filter(item => item.city_id === id)
     }
 
     const validateFirstStepData = () => {
@@ -78,27 +75,18 @@ const CreatePromoFirstStep = ({
         if (description === '') {
             return false
         }
-        if (city === null) {
-            return false
-        }
-        if (locationReference === '' && isRemote === false) {
-            return false
-        }
 
         return true
     }
 
     useEffect(() => {
-        const isDataCompleted = name !== '' && description !=='' && locationReference !== '' && city && isRemote ? true : false
         getData({
             name: name,
-            shortDescription: description,
-            locationReference: locationReference,
-            city: city,
-            isRemote: isRemote
+            shortDescription: description
         })
         isCompletedFirstStep(validateFirstStepData())
-    }, [name, description, locationReference, city, isRemote])
+        console.log(adressList)
+    }, [name, description, adressList])
 
     return (
         <div className='firststep-create-promo'>
@@ -115,22 +103,26 @@ const CreatePromoFirstStep = ({
             />
             <div className="firststep-create-promo__city">
                 <div className="firststep-create-promo__filter" onClick={openFilterList}>
-                    <span>{city?.id ? tr(city.name) : tr('City')}</span>
+                    <span>{tr('Promo.InfoGroup.Title.Adress')} {adressList.length > 0 ? ` (${adressList.length})` : ''}</span>
                 </div>
-                <CityFilterWindow
-                    visible={listVisible}
-                    updateFilterData={updateFilterData}
-                    cityData={iniData.cities}
-                />
-                <div className='firststep-create-promo__remote'>
-                    <YesNo toggleFunc={toggleFunc} isChecked={isRemote} name={tr('CreatePromo.InputFields.RemoteJob')} color="#000000" />
-                </div>
+                <FilterWindow visible={listVisible} >
+                    <div className="pl-return-toppanel">
+                        <ReturnBtn onClickFunc={updateFilterData} className={"pl-return-toppanel__return"} />
+                        <div className="pl-return-toppanel__title">{tr('Адреса')}</div>
+                    </div>
+                    <div className="adress-box">
+                        {cities.map(city => (
+                            <AdressCityGroup 
+                                adresses={partnersCompany.adress}
+                                city={city}
+                                key={city.id}
+                                toggleFunc={updateAdressList}
+                                activeAdress={adressList}
+                            />
+                        ))}
+                    </div>
+                </FilterWindow>
             </div>
-            <TextInput 
-                placeholder={tr('CreatePromo.InputFields.LocationReference')}
-                handleChange={handlelocRefChange}
-                iniValue={locationReference}
-            />
         </div>
     );
 };

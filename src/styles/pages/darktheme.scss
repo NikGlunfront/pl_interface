@@ -188,4 +188,15 @@
         background-size: 0.6rem 1.2rem;
         background-position: calc(100% - 1rem) center;
     }
+
+    .adress-group {
+        &__name {
+            &::after {
+                background-image: url('../../assets/img/icons/expand_right_white.svg');
+                background-repeat: no-repeat;
+                background-size: 0.6rem 1.2rem;
+                background-position: calc(100% - 1rem) center;
+            }
+        }
+    }
 }

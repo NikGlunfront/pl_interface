@@ -17,12 +17,37 @@ const CreatePartner = () => {
     const [companyImg, setCompanyImg] = useState(null)
     const [partnerBio, setPartnerBio] = useState(null)
     const [companyInfo, setCompanyInfo] = useState(null)
+    const [isReady, setIsReady] = useState(false)
 
     useEffect(() => {
         dispatch(setSearchAvailable(false))
     }, [])
+    
+    useEffect(() => {
+        let newReadyState = true
+        // console.log(companyImg)
+        // console.log(partnerBio)
+        // console.log(companyInfo)
+        if (companyImg === null) {
+            newReadyState = false
+        }
+        if (partnerBio === null || partnerBio.name === '' || partnerBio.description === '') {
+            newReadyState = false
+        }
+        if (companyInfo != null) {
+            if (companyInfo.contacts === null) {
+                newReadyState = false
+            }
+            if (!companyInfo.adress.length > 0) {
+                newReadyState = false
+            }
+        } else {
+            newReadyState = false
+        }
+        setIsReady(newReadyState)
+        // console.log(isReady)
+    }, [companyImg, partnerBio, companyInfo])
 
-    useEffect(() => {console.log(companyInfo)}, [companyInfo])
     
     const setImageToCompany = (img) => {
         setCompanyImg(img)
@@ -39,7 +64,8 @@ const CreatePartner = () => {
             name: partnerBio.name,
             description: partnerBio.description,
             icon: companyImg,
-            contacts: companyInfo.contacts
+            contacts: companyInfo.contacts,
+            adress: companyInfo.adress
         }))
         navigate(PL_APP_ROUTES.PARTNER.CREATE_PROMO, {replace: false})
     }
@@ -52,7 +78,7 @@ const CreatePartner = () => {
             <SmartButton 
                 color="red"
                 onClick={handleGoToPromoCreate}
-                disabled={(companyImg === null) || (partnerBio === null || partnerBio === '') ? true : false}
+                disabled={!isReady}
             >{tr('Save')}</SmartButton>
         </div>
     );
