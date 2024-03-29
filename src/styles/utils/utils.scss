@@ -21,6 +21,7 @@
     --pl-chat-background-color: linear-gradient(100deg, #A3C895, #78B387);
     --pl-review-message-background-color: #FFE8FB;
     --pl-review-usermessage-background-color: #D1CAFF;
+    --pl-primary-top-button-color: #65F5C1;
     
     &.pl-app_darktheme {
         --pl-skeleton-color: #000000;
@@ -45,5 +46,6 @@ $green_c: var(--pl-primary-green-color);
 $blue_c: var(--pl-primary-blue-color);
 $light_grey_c: var(--pl-primary-light-grey-color);
 $font: var(--pl-font-family);
+$primary_bckg_c: var(--pl-primary-background-color);
 $transition: var(--pl-transition);
 

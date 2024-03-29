@@ -8,6 +8,7 @@
     "Reset": "Сбросить",
     "More": "еще",
     "Further": "Далее",
+    "Addresses": "Адреса",
 
     "Menu.PartnerCabinet": "Кабинет партнера",
     "Menu.MyGifts": "Мои подарки",
@@ -50,7 +51,8 @@
     "Button.Preview": "Предпросмотр",
     "Button.Choose": "Выбрать",
     "Button.Publicate": "Опубликовать",
-    "Button.AddAdress": "Добавить еще адрес",
+    "Button.AddMoreAddress": "Добавить еще адрес",
+    "Button.AddAddress": "Добавить адрес",
 
     "GetFranchise.DescriptionTitle": "Не нашли свой город ?",
     "GetFranchise.DescriptionText": "Откройте собственный рекламный бизнес прямо сейчас",
@@ -58,8 +60,10 @@
     "Search.Title.SearchSettings": "Настройка ленты",
     "Search.Placeholder.City": "Поиск города",
     "Search.Placeholder.Category": "Поиск категории",
+    "Search.Placeholder.Addresses": "Поиск адреса",
     "Search.Placeholder.Tags": "Поиск тега",
     "Search.Result.Noresults": "Нет результатов",
+    "Search.Result.NoAddresses": "Нет адресов",
 
     "TagFilter.MyGifts.Waiting": "Ожидают",
     "TagFilter.MyGifts.Recieved": "Получены",

@@ -8,6 +8,7 @@
     "Reset": "Reset",
     "More": "more",
     "Further": "Next",
+    "Addresses": "Addresses",
 
     "Menu.PartnerCabinet": "Partner Cabinet",
     "Menu.MyGifts": "My Gifts",
@@ -50,7 +51,8 @@
     "Button.Preview": "Preview",
     "Button.Choose": "Choose",
     "Button.Publicate": "Publicate",
-    "Button.AddAdress": "Add another adress",
+    "Button.AddMoreAddress": "Add another address",
+    "Button.AddAddress": "Add address",
 
     "GetFranchise.DescriptionTitle": "Didn't find your city?",
     "GetFranchise.DescriptionText": "Open your own advertising business right now",
@@ -58,8 +60,10 @@
     "Search.Title.SearchSettings": "Search Settings",
     "Search.Placeholder.City": "Search city",
     "Search.Placeholder.Category": "Search category",
+    "Search.Placeholder.Addresses": "Search addresses",
     "Search.Placeholder.Tags": "Search tags",
     "Search.Result.Noresults": "No results",
+    "Search.Result.NoAddresses": "No adresses",
 
     "TagFilter.MyGifts.Waiting": "Waiting",
     "TagFilter.MyGifts.Recieved": "Recieved",

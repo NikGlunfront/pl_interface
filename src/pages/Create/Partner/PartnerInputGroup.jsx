@@ -60,7 +60,6 @@ const PartnerInputGroup = ({
     }
 
     const manageAdressData = (data) => {
-        console.log(data)
         setListVisible(false)
         dispatch(setIsContentHidden(false))
     }
@@ -99,7 +98,7 @@ const PartnerInputGroup = ({
                         mapLink={adressData[0].map_url}
                     />
                 }
-                <div className="adress-creator__more" onClick={openFilterList}>{tr('Button.AddAdress')}</div>
+                <div className="adress-creator__more" onClick={openFilterList}>{tr('Button.AddMoreAddress')}</div>
                 <ManageAdress
                     adressData={adressData}
                     manageAdressData={manageAdressData} 

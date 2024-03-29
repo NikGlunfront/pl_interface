@@ -3,12 +3,19 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
     cities: [],
     citiesNums: [],
+    countries: [],
     categories: [],
     categoriesNums: [],
     tags: [],
     tagsData: [],
     tagsNums: []
 }
+
+const countries = [
+    {id: 1, name: 'Country.RussianFederation', lang_code: 'ru'},
+    {id: 2, name: 'Country.India', lang_code: 'hi'},
+    {id: 3, name: 'Country.Thailand', lang_code: 'th'},
+]
 
 const citiesData = [
     {id: 1, name: 'City.Mandrem', country_name: 'Country.India', country_id: 1},
@@ -136,7 +143,8 @@ export const initDataSlice = createSlice({
         getCities: (state, action) => {
             return {
                 ...state,
-                cities: [...citiesData]
+                cities: [...citiesData],
+                countries: [...countries]
             }
         },
         getCats: (state, action) => {

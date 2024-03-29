@@ -1,27 +1,24 @@
 import React, { useEffect, useState } from "react"
 import FilterWindow from "../UI/SmartSelect/FilterWindow";
-import ReturnBtn from "../UI/ReturnBtn/ReturnBtn";
 import { useSelector } from "react-redux";
+import ReturnBtn from "../UI/ReturnBtn/ReturnBtn";
 import { useTranslate } from "../../hooks/useTranslate";
-import AdressItem from "./AdressItem";
+import AdressCityGroup from "./AdressCityGroup";
 import AddAdressBtn from "./AddAdressBtn";
-import AdressCityGroupControls from "./AdressCityGroupControls";
 
-const ManageAdress = ({
-    visible,
-    manageAdressData,
-    adressData
+const MultipleAdressPicker = ({
+    listVisible,
+    updateAdressList,
+    adressList,
+    activeAdressList,
+    closeList,
+    cities
 }) => {
-    const { tr } = useTranslate()
-    const {cities} = useSelector(state => state.iniData)
     const { darkTheme: isDarkTheme } = useSelector(state => state.pageMeta)
-    const [manageData, setManageData] = useState([])
+    const { tr } = useTranslate()
     const [searchQ, setSearchQ] = useState('')
     const [clearActive, setClearActive] = useState(false)
-
-    useEffect(() => {
-        setManageData(adressData)
-    }, [adressData])
+    
 
     useEffect(() => {
         if (searchQ !== '') {
@@ -39,14 +36,10 @@ const ManageAdress = ({
         setSearchQ('')
     }
 
-    if (manageData.length === 0) {
-        return
-    }
-
     return (
-        <FilterWindow visible={visible} >
+        <FilterWindow visible={listVisible} >
             <div className="pl-return-toppanel _adresspage">
-                <ReturnBtn onClickFunc={manageAdressData} className={"pl-return-toppanel__return"} />
+                <ReturnBtn onClickFunc={closeList} className={"pl-return-toppanel__return"} />
                 <div className="pl-return-toppanel__title">{tr('Addresses')}</div>
                 <AddAdressBtn />
             </div>
@@ -71,11 +64,13 @@ const ManageAdress = ({
             </div>
             <div className="adress-box">
                 {cities.map(city => (
-                    <AdressCityGroupControls 
-                        adresses={manageData}
+                    <AdressCityGroup 
+                        adresses={adressList}
                         searchQ={searchQ}
                         city={city}
                         key={city.id}
+                        toggleFunc={updateAdressList}
+                        activeAdress={activeAdressList}
                     />
                 ))}
             </div>
@@ -83,4 +78,4 @@ const ManageAdress = ({
     )
 };
 
-export default ManageAdress;
+export default MultipleAdressPicker;

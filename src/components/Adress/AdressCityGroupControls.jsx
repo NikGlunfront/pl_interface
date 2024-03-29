@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react"
-import CheckBoxAdress from "./CheckBoxAdress";
 import { useTranslate } from "../../hooks/useTranslate";
 import { useIcons } from "../../hooks/useIcons";
+import AdressItem from "./AdressItem";
 
-const AdressCityGroup = ({
+const AdressCityGroupControls = ({
     city,
     adresses,
-    toggleFunc,
-    activeAdress,
     searchQ
 }) => {
     const [opened, setIsOpened] = useState(true)
@@ -51,11 +49,13 @@ const AdressCityGroup = ({
                 
                     ?
                     adressByCity.map(adress => (
-                    <CheckBoxAdress 
+                    <AdressItem 
                         key={adress.id}
-                        isChecked={activeAdress.filter(item => item === adress.id).length > 0}
-                        adress={adress}
-                        toggleFunc={toggleFunc}
+                        adress_id={adress.id}
+                        city_id={adress.city_id}
+                        adress={adress.adress}
+                        controlsActive={true}
+                        mapLink={adress.map_url}
                     />
                     ))
                     : 
@@ -66,4 +66,4 @@ const AdressCityGroup = ({
     )
 };
 
-export default AdressCityGroup;
+export default AdressCityGroupControls;

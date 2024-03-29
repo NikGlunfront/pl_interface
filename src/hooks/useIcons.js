@@ -18,6 +18,12 @@ import plus from '../assets/img/icons/plus.svg'
 import plusWhite from '../assets/img/icons/plus_white.svg'
 import ruLang from '../assets/img/icons/langs/ru.svg'
 import enLang from '../assets/img/icons/langs/en.svg'
+import actionDelete from '../assets/img/icons/actions/delete_ico.svg'
+import actionEdit from '../assets/img/icons/actions/edit_ico.svg'
+import actionDrag from '../assets/img/icons/actions/drag_ico.svg'
+import actionDeleteWhite from '../assets/img/icons/actions/delete_ico_white.svg'
+import actionEditWhite from '../assets/img/icons/actions/edit_ico_white.svg'
+import actionDragWhite from '../assets/img/icons/actions/drag_ico_white.svg'
 import { useSelector } from 'react-redux'
 
 export function useIcons() {
@@ -32,6 +38,9 @@ export function useIcons() {
         'whatsapp': isDarkTheme ? whatsappWhite : whatsappIco,
         'noimage': isDarkTheme ? noImageWhite : noImage,
         'plus': isDarkTheme ? plusWhite : plus,
+        'edit': isDarkTheme ? actionEditWhite : actionEdit,
+        'delete': isDarkTheme ? actionDeleteWhite : actionDelete,
+        'drag': isDarkTheme ? actionDeleteWhite : actionDrag,
         'lang-ru': ruLang,
         'lang-en': enLang,
     }

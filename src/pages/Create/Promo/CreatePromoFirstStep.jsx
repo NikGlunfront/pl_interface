@@ -12,6 +12,7 @@ import ReturnBtn from '../../../components/UI/ReturnBtn/ReturnBtn';
 import { useMetaData } from '../../../hooks/useMetaData';
 import CheckBoxAdress from '../../../components/Adress/CheckBoxAdress';
 import AdressCityGroup from '../../../components/Adress/AdressCityGroup';
+import MultipleAdressPicker from '../../../components/Adress/MultipleAdressPicker';
 
 const CreatePromoFirstStep = ({
     getData,
@@ -20,12 +21,15 @@ const CreatePromoFirstStep = ({
 }) => {
     const dispatch = useDispatch()
     const { tr } = useTranslate()
-    const {cities} = useSelector(state => state.iniData)
+    const { cities } = useSelector(state => state.iniData)
+    const { darkTheme: isDarkTheme } = useSelector(state => state.pageMeta)
     const partnersCompany = useMetaData().getPartnerCompany()
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [adressList, setAdressList] = useState([])
     const [listVisible, setListVisible] = useState(false)
+    const [searchQ, setSearchQ] = useState('')
+    const [clearActive, setClearActive] = useState(false)
 
     useEffect(() => {
         if (completedData.name) {
@@ -105,23 +109,14 @@ const CreatePromoFirstStep = ({
                 <div className="firststep-create-promo__filter" onClick={openFilterList}>
                     <span>{tr('Promo.InfoGroup.Title.Adress')} {adressList.length > 0 ? ` (${adressList.length})` : ''}</span>
                 </div>
-                <FilterWindow visible={listVisible} >
-                    <div className="pl-return-toppanel">
-                        <ReturnBtn onClickFunc={updateFilterData} className={"pl-return-toppanel__return"} />
-                        <div className="pl-return-toppanel__title">{tr('Адреса')}</div>
-                    </div>
-                    <div className="adress-box">
-                        {cities.map(city => (
-                            <AdressCityGroup 
-                                adresses={partnersCompany.adress}
-                                city={city}
-                                key={city.id}
-                                toggleFunc={updateAdressList}
-                                activeAdress={adressList}
-                            />
-                        ))}
-                    </div>
-                </FilterWindow>
+                <MultipleAdressPicker 
+                    activeAdressList={adressList}
+                    adressList={partnersCompany.adress}
+                    cities={cities}
+                    closeList={updateFilterData}
+                    listVisible={listVisible}
+                    updateAdressList={updateAdressList}
+                />
             </div>
         </div>
     );

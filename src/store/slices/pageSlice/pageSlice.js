@@ -16,7 +16,8 @@ const initialState = {
         wishlist: 3,
         gifts: 27,
         partner: 2,
-    }
+    },
+    actionsListsVisible: false
 }
 
 export const pageSlice = createSlice({
@@ -58,6 +59,12 @@ export const pageSlice = createSlice({
                 ...state,
                 chatMeta: action.payload
             }
+        },
+        showActionsList: (state, action) => {
+            return {
+                ...state,
+                actionsListsVisible: action.payload
+            }
         }
     }
 })
@@ -68,6 +75,7 @@ export const {
     setSearchAvailable,
     setDarkTheme,
     setIsContentHidden,
+    showActionsList,
     setChatMeta
 } = pageSlice.actions
 
