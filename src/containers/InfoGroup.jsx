@@ -5,6 +5,8 @@ const InfoGroup = ({
     title,
     children,
     className,
+    subTitleClass,
+    subTitleNum,
     data,
 }) => {
     let basicClassName = 'pl-info-group '
@@ -13,7 +15,13 @@ const InfoGroup = ({
         <div className={basicClassName + (className ? ` ${className} ` : '')}>
             {data
                 ? <NavLink to={`/partners/${data.id}`} state={{partner: data}} className="pl-info-group__title">{title}</NavLink>
-                : <div className="pl-info-group__title">{title}</div>
+                : <div className="pl-info-group__title">
+                    {title}
+                    {subTitleNum
+                        ? <span className={subTitleClass}>{subTitleNum}</span>
+                        : <span></span>
+                    }
+                </div>
             }
             <div className="pl-info-group__content">{children}</div>
         </div>

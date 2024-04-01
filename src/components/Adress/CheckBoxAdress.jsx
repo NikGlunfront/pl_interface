@@ -22,9 +22,7 @@ const CheckBoxAdress = ({
         <div onClick={onClickHandler} className={className}>
             <div className="pl-input-checkbox__checkbox"><span></span></div>
             <AdressItem 
-                adress={adress.adress}
-                city_id={adress.city_id}
-                mapLink={adress.map_url}
+                adress={adress}
             />
         </div>
     )

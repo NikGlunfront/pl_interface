@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCreatePromoFirstStep, setCreatePromoSecondStep, setCreatePromoStepPosition } from "../../store/slices/createPromo/createPromoSlice";
 import CreatePromoSettings from "./Promo/CreatePromoSettings";
 import { useTranslate } from "../../hooks/useTranslate";
+import { useScroll } from "../../hooks/useScroll";
 
 const promoCreateSteps = [
     {id: 1, name: 'CreatePromo.Steps.Preview'},
@@ -19,6 +20,7 @@ const CreatePromo = ({
     
 }) => {
     const dispatch = useDispatch()
+    const { scrollTop } = useScroll()
     const { tr } = useTranslate()
     const createPromoData = useSelector(state => state.createPromo)
     const { lastStep: step } = useSelector(state => state.createPromo)
@@ -30,6 +32,7 @@ const CreatePromo = ({
     const [isCompletedSecondStep, setIsCompletedSecondStep] = useState(false)
     const [isCompletedThirdStep, setIsCompletedThirdStep] = useState(false)
 
+    useEffect(() => {console.log(firstStepData)}, [firstStepData])
     const getDataFirstStep = (data) => {
         setFirstStepData(data)
     }
@@ -57,7 +60,8 @@ const CreatePromo = ({
                 shortDescription: firstStepData.shortDescription,
                 location: firstStepData.city,
                 locationRef: firstStepData.locationReference,
-                isRemote: firstStepData.isRemote
+                isRemote: firstStepData.isRemote,
+                adresses: firstStepData.addresses
             }))
         }
         if (step === 2) {
@@ -66,6 +70,7 @@ const CreatePromo = ({
                 description: secondStepData.description
             }))
         }
+        scrollTop()
     }
 
     return (
@@ -97,8 +102,8 @@ const CreatePromo = ({
                 ? <CreatePromoPreview 
                     name={firstStepData?.name ? firstStepData.name : ''}
                     description={firstStepData?.shortDescription ? firstStepData.shortDescription : ''}
-                    location={firstStepData?.city?.name ? firstStepData.city.name : ''} 
-                    locationReference={firstStepData?.locationReference ? firstStepData.locationReference : ""}
+                    location={firstStepData?.locationObject ? firstStepData?.locationObject?.city_name : ""} 
+                    locationReference={firstStepData?.locationObject ? firstStepData?.locationObject?.adress : ""}
                     isRemote={firstStepData?.is_remote}
                     step={step}
                     promoDescription={secondStepData?.description ? secondStepData.description : "" }

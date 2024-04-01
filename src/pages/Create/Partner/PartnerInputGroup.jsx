@@ -37,7 +37,6 @@ const PartnerInputGroup = ({
         if (adressState?.length > 0) {
             setAdressData(adressState)
         }
-        console.log(adressData)
         updatePartnerInputs({contacts: contactsState, adress: [...adressState, adressState]})
     }, [])
 
@@ -59,9 +58,13 @@ const PartnerInputGroup = ({
         }
     }
 
-    const manageAdressData = (data) => {
+    const closeList = () => {
         setListVisible(false)
         dispatch(setIsContentHidden(false))
+    }
+
+    const manageAdressData = (data) => {
+        setAdressData(data)
     }
     
     const handleInputsChange = (id, value) => {
@@ -83,7 +86,12 @@ const PartnerInputGroup = ({
                     />
                 ))}
             </InfoGroup>
-            <InfoGroup title={tr('Promo.InfoGroup.Title.Adress')}>
+            <InfoGroup 
+                title={tr('Promo.InfoGroup.Title.Addresses')} 
+                className={"editable-addresses"}
+                subTitleClass={'editable-adresses__amount'}
+                subTitleNum={adressData.length}
+            >
                 {adressData.length <= 1
                     ?
                     <AdressCreator 
@@ -93,16 +101,15 @@ const PartnerInputGroup = ({
                     :
                     <AdressItem 
                         key={adressData[0].id}
-                        adress={adressData[0].adress}
-                        city_id={adressData[0].city_id}
-                        mapLink={adressData[0].map_url}
+                        adress={adressData[0]}
                     />
                 }
-                <div className="adress-creator__more" onClick={openFilterList}>{tr('Button.AddMoreAddress')}</div>
+                <div className="adress-creator__more" onClick={openFilterList}>{tr('Button.EditAddresses')}</div>
                 <ManageAdress
                     adressData={adressData}
                     manageAdressData={manageAdressData} 
                     visible={listVisible}
+                    closeList={closeList}
                 />
             </InfoGroup>
         </div>

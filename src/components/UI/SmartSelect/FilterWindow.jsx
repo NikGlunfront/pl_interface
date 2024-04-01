@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 
 const FilterWindow = ({
     visible,
-    children
+    children,
+    classNameSub = ""
 }) => {
     const { darkTheme: isDarkTheme } = useSelector(state => state.pageMeta)
     let className = 'pl-select__filters filters-pl-select '
@@ -12,6 +13,9 @@ const FilterWindow = ({
     }
     if (isDarkTheme) {
         className += 'filters-pl-select_darktheme'
+    }
+    if (classNameSub !== '') {
+        className += ` ${classNameSub}`
     }
 
 

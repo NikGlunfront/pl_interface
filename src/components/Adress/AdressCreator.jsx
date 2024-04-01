@@ -7,12 +7,13 @@ import CityFilterWindow from "../Filters/CityFilter/CityFilterWindow";
 
 const adressInputs = [
     {id: 'adress', icon: null, placeholder: 'Partner.InputFields.Adress'},
-    {id: 'googlemaplink', icon: null, placeholder: 'Partner.InputFields.GoogleMapsLink'},
+    {id: 'map_url', icon: null, placeholder: 'Partner.InputFields.GoogleMapsLink'},
 ]
 
 const AdressCreator = ({
     valueGetter,
-    iniValue
+    iniValue = null,
+    buttonsControl
 }) => {
     const { tr } = useTranslate()
     const dispatch = useDispatch()
@@ -23,11 +24,14 @@ const AdressCreator = ({
     const [mapLink, setMapLink] = useState('')
 
     useEffect(() => {
-        console.log(iniValue)
         if (iniValue != null) {
-            // setCity(iniValue.city_id)
-            // setTextAdress(iniValue.adress)
-            // setMapLink(iniValue.map_url)
+            setCity({
+                id: iniValue.city_id ? iniValue.city_id : 0,
+                name: iniValue.city_id ? iniData.cities.filter(dataCity => dataCity.id === iniValue.city_id)[0].name : '',
+                country_id: iniValue.city_id ? iniData.cities.filter(dataCity => dataCity.id === iniValue.city_id)[0].country_id : '',      
+            })
+            setTextAdress(iniValue.adress)
+            setMapLink(iniValue.map_url)
         }
     }, [])
 
@@ -41,17 +45,18 @@ const AdressCreator = ({
         dispatch(setIsContentHidden(false))
         setCity({
             id: data ? data : 0,
-            name: data ? iniData.cities.filter(dataCity => dataCity.id == data)[0].name : '',
-            country_id: data ? iniData.cities.filter(dataCity => dataCity.id == data)[0].country_id : '',      
+            name: data ? iniData.cities.filter(dataCity => dataCity.id === data)[0].name : '',
+            country_id: data ? iniData.cities.filter(dataCity => dataCity.id === data)[0].country_id : '',      
         })
     }
 
     useEffect(() => {
         if (textAdress !== '' && mapLink !== '' && city) {
             valueGetter({
-                city: city,
-                map_link: mapLink,
-                adress: textAdress
+                city_id: city.id,
+                map_url: mapLink,
+                adress: textAdress,
+                id: iniValue?.id | null
             })
         } else {
             valueGetter(null)
@@ -60,7 +65,7 @@ const AdressCreator = ({
 
     const handleAdressChange = (id, value) => {
         switch (id) {
-            case 'googlemaplink':
+            case 'map_url':
                 setMapLink(value)
                 break;
         
@@ -74,33 +79,35 @@ const AdressCreator = ({
     }
     return (
         <div className="adress-creator">
-            <div className="adress-creator__cityfilter" onClick={openFilterList}>
-                    <span>{city?.id ? tr(city.name) : tr('City')}</span>
-                </div>
+            <div className={"adress-creator__cityfilter " + (iniValue !== null ? " _disabled" : '')} onClick={openFilterList}>
+                <span>{city?.id ? tr(city.name) : tr('City')}</span>
+            </div>
             <CityFilterWindow
                 visible={listVisible}
                 updateFilterData={updateFilterData}
                 cityData={iniData.cities}
             />
             {adressInputs.map(item => (
-                    <TextInput
-                        placeholder={tr(item.placeholder)}
-                        key={item.id}
-                        tagFunc={item.id}
-                        handleChange={handleAdressChange}
-                        // iniValue={contacts[item.id] ? contacts[item.id]  : null}
-                    />
-                ))}
-                <div className="adress-creator__adressimg">
-                    <iframe 
-                        src={mapLink} 
-                        width="auto" 
-                        height="auto"
-                        allowFullScreen="" 
-                        loading="lazy" 
-                        referrerPolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
+                <TextInput
+                    placeholder={tr(item.placeholder)}
+                    key={item.id}
+                    tagFunc={item.id}
+                    handleChange={handleAdressChange}
+                    iniValue={iniValue ? iniValue[item.id] : null}
+                    // iniValue={contacts[item.id] ? contacts[item.id]  : null}
+                />
+            ))}
+            <div className="adress-creator__adressimg">
+                <iframe 
+                    title={"map_"}
+                    src={mapLink} 
+                    width="auto" 
+                    height="auto"
+                    allowFullScreen="" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
             
         </div>
     )

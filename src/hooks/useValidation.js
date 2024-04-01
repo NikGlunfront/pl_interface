@@ -9,9 +9,34 @@ export function useValidation() {
             'mime': file.type
         }
     }
+
+    const checkStringType = (value = null) => {
+        if (typeof value == "string") {
+            if (!value || value.length === 0) {
+                return false
+            }
+        }
+
+        return true
+    }
+
+    const isValidNewAdress = (adressObj = null) => {
+        if (adressObj === null) {
+            return {success: false, error: "Alerts.NewAddress.AllfielsRequired"};
+        }
+        if (!checkStringType(adressObj.adress)) {
+            return {success: false, error: "Alerts.NewAddress.AllfielsRequired"};
+        } 
+        if (!checkStringType(adressObj.map_url)) {
+            return {success: false, error: "Alerts.NewAddress.AllfielsRequired"};
+        } 
+
+
+        return {success: true}
+    }
+
     const validateUploadedMedia = (file) => {
         const fileObject = getImgProps(file)
-        console.log(fileObject)
         // Проверка размера
         const allowedExtensions = ['png', 'webp', 'jpg', 'jpeg']
         if (!allowedExtensions.includes(fileObject.type)) {
@@ -27,6 +52,7 @@ export function useValidation() {
     }
 
     return {
-        validateUploadedMedia
+        validateUploadedMedia,
+        isValidNewAdress
     }
 } 

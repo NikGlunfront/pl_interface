@@ -10,6 +10,7 @@ const initialState = {
     locationRef: "",
     isRemote: false,
     lastStep: 1,
+    adresses: [],
     acts: {
         views:0,
         scs:0,
@@ -39,6 +40,7 @@ export const createPromoSlice = createSlice({
                 shortDescription, 
                 location, 
                 locationRef, 
+                adresses,
                 isRemote 
             } = action.payload
             return {
@@ -47,7 +49,8 @@ export const createPromoSlice = createSlice({
                 shortDescription: shortDescription,
                 location: location,
                 locationRef: locationRef,
-                isRemote: isRemote
+                isRemote: isRemote,
+                adresses: adresses
             }
         },
         setCreatePromoSecondStep: (state, action) => {

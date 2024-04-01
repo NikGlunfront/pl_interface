@@ -1,27 +1,41 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import FilterWindow from "../UI/SmartSelect/FilterWindow";
 import ReturnBtn from "../UI/ReturnBtn/ReturnBtn";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslate } from "../../hooks/useTranslate";
-import AdressItem from "./AdressItem";
 import AddAdressBtn from "./AddAdressBtn";
 import AdressCityGroupControls from "./AdressCityGroupControls";
+import AdressCreator from "./AdressCreator";
+import { setAdressToEdit, setPageFreezedParam, setAdressToDelete } from "../../store/slices/pageSlice/pageSlice";
+import { useScroll } from "../../hooks/useScroll";
+import { useValidation } from "../../hooks/useValidation";
+import { useTelegram } from "../../hooks/useTelegram";
 
 const ManageAdress = ({
     visible,
     manageAdressData,
-    adressData
+    adressData,
+    closeList
 }) => {
     const { tr } = useTranslate()
+    const dispatch = useDispatch()
+    const { sendAlert } = useTelegram()
+    const { isValidNewAdress } = useValidation()
+    const { scrollToRef } = useScroll()
     const {cities} = useSelector(state => state.iniData)
-    const { darkTheme: isDarkTheme } = useSelector(state => state.pageMeta)
-    const [manageData, setManageData] = useState([])
+    const { darkTheme: isDarkTheme, isPageFreezed, adressToEdit, adressToDelete } = useSelector(state => state.pageMeta)
     const [searchQ, setSearchQ] = useState('')
+    const [editedAdress, setEditedAdress] = useState(null)
+    const [isEditing, setIsEditing] = useState(false)
     const [clearActive, setClearActive] = useState(false)
+    const myRef = useRef(null)
 
     useEffect(() => {
-        setManageData(adressData)
-    }, [adressData])
+        if (adressToDelete !== null) {
+            manageAdressData(adressData.filter(item => item.id !== adressToDelete.id))
+            dispatch(setAdressToDelete(null))
+        }
+    }, [adressToDelete])
 
     useEffect(() => {
         if (searchQ !== '') {
@@ -35,20 +49,69 @@ const ManageAdress = ({
         setSearchQ(e.target.value)
     }
 
+    const insertNewAdress = (newAdress) => {
+        const updatedAddresses = adressData.map((adress) => {
+            if (adress.id === newAdress.id) {
+                return newAdress
+            } else {
+                return adress
+            }
+        })
+        manageAdressData(updatedAddresses)
+    }
+
     const clearSearch = () => {
         setSearchQ('')
     }
 
-    if (manageData.length === 0) {
+    const getEditedAdress = (newAdressData) => {
+        setEditedAdress(newAdressData)
+    }
+
+    const cancelEdit = () => {
+        setEditedAdress(null)
+        dispatch(setAdressToEdit(null))
+        dispatch(setPageFreezedParam(false))
+        setIsEditing(false)
+    }
+    const saveEdit = () => {
+        const checkIsValidAdress = isValidNewAdress(editedAdress)
+        if (!checkIsValidAdress.success) {
+            sendAlert(tr(checkIsValidAdress.error))
+            return
+        }
+        console.log(editedAdress)
+        if (editedAdress.id !== 0) {
+            if (isEditing) {
+                manageAdressData(...adressData, editedAdress)
+            } else {
+                insertNewAdress(editedAdress)
+            }
+        } else {
+            sendAlert(tr('Alerts.NewAddress.SuccessfullyAdded'))
+        }
+        setEditedAdress(null)
+        dispatch(setAdressToEdit(null))
+        dispatch(setPageFreezedParam(false))
+        setIsEditing(false)
+    }
+
+    const addNewAdress = () => {
+        scrollToRef(myRef.current)
+        setIsEditing(true)
+        dispatch(setPageFreezedParam(true))
+    }
+
+    if (adressData.length === 0) {
         return
     }
 
     return (
-        <FilterWindow visible={visible} >
-            <div className="pl-return-toppanel _adresspage">
-                <ReturnBtn onClickFunc={manageAdressData} className={"pl-return-toppanel__return"} />
+        <FilterWindow visible={visible} classNameSub={"editable-addresses__popup" + (isPageFreezed ? " _inactive" : '')}>
+            <div className="pl-return-toppanel _adresspage" >
+                <ReturnBtn onClickFunc={closeList} className={"pl-return-toppanel__return"} />
                 <div className="pl-return-toppanel__title">{tr('Addresses')}</div>
-                <AddAdressBtn />
+                <AddAdressBtn onClick={addNewAdress} />
             </div>
             <div className="adress-search">
                 <div className="filters-pl-select__search">
@@ -69,10 +132,28 @@ const ManageAdress = ({
                     </div>
                 </div>
             </div>
+            <div className="pl-return-panel__compensator" ref={myRef}></div>
+            <div className="adress-creator-container">
+            {adressToEdit !== null || isEditing
+                ?
+                    <>
+                        <AdressCreator
+                            valueGetter={getEditedAdress}
+                            iniValue={adressToEdit}
+                        />
+                        <div className="adress-creator-container__controls">
+                            <div onClick={cancelEdit}>{tr('Button.Cancel')}</div>
+                            <div onClick={saveEdit}>{tr('Button.Save')}</div>
+                        </div>
+                    </>
+                : <></>
+            }
+            </div>
             <div className="adress-box">
                 {cities.map(city => (
-                    <AdressCityGroupControls 
-                        adresses={manageData}
+                    <AdressCityGroupControls
+                        creatorRef={myRef.current} 
+                        adresses={adressData}
                         searchQ={searchQ}
                         city={city}
                         key={city.id}

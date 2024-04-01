@@ -33,6 +33,7 @@
     "Promo.PreviewImg.RemindMe": "Напомнить в ЛС",
 
     "Promo.InfoGroup.Title.Adress": "Адрес",
+    "Promo.InfoGroup.Title.Addresses": "Адреса",
     "Promo.InfoGroup.Title.Description": "Описание",
     "Promo.InfoGroup.Title.Tags": "Теги",
     "Promo.InfoGroup.Title.Gallery": "Галерея",
@@ -53,6 +54,13 @@
     "Button.Publicate": "Опубликовать",
     "Button.AddMoreAddress": "Добавить еще адрес",
     "Button.AddAddress": "Добавить адрес",
+    "Button.EditAddresses": "Редактировать адреса",
+    "Button.Cancel": "Отмиенить",
+    "Button.Save": "Сохранить",
+    
+    "ActionsList.Edit": "Изменить",
+    "ActionsList.Delete": "Удалить",
+    "ActionsList.Replace": "Переместить",
 
     "GetFranchise.DescriptionTitle": "Не нашли свой город ?",
     "GetFranchise.DescriptionText": "Откройте собственный рекламный бизнес прямо сейчас",
@@ -79,6 +87,39 @@
     "City.Mordjim": "Морджим",
     "City.Arambol": "Арамболь",
     "City.Moscow": "Москва",
+
+    "Category.1": "Красота & Здоровье",
+    "Category.2": "Услуги разные",
+    "Category.3": "Рестораны & Шеки",
+    "Category.4": "Кафе & Пекарни",
+    "Category.5": "Сувениры & Подарки",
+    "Category.6": "Уличная еда & Доставка",
+    "Category.7": "Курсы & Обучение",
+    "Category.8": "Клубы & Пати",
+    "Category.9": "Супермаркеты & Вайн шопы",
+    "Category.10": "Экскурсии & Путешествия",
+    "Category.11": "Эзотерика & Таро",
+    "Category.12": "Аренда жилья",
+    "Category.13": "Массаж & Йога",
+    "Category.14": "Такси & Байки",
+    "Category.15": "Пляжные Развлечения",
+
+    "Category.Tag.1": "Тег для Красота & Здоровье",
+    "Category.Tag.2": "Тег для Услуги разные",
+    "Category.Tag.3": "Тег для Рестораны & Шеки",
+    "Category.Tag.4": "Тег для Кафе & Пекарни",
+    "Category.Tag.5": "Тег для Сувениры & Подарки",
+    "Category.Tag.6": "Тег для Уличная еда & Доставка",
+    "Category.Tag.7": "Тег для Курсы & Обучение",
+    
+    "Category.Tag.8": "Тег для Клубы & Пати",
+    "Category.Tag.9": "Тег для Супермаркеты & Вайн шопы",
+    "Category.Tag.10": "Тег для Экскурсии & Путешествия",
+    "Category.Tag.11": "Тег для Эзотерика & Таро",
+    "Category.Tag.12": "Тег для Аренда жилья",
+    "Category.Tag.13": "Тег для Массаж & Йога",
+    "Category.Tag.14": "Тег для Такси & Байки",
+    "Category.Tag.15": "Тег для Пляжные Развлечения",
 
     "Chat.Input.Placeholder.Message": "Сообщение",
     
@@ -108,6 +149,8 @@
     "CreatePromo.InputFields.LocationReference": "Ориентир",
 
     "Alerts.DatePicker.NotValidDate": "Вы выбрали некорректную дату. \nПожалуйста выберите корректную дату завершения промо.",
+    "Alerts.NewAddress.SuccessfullyAdded": "Новый адрес был успешно добавлен.",
+    "Alerts.NewAddress.AllfielsRequired": "Пожалуйста заполните все поля",
     "Alerts.MediaUploader.FileSize": "Ошибка! Размер файла превышает 10 МБ.",
     "Alerts.MediaUploader.UndefinedType": "не определено",
     "Alerts.MediaUploader.FileTypes": "Ошибка! Разрешены только файлы с расширениями: .png, .jpg, .jpeg, .webp"

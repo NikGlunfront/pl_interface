@@ -25,7 +25,15 @@ export function useMetaData() {
     }
 
     const getCityObj = (city_id) => {
-        return allCities.filter(city => city.id === city_id)[0]
+        if (city_id !== null) {
+            return allCities.filter(city => city.id === city_id)[0]
+        }
+    }
+
+    const getCityName = (city_id = null) => {
+        if (city_id !== null) {
+            return allCities.filter(city => city.id === city_id)[0].name
+        }
     }
 
     const getPartnerCompany = () => {
@@ -36,6 +44,7 @@ export function useMetaData() {
         getLangsData,
         getMenuData,
         getCityObj,
+        getCityName,
         getPartnerCompany
     }
 }

@@ -87,7 +87,7 @@ const PromoFilterWindow = ({
             <div className="filters-pl-select__tags">
                 {choosenCats.length > 0 && choosenCats.map(cat => (
                     <TagFilter 
-                        name={cat.name} 
+                        name={tr(cat.name)} 
                         filterValue={cat.id} 
                         key={cat.id} 
                         changeActiveTag={handleNewTagFilter} 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import PromoTopper from "../../components/Promo/PromoView/PromoIntro";
+import PromoTopper from "../../components/Promo/PromoView/PromoTopper";
 import PromoAdress from "../../components/Promo/PromoView/PromoAdress";
 import PromoContacts from "../../components/Promo/PromoView/PromoContacts";
 import PromoDescription from "../../components/Promo/PromoView/PromoDescription";

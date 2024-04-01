@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import Checkbox from "../../UI/Input/Checkbox";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveTags } from "../../../store/slices/filters/filtersSlice";
+import { useTranslate } from "../../../hooks/useTranslate";
 
 const SearchTagsField = ({
     tagsData,
@@ -9,6 +10,7 @@ const SearchTagsField = ({
     openedCat,
 
 }) => {
+    const { tr } = useTranslate()
     const tagsState = useSelector(state => state.filters.tags)
     const tagsIniState = useSelector(state => state.iniData.tags)
     const tagsDataIni = useSelector(state => state.iniData.tagsData)
@@ -63,7 +65,7 @@ const SearchTagsField = ({
         <div className="filters-pl-select__filters">
             {currentTags.length > 0 && tagsDataIni.filter(tag => currentTags.includes(tag.id)).map(tag => (
                 <Checkbox 
-                    name={tag.name} 
+                    name={tr(tag.name)} 
                     id={tag.id}
                     isChecked={pickedTags.indexOf(tag.id) != -1 ? true : false}
                     // amount={tagsDataNums.filter(item => item.id == cat.id)[0].amount}

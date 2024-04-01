@@ -198,4 +198,29 @@
             }
         }
     }
+
+    .editable-addresses {
+        .pl-info-group__title {
+            background-image: url('../../assets/img/icons/expand_right_white.svg');
+            background-repeat: no-repeat;
+            background-size: 0.6rem 1.2rem;
+            background-position: calc(100% - 1rem) center;
+    
+            span {
+                background-image: url('../../assets/img/icons/location_white.svg');
+                background-repeat: no-repeat;
+                background-size: 1rem;
+                background-position: left center;
+            }
+        }
+    }
+
+    .adress-creator {
+        &__cityfilter {
+            background-image: url('../../assets/img/icons/expand_right_white.svg');
+            background-repeat: no-repeat;
+            background-size: 0.6rem 1.2rem;
+            background-position: calc(100% - 1rem) center;
+        }
+    }
 }

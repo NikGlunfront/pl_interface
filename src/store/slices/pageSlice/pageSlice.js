@@ -4,7 +4,11 @@ const initialState = {
     title: '',
     pageStyle: false,
     searchAvailable: false,
+    isPageFreezed: false,
     darkTheme: false,
+    adressToEdit: null,
+    adressToDelete: null,
+    scrollToRef: null,
     chatMeta: {
         brandId: null,
         brandName: null,
@@ -60,10 +64,34 @@ export const pageSlice = createSlice({
                 chatMeta: action.payload
             }
         },
+        setPageFreezedParam: (state, action) => {
+            return {
+                ...state,
+                isPageFreezed: action.payload
+            }
+        },
         showActionsList: (state, action) => {
             return {
                 ...state,
                 actionsListsVisible: action.payload
+            }
+        },
+        setAdressToEdit: (state, action) => {
+            return {
+                ...state,
+                adressToEdit: action.payload
+            }
+        },
+        setAdressToDelete: (state, action) => {
+            return  {
+                ...state,
+                adressToDelete: action.payload
+            }
+        },
+        setScrollRef: (state, action) => {
+            return {
+                ...state,
+                scrollToRef: action.payload
             }
         }
     }
@@ -76,7 +104,11 @@ export const {
     setDarkTheme,
     setIsContentHidden,
     showActionsList,
-    setChatMeta
+    setChatMeta,
+    setScrollRef,
+    setAdressToDelete,
+    setAdressToEdit,
+    setPageFreezedParam
 } = pageSlice.actions
 
 export default pageSlice.reducer

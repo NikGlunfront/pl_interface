@@ -6,7 +6,8 @@ import AdressItem from "./AdressItem";
 const AdressCityGroupControls = ({
     city,
     adresses,
-    searchQ
+    searchQ,
+    creatorRef
 }) => {
     const [opened, setIsOpened] = useState(true)
     const [adressByCity, setAdressByCity] = useState([])
@@ -19,7 +20,7 @@ const AdressCityGroupControls = ({
 
     useEffect(() => {
         setAdressByCity(adresses.filter(adress => adress.city_id === city.id))
-    }, [])
+    }, [adresses])
 
     useEffect(() => {
         let filteredBySearchAdresses
@@ -51,11 +52,9 @@ const AdressCityGroupControls = ({
                     adressByCity.map(adress => (
                     <AdressItem 
                         key={adress.id}
-                        adress_id={adress.id}
-                        city_id={adress.city_id}
-                        adress={adress.adress}
+                        adress={adress}
                         controlsActive={true}
-                        mapLink={adress.map_url}
+                        creatorRef={creatorRef}
                     />
                     ))
                     : 

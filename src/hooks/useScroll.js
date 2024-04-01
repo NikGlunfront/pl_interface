@@ -1,4 +1,10 @@
+import { useState } from "react";
+
 export function useScroll() {
+    
+    const scrollToRef = (creatorRef) => {
+        creatorRef.scrollIntoView({block: 'start', behavior: "smooth"})
+    }
 
     const scrollTop = () => {
         document.querySelector("#root").scrollTo(0, 0);
@@ -9,6 +15,7 @@ export function useScroll() {
 
     return {
         scrollTop,
-        scrollBottom
+        scrollBottom,
+        scrollToRef,
     }
 }

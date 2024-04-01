@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import TextInput from '../../../components/UI/Input/TextInput';
 import TextArea from '../../../components/UI/Input/TextArea';
-import CityFilterWindow from '../../../components/Filters/CityFilter/CityFilterWindow';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsContentHidden } from '../../../store/slices/pageSlice/pageSlice';
-import YesNo from '../../../components/UI/Input/YesNo';
 import CreatePromoImagesUpload from './CreatePromoImagesUpload';
 import { useTranslate } from '../../../hooks/useTranslate';
-import FilterWindow from '../../../components/UI/SmartSelect/FilterWindow';
-import ReturnBtn from '../../../components/UI/ReturnBtn/ReturnBtn';
 import { useMetaData } from '../../../hooks/useMetaData';
-import CheckBoxAdress from '../../../components/Adress/CheckBoxAdress';
-import AdressCityGroup from '../../../components/Adress/AdressCityGroup';
 import MultipleAdressPicker from '../../../components/Adress/MultipleAdressPicker';
 
 const CreatePromoFirstStep = ({
@@ -21,19 +15,20 @@ const CreatePromoFirstStep = ({
 }) => {
     const dispatch = useDispatch()
     const { tr } = useTranslate()
+    const { getCityName } = useMetaData()
     const { cities } = useSelector(state => state.iniData)
-    const { darkTheme: isDarkTheme } = useSelector(state => state.pageMeta)
     const partnersCompany = useMetaData().getPartnerCompany()
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [adressList, setAdressList] = useState([])
     const [listVisible, setListVisible] = useState(false)
-    const [searchQ, setSearchQ] = useState('')
-    const [clearActive, setClearActive] = useState(false)
 
     useEffect(() => {
         if (completedData.name) {
             setName(completedData.name)
+        }
+        if (completedData.adresses) {
+            setAdressList(completedData.adresses)
         }
         if (completedData.shortDescription) {
             setDescription(completedData.shortDescription)
@@ -84,9 +79,18 @@ const CreatePromoFirstStep = ({
     }
 
     useEffect(() => {
+        let locationObject = null
+        if (adressList.length > 0) {
+            console.log(adressList[0])
+            const adressObj = partnersCompany.adress.filter(adress => adress.id === adressList[0])
+            locationObject = {...adressObj[0]} 
+            locationObject.city_name = getCityName(locationObject.city_id)
+        }
         getData({
             name: name,
-            shortDescription: description
+            shortDescription: description,
+            addresses: adressList,
+            locationObject: locationObject
         })
         isCompletedFirstStep(validateFirstStepData())
         console.log(adressList)

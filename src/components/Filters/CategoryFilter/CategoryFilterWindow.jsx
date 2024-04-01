@@ -49,7 +49,7 @@ const CategoryFilterWindow = ({
             <div className="filters-pl-select__filters">
                 {catsData.map(cat => (
                     <Checkbox 
-                        name={cat.name} 
+                        name={tr(cat.name)} 
                         id={cat.id}
                         isChecked={app_filters.categories && app_filters.categories?.indexOf(cat.id) !== -1 ? true : false}
                         amount={catsDataNums.filter(item => item.id == cat.id)[0].amount}
