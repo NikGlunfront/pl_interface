@@ -7,6 +7,7 @@ import CreatePromoImagesUpload from './CreatePromoImagesUpload';
 import { useTranslate } from '../../../hooks/useTranslate';
 import { useMetaData } from '../../../hooks/useMetaData';
 import MultipleAdressPicker from '../../../components/Adress/MultipleAdressPicker';
+import DeliveryFilter from '../../../components/Filters/DeliveryFilter/DeliveryFilter';
 
 const CreatePromoFirstStep = ({
     getData,
@@ -15,13 +16,14 @@ const CreatePromoFirstStep = ({
 }) => {
     const dispatch = useDispatch()
     const { tr } = useTranslate()
-    const { getCityName } = useMetaData()
+    const { getLocationFromAddress, getLocationFromDeliveryItem } = useMetaData()
     const { cities } = useSelector(state => state.iniData)
-    const partnersCompany = useMetaData().getPartnerCompany()
+    const partnerAddresses = useSelector(state => state.user.company.adress)
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [adressList, setAdressList] = useState([])
-    const [listVisible, setListVisible] = useState(false)
+    const [deliveryList, setDeliveryList] = useState({list: [], description: ''})
+    const [adressListVisible, setAdressListVisible] = useState(false)
 
     useEffect(() => {
         if (completedData.name) {
@@ -54,17 +56,17 @@ const CreatePromoFirstStep = ({
     }
 
     const openFilterList = () => {
-        setListVisible(true)
+        setAdressListVisible(true)
         dispatch(setIsContentHidden(true))
     }
 
     const updateFilterData = (data = 0) => {
-        setListVisible(false)
+        setAdressListVisible(false)
         dispatch(setIsContentHidden(false))
     }
 
     const getAdressByCityId = (id) => {
-        return partnersCompany.adress.filter(item => item.city_id === id)
+        return partnerAddresses.filter(item => item.city_id === id)
     }
 
     const validateFirstStepData = () => {
@@ -74,27 +76,32 @@ const CreatePromoFirstStep = ({
         if (description === '') {
             return false
         }
+        if (adressList.length === 0 && deliveryList.list.length === 0) {
+            return false
+        }
 
         return true
     }
 
+    useEffect(() => {console.log(deliveryList)}, [deliveryList])
+
     useEffect(() => {
-        let locationObject = null
+        let location = ''
         if (adressList.length > 0) {
-            console.log(adressList[0])
-            const adressObj = partnersCompany.adress.filter(adress => adress.id === adressList[0])
-            locationObject = {...adressObj[0]} 
-            locationObject.city_name = getCityName(locationObject.city_id)
+            location = getLocationFromAddress(partnerAddresses.filter(item => item.id === adressList[0])[0])
+        }
+        if (adressList.length === 0 && deliveryList.list.length > 0) {
+            location = getLocationFromDeliveryItem(deliveryList)
         }
         getData({
             name: name,
             shortDescription: description,
             addresses: adressList,
-            locationObject: locationObject
+            location: location,
+            delivery: deliveryList
         })
         isCompletedFirstStep(validateFirstStepData())
-        console.log(adressList)
-    }, [name, description, adressList])
+    }, [name, description, adressList, deliveryList])
 
     return (
         <div className='firststep-create-promo'>
@@ -111,17 +118,18 @@ const CreatePromoFirstStep = ({
             />
             <div className="firststep-create-promo__city">
                 <div className="firststep-create-promo__filter" onClick={openFilterList}>
-                    <span>{tr('Promo.InfoGroup.Title.Adress')} {adressList.length > 0 ? ` (${adressList.length})` : ''}</span>
+                    <span>{adressList.length > 0 ? ` (${adressList.length})` : ''} {tr('Promo.InfoGroup.Title.Adress')}</span>
                 </div>
                 <MultipleAdressPicker 
                     activeAdressList={adressList}
-                    adressList={partnersCompany.adress}
+                    adressList={partnerAddresses}
                     cities={cities}
                     closeList={updateFilterData}
-                    listVisible={listVisible}
+                    listVisible={adressListVisible}
                     updateAdressList={updateAdressList}
                 />
             </div>
+            <DeliveryFilter  callbackDelivery={setDeliveryList} />
         </div>
     );
 };

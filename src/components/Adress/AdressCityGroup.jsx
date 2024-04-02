@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import CheckBoxAdress from "./CheckBoxAdress";
 import { useTranslate } from "../../hooks/useTranslate";
 import { useIcons } from "../../hooks/useIcons";
+import { useMetaData } from "../../hooks/useMetaData";
 
 const AdressCityGroup = ({
     city,
@@ -14,7 +15,8 @@ const AdressCityGroup = ({
     const [adressByCity, setAdressByCity] = useState([])
     const { tr } = useTranslate()
     const { getIcon } = useIcons()
-    
+    const { getLocationFromAddress } = useMetaData()
+     
     const toggleVisibility = () => {
         setIsOpened(!opened)
     }
@@ -26,7 +28,7 @@ const AdressCityGroup = ({
     useEffect(() => {
         let filteredBySearchAdresses
         if (searchQ.length > 0) {
-            filteredBySearchAdresses = adresses.filter(item => item.adress.toLowerCase().includes(searchQ.toLowerCase()) && item.city_id === city.id)
+            filteredBySearchAdresses = adresses.filter(item => getLocationFromAddress(item).toLowerCase().includes(searchQ.toLowerCase()) && item.city_id === city.id)
             setAdressByCity(filteredBySearchAdresses)
         } else {
             filteredBySearchAdresses = adresses.filter(adress => adress.city_id === city.id)

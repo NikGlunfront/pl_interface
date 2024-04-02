@@ -3,9 +3,7 @@ import InfoGroup from "../../../containers/InfoGroup";
 import { useSelector } from "react-redux";
 import PromoStats from "../../../components/Promo/ListPromoView/PromoStats";
 import PromoPreview from "../../../components/Promo/PromoPreview";
-import PromoTags from "../../../components/Promo/PromoView/PromoTags";
 import PromoDescription from "../../../components/Promo/PromoView/PromoDescription";
-import PromoAdress from "../../../components/Promo/PromoView/PromoAdress";
 import PromoContacts from "../../../components/Promo/PromoView/PromoContacts";
 import PromoGallery from "../../../components/Promo/PromoView/PromoGallery";
 import { useTranslate } from "../../../hooks/useTranslate";
@@ -13,8 +11,7 @@ import { useTranslate } from "../../../hooks/useTranslate";
 const CreatePromoPreview = ({
     name,
     description,
-    location,
-    locationReference,
+    locationString,
     isRemote,
     promoDescription,
     step
@@ -62,7 +59,7 @@ const CreatePromoPreview = ({
                     companyName={promoData.brand_name}
                     promoDescription={description}
                     promoImage={promoImages.map(({img_file}) => (img_file))}
-                    promoLocation={tr(location) + (locationReference ? `, ${locationReference}` : '')}
+                    promoLocation={locationString}
                     promoName={name}
                     dateEnd={promoData.date_end}
                     inactive={promoData.inactive}

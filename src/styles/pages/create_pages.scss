@@ -287,6 +287,16 @@
         background-repeat: no-repeat;
         background-size: 0.6rem 1.2rem;
         background-position: calc(100% - 1rem) center;
+
+        &._delivery_only {
+            span {
+                display: block;
+                width: calc(100% - 2rem);
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
     }
 
     &__remote {
@@ -687,23 +697,35 @@
     }
 }
 
-.pl-return-toppanel._adresspage {
-    & ~ .adress-search {
-        background-color: var(--pl-primary-background-color);
-        padding: 1rem;
-        position: sticky;
-        top: 5rem;
-        z-index: 11;
-        .filters-pl-select__search {
-            height: 4rem;
-        }
+.adress-group._delivery {
+    &.adress-group_opened .adress-group__content .pl-input-checkbox__checkbox {
+        transform: translate(0);
     }
-    & ~ .adress-box {
-        .adress-group__content {
-            .adress-item {
-                &:last-child {
-                    .actions-clicker._opened .actions-clicker__list {
-                        transform: translate3d(100%, -40%, 0) scale(1);
+}
+
+.pl-return-toppanel {
+    &._adresspage,
+    &._delivery {
+        & ~ .adress-search {
+            background-color: var(--pl-primary-background-color);
+            padding: 1rem;
+            position: sticky;
+            top: 5rem;
+            z-index: 11;
+            .filters-pl-select__search {
+                height: 4rem;
+            }
+        }
+        & ~ .delivery-description {
+            margin: 0 1rem 1rem;
+        }
+        & ~ .adress-box {
+            .adress-group__content {
+                .adress-item {
+                    &:last-child {
+                        .actions-clicker._opened .actions-clicker__list {
+                            transform: translate3d(100%, -40%, 0) scale(1);
+                        }
                     }
                 }
             }
@@ -758,6 +780,11 @@
         background-size: 0.6rem 1.2rem;
         background-position: calc(100% - 1rem) center;
         align-items: center;
+        margin-bottom: 0;
+
+        & ~ .pl-info-group__content {
+            padding-top: 0;
+        }
 
         span {
             font-size: 1.4rem;

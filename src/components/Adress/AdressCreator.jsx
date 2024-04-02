@@ -56,7 +56,7 @@ const AdressCreator = ({
                 city_id: city.id,
                 map_url: mapLink,
                 adress: textAdress,
-                id: iniValue?.id | null
+                id: iniValue?.id | 0
             })
         } else {
             valueGetter(null)

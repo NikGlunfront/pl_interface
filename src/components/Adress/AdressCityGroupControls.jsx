@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useTranslate } from "../../hooks/useTranslate";
 import { useIcons } from "../../hooks/useIcons";
 import AdressItem from "./AdressItem";
+import { useMetaData } from "../../hooks/useMetaData";
 
 const AdressCityGroupControls = ({
     city,
@@ -13,6 +14,7 @@ const AdressCityGroupControls = ({
     const [adressByCity, setAdressByCity] = useState([])
     const { tr } = useTranslate()
     const { getIcon } = useIcons()
+    const { getLocationFromAddress } = useMetaData()
     
     const toggleVisibility = () => {
         setIsOpened(!opened)
@@ -25,7 +27,7 @@ const AdressCityGroupControls = ({
     useEffect(() => {
         let filteredBySearchAdresses
         if (searchQ.length > 0) {
-            filteredBySearchAdresses = adresses.filter(item => item.adress.toLowerCase().includes(searchQ.toLowerCase()) && item.city_id === city.id)
+            filteredBySearchAdresses = adresses.filter(item => getLocationFromAddress(item).toLowerCase().includes(searchQ.toLowerCase()) && item.city_id === city.id)
             setAdressByCity(filteredBySearchAdresses)
         } else {
             filteredBySearchAdresses = adresses.filter(adress => adress.city_id === city.id)

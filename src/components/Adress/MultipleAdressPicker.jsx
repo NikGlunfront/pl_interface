@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import FilterWindow from "../UI/SmartSelect/FilterWindow";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ReturnBtn from "../UI/ReturnBtn/ReturnBtn";
 import { useTranslate } from "../../hooks/useTranslate";
 import AdressCityGroup from "./AdressCityGroup";
 import AddAdressBtn from "./AddAdressBtn";
+import { useValidation } from "../../hooks/useValidation";
+import { setPageFreezedParam } from "../../store/slices/pageSlice/pageSlice";
+import { useTelegram } from "../../hooks/useTelegram";
+import AdressCreator from "./AdressCreator";
+import { useScroll } from "../../hooks/useScroll";
+import { setCompany } from "../../store/slices/user/userSlice";
 
 const MultipleAdressPicker = ({
     listVisible,
@@ -14,10 +20,18 @@ const MultipleAdressPicker = ({
     closeList,
     cities
 }) => {
-    const { darkTheme: isDarkTheme } = useSelector(state => state.pageMeta)
+    const { darkTheme: isDarkTheme, isPageFreezed } = useSelector(state => state.pageMeta)
+    const companyState = useSelector(state => state.user.company)
     const { tr } = useTranslate()
+    const { scrollToRef } = useScroll()
+    const { sendAlert } = useTelegram()
+    const { isValidNewAdress } = useValidation()
+    const dispatch = useDispatch()
     const [searchQ, setSearchQ] = useState('')
     const [clearActive, setClearActive] = useState(false)
+    const [editedAdress, setEditedAdress] = useState(null)
+    const [isEditing, setIsEditing] = useState(false)
+    const myRef = useRef(null)
     
 
     useEffect(() => {
@@ -32,16 +46,58 @@ const MultipleAdressPicker = ({
         setSearchQ(e.target.value)
     }
 
+    const returnBtnClick = () => {
+        closeList()
+        setEditedAdress(null)
+        dispatch(setPageFreezedParam(false))
+        setIsEditing(false)
+    }
+
     const clearSearch = () => {
         setSearchQ('')
     }
 
+    const getEditedAdress = (newAdressData) => {
+        setEditedAdress(newAdressData)
+    }
+
+    const cancelEdit = () => {
+        setEditedAdress(null)
+        dispatch(setPageFreezedParam(false))
+        setIsEditing(false)
+    }
+
+    const addNewAdress = () => {
+        scrollToRef(myRef.current)
+        setIsEditing(true)
+        dispatch(setPageFreezedParam(true))
+    }
+
+    const saveEdit = () => {
+        const checkIsValidAdress = isValidNewAdress(editedAdress)
+        if (!checkIsValidAdress.success) {
+            sendAlert(tr(checkIsValidAdress.error))
+            return
+        }
+        console.log(editedAdress)
+        sendAlert(tr('Alerts.NewAddress.SuccessfullyAdded'))
+        // dispatch(setCompany({
+        //     ...companyState,
+        //     adress: [...companyState.adress, editedAdress]
+        // }))
+        // ЛОГИКА ДЛЯ ДОБАВЛЕНИЯ НОВОГО АДРЕСА И ОБНОВЛЕНИЯ СТЕЙТА
+
+        setEditedAdress(null)
+        dispatch(setPageFreezedParam(false))
+        setIsEditing(false)
+    }
+
     return (
-        <FilterWindow visible={listVisible} >
+        <FilterWindow visible={listVisible} classNameSub={"editable-addresses__popup" + (isPageFreezed ? " _inactive" : '')}>
             <div className="pl-return-toppanel _adresspage">
-                <ReturnBtn onClickFunc={closeList} className={"pl-return-toppanel__return"} />
+                <ReturnBtn onClickFunc={returnBtnClick} className={"pl-return-toppanel__return"} />
                 <div className="pl-return-toppanel__title">{tr('Addresses')}</div>
-                <AddAdressBtn />
+                <AddAdressBtn onClick={addNewAdress} />
             </div>
             <div className="adress-search">
                 <div className="filters-pl-select__search">
@@ -61,6 +117,22 @@ const MultipleAdressPicker = ({
                         </svg>
                     </div>
                 </div>
+            </div>
+            <div className="pl-return-panel__compensator" ref={myRef}></div>
+            <div className="adress-creator-container">
+            {isEditing
+                ?
+                    <>
+                        <AdressCreator
+                            valueGetter={getEditedAdress}
+                        />
+                        <div className="adress-creator-container__controls">
+                            <div onClick={cancelEdit}>{tr('Button.Cancel')}</div>
+                            <div onClick={saveEdit}>{tr('Button.Save')}</div>
+                        </div>
+                    </>
+                : <></>
+            }
             </div>
             <div className="adress-box">
                 {cities.map(city => (

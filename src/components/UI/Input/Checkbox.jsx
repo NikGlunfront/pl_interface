@@ -5,9 +5,9 @@ const Checkbox = ({
     name,
     id,
     isChecked,
-    amount
+    amount = 0
 }) => {
-    if (amount === 0) return true;
+    // if (amount === 0) return true;
 
     const onClickHandler = () => {
         toggleFunc(id)
@@ -21,7 +21,10 @@ const Checkbox = ({
         <div className={className} onClick={onClickHandler}>
             <div className="pl-input-checkbox__checkbox"><span></span></div>
             <div className="pl-input-checkbox__name">{name}</div>
-            <div className="pl-input-checkbox__amount">{amount}</div>
+            {amount === 0
+                ? <></>
+                : <div className="pl-input-checkbox__amount">{amount}</div>
+            }
         </div>
     )
 };

@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import { useTranslate } from "./useTranslate"
 
 const langsData = [
    { lang_code: "ru", text: "РУС", icon: "lang-ru" },
@@ -15,6 +16,7 @@ const menuItems = [
 export function useMetaData() {
     const { cities: allCities } = useSelector(state => state.iniData)
     const partnersCompany = useSelector(state => state.user.company)
+    const { tr } = useTranslate()
 
     const getLangsData = () => {
         return langsData
@@ -36,6 +38,16 @@ export function useMetaData() {
         }
     }
 
+    const getLocationFromAddress = (addressObj) => {
+        const cityName = allCities.filter(city => city.id === addressObj.city_id)[0].name
+        return tr(cityName) + ', ' + addressObj.adress
+    }
+
+    const getLocationFromDeliveryItem = (deliveryObj) => {
+        const cityName = allCities.filter(city => city.id === deliveryObj.list[0])[0].name
+        return tr(cityName) + ', ' + deliveryObj.description
+    }
+
     const getPartnerCompany = () => {
         return partnersCompany
     }
@@ -45,6 +57,8 @@ export function useMetaData() {
         getMenuData,
         getCityObj,
         getCityName,
+        getLocationFromAddress,
+        getLocationFromDeliveryItem,
         getPartnerCompany
     }
 }

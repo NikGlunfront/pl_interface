@@ -531,6 +531,10 @@
             font-size: 1.4rem;
             font-weight: 500;
             padding: 0 0.8rem;
+            max-width: 25rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
 

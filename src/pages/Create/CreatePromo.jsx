@@ -9,6 +9,7 @@ import { setCreatePromoFirstStep, setCreatePromoSecondStep, setCreatePromoStepPo
 import CreatePromoSettings from "./Promo/CreatePromoSettings";
 import { useTranslate } from "../../hooks/useTranslate";
 import { useScroll } from "../../hooks/useScroll";
+import { useMetaData } from "../../hooks/useMetaData";
 
 const promoCreateSteps = [
     {id: 1, name: 'CreatePromo.Steps.Preview'},
@@ -22,6 +23,7 @@ const CreatePromo = ({
     const dispatch = useDispatch()
     const { scrollTop } = useScroll()
     const { tr } = useTranslate()
+    const { getLocationFromAddress } = useMetaData()
     const createPromoData = useSelector(state => state.createPromo)
     const { lastStep: step } = useSelector(state => state.createPromo)
     const { images: promoCreatedImages } = useSelector(state => state.createPromo)
@@ -61,7 +63,8 @@ const CreatePromo = ({
                 location: firstStepData.city,
                 locationRef: firstStepData.locationReference,
                 isRemote: firstStepData.isRemote,
-                adresses: firstStepData.addresses
+                adresses: firstStepData.addresses,
+                delivery: firstStepData.delivery
             }))
         }
         if (step === 2) {
@@ -102,8 +105,7 @@ const CreatePromo = ({
                 ? <CreatePromoPreview 
                     name={firstStepData?.name ? firstStepData.name : ''}
                     description={firstStepData?.shortDescription ? firstStepData.shortDescription : ''}
-                    location={firstStepData?.locationObject ? firstStepData?.locationObject?.city_name : ""} 
-                    locationReference={firstStepData?.locationObject ? firstStepData?.locationObject?.adress : ""}
+                    locationString={firstStepData?.location}
                     isRemote={firstStepData?.is_remote}
                     step={step}
                     promoDescription={secondStepData?.description ? secondStepData.description : "" }
