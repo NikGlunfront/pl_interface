@@ -14,7 +14,11 @@ const menuItems = [
 ]
 
 export function useMetaData() {
-    const { cities: allCities } = useSelector(state => state.iniData)
+    const { 
+        cities: allCities, 
+        tagsData: allTagsList,
+        categories: allCategoriesList 
+    } = useSelector(state => state.iniData)
     const partnersCompany = useSelector(state => state.user.company)
     const { tr } = useTranslate()
 
@@ -52,6 +56,14 @@ export function useMetaData() {
         return partnersCompany
     }
 
+    const getTagNameById = (id) => {
+        return allTagsList.filter(tag => tag.id === id)[0].name
+    }
+
+    const getCategoryNameById = (id) => {
+        return allCategoriesList.filter(cat => cat.id === id)[0].name
+    }
+
     return {
         getLangsData,
         getMenuData,
@@ -59,6 +71,8 @@ export function useMetaData() {
         getCityName,
         getLocationFromAddress,
         getLocationFromDeliveryItem,
+        getTagNameById,
+        getCategoryNameById,
         getPartnerCompany
     }
 }

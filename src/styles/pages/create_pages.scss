@@ -1,3 +1,14 @@
+.pl-page-create-partner,
+.pl-page-create-promo {
+    .pl-info-group {
+        padding-bottom: 0 !important;
+        margin-bottom: 0;
+
+        .adress-item {
+            padding-bottom: 0;
+        }
+    }
+}
 .pl-page-create-partner {
     background-color: var(--pl-primary-background-color);
 
@@ -269,6 +280,40 @@
         @include flex_row;
         margin-bottom: 0.7rem;
         align-items: center;
+
+        &._with_icon_cat {
+            & > div > div.selector-icon {
+                &::before {
+                    content: "";
+                    display: inline-block;
+                    position: relative;
+                    top: 0.2rem;
+                    margin-right: 0.7rem;
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    background-image: url('../../assets/img/icons/filter.svg');
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                }
+            }
+        }
+
+        &._with_icon_city {
+            & > div > div.selector-icon {
+                &::before {
+                    content: "";
+                    display: inline-block;
+                    position: relative;
+                    top: 0.2rem;
+                    margin-right: 0.7rem;
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    background-image: url('../../assets/img/icons/location.svg');
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                }
+            }
+        }
     }
 
     &__filter {
@@ -295,6 +340,16 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+            }
+        }
+        
+        &._tags {
+            & > div {
+                width: calc(100% - 2rem);
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                display: block;
             }
         }
     }
@@ -401,6 +456,7 @@
 
 .settings-create-promo {
     padding-top: 3rem;
+    padding-bottom: 10rem;
     .pl-info-group {
         background-color: var(--pl-primary-background-color);
         position: relative;

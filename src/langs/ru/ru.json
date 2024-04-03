@@ -34,6 +34,7 @@
     "Promo.PreviewImg.RemindMe": "Напомнить в ЛС",
 
     "Promo.InfoGroup.Title.Adress": "Адрес",
+    "Promo.InfoGroup.Title.Delivery": "Доставка",
     "Promo.InfoGroup.Title.Addresses": "Адреса",
     "Promo.InfoGroup.Title.Description": "Описание",
     "Promo.InfoGroup.Title.Tags": "Теги",
@@ -43,6 +44,7 @@
     "Promo.InfoGroup.Title.PromoAmount": "Количество подарков",
     "Promo.InfoGroup.Title.ClickPrice": "Стоимость клика",
     "Promo.InfoGroup.Title.ExpirationDate": "Дата завершения",
+    "Promo.InfoGroup.Title.ShowInFeeds": "Показывать в лентах",
 
     "Button.ShowGifts": "Показать подарки",
     "Button.NewGift": "Новый подарок",
@@ -147,6 +149,8 @@
     "CreatePromo.InputFields.ShortDescription": "Короткое описание вашего предложения",
     "CreatePromo.InputFields.RemoteJob": "Удаленная работа",
     "CreatePromo.InputFields.NoEndDate": "Без ограничений",
+    "CreatePromo.InputFields.Description": "Описание",
+    "CreatePromo.InputFields.Tags": "Теги",
     "CreatePromo.InputFields.LocationReference": "Ориентир",
 
     "Alerts.DatePicker.NotValidDate": "Вы выбрали некорректную дату. \nПожалуйста выберите корректную дату завершения промо.",

@@ -7,14 +7,20 @@ import PromoDescription from "../../../components/Promo/PromoView/PromoDescripti
 import PromoContacts from "../../../components/Promo/PromoView/PromoContacts";
 import PromoGallery from "../../../components/Promo/PromoView/PromoGallery";
 import { useTranslate } from "../../../hooks/useTranslate";
+import PromoTags from "../../../components/Promo/PromoView/PromoTags";
+import PromoAdress from "../../../components/Promo/PromoView/PromoAdress";
+import PromoDelivery from "../../../components/Promo/PromoView/PromoDelivery";
 
 const CreatePromoPreview = ({
     name,
     description,
     locationString,
     isRemote,
+    adresses,
+    delivery,
     promoDescription,
-    step
+    step,
+    tags
 }) => {
     const { tr } = useTranslate()
     const companyMeta = useSelector(state => state.user.company)
@@ -73,32 +79,27 @@ const CreatePromoPreview = ({
                 </div>
                 {step === 2
                     ? <PromoContacts partner={{id: 'test', name: companyMeta.name}}
-                        email={companyMeta.contacts.email ? companyMeta.contacts.email : ""}
-                        tg={companyMeta.contacts.tg ? companyMeta.contacts.tg : ""}
-                        phone={companyMeta.contacts.phone ? companyMeta.contacts.phone : ""}
-                        instagram={companyMeta.contacts.instagram ? companyMeta.contacts.instagram : ""}
-                        facebook={companyMeta.contacts.facebook ? companyMeta.contacts.facebook : ""}
-                        whatsapp={companyMeta.contacts.whatsapp ? companyMeta.contacts.whatsapp : ""}
-                        website={companyMeta.contacts.website ? companyMeta.contacts.website : ""}
+                        email={companyMeta.contacts.email ? companyMeta.contacts.email : null}
+                        tg={companyMeta.contacts.tg ? companyMeta.contacts.tg : null}
+                        phone={companyMeta.contacts.phone ? companyMeta.contacts.phone : null}
+                        instagram={companyMeta.contacts.instagram ? companyMeta.contacts.instagram : null}
+                        facebook={companyMeta.contacts.facebook ? companyMeta.contacts.facebook : null}
+                        whatsapp={companyMeta.contacts.whatsapp ? companyMeta.contacts.whatsapp : null}
+                        website={companyMeta.contacts.website ? companyMeta.contacts.website : null}
                         rating={0}
                         reviewCount={0}
                     />
                     : ""
                 }
-                {/* {step === 2
-                    ? <PromoAdress />
-                    : ""
-                } */}
                 {step === 2
-                    ? <PromoDescription isSkeleton={promoDescription ? false : true}>{promoDescription}</PromoDescription>
-                    : ""
-                }
-                {/* {step === 2
-                    ? <PromoTags>{}</PromoTags>
-                    : ""
-                } */}
-                {step === 2
-                    ? <PromoGallery images={promoImages.map(({img_file}) => (img_file))} />
+                    ?   
+                    <>
+                        <PromoAdress adresses={adresses} /> 
+                        <PromoDelivery  delivery={delivery} /> 
+                        <PromoDescription isSkeleton={promoDescription ? false : true}>{promoDescription}</PromoDescription>
+                        <PromoTags tags={tags}></PromoTags>
+                        <PromoGallery images={promoImages.map(({img_file}) => (img_file))} />
+                    </>
                     : ""
                 }
             </div>

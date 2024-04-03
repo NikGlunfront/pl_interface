@@ -1,9 +1,9 @@
 import React from "react"
 
 const PromoBio = ({
-    name,
-    description,
-    location,
+    name = '',
+    description = '',
+    location = '',
     isRemote = false
 }) => {
 

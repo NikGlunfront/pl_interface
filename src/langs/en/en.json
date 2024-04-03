@@ -34,6 +34,7 @@
     "Promo.PreviewImg.RemindMe": "Remind me via PM",
 
     "Promo.InfoGroup.Title.Adress": "Address",
+    "Promo.InfoGroup.Title.Delivery": "Delivery",
     "Promo.InfoGroup.Title.Addresses": "Addresses",
     "Promo.InfoGroup.Title.Description": "Description",
     "Promo.InfoGroup.Title.Tags": "Tags",
@@ -43,6 +44,7 @@
     "Promo.InfoGroup.Title.PromoAmount": "Numbers of gifts",
     "Promo.InfoGroup.Title.ClickPrice": "Cost per click",
     "Promo.InfoGroup.Title.ExpirationDate": "Expiration date",
+    "Promo.InfoGroup.Title.ShowInFeeds": "Show in feeds",
 
     "Button.ShowGifts": "Show Gifts",
     "Button.NewGift": "New Gift",
@@ -146,6 +148,8 @@
     "CreatePromo.InputFields.ShortDescription": "Short description of your offer",
     "CreatePromo.InputFields.RemoteJob": "Remote job",
     "CreatePromo.InputFields.NoEndDate": "No limits",
+    "CreatePromo.InputFields.Description": "Description",
+    "CreatePromo.InputFields.Tags": "Tags",
     "CreatePromo.InputFields.LocationReference": "Landmark",
 
     "Alerts.DatePicker.NotValidDate": "You have selected an invalid date. \nPlease choose a valid end date for the promotion.",

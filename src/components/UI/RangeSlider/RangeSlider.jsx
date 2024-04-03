@@ -1,10 +1,11 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 const RangeSlider = ({
     step,
     min,
     max,
     onChange,
+    iniValue = null,
     type = "rub"
 }) => {
     const [value, setValue] = useState(min)
@@ -14,6 +15,12 @@ const RangeSlider = ({
         setValue(value)
         onChange(value)
     }
+
+    useEffect(() => {
+        if (iniValue !== null) {
+            setValue(iniValue)
+        }
+    }, [iniValue])
 
     return (
         <div className="range-input">

@@ -11,7 +11,18 @@ const initialState = {
     isRemote: false,
     lastStep: 1,
     adresses: [],
-    delivery: {list: [], description: ''},
+    tags: [],
+    settings: {
+        giftsAmount: 0,
+        price_per_click: 0,
+        date_end: null,
+        citiesToShowIn: [],
+        catsToShowIn: [],
+    },
+    delivery: {
+        list: [], 
+        description: ''
+    },
     acts: {
         views:0,
         scs:0,
@@ -58,11 +69,13 @@ export const createPromoSlice = createSlice({
         },
         setCreatePromoSecondStep: (state, action) => {
             const {
-                description
+                description,
+                tags
             } = action.payload
             return {
                 ...state,
-                description: description
+                description: description,
+                tags: tags
             }
         },
         setCreatePromoStepPosition: (state, action) => {
@@ -73,7 +86,8 @@ export const createPromoSlice = createSlice({
         },
         setCreatePromoSettings: (state, action) => {
             return {
-                ...state
+                ...state,
+                settings: action.payload
             }
         },
         resetCreatePromo: (state, action) => {

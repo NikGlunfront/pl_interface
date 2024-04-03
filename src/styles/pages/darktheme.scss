@@ -150,6 +150,26 @@
     }
 
     .firststep-create-promo {
+        &__city {
+            &._with_icon_cat {
+                & > div > div.selector-icon {
+                    &::before {
+                        background-image: url('../../assets/img/icons/filter_white.svg');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    }
+                }
+            }
+            &._with_icon_city {
+                & > div > div.selector-icon {
+                    &::before {
+                        background-image: url('../../assets/img/icons/location_white.svg');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                    }
+                }
+            }
+        }
         &__filter {
             background-image: url('../../assets/img/icons/expand_right_white.svg');
             background-repeat: no-repeat;

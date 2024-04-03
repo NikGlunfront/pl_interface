@@ -2,29 +2,26 @@ import React, { useEffect, useState } from 'react';
 import TextInput from '../../../components/UI/Input/TextInput';
 import TextArea from '../../../components/UI/Input/TextArea';
 import { useSelector } from 'react-redux';
+import { useTranslate } from '../../../hooks/useTranslate';
+import TagsSelector from '../../../components/Selectors/TagsSelector/TagsSelector';
 
 const CreatePromoSecondStep = ({
     getData,
     isCompletedSecondStep
 }) => {
-    const { description: promoDescription } = useSelector(state => state.createPromo)
-    const [adress, setAdress] = useState('')
-    const [mapLink, setMapLink] = useState('')
+    const { description: promoDescription, tags: tagsState } = useSelector(state => state.createPromo)
+    const { tr } = useTranslate()
     const [descr, setDescr] = useState('')
+    const [selectedTags, setSelectedTags] = useState([])
     
     useEffect(() => {
         if (promoDescription) {
             setDescr(promoDescription)
         }
+        if (tagsState.length > 0) {
+            setSelectedTags([...tagsState])
+        }
     }, [])
-
-    const handleAdressChange = (adress) => {
-        setAdress(adress)
-    }
-
-    const handleMapLinkChange = (mapLink) => {
-        setMapLink(mapLink)
-    }
 
     const handleDescrChange = (descr) => {
         setDescr(descr)
@@ -40,26 +37,22 @@ const CreatePromoSecondStep = ({
 
     useEffect(() => {
         getData({
-            description: descr
+            description: descr,
+            tagsList: selectedTags
         })
         isCompletedSecondStep(validateSecondStepData())
-    }, [descr])
+    }, [descr, selectedTags])
+
+    useEffect(() => {console.log(selectedTags)}, [selectedTags])
 
     return (
         <div className='step-create-promo'>
-            {/* <TextInput 
-                placeholder='Адрес'
-                handleChange={handleAdressChange}
-            />
-            <TextInput 
-                placeholder='Ссылка'
-                handleChange={handleMapLinkChange}
-            /> */}
             <TextArea 
-                placeholder='Описание'
+                placeholder={tr('CreatePromo.InputFields.Description')}
                 handleChange={handleDescrChange}
                 iniValue={descr}
             />
+            <TagsSelector handleSelectorData={setSelectedTags} />
         </div>
     );
 };

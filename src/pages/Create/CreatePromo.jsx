@@ -5,11 +5,10 @@ import CreatePromoFirstStep from "./Promo/CreatePromoFirstStep";
 import SmartButton from "../../components/UI/SmartButton/SmartButton";
 import CreatePromoSecondStep from "./Promo/CreatePromoSecondStep";
 import { useDispatch, useSelector } from "react-redux";
-import { setCreatePromoFirstStep, setCreatePromoSecondStep, setCreatePromoStepPosition } from "../../store/slices/createPromo/createPromoSlice";
+import { setCreatePromoFirstStep, setCreatePromoSecondStep, setCreatePromoSettings, setCreatePromoStepPosition } from "../../store/slices/createPromo/createPromoSlice";
 import CreatePromoSettings from "./Promo/CreatePromoSettings";
 import { useTranslate } from "../../hooks/useTranslate";
 import { useScroll } from "../../hooks/useScroll";
-import { useMetaData } from "../../hooks/useMetaData";
 
 const promoCreateSteps = [
     {id: 1, name: 'CreatePromo.Steps.Preview'},
@@ -23,10 +22,9 @@ const CreatePromo = ({
     const dispatch = useDispatch()
     const { scrollTop } = useScroll()
     const { tr } = useTranslate()
-    const { getLocationFromAddress } = useMetaData()
     const createPromoData = useSelector(state => state.createPromo)
-    const { lastStep: step } = useSelector(state => state.createPromo)
-    const { images: promoCreatedImages } = useSelector(state => state.createPromo)
+    const { lastStep: step, images: promoCreatedImages, delivery: deliveryState } = useSelector(state => state.createPromo)
+    const { adress: companyAddresses } = useSelector(state => state.user.company)
     const [firstStepData, setFirstStepData] = useState(null)
     const [secondStepData, setSecondStepData] = useState(null)
     const [thirdStepData, setThirdStepData] = useState(null)
@@ -53,6 +51,14 @@ const CreatePromo = ({
 
     const handleMainButtonClick = () => {
         if (step === 3) {
+            console.log(thirdStepData)
+            dispatch(setCreatePromoSettings({
+                giftsAmount: thirdStepData.gifts_amount,
+                price_per_click: thirdStepData.price_per_click,
+                date_end: thirdStepData.date_end,
+                citiesToShowIn: thirdStepData.citiesToShowIn,
+                catsToShowIn: thirdStepData.catsToShowIn,
+            }))
             alert('Создание промо на БД')
         } 
         if (step === 1) {
@@ -70,7 +76,8 @@ const CreatePromo = ({
         if (step === 2) {
             dispatch(setCreatePromoStepPosition(step + 1))
             dispatch(setCreatePromoSecondStep({
-                description: secondStepData.description
+                description: secondStepData.description,
+                tags: secondStepData.tagsList
             }))
         }
         scrollTop()
@@ -108,6 +115,9 @@ const CreatePromo = ({
                     locationString={firstStepData?.location}
                     isRemote={firstStepData?.is_remote}
                     step={step}
+                    adresses={companyAddresses.length > 0 && firstStepData?.addresses.length > 0 ? companyAddresses.filter(item => firstStepData.addresses.includes(item.id)) : []}
+                    delivery={deliveryState}
+                    tags={secondStepData?.tagsList}
                     promoDescription={secondStepData?.description ? secondStepData.description : "" }
                 />
                 : ""

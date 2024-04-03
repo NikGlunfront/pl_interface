@@ -39,81 +39,63 @@ const PromoContacts = ({
                 </div>
             </NavLink>
             <div className="pl-info-group__content">
-                {phone
+                {phone !== null
                     ? <a href="tel:89995553333" className="pl-promo-page-contacts__item pl-promo-page-contacts__item_phone">{phone}</a>
-                    : <a href="tel:89995553333" className="pl-promo-page-contacts__item pl-promo-page-contacts__item_phone">+7 999 999 99 99</a>
+                    : <></>
                 }
-                {tg
+                {tg !== null
                     ? 
                     <LinkOpener
                         className={"pl-promo-page-contacts__item pl-promo-page-contacts__item_tg"}
                         url={"https://tg.me/Pay.meg"}
                     >{tg}</LinkOpener>
                     : 
-                    <LinkOpener
-                        className={"pl-promo-page-contacts__item pl-promo-page-contacts__item_tg"}
-                        url={"https://tg.me/Pay.meg"}
-                    >tg</LinkOpener>
+                    <></>
                 }
-                {whatsapp
+                {whatsapp !== null
                     ? 
                     <LinkOpener
                         className={"pl-promo-page-contacts__item pl-promo-page-contacts__item_tg"}
                         url={"https://tg.me/Pay.meg"}
                     >{whatsapp}</LinkOpener>
                     : 
-                    <LinkOpener
-                        className={"pl-promo-page-contacts__item pl-promo-page-contacts__item_tg"}
-                        url={"https://tg.me/Pay.meg"}
-                    >whatsapp</LinkOpener>
+                    <></>
                 }
-                {facebook
+                {facebook !== null
                     ? 
                     <LinkOpener
                         className={"pl-promo-page-contacts__item pl-promo-page-contacts__item_facebook"}
                         url={"https://tg.me/Pay.meg"}
                     >{facebook}</LinkOpener>
                     : 
-                    <LinkOpener
-                        className={"pl-promo-page-contacts__item pl-promo-page-contacts__item_facebook"}
-                        url={"https://tg.me/Pay.meg"}
-                    >facebook</LinkOpener>
+                    <></>
                 }
-                {instagram
+                {instagram !== null
                     ? 
                     <LinkOpener
                         className={"pl-promo-page-contacts__item pl-promo-page-contacts__item_insta"}
                         url={"https://tg.me/Pay.meg"}
                     >{instagram}</LinkOpener>
                     : 
-                    <LinkOpener
-                        className={"pl-promo-page-contacts__item pl-promo-page-contacts__item_insta"}
-                        url={"https://tg.me/Pay.meg"}
-                    >instagram</LinkOpener>
+                    <></>
                 }
-                {website
+                {website !== null
                     ? 
                     <LinkOpener
                         className={"pl-promo-page-contacts__item pl-promo-page-contacts__item_www"}
                         url={"https://tg.me/Pay.meg"}
                     >{website}</LinkOpener>
                     : 
-                    <LinkOpener
-                        className={"pl-promo-page-contacts__item pl-promo-page-contacts__item_www"}
-                        url={"https://tg.me/Pay.meg"}
-                    >website</LinkOpener>
+                    <></>
                 }
-                {email
+                {email !== null
                     ? 
                     <LinkOpener
                         className={"pl-promo-page-contacts__item pl-promo-page-contacts__item_tg"}
                         url={"https://tg.me/Pay.meg"}
                     >{email}</LinkOpener>
                     : 
-                    <LinkOpener
-                        className={"pl-promo-page-contacts__item pl-promo-page-contacts__item_tg"}
-                        url={"https://tg.me/Pay.meg"}
-                    >email</LinkOpener>
+                    <></>
                 }
             </div>
         </div>

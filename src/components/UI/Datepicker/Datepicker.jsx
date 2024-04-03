@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import FilterWindow from "../../UI/SmartSelect/FilterWindow";
 import ReturnBtn from "../../UI/ReturnBtn/ReturnBtn";
 import { useTranslate } from "../../../hooks/useTranslate";
@@ -13,7 +13,8 @@ const Datepicker = ({
     onChange,
     value,
     localeLang,
-    title
+    title,
+    iniValue = null
 }) => {
     const { tr } = useTranslate()
     const dispatch = useDispatch()
@@ -21,6 +22,12 @@ const Datepicker = ({
     const isDarkTheme = useSelector(state => state.pageMeta.darkTheme)
     const [listVisible, setListVisible] = useState(false)
     const [dateValue, setDateValue] = useState(null)
+
+    useEffect(() => {
+        if (iniValue !== null) {
+            setDateValue(iniValue)
+        }
+    }, [iniValue])
 
     const onChangeDate = (val) => {
         const currentDate = new Date()
