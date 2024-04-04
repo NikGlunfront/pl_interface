@@ -89,9 +89,9 @@
         margin-bottom: 1rem;
         position: relative;
 
-        &:last-child {
-            margin-bottom: 0;
-        }
+        // &:last-child {
+        //     margin-bottom: 0;
+        // }
 
         &::before {
             content: "";

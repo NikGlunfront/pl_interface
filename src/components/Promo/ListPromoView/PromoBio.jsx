@@ -4,7 +4,7 @@ const PromoBio = ({
     name = '',
     description = '',
     location = '',
-    isRemote = false
+    isDeliveryLocation = false
 }) => {
 
     return (
@@ -14,10 +14,10 @@ const PromoBio = ({
             <div 
                 className={"pl-promo__location " 
                     + (location.length === 0 ? 'pl-promo__location_skeleton ' : '')
-                    + (isRemote ? 'pl-promo__location_remote ' : '')
+                    + (isDeliveryLocation ? 'pl-promo__location_delivery ' : '')
                 }
             >
-                {isRemote ? 'Удаленная работа' : location}
+                {location}
             </div>
         </>
     )

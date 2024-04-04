@@ -28,7 +28,7 @@ const PromoDelivery = ({
                     <path fillRule="evenodd" clipRule="evenodd" d="M5.85734 11.6884C5.85734 12.7621 4.98771 13.6318 3.91402 13.6318C2.84034 13.6318 1.9707 12.7621 1.9707 11.6884C1.9707 10.6148 2.84034 9.74512 3.91402 9.74512C4.98771 9.74512 5.85734 10.6148 5.85734 11.6884Z" fill="white" stroke="#E10001" strokeWidth="0.97166" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 {delivery.list.map(item => (
-                    <span>{tr(getCityName(item))}, </span>
+                    <span key={item}>{tr(getCityName(item))}, </span>
                 ))}
                 <span>{delivery.description}</span>
            </div>

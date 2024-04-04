@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCurrentPromo } from "../../store/slices/promos/promosSlice";
 import SpinLoader from "../../components/UI/SpinLoader/SpinLoader";
 import { setPageTitle, setSearchAvailable } from "../../store/slices/pageSlice/pageSlice";
+import PromoDelivery from "../../components/Promo/PromoView/PromoDelivery";
 
 const PromoPage = ({
     
@@ -43,10 +44,11 @@ const PromoPage = ({
                 role: promoData.brand_role,
             })
         }
+        console.log(partnerData)
     }, [promoData])
     
 
-    if (!promoData) {
+    if (!promoData || partnerData === null) {
         return (
             <SpinLoader />
         )
@@ -60,15 +62,27 @@ const PromoPage = ({
                 promoName={promoData.name}
                 promoImage={promoData.img}
                 promoDescription={promoData.description}
-                promoLocation={promoData.location}
                 promoDataStats={promoData.acts} 
                 companyImage={promoData.brand_img} 
                 companyName={promoData.brand_name}
                 inactive={promoData.inactive}
                 amountLeft={promoData.amount_left}
             /> 
-            <PromoContacts partner={partnerData} />
-            <PromoAdress />
+            <PromoContacts 
+                partner={partnerData} 
+                email={partnerData.contacts.email ? partnerData.contacts.email : null}
+                facebook={partnerData.contacts.facebook ? partnerData.contacts.facebook : null}
+                instagram={partnerData.contacts.instagram ? partnerData.contacts.instagram : null}
+                phone={partnerData.contacts.phone ? partnerData.contacts.phone : null}
+                tg={partnerData.contacts.tg ? partnerData.contacts.tg : null}
+                website={partnerData.contacts.website ? partnerData.contacts.website : null}
+                whatsapp={partnerData.contacts.whatsapp ? partnerData.contacts.whatsapp : null}
+                rating={5}
+                reviewCount={37}
+
+            />
+            <PromoAdress adresses={promoData.adresses} />
+            <PromoDelivery delivery={promoData.delivery} />
             <PromoDescription>{promoData.description}</PromoDescription>
             <PromoTags>{promoData.tags}</PromoTags>
             <PromoGallery images={promoData.img} />

@@ -15,6 +15,7 @@ const PromoPreview = ({
     promoLocation,
     companyImage,
     companyName,
+    isDeliveryLocation = false,
     amountLeft,
     dateEnd,
     isRemote,
@@ -55,6 +56,7 @@ const PromoPreview = ({
                 description={promoDescription}
                 location={promoLocation}
                 isRemote={isRemote}
+                isDeliveryLocation={isDeliveryLocation}
             />
         </div>
     )

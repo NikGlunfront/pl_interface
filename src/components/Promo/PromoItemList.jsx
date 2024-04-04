@@ -1,16 +1,32 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom";
 import { register } from 'swiper/element/bundle'
 import PromoStats from "./ListPromoView/PromoStats";
 import PromoPreview from "./PromoPreview";
 import { useTranslate } from "../../hooks/useTranslate";
+import { useMetaData } from "../../hooks/useMetaData";
 register();
 
 const PromoItemList = ({
     promoData
 }) => {
     const { tr } = useTranslate()
+    const [locationString, setLocationString] = useState('')
+    const [isDeliveryLocation, setIsDeliveryLocation] = useState(false)
+    const { getLocationFromAddress, getLocationFromDeliveryItem } = useMetaData()
     let className = 'list-item '
+
+    useEffect(() => {
+        if (promoData !== null) {
+            if (promoData.adresses.length === 0) {
+                setLocationString(getLocationFromDeliveryItem(promoData.delivery))
+                setIsDeliveryLocation(true)
+            } else {
+                setLocationString(getLocationFromAddress(promoData.adresses[0]))
+                setIsDeliveryLocation(false)
+            }
+        }
+    }, [promoData])
 
     return (
         <div className={className}>
@@ -21,7 +37,8 @@ const PromoItemList = ({
                 promoDescription={promoData.description}
                 dateEnd={promoData.date_end}
                 promoImage={promoData.img}
-                promoLocation={promoData.location}
+                promoLocation={locationString}
+                isDeliveryLocation={isDeliveryLocation}
                 promoName={promoData.name}
                 inactive={promoData.inactive}
             />

@@ -10,12 +10,11 @@ import { useTranslate } from "../../../hooks/useTranslate";
 import PromoTags from "../../../components/Promo/PromoView/PromoTags";
 import PromoAdress from "../../../components/Promo/PromoView/PromoAdress";
 import PromoDelivery from "../../../components/Promo/PromoView/PromoDelivery";
+import { useMetaData } from "../../../hooks/useMetaData";
 
 const CreatePromoPreview = ({
     name,
     description,
-    locationString,
-    isRemote,
     adresses,
     delivery,
     promoDescription,
@@ -24,33 +23,28 @@ const CreatePromoPreview = ({
 }) => {
     const { tr } = useTranslate()
     const companyMeta = useSelector(state => state.user.company)
+    const promoData = useSelector(state => state.createPromo)
     const { images: promoImages,} = useSelector(state => state.createPromo)
-    const [promoData, setPromoData] = useState(null)
+    const { getLocationFromAddress, getLocationFromDeliveryItem } = useMetaData()
+    const [locationString, setLocationString] = useState('test')
+
     useEffect(() => {
-        setPromoData({
-            img: [],
-            amount_left:0,
-            name: "",
-            description:"",
-            location:"",
-            acts: {
-                views:0,
-                scs:0,
-                wish:0,
-            },
-            brand_id:3,
-            brand_name: companyMeta.name,
-            brand_img: companyMeta.icon,
-            brand_contacts: {
-                phone: "79995553333",
-                telegram: "https://tg.me/paymeg",
-                whatsapp: "+79995553333",
-                facebook: "facebook.com",
-                website: "google.com"
-            },
-            brand_role:"Магазин электроники"
-        })
-    }, [])
+        console.log({adresses: adresses, delivery: delivery})
+        if (adresses.length > 0 || (delivery && delivery.list.length > 0)) {
+            if (adresses.length === 0) {
+                setLocationString(getLocationFromDeliveryItem(delivery))
+            } else {
+                console.log('tets')
+                setLocationString(getLocationFromAddress(adresses[0]))
+            }
+        } else {
+            setLocationString('')
+        }
+    }, [adresses, delivery])
+
+    useEffect(() => {
+        console.log(locationString)
+    }, [locationString])
 
     if (promoData === null) {
         return
@@ -60,16 +54,11 @@ const CreatePromoPreview = ({
         <InfoGroup title={tr('Promo.InfoGroup.Title.Preview')} className={'pl-page-create-promo__preview'}>
             <div className={'pl-promo'}>
                 <PromoPreview
-                    amountLeft={promoData.amount_left}
-                    companyImage={promoData.brand_img}
-                    companyName={promoData.brand_name}
                     promoDescription={description}
                     promoImage={promoImages.map(({img_file}) => (img_file))}
                     promoLocation={locationString}
                     promoName={name}
-                    dateEnd={promoData.date_end}
-                    inactive={promoData.inactive}
-                    isRemote={isRemote}
+                    isDeliveryLocation={adresses.length === 0 ? true : false}
                 />
                 <div className="list-item__info">
                     <PromoStats

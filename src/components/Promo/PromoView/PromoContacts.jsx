@@ -1,11 +1,11 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom";
 import LinkOpener from "../../UI/LinkOpener/LinkOpener";
 import starSvg from '../../../assets/img/icons/promo_page/review_star.svg'
 import dialogSvg from '../../../assets/img/icons/promo_page/review_dialog.svg'
 
 const PromoContacts = ({
-    partner,
+    partner = null,
     phone,
     tg,
     whatsapp,
@@ -13,11 +13,14 @@ const PromoContacts = ({
     instagram,
     website,
     email,
+    contacts,
     reviewCount = 94,
     rating = 4.5
 }) => {
+    
+    useEffect(() => {console.log(partner)}, [partner])
 
-    if (!partner) {
+    if (partner === null) {
         return (
             <div></div>
         )

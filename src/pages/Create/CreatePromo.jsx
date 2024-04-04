@@ -9,6 +9,8 @@ import { setCreatePromoFirstStep, setCreatePromoSecondStep, setCreatePromoSettin
 import CreatePromoSettings from "./Promo/CreatePromoSettings";
 import { useTranslate } from "../../hooks/useTranslate";
 import { useScroll } from "../../hooks/useScroll";
+import { useNavigate } from "react-router-dom";
+import { PL_APP_ROUTES } from "../../vars/routes";
 
 const promoCreateSteps = [
     {id: 1, name: 'CreatePromo.Steps.Preview'},
@@ -20,11 +22,12 @@ const CreatePromo = ({
     
 }) => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const { scrollTop } = useScroll()
     const { tr } = useTranslate()
     const createPromoData = useSelector(state => state.createPromo)
     const { lastStep: step, images: promoCreatedImages, delivery: deliveryState } = useSelector(state => state.createPromo)
-    const { adress: companyAddresses } = useSelector(state => state.user.company)
+    const { adress: companyAddresses} = useSelector(state => state.user.company)
     const [firstStepData, setFirstStepData] = useState(null)
     const [secondStepData, setSecondStepData] = useState(null)
     const [thirdStepData, setThirdStepData] = useState(null)
@@ -32,7 +35,6 @@ const CreatePromo = ({
     const [isCompletedSecondStep, setIsCompletedSecondStep] = useState(false)
     const [isCompletedThirdStep, setIsCompletedThirdStep] = useState(false)
 
-    useEffect(() => {console.log(firstStepData)}, [firstStepData])
     const getDataFirstStep = (data) => {
         setFirstStepData(data)
     }
@@ -113,10 +115,9 @@ const CreatePromo = ({
                     name={firstStepData?.name ? firstStepData.name : ''}
                     description={firstStepData?.shortDescription ? firstStepData.shortDescription : ''}
                     locationString={firstStepData?.location}
-                    isRemote={firstStepData?.is_remote}
                     step={step}
                     adresses={companyAddresses.length > 0 && firstStepData?.addresses.length > 0 ? companyAddresses.filter(item => firstStepData.addresses.includes(item.id)) : []}
-                    delivery={deliveryState}
+                    delivery={firstStepData?.delivery ? firstStepData?.delivery : {list:[], description: ''}}
                     tags={secondStepData?.tagsList}
                     promoDescription={secondStepData?.description ? secondStepData.description : "" }
                 />

@@ -10,6 +10,7 @@ import { PL_APP_ROUTES } from "../../vars/routes";
 import { useCategoryChanger } from "../../hooks/useCategoryChanger";
 import { useNavigate } from "react-router-dom";
 import { useTranslate } from "../../hooks/useTranslate";
+import { useMetaData } from "../../hooks/useMetaData";
 // const {data, error, isLoading} = useGetPokemonByNameQuery('bulbasaur')
 // return (
 //     <div className="App">
@@ -34,6 +35,7 @@ const HomePage = ({
     const { isContentHidden } = useSelector(state => state.pageMeta)
     const {setAllCategoriesActive} = useCategoryChanger()
     const navigate = useNavigate()
+    const { handleCreatePromoBtn } = useMetaData()
     const { tr } = useTranslate()
     const isDarkTheme = useSelector(state => state.pageMeta.darkTheme)
 
@@ -51,10 +53,6 @@ const HomePage = ({
             setAllCategoriesActive()
         }
         navigate(PL_APP_ROUTES.CLIENT.PROMO_LIST, {replace: false})
-    }
-
-    const handleGoToCreate = () => {
-        navigate(PL_APP_ROUTES.PARTNER.CREATE_PARTNER, {replace: false})
     }
 
     if (isLoading) {
@@ -98,7 +96,7 @@ const HomePage = ({
                         {tr('Button.ShowGifts')}
                     </SmartButton>
                     <SmartButton
-                        onClick={handleGoToCreate}
+                        onClick={handleCreatePromoBtn}
                         icon={isDarkTheme === true ? giftSvgDarkTheme : giftSvg}
                     >
                         {tr('Button.NewGift')}

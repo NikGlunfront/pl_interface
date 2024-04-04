@@ -1,13 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useMetaData } from '../../hooks/useMetaData';
 
 const FooterCreatePromo = () => {
     const isDarkTheme = useSelector(state => state.pageMeta.darkTheme)
+    const { handleCreatePromoBtn } = useMetaData()
     return (
-        <Link
+        <div
             className="pl-app-footer__addpromo"
-            to={'/create-partner'}
+            onClick={handleCreatePromoBtn}
         >
             {isDarkTheme 
                 ?
@@ -21,7 +23,7 @@ const FooterCreatePromo = () => {
                     <path d="M8 15V1" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
             }
-        </Link>
+        </div>
     );
 };
 

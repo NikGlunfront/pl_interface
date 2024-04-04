@@ -1,14 +1,15 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import YesNo from "../../UI/Input/YesNo";
 import PromoStats from "../ListPromoView/PromoStats";
 import PromoPreview from "../PromoPreview";
 import { useTranslate } from "../../../hooks/useTranslate";
+import { useMetaData } from "../../../hooks/useMetaData";
 
 const PromoTopper = ({
+    promoData = null,
     promoName,
     promoImage,
     promoDescription,
-    promoLocation,
     promoDataStats,
     companyImage,
     companyName,
@@ -17,10 +18,29 @@ const PromoTopper = ({
 }) => {
     let className = 'pl-promo '
     const [notifications, setNotifications] = useState(false)
+    const [locationString, setLocationString] = useState('')
+    const [isDeliveryLocation, setIsDeliveryLocation] = useState(false)
+    const { getLocationFromAddress, getLocationFromDeliveryItem } = useMetaData()
     const { tr } = useTranslate()
+
+    useEffect(() => {
+        if (promoData !== null) {
+            if (promoData.adresses.length === 0) {
+                setLocationString(getLocationFromDeliveryItem(promoData.delivery))
+                setIsDeliveryLocation(true)
+            } else {
+                setLocationString(getLocationFromAddress(promoData.adresses[0]))
+                setIsDeliveryLocation(false)
+            }
+        }
+    }, [promoData])
 
     const toggleFunc = () => {
         setNotifications(!notifications)
+    }
+
+    if (promoData === null) {
+        return
     }
 
     return (
@@ -31,8 +51,10 @@ const PromoTopper = ({
                 companyName={companyName}
                 promoDescription={promoDescription}
                 promoImage={promoImage}
-                promoLocation={promoLocation}
+                promoLocation={locationString}
+                isDeliveryLocation={isDeliveryLocation}
                 promoName={promoName}
+                dateEnd={promoData.date_end}
                 inactive={inactive}
             />
             <div className="pl-promo__info">

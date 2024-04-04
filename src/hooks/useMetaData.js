@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux"
 import { useTranslate } from "./useTranslate"
+import { useNavigate } from "react-router-dom"
+import { PL_APP_ROUTES } from "../vars/routes"
 
 const langsData = [
    { lang_code: "ru", text: "РУС", icon: "lang-ru" },
@@ -21,9 +23,18 @@ export function useMetaData() {
     } = useSelector(state => state.iniData)
     const partnersCompany = useSelector(state => state.user.company)
     const { tr } = useTranslate()
+    const navigate = useNavigate()
 
     const getLangsData = () => {
         return langsData
+    }
+
+    const handleCreatePromoBtn = () => {
+        if (partnersCompany.description === '' || partnersCompany.name === '') {
+            navigate(PL_APP_ROUTES.PARTNER.CREATE_PARTNER, {replace: false})
+        } else {
+            navigate(PL_APP_ROUTES.PARTNER.CREATE_PROMO, {replace: false})
+        }
     }
     
     const getMenuData = () => {
@@ -73,6 +84,7 @@ export function useMetaData() {
         getLocationFromDeliveryItem,
         getTagNameById,
         getCategoryNameById,
+        handleCreatePromoBtn,
         getPartnerCompany
     }
 }

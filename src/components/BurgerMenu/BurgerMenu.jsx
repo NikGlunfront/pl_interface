@@ -16,19 +16,14 @@ const BurgerMenu = ({
     visible,
     closeWindow
 }) => {
-    const navigate = useNavigate()
     const { tr } = useTranslate()
-    const { getLangsData, getMenuData} = useMetaData()
+    const { getLangsData, getMenuData, handleCreatePromoBtn } = useMetaData()
     const langsData = getLangsData()
     const menuData = getMenuData()
     const { darkTheme: isDarkTheme } = useSelector(state => state.pageMeta)
 
     const closeList = () => {
         closeWindow()
-    }
-
-    const handleGoToCreate = () => {
-        navigate(PL_APP_ROUTES.PARTNER.CREATE_PROMO, {replace: false})
     }
 
     return (
@@ -69,7 +64,7 @@ const BurgerMenu = ({
                     {tr('Button.GetFranchise')}
                 </SmartButton>
                 <SmartButton
-                    onClick={handleGoToCreate}
+                    onClick={handleCreatePromoBtn}
                     icon={isDarkTheme === true ? giftSvgDarkTheme : giftSvg}
                 >
                     {tr('Button.NewGift')}
