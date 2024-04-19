@@ -1,6 +1,6 @@
 .pl-return-toppanel {
     @include flex_row;
-    padding: 1.5rem;
+    padding: 1.5rem 1.7rem;
     justify-content: center;
     align-items: center;
     position: sticky;
@@ -52,7 +52,7 @@
 .pl-page-container {
     flex: 1;
     overflow-x: hidden;
-    padding: 6.5rem 1rem 8rem;
+    padding: 6.5rem 1.8rem 8rem;
     background-color: var(--pl-primary-background-color);
     width: 100%;
     max-width: 50rem;
@@ -100,7 +100,7 @@
             content: "";
             height: 100%;
             background-color: #F3F3F3;
-            width: 1rem;
+            width: 3rem;
             position: absolute;
             top: 0;
             left: 0;
@@ -112,7 +112,7 @@
             content: "";
             height: 100%;
             background-color: #F3F3F3;
-            width: 1rem;
+            width: 3rem;
             position: absolute;
             top: 0;
             right: 0;

@@ -2,7 +2,7 @@
     @include flex_row;
     align-items: center;
     justify-content: space-between;
-    padding: 0.7rem 3.4rem;
+    padding: 0.7rem 1.7rem;
     border-bottom: 0.1rem solid var(--pl-primary-light-border-color);
 
     &__text {
@@ -50,11 +50,12 @@
 .pl-input-checkbox {
     @include flex_row;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.7rem;
     border-bottom: 0.1rem solid var(--pl-primary-light-border-color);
 
     &_active {
         .pl-input-checkbox__checkbox {
+            opacity: 1;
             span {
                 opacity: 1;
                 visibility: visible;
@@ -110,6 +111,7 @@
         display: block;
         position: relative;
         background-color: $white_c;
+        opacity: 0.5;
         border: 0.1rem solid #535353;
 
         span {
@@ -155,7 +157,7 @@
             left: 50%;
             width: 2.7rem;
             height: 2.7rem;
-            background-color: transparent;
+            background-color: var(--pl-primary-input-color);
             transition: $transition;
             border-radius: 50%;
             transform: translate(-50%, -50%);

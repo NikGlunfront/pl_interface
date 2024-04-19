@@ -117,7 +117,7 @@
     @include flex_row;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem;
+    padding: 1.5rem 1.8rem;
     position: fixed;
     background-color: var(--pl-primary-background-color);
     z-index: 100;
@@ -252,7 +252,7 @@
     &__thumbs {
         width: 100%;
         overflow: hidden;
-        height: 15.5rem;
+        height: 18.5rem;
         // border-radius: 1rem;
         position: relative;
         width: 100%;
@@ -273,7 +273,7 @@
         width: 2.4rem;
         height: 2.4rem;
         top: 0.6rem;
-        right: 1rem;
+        right: 1.6rem;
         z-index: 10;
         background-image: url('../../assets/img/icons/heart-white.svg');
         background-repeat: no-repeat;
@@ -289,8 +289,8 @@
     }
 
     &__img {
-        width: calc(100% + 2rem);
-        left: -1rem;
+        width: calc(100% + 3.6rem);
+        left: -1.8rem;
         margin-bottom: 0.5rem;
         position: relative;
         z-index: 2;
@@ -338,13 +338,13 @@
             img {
                 width: 100%;
                 object-fit: cover;
-                height: 15.5rem;
+                height: 18.5rem;
             }
         }
         img {
             width: 100%;
             object-fit: cover;
-            height: 15.5rem;
+            height: 18.5rem;
             background-color: var(--pl-primary-background-color);
         }
 
@@ -352,12 +352,12 @@
         .badges-list-item {
             position: absolute;
             bottom: 1.3rem;
-            right: 0.7rem;
+            right: 1.5rem;
             z-index: 2;
             display: flex;
             flex-direction: row-reverse;
             justify-content: space-between;
-            width: calc(100% - 2rem);
+            width: calc(100% - 3rem);
 
             &__gifts_left {
                 @include flex_row;
@@ -647,7 +647,7 @@
     z-index: 100;
     background: var(--pl-primary-background-color);
     width: 100%;
-    padding: 0.5rem 1rem 0.5rem;
+    padding: 0.5rem 1.8rem 0.5rem 1rem;
 
     .pl-reset-filters {
         position: absolute;

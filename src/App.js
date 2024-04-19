@@ -77,7 +77,7 @@ function App() {
 
     return (
         <div className={"App pl-app " + (isDarkTheme ? 'pl-app_darktheme' : '')}>
-            <div className="testbtn" onClick={changeTheme}></div>
+            {/* <div className="testbtn" onClick={changeTheme}></div> */}
             <ScrollTopRoutes />
             <div className='pl-app__wrapper'>
                 {location.pathname !== '/' &&

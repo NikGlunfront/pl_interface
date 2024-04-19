@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setListingData, setNullListingData } from "../../store/slices/promos/promosSlice";
 
 const banners = [
-    {banner_id: 1, banner_src: bannerImg, banner_position: 3, banner_title: 'Новогодняя реклама'}
+    // {banner_id: 1, banner_src: bannerImg, banner_position: 3, banner_title: 'Новогодняя реклама'}
 ]
 
 const PromosPage = ({
