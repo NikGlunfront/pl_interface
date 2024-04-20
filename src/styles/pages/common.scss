@@ -17,7 +17,7 @@
         margin-right: 0.4rem;
         position: absolute;
         top: 50%;
-        left: 1.5rem;
+        left: 1.8rem;
         transform: translate(0, -50%);
 
         svg {
@@ -133,6 +133,13 @@
 
     &__content {
         padding: 0.8rem 0;
+        font-weight: 300;
+    }
+}
+
+.pl-promo-page-contacts {
+    .pl-info-group__content {
+        font-weight: 400;
     }
 }
 

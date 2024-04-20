@@ -272,8 +272,12 @@
         position: absolute;
         width: 2.4rem;
         height: 2.4rem;
-        top: 0.6rem;
+        top: 1rem;
         right: 1.6rem;
+        width: 4rem;
+        height: 4rem;
+        top: 0.2rem;
+        right: 0.7rem;
         z-index: 10;
         background-image: url('../../assets/img/icons/heart-white.svg');
         background-repeat: no-repeat;
@@ -291,7 +295,7 @@
     &__img {
         width: calc(100% + 3.6rem);
         left: -1.8rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
         position: relative;
         z-index: 2;
         // border-radius: 1rem;
@@ -431,7 +435,7 @@
     &__title {
         font-size: 2rem;
         font-weight: 500;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.2rem;
         min-height: 2.6rem;
         width: fit-content;
         min-width: 40%;
@@ -445,7 +449,7 @@
     &__description {
         font-size: 1.4rem;
         font-weight: 400;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.2rem;
         min-height: 2rem;
         min-width: 60%;
 
@@ -456,7 +460,7 @@
     }
 
     &__location {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         font-size: 1.4rem;
         color: #8a8a8a;
         position: relative;
@@ -497,7 +501,7 @@
 
     &__brand {
         position: absolute;
-        top: 1.2rem;
+        top: 1.3rem;
         left: 1.4rem;
         @include flex_row;
         align-items: center;
@@ -513,8 +517,8 @@
             height: 2.5rem;
             border-radius: 50%;
             position: relative;
-            top:50%;
-            transform: translate(0, -50%);
+            // top:50%;
+            // transform: translate(0, -50%);
             @include flex_row;
 
             img {
@@ -708,7 +712,7 @@
 
 
 .pl-page-listview {
-    padding-top: 10rem;
+    padding-top: 9rem;
 
     .filters-pl-select__bottom {
         padding: 8rem 0 4rem;
@@ -849,5 +853,24 @@
             word-break: break-word;
             -webkit-box-orient: vertical;
         }
+    }
+}
+
+.pl-app-header_promopage {
+    &::after {
+        display: none;
+    }
+
+    .pl-app-header__share {
+        display: flex;
+        width: 4rem;
+        height: 2rem;
+        flex: 0 0 4rem;
+        margin-left: 0.4rem;
+        background-image: url(../../assets/img/icons/share.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: right center;
+        cursor: pointer;
     }
 }

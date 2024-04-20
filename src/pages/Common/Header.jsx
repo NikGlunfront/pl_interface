@@ -19,6 +19,7 @@ const Header = ({
     const { brandImg, brandName } = pageMeta.chatMeta
     const [returnPath, setReturnPath] = useState('-1')
     const [isChatPage, setIsChatPage] = useState(false)
+    const [isPromoPage, setIsPromoPage] = useState(false)
 
     const dispatch = useDispatch()
     let className = 'pl-app-header '
@@ -31,12 +32,16 @@ const Header = ({
     if (isChatPage) {
         className += 'pl-app-header_branded '
     }
+    if (isPromoPage) {
+        className += 'pl-app-header_promopage '
+    }
     if (pageMeta.darkTheme) {
         className += 'pl-app-header_darktheme '
     }
 
     useEffect(() => {
         setIsChatPage(false)
+        setIsPromoPage(false)
         if (location.pathname.includes('chat/')) {
             setReturnPath(-1)
             setIsChatPage(true)
@@ -44,6 +49,7 @@ const Header = ({
         }
         if (location.pathname.includes('promos/')) {
             setReturnPath(-1)
+            setIsPromoPage(true)
             return
         }
         if (location.pathname.includes('partners/')) {
@@ -108,6 +114,10 @@ const Header = ({
             }             
             {isChatPage 
                 ? <div className="pl-app-header__brand"><img src={brandImg} alt={brandName} /></div>
+                : ""
+            }             
+            {isPromoPage 
+                ? <div className="pl-app-header__share"></div>
                 : ""
             }             
         </div> 

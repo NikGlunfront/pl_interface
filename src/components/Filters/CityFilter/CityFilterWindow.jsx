@@ -70,7 +70,7 @@ const CityFilterWindow = ({
                     </div>
                 </div>
             </div>
-            <div className="filters-pl-select__filters">
+            <div className={"filters-pl-select__filters home-city-filter" + (searchQ.length > 0 ? " home-city-filter_new" : '')}>
                 {visibleFilters.length === 0 && <div className="filters-pl-select__noresult">{tr('Search.Result.Noresults')}</div>}
                 {visibleFilters.map(city => (
                     <DoubleNameInput 

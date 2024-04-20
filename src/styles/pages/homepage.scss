@@ -59,9 +59,29 @@
 
     .pl-select {
         margin-bottom: 2rem;
+        font-size: 1.6rem;
     }
 
     &__filters {
         margin-bottom: 4rem;
+    }
+}
+
+.home-city-filter {
+    .pl-input-doublename  {
+        background-image: url('../../assets/img/icons/clock-regular.svg');
+        padding-left: 4.5rem;
+        background-repeat: no-repeat;
+        background-size: 1.5rem;
+        background-position: 1.7rem 1rem;
+    }
+    &_new {
+        .pl-input-doublename  {
+            background-image: url('../../assets/img/icons/location.svg');
+            padding-left: 4.5rem;
+            background-repeat: no-repeat;
+            background-size: 1.5rem;
+            background-position: 1.7rem 0.8rem;
+        }
     }
 }

@@ -84,7 +84,7 @@ const PromoPage = ({
             <PromoAdress adresses={promoData.adresses} />
             <PromoDelivery delivery={promoData.delivery} />
             <PromoDescription>{promoData.description}</PromoDescription>
-            <PromoTags>{promoData.tags}</PromoTags>
+            <PromoTags tags={[1,2,3,4,7,8,9,10,11,12,13]} activeTagsList={[]}>{promoData.tags}</PromoTags>
             <PromoGallery images={promoData.img} />
         </div>
     )
