@@ -65,7 +65,7 @@ const Header = ({
                 break;
             case '/wishlist':
                 dispatch(setPageTitle('Page.Title.Wishlist'))
-                dispatch(setSearchAvailable(true))
+                dispatch(setSearchAvailable(false))
                 break;
                 
             case '/my-gifts':

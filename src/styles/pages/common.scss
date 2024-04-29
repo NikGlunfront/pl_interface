@@ -56,10 +56,13 @@
     background-color: var(--pl-primary-background-color);
     width: 100%;
     max-width: 50rem;
-
     transition: $transition;
     position: relative;
     left: 0;
+
+    &.pl-promo-page {
+        padding-top: 4.5rem;
+    }
 
     .pl-promolist-container {
         display: block;
@@ -168,6 +171,18 @@
     margin-right: 0.6rem;
     max-width: min-content;
     transition: $transition;
+
+    &_with_icon {
+        padding-left: 0;
+        height: 25px;
+        white-space: nowrap;
+        & > img {
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+    }
     
     &_custom {
         padding-left: 1.7rem;

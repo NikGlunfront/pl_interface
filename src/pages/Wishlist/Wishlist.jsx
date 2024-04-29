@@ -7,10 +7,13 @@ import SpinLoader from "../../components/UI/SpinLoader/SpinLoader";
 import TagFilter from "../../components/UI/TagFilter/TagFilter";
 import { setActiveWishlistTag } from "../../store/slices/filters/filtersSlice";
 import { useTranslate } from "../../hooks/useTranslate";
+import brandMegafon from '../../assets/img/icons/partners/megafon.png'
+import brandMts from '../../assets/img/icons/partners/mts.png'
+import PromoFilter from "../../components/Filters/PromoFilters/PromoFilter";
 
 const tags = [
-    {name: 'Мегафон', value: 'megafon'},
-    {name: 'МТС', value: 'MTS'},
+    {name: 'Мегафон', value: 'megafon', brandImg: brandMegafon},
+    {name: 'МТС', value: 'MTS', brandImg: brandMts},
 ]
 
 const Wishlist = ({
@@ -45,23 +48,28 @@ const Wishlist = ({
 
     return (
         <div className="pl-page-container pl-page-wishlist">
-            <div className="pl-page-gifts__tags no-scroll-visual">
-                <TagFilter 
-                    name={tr('TagFilter.Categories.All')}
-                    filterValue={'all'} 
-                    key={'all'} 
-                    changeActiveTag={handleNewTagFilter} 
-                    activeTag={activeWishlistTag === 'all'} 
-                />
-                {tags.map(tag => (
-                    <TagFilter
-                        name={tag.name} 
-                        filterValue={tag.value} 
-                        key={tag.value} 
+            <div className="pl-page-wishlist__filters">
+                <PromoFilter />
+                <div className="pl-page-wishlist__tags no-scroll-visual">
+                    <TagFilter 
+                        name={tr('TagFilter.Categories.All')}
+                        filterValue={'all'} 
+                        key={'all'} 
                         changeActiveTag={handleNewTagFilter} 
-                        activeTag={activeWishlistTag === tag.value} 
+                        activeTag={activeWishlistTag === 'all'} 
                     />
-                ))}
+                    {tags.map(tag => (
+                        <TagFilter
+                            name={tag.name} 
+                            filterValue={tag.value} 
+                            key={tag.value} 
+                            icon={tag.brandImg}
+                            changeActiveTag={handleNewTagFilter} 
+                            activeTag={activeWishlistTag === tag.value} 
+                        />
+                    ))}
+                </div>
+
             </div>
             {/* <Header title="Избранное" /> */}
             {promosData.length > 0 

@@ -25,6 +25,16 @@
     }
 }
 
+.pl-promo-page {
+    .pl-info-group__content {
+        padding-bottom: 0;
+        padding-top: 0;
+        .adress-item  {
+            padding-bottom: 0;
+        }
+    }
+}
+
 .pl-promo-page-delivery {
     & > svg {
         margin-right: 0.5rem;
@@ -202,6 +212,53 @@
     &__img {
         .list-item-inactive span {
             margin-top: 0;
+        }
+    }
+}
+
+.fixed-promo-topper {
+    @include flex_row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 4.5rem;
+    left: 0;
+    z-index: 10;
+    padding: 1.7rem;
+    background-color: var(--pl-primary-background-color);
+    transform: translate3d(0, -100%, 0);
+    transition: var(--pl-transition);
+
+    &._visible {
+        transform: translate3d(0, 0, 0);
+    }
+
+    &__name {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 700;
+        padding-right: 2rem;
+        font-size: 1.5rem;
+        line-height: 1.1;
+    }
+
+    &__btn {
+        & > button {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            line-height: 3.5rem;
+            padding: 0 1rem;
+            width: 15.8rem;
+            background-color: var(--pl-primary-red-color);
+            color: var(--pl-primary-white-color);
+            border-radius: 5.5rem;
+            font-size: 1.4rem;
         }
     }
 }

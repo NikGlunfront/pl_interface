@@ -12,6 +12,7 @@ import { getCurrentPromo } from "../../store/slices/promos/promosSlice";
 import SpinLoader from "../../components/UI/SpinLoader/SpinLoader";
 import { setPageTitle, setSearchAvailable } from "../../store/slices/pageSlice/pageSlice";
 import PromoDelivery from "../../components/Promo/PromoView/PromoDelivery";
+import FixedPromoTopper from "./FixedPromoTopper";
 
 const PromoPage = ({
     
@@ -20,7 +21,6 @@ const PromoPage = ({
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const promoData = useSelector(state => state.promos.currentPromo)
-
     const [partnerData, setPartnerData] = useState(null)
 
     const returnFunction = () => {
@@ -57,6 +57,7 @@ const PromoPage = ({
 
     return (
         <div className="pl-page-container pl-promo-page">
+            <FixedPromoTopper promoName={promoData.name} />
             <PromoTopper 
                 promoData={promoData}
                 promoName={promoData.name}
@@ -70,13 +71,13 @@ const PromoPage = ({
             /> 
             <PromoContacts 
                 partner={partnerData} 
-                email={partnerData.contacts.email ? partnerData.contacts.email : null}
-                facebook={partnerData.contacts.facebook ? partnerData.contacts.facebook : null}
-                instagram={partnerData.contacts.instagram ? partnerData.contacts.instagram : null}
+                email={null}
+                facebook={null}
+                instagram={null}
                 phone={partnerData.contacts.phone ? partnerData.contacts.phone : null}
                 tg={partnerData.contacts.tg ? partnerData.contacts.tg : null}
-                website={partnerData.contacts.website ? partnerData.contacts.website : null}
-                whatsapp={partnerData.contacts.whatsapp ? partnerData.contacts.whatsapp : null}
+                website={null}
+                whatsapp={null}
                 rating={5}
                 reviewCount={37}
 
