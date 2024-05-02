@@ -6,7 +6,8 @@ const TagFilter = ({
     icon = null,
     changeActiveTag,
     activeTag,
-    customDot
+    customDot,
+    counter = 0
 }) => {
     let className = 'pl-filter-tag '
     if (activeTag) {
@@ -22,11 +23,15 @@ const TagFilter = ({
         className += ' pl-filter-tag_with_icon'
     }
 
+    if (counter) {
+        className += ' pl-filter-tag_with_counter'
+    }
+
     const handleFilterClick = () => {
         changeActiveTag(filterValue)
     }
     return (
-        <div className={className} onClick={handleFilterClick}>
+        <div className={className} onClick={handleFilterClick} data-counter={counter}>
             {icon
                 ?   <img src={icon} alt="" />
                 :   <></>

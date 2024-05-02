@@ -33,23 +33,25 @@ const PendingChatPromo = ({
         lastMessage = {msg_id: 9, from: 'user', timestamp: '16:06', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam cum deleniti totam suscipit cupiditate excepturi', is_read: true}
     } 
     if (brandId === 3) {
-        lastMessage = {msg_id: 13, from: 'user', timestamp: '16:34', text: 'Lorem ipsum dolor sit amet consectetur', is_read: true}
+        lastMessage = {msg_id: 13, from: 'user', timestamp: '16:34', text: 'Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Ultrices nisi mauris imperdiet nulla ultricies nunc ...', is_read: true}
     } 
 
 
     return (
         <div className="pending-order-list-item">
-            <div onClick={goToChat}>
-                <PiMessage
-                    fromUser={lastMessage.from === brandName ? false : true}
-                    name={lastMessage.from === brandName ? lastMessage.from : ''}
-                    text={lastMessage.text}
-                    timestamp={lastMessage.timestamp}
-                    isRead={lastMessage.is_read}
-                    key={lastMessage.msg_id}
-                />
+            <div onClick={goToChat} className="pending-order-list-item__content">
+                <div className="pending-order-list-item__icon">
+                    <img src={brandImg} alt="" />
+                </div>
+                <div className="pending-order-list-item__body">
+                    <div className="pending-order-list-item__company">{brandName}</div>
+                    <div className="pending-order-list-item__text">{lastMessage.text}</div>
+                    <div className="pending-order-list-item__date">20.04</div>
+                    <div className="pending-order-list-item__notifications">1</div>
+                </div>
+                
             </div>
-            <PendingChatPromoButtons />
+            {/* <PendingChatPromoButtons /> */}
         </div>
     )
 };

@@ -13,17 +13,6 @@ const ReviewChatPromo = ({
 }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
-    const goToChat = () => {
-        let chatMeta = {
-            brandId: brandId,
-            brandName: brandName,
-            brandImg: brandImg,
-            promoId: promoId
-        }
-        dispatch(setChatMeta(chatMeta))
-        navigate(`/chat/review/${brandId}/${promoId}`)
-    }
     
     let lastMessage
     let reviewd
@@ -37,23 +26,15 @@ const ReviewChatPromo = ({
     } 
     if (brandId === 3) {
         lastMessage = {msg_id: 13, from: 'user', timestamp: '16:34', text: 'Lorem ipsum dolor sit amet consectetur', is_read: true}
-        reviewd = true
+        reviewd = false
     } 
 
 
     return (
         <div className="review-list-item">
-            <div onClick={goToChat}>
-                <PiMessage
-                    fromUser={lastMessage.from === brandName ? false : true}
-                    name={lastMessage.from === brandName ? "Ответ" : 'Отзыв'}
-                    text={lastMessage.text}
-                    timestamp={lastMessage.timestamp}
-                    isRead={lastMessage.is_read}
-                    key={lastMessage.msg_id}
-                />
-            </div>
-            <ReviewChatPromoButtons reviewed={reviewd} />
+            
+
+            <ReviewChatPromoButtons reviewed={reviewd} lastMessages={[lastMessage]} />
         </div>
     )
 };

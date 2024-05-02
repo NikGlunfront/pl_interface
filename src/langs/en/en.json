@@ -141,6 +141,8 @@
 
     "Datepicker.Placeholder": "dd.mm.yy",
 
+    "Review.MakeReview": "Rate the gift",
+
     "CreatePromo.Steps.Preview": "Preview",
     "CreatePromo.Steps.Description": "Description",
     "CreatePromo.Steps.Settings": "Settings",

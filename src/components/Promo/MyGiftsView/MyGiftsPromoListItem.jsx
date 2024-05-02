@@ -1,18 +1,13 @@
 import React from "react"
 import { NavLink } from "react-router-dom";
 import { register } from 'swiper/element/bundle'
-import PromoImgArea from "../ListPromoView/PromoImgArea";
-import InactivePromoImg from "../ListPromoView/InactivePromoImg";
 import PromoStats from "../ListPromoView/PromoStats";
-import PromoBadges from "../ListPromoView/PromoBadges";
-import PromoBio from "../ListPromoView/PromoBio";
-import PromoLike from "../ListPromoView/PromoLike";
-import PromoBrand from "../ListPromoView/PromoBrand";
 import PendingChatPromo from "../../Chat/PendingChatPromo/PendingChatPromo";
 import { useSelector } from "react-redux";
 import ReviewChatPromo from "../../Chat/ReviewChatPromo/ReviewChatPromo";
 import PromoPreview from "../PromoPreview";
 import { useTranslate } from "../../../hooks/useTranslate";
+import Fancybox from "../../UI/Fancybox/Fancybox";
 register();
 
 const MyGiftsPromoListItem = ({
@@ -39,6 +34,17 @@ const MyGiftsPromoListItem = ({
                 <PromoStats
                     acts={promoData.acts}
                 />
+                {giftTag === 'waiting'
+                    ?
+                        <a 
+                            href="javascript:void(0);"
+                            data-src={"#test_" + promoData.id}
+                            data-fancybox='true' 
+                            className="pending-order-list-item__btn pending-order-list-item__btn_compose"
+                        ></a>
+
+                    : <></>
+                }
                 <NavLink to={`/promos/${promoData.id}`} state={{promoData: promoData}} className="list-item__morebtn">{tr('Button.More')}</NavLink>
             </div>
             {giftTag === 'waiting'

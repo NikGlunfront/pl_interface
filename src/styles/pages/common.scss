@@ -183,6 +183,27 @@
             margin-right: 10px;
         }
     }
+
+    &_with_counter {
+        position: relative;
+        &::after {
+            content: attr(data-counter);
+            position: absolute;
+            top: 0;
+            right: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            width: 1.7rem;
+            height: 1.7rem;
+            background-color: var(--pl-primary-red-color);
+            border-radius: 50%;
+            @include flex_row;
+            align-items: center;
+            justify-content: center;
+            transform: translate(0, -50%);
+            color: var(--pl-primary-white-color);
+        }
+    }
     
     &_custom {
         padding-left: 1.7rem;
@@ -238,9 +259,18 @@
 .pl-star-rate {
     @include flex_row;
     align-items: center;
+    margin: 0 1rem 0 auto;
+
+    &_disabled {
+        pointer-events: none;
+    }
 
     &__star {
-        margin-right: 0.3rem;
+        margin-right: 1.3rem;
+        svg {
+            width: 2.4rem;
+            height: 2.4rem;
+        }
     }
 }
 

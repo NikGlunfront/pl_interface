@@ -2,7 +2,8 @@ import React, { useState } from "react"
 import Star from "./Star";
 
 const StarRating = ({
-    initRating = null
+    initRating = null,
+    disabled = false
 }) => {
     const [rating, setRating] = useState(initRating)
 
@@ -11,9 +12,9 @@ const StarRating = ({
     }
 
     return (
-        <div className="pl-star-rate">
+        <div className={"pl-star-rate" + (disabled ? ' pl-star-rate_disabled' : '')}>
             {[...Array(5).keys()].map(num => (
-                <Star rate={num + 1} isActive={rating >= num + 1 ? true : false} key={num} handleStarChange={handleStarChange} />
+                <Star rate={num + 1} isActive={rating >= num + 1 && !disabled ? true : false} key={num} handleStarChange={handleStarChange} />
             ))}
 
         </div>

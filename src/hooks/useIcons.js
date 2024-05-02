@@ -24,6 +24,10 @@ import actionDrag from '../assets/img/icons/actions/drag_ico.svg'
 import actionDeleteWhite from '../assets/img/icons/actions/delete_ico_white.svg'
 import actionEditWhite from '../assets/img/icons/actions/edit_ico_white.svg'
 import actionDragWhite from '../assets/img/icons/actions/drag_ico_white.svg'
+import waitingWhite from '../assets/img/icons/actions/waiting_white.svg'
+import waiting from '../assets/img/icons/actions/waiting.svg'
+import confirmedWhite from '../assets/img/icons/actions/confirmed_white.svg'
+import confirmed from '../assets/img/icons/actions/confirmed.svg'
 import { useSelector } from 'react-redux'
 
 export function useIcons() {
@@ -40,9 +44,13 @@ export function useIcons() {
         'plus': isDarkTheme ? plusWhite : plus,
         'edit': isDarkTheme ? actionEditWhite : actionEdit,
         'delete': isDarkTheme ? actionDeleteWhite : actionDelete,
-        'drag': isDarkTheme ? actionDeleteWhite : actionDrag,
+        'drag': isDarkTheme ? actionDragWhite : actionDrag,
         'lang-ru': ruLang,
         'lang-en': enLang,
+        'waiting': isDarkTheme ? waitingWhite : waiting,
+        'confirmed': isDarkTheme ? confirmedWhite : confirmed,
+        'waiting_reverse': isDarkTheme ? waiting : waitingWhite,
+        'confirmed_reverse': isDarkTheme ? confirmed : confirmedWhite,
     }
 
     const getIcon = (iconName) => {

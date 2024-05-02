@@ -7,6 +7,7 @@ import SpinLoader from "../../components/UI/SpinLoader/SpinLoader";
 import { setActiveMyGiftsTag } from "../../store/slices/filters/filtersSlice";
 import MyGiftsPromoList from "../../components/Promo/MyGiftsView/MyGiftsPromoList";
 import { useTranslate } from "../../hooks/useTranslate";
+import { useIcons } from "../../hooks/useIcons";
 
 const tags = [
     {name: 'TagFilter.MyGifts.Waiting', value: 'waiting'},
@@ -18,6 +19,7 @@ const MyGifts = ({
     
 }) => {
     const { tr } = useTranslate()
+    const { getIcon } = useIcons()
     const promosData = useSelector(state => state.promos.my_gifts)
     const activeMyGiftsTag = useSelector(state => state.filters.activeMyGiftsTag)
     const dispatch = useDispatch()
@@ -46,15 +48,24 @@ const MyGifts = ({
     return (
         <div className="pl-page-container pl-page-gifts">
             <div className="pl-page-gifts__tags no-scroll-visual">
-                {tags.map(tag => (
-                    <TagFilter
-                        name={tr(tag.name)} 
-                        filterValue={tag.value} 
-                        key={tag.value} 
-                        changeActiveTag={handleNewTagFilter} 
-                        activeTag={activeMyGiftsTag === tag.value} 
-                    />
-                ))}
+                <TagFilter
+                    name={tr(tags[0].name)} 
+                    filterValue={tags[0].value} 
+                    key={tags[0].value} 
+                    changeActiveTag={handleNewTagFilter} 
+                    activeTag={activeMyGiftsTag === tags[0].value} 
+                    icon={activeMyGiftsTag === tags[0].value ? getIcon('waiting_reverse') : getIcon('waiting')}
+                    counter={3}
+                />
+                <TagFilter
+                    name={tr(tags[1].name)} 
+                    filterValue={tags[1].value} 
+                    key={tags[1].value} 
+                    changeActiveTag={handleNewTagFilter} 
+                    activeTag={activeMyGiftsTag === tags[1].value} 
+                    icon={activeMyGiftsTag === tags[1].value ? getIcon('confirmed_reverse') : getIcon('confirmed')}
+                    counter={3}
+                />
             </div>
             {promosData.length > 0 
                 ? <MyGiftsPromoList promos={promosData}  />
