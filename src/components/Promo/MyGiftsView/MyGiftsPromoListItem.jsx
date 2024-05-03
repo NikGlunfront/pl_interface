@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { NavLink } from "react-router-dom";
 import { register } from 'swiper/element/bundle'
 import PromoStats from "../ListPromoView/PromoStats";
@@ -8,6 +8,8 @@ import ReviewChatPromo from "../../Chat/ReviewChatPromo/ReviewChatPromo";
 import PromoPreview from "../PromoPreview";
 import { useTranslate } from "../../../hooks/useTranslate";
 import Fancybox from "../../UI/Fancybox/Fancybox";
+import Modal from "../../UI/Modal/Modal";
+import qrCodeImage from '../../../assets/img/promos/qrcode.png'
 register();
 
 const MyGiftsPromoListItem = ({
@@ -16,6 +18,7 @@ const MyGiftsPromoListItem = ({
     const { tr } = useTranslate()
     let className = 'list-item '
     const { activeMyGiftsTag: giftTag } = useSelector(state => state.filters)
+    const [isModalActive, setIsModalActive] = useState(false)
 
     return (
         <div className={className}>
@@ -29,24 +32,42 @@ const MyGiftsPromoListItem = ({
                 promoName={promoData.name}
                 dateEnd={promoData.date_end}
                 inactive={promoData.inactive}
+                recieved={promoData.recieved ? promoData.recieved : false}
+                deleted={promoData.deleted ? promoData.deleted : false}
             />
-            <div className="list-item__info">
-                <PromoStats
-                    acts={promoData.acts}
-                />
-                {giftTag === 'waiting'
-                    ?
-                        <a 
-                            href="javascript:void(0);"
-                            data-src={"#test_" + promoData.id}
-                            data-fancybox='true' 
+            {giftTag === 'waiting'
+                ?
+                <div className="list-item__info">
+                    <PromoStats
+                        acts={promoData.acts}
+                    />
+                        <div 
                             className="pending-order-list-item__btn pending-order-list-item__btn_compose"
-                        ></a>
+                            onClick={() => setIsModalActive(true)}
+                        ></div>
+                        <Modal
+                            className={'qr-code-popup'}
+                            isActive={isModalActive}
+                            setActive={setIsModalActive}
+                        >
+                            <div className="qr-code-popup__title">Получить подарок</div>
+                            <div className="qr-code-popup__subtitle">Покажите этот куаркод или отправьте ссылку партнёру, для подтверждения вашей заявки.</div>
+                            <div className="qr-code-popup__code">
+                                <img src={qrCodeImage} alt="" />
+                            </div>
+                            <div className="qr-code-popup__link">https://www.payless.bot/64688529id{promoData.id}</div>
+                            <div className="qr-code-popup__btns">
+                                <div className="qr-code-popup__deletebtn"></div>
+                                <div className="qr-code-popup__copybtn">Скопировать</div>
+                                <div className="qr-code-popup__sendbtn"></div>
+                            </div>
+                        </Modal>
 
-                    : <></>
-                }
-                <NavLink to={`/promos/${promoData.id}`} state={{promoData: promoData}} className="list-item__morebtn">{tr('Button.More')}</NavLink>
-            </div>
+                    <NavLink to={`/promos/${promoData.id}`} state={{promoData: promoData}} className="list-item__morebtn">{tr('Button.More')}</NavLink>
+                </div>
+                : 
+                <></>
+            }
             {giftTag === 'waiting'
                 ?
                     <PendingChatPromo 

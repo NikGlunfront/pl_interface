@@ -17,15 +17,19 @@ const ReviewChatPromo = ({
     let lastMessage
     let reviewd
     if (brandId === 1) {
-        lastMessage = {msg_id: 15, from: brandName, timestamp: '16:54', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam cum deleniti totam suscipit cupiditate excepturi', is_read: true}
+        lastMessage = [{msg_id: 15, from: brandName, timestamp: '16:54', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam cum deleniti totam suscipit cupiditate excepturi', is_read: true}, {msg_id: 13, from: 'user', timestamp: '16:34', text: 'Lorem ipsum dolor sit amet consectetur', is_read: true}]
         reviewd = true
     } 
     if (brandId === 2) {
-        lastMessage = {msg_id: 9, from: 'user', timestamp: '16:06', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam cum deleniti totam suscipit cupiditate excepturi', is_read: true}
+        lastMessage = [{msg_id: 9, from: 'user', timestamp: '16:06', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam cum deleniti totam suscipit cupiditate excepturi', is_read: true}]
         reviewd = false
     } 
     if (brandId === 3) {
-        lastMessage = {msg_id: 13, from: 'user', timestamp: '16:34', text: 'Lorem ipsum dolor sit amet consectetur', is_read: true}
+        lastMessage = [{msg_id: 13, from: 'user', timestamp: '16:34', text: 'Lorem ipsum dolor sit amet consectetur', is_read: true}, {msg_id: 13, from: 'user', timestamp: '16:34', text: 'Lorem ipsum dolor sit amet consectetur', is_read: true}]
+        reviewd = false
+    } 
+    if (promoId === 5) {
+        lastMessage = [{msg_id: 13, from: 'user', timestamp: '16:34', text: 'Lorem ipsum dolor sit amet consectetur', is_read: true}, {msg_id: 13, from: 'user', timestamp: '16:34', text: 'Lorem ipsum dolor sit amet consectetur', is_read: true}]
         reviewd = false
     } 
 
@@ -34,7 +38,7 @@ const ReviewChatPromo = ({
         <div className="review-list-item">
             
 
-            <ReviewChatPromoButtons reviewed={reviewd} lastMessages={[lastMessage]} />
+            <ReviewChatPromoButtons reviewed={reviewd} lastMessages={[...lastMessage]} />
         </div>
     )
 };

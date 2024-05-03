@@ -70,7 +70,7 @@ const Header = ({
                 
             case '/my-gifts':
                 dispatch(setPageTitle('Page.Title.MyGifts'))
-                dispatch(setSearchAvailable(true))
+                dispatch(setSearchAvailable(false))
             break;
                 
             case '/create-promo':

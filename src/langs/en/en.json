@@ -32,6 +32,8 @@
     "Promo.PreviewImg.GiftsLeft": "Gifts left",
     "Promo.PreviewImg.Paused": "Temporarily on pause",
     "Promo.PreviewImg.RemindMe": "Remind me via PM",
+    "Promo.PreviewImg.Deleted": "Gift removed",
+    "Promo.PreviewImg.Recieved": "Gift recieved",
 
     "Promo.InfoGroup.Title.Adress": "Address",
     "Promo.InfoGroup.Title.Delivery": "Delivery",
@@ -142,6 +144,8 @@
     "Datepicker.Placeholder": "dd.mm.yy",
 
     "Review.MakeReview": "Rate the gift",
+    "Review.Message.YourReview": "Your review",
+    "Review.Message.Reply": "Reply",
 
     "CreatePromo.Steps.Preview": "Preview",
     "CreatePromo.Steps.Description": "Description",

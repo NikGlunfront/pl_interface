@@ -20,9 +20,9 @@ const MyGifts = ({
 }) => {
     const { tr } = useTranslate()
     const { getIcon } = useIcons()
-    const promosData = useSelector(state => state.promos.my_gifts)
     const activeMyGiftsTag = useSelector(state => state.filters.activeMyGiftsTag)
     const dispatch = useDispatch()
+    const promosData = useSelector(state => state.promos.my_gifts)
 
     useEffect(() => {
         let initMyGiftsTag = activeMyGiftsTag !== null ? activeMyGiftsTag : 'waiting'
@@ -68,7 +68,7 @@ const MyGifts = ({
                 />
             </div>
             {promosData.length > 0 
-                ? <MyGiftsPromoList promos={promosData}  />
+                ? <MyGiftsPromoList promos={promosData.map(item => (item.id === 5 ? {...item, deleted: true} : {...item, recieved: true}))}  />
                 : <SpinLoader />
             }
             <Footer />

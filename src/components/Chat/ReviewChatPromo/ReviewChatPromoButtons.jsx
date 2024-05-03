@@ -1,49 +1,57 @@
-import React from "react"
+import React, { useState } from "react"
 import StarRating from "../../UI/StarRating/StarRating";
 import { useTranslate } from "../../../hooks/useTranslate";
 import megafonImg from '../../../assets/img/icons/partners/megafon.png'
+import userImg from '../../../assets/img/promos/b03ee6ee4b2047eb3f833e3dfbb42265.jpg'
+import ReviewMessageSlider from "./ReviewMessageSlider";
+import Modal from "../../UI/Modal/Modal";
+import TextArea from "../../UI/Input/TextArea";
 
 const ReviewChatPromoButtons = ({
     reviewed = false,
     lastMessages = []
 }) => {
     const { tr } = useTranslate()
+    const [isModalActive, setIsModalActive] = useState(false)
+    const [reviewText, setReviewText] = useState('')
 
     return (
         <>
             {reviewed 
                 ?
-                    <div className="review-list-item__acts">
-                        {tr('Review.MakeReview')}
-                        <StarRating initRating={4} disabled={true}/>
-                        {/* <div className="review-list-item__btns">
-                            {reviewed 
-                                ? ""
-                                : <button className="review-list-item__makereview">Оставить отзыв</button>
-                            }
-                            <div className="review-list-item__btn review-list-item__btn_chat" ></div>
-                        </div> */}
-                    </div>
+                    <>
+                        <div className="review-list-item__acts" onClick={() => setIsModalActive(true)}>
+                            {tr('Review.MakeReview')}
+                            <StarRating initRating={0} disabled={true}/>
+                        </div>
+                        <Modal
+                            className={'make-review-popup'}
+                            isActive={isModalActive}
+                            setActive={setIsModalActive}
+                        >
+                            <div className="make-review-popup__stars">
+                                <StarRating initRating={5} />
+                            </div>
+                            <div className="make-review-popup__title">
+                                <span>{tr('Review.Message.YourReview')}</span>
+                                <img src={userImg} alt="" />
+                            </div>
+                            <div className="make-review-popup__input">
+                                <TextArea 
+                                    placeholder={'Ваш отзыв'}
+                                    handleChange={setReviewText}
+                                    iniValue={reviewText}
+                                />
+                            </div>
+                            <div className="make-review-popup__btn">Сохранить</div>
+                        </Modal>
+                    </>
 
                 :
-                    <div className="review-message">
-                        <div className="review-message__content">
-                            <div className="review-message__user">
-                                <img src={megafonImg} alt="" />
-                                <div className="review-message__name">Ваш отзыв</div>
-                            </div>
-                            <div className="review-message__rate">
-                                <StarRating initRating={4} />
-                            </div>
-                            <div className="review-message__text">
-                                Lorem ipsum dolor sit amet consectetur. Integer gravida pretium elit facilisis viverra ac condimentum commodo placerat.  Lorem ipsum dolor sit amet consectetur. Integer gravida pretium elit facilisis viverra ac condimentum commodo placerat. 
-                            </div>
-                            <div className="review-message__time">
-                                <span>14:34</span>
-                                <div></div>
-                            </div>
-                        </div>
-                    </div>
+                    <ReviewMessageSlider 
+                        userReview={lastMessages.length > 0 ? lastMessages[0] : null} 
+                        companyReply={lastMessages.length > 1 ? lastMessages[1] : null} 
+                    />
             }
         </>
     )

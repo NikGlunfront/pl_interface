@@ -32,6 +32,8 @@
     "Promo.PreviewImg.GiftsLeft": "Осталось подарков",
     "Promo.PreviewImg.Paused": "Временно на паузе",
     "Promo.PreviewImg.RemindMe": "Напомнить в ЛС",
+    "Promo.PreviewImg.Deleted": "Предложение удалено",
+    "Promo.PreviewImg.Recieved": "Подарок получен",
 
     "Promo.InfoGroup.Title.Adress": "Адрес",
     "Promo.InfoGroup.Title.Delivery": "Доставка",
@@ -143,6 +145,8 @@
     "Datepicker.Placeholder": "дд.мм.гг",
 
     "Review.MakeReview": "Оцените подарок",
+    "Review.Message.YourReview": "Ваш отзыв",
+    "Review.Message.Reply": "Ответ",
 
     "CreatePromo.Steps.Preview": "Превью",
     "CreatePromo.Steps.Description": "Описание",

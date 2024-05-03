@@ -19,6 +19,8 @@ const PromoPreview = ({
     amountLeft,
     dateEnd,
     isRemote,
+    recieved = false,
+    deleted = false,
     inactive = false,
 }) => {
     const location = useLocation()
@@ -34,13 +36,15 @@ const PromoPreview = ({
                     promoName={promoName}
                 />
                 {inactive === false
-                    ? <PromoLike />
+                    ? <PromoLike deleted={deleted} />
                     : ''
                 }
                 <PromoBadges 
                     days_amount_left={dateEnd}
                     gifts_amount_left={amountLeft}
                     inactive={inactive}
+                    recieved={recieved}
+                    deleted={deleted}
                 />
                 {inactive === true && !location.pathname.includes('promos/')
                     ? <InactivePromoImg />
