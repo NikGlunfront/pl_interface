@@ -38,10 +38,14 @@ const PromoTopper = ({
     const toggleFunc = () => {
         setNotifications(!notifications)
     }
+    useEffect(() => {
+        console.log(locationString)
+    }, [])
 
     if (promoData === null) {
         return
     }
+
 
     return (
         <div className={className}>

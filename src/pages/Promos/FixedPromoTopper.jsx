@@ -3,7 +3,8 @@ import { useTranslate } from '../../hooks/useTranslate';
 
 const FixedPromoTopper = ({
     promoName = '',
-    topScrollPosition = 350
+    topScrollPosition = 350,
+    promoPreview
 }) => {
     const [isVisible, setIsVisible] = useState(false)
     const { tr } = useTranslate()
@@ -30,7 +31,7 @@ const FixedPromoTopper = ({
 
     return (
         <div className={'fixed-promo-topper' + (isVisible ? " _visible" : '')}>
-            <div className="fixed-promo-topper__name">{promoName}</div>
+            <div className="fixed-promo-topper__name"><img src={promoPreview} /><span>{promoName}</span></div>
             <div className="fixed-promo-topper__btn">
                 <button className="pl-promo__getgift">{tr('Button.GetGift')}</button>
             </div>

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../Common/Header";
 import InfoGroup from "../../containers/InfoGroup";
-import brandMegafon from '../../assets/img/icons/partners/megafon.png'
-import brandMts from '../../assets/img/icons/partners/mts.png'
+import brandMegafon from '../../assets/img/icons/partners/citilink_logo.jpg'
+import brandMts from '../../assets/img/icons/partners/cum_logo.png'
 import brandApple from '../../assets/img/icons/partners/apple.svg'
 import { useDispatch } from "react-redux";
 import { setPageTitle } from "../../store/slices/pageSlice/pageSlice";
@@ -24,7 +24,7 @@ const PartnerPage = ({
 
         if (id === 1) {
             setPartnerData({
-                brand_name: "Мегафон", brand_img: brandMegafon, brand_contacts: {phone: "79995553333", telegram: "https://tg.me/paymeg", whatsapp: "+79995553333", facebook: "facebook.com", website: "google.com"}, brand_role: 'Магазин электроники'
+                brand_name: "Ситилинк", brand_img: brandMegafon, brand_contacts: {phone: "79995553333", telegram: "https://tg.me/paymeg", whatsapp: "+79995553333", facebook: "facebook.com", website: "google.com"}, brand_role: 'Магазин электроники'
             })
         } else if (id === 3) {
             setPartnerData({
@@ -32,7 +32,7 @@ const PartnerPage = ({
             })
         } else {
             setPartnerData({
-                brand_name: "МТС", brand_img: brandMts, brand_contacts: {phone: "79995553333", telegram: "https://tg.me/paymeg", whatsapp: "+79995553333", facebook: "facebook.com", website: "google.com"}, brand_role: 'Магазин электроники'
+                brand_name: "ЦУМ", brand_img: brandMts, brand_contacts: {phone: "79995553333", telegram: "https://tg.me/paymeg", whatsapp: "+79995553333", facebook: "facebook.com", website: "google.com"}, brand_role: 'Магазин электроники'
             })
         }
     }, [])

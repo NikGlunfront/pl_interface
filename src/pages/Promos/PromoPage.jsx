@@ -18,14 +18,9 @@ const PromoPage = ({
     
 }) => {
     const { id } = useParams()
-    const navigate = useNavigate();
     const dispatch = useDispatch()
     const promoData = useSelector(state => state.promos.currentPromo)
     const [partnerData, setPartnerData] = useState(null)
-
-    const returnFunction = () => {
-        navigate(-1) 
-    }
 
     useEffect(() => {
         dispatch(getCurrentPromo(id))
@@ -44,7 +39,6 @@ const PromoPage = ({
                 role: promoData.brand_role,
             })
         }
-        console.log(partnerData)
     }, [promoData])
     
 
@@ -57,7 +51,7 @@ const PromoPage = ({
 
     return (
         <div className="pl-page-container pl-promo-page">
-            <FixedPromoTopper promoName={promoData.name} />
+            <FixedPromoTopper promoName={promoData.name} promoPreview={promoData.img[0]} />
             <PromoTopper 
                 promoData={promoData}
                 promoName={promoData.name}

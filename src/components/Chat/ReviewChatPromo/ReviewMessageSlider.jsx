@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import StarRating from '../../UI/StarRating/StarRating';
-import megafonImg from '../../../assets/img/icons/partners/megafon.png'
+import megafonImg from '../../../assets/img/icons/partners/citilink_logo.jpg'
 import userImg from '../../../assets/img/promos/b03ee6ee4b2047eb3f833e3dfbb42265.jpg'
 import { register } from 'swiper/element/bundle'
 import { useTranslate } from '../../../hooks/useTranslate';

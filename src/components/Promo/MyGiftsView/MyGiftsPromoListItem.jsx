@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom";
 import { register } from 'swiper/element/bundle'
 import PromoStats from "../ListPromoView/PromoStats";
@@ -10,6 +10,7 @@ import { useTranslate } from "../../../hooks/useTranslate";
 import Fancybox from "../../UI/Fancybox/Fancybox";
 import Modal from "../../UI/Modal/Modal";
 import qrCodeImage from '../../../assets/img/promos/qrcode.png'
+import { useMetaData } from "../../../hooks/useMetaData";
 register();
 
 const MyGiftsPromoListItem = ({
@@ -19,6 +20,21 @@ const MyGiftsPromoListItem = ({
     let className = 'list-item '
     const { activeMyGiftsTag: giftTag } = useSelector(state => state.filters)
     const [isModalActive, setIsModalActive] = useState(false)
+    const [locationString, setLocationString] = useState('')
+    const [isDeliveryLocation, setIsDeliveryLocation] = useState(false)
+    const { getLocationFromAddress, getLocationFromDeliveryItem } = useMetaData()
+
+    useEffect(() => {
+        if (promoData !== null) {
+            if (promoData.adresses.length === 0) {
+                setLocationString(getLocationFromDeliveryItem(promoData.delivery))
+                setIsDeliveryLocation(true)
+            } else {
+                setLocationString(getLocationFromAddress(promoData.adresses[0]))
+                setIsDeliveryLocation(false)
+            }
+        }
+    }, [promoData])
 
     return (
         <div className={className}>
@@ -28,7 +44,8 @@ const MyGiftsPromoListItem = ({
                 companyName={promoData.brand_name}
                 promoDescription={promoData.description}
                 promoImage={promoData.img}
-                promoLocation={promoData.location}
+                promoLocation={locationString}
+                isDeliveryLocation={isDeliveryLocation}
                 promoName={promoData.name}
                 dateEnd={promoData.date_end}
                 inactive={promoData.inactive}

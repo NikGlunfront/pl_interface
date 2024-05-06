@@ -50,7 +50,7 @@ const AdressItem = ({
         <>  
             <div className={"adress-item " + (controlsActive ? " adress-item_with_controls" : '')} ref={itemRef}>
                 <div className="adress-item__adress">
-                    {tr(currentCity?.name)}, {adress.adress}
+                    {tr(currentCity?.name)}<span>{adress.adress}</span>
                 </div>
                 <div className="adress-item__map">
                     {controlsActive &&

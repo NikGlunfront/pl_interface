@@ -17,7 +17,14 @@ const PromoBio = ({
                     + (isDeliveryLocation ? 'pl-promo__location_delivery ' : '')
                 }
             >
-                {location}
+                {/* {location.includes('[%address%]')
+                    ?   <><b>{location.substring(0, location.indexOf('[%address%]'))}</b>, {location.substring(location.indexOf('%]') + 2)}</>
+                    :   <><b>{location.substring(0, location.indexOf('[%delivery%]'))}</b><span>{location.substring(location.indexOf('%]') + 2)}</span></>
+                }  */}
+                {location.includes('[%address%]')
+                    ?   <>{location.substring(0, location.indexOf('[%address%]'))}, {location.substring(location.indexOf('%]') + 2)}</>
+                    :   <>{location.substring(0, location.indexOf('[%delivery%]'))}, {location.substring(location.indexOf('%]') + 2)}</>
+                } 
             </div>
         </>
     )

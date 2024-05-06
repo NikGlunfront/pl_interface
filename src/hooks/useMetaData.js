@@ -55,12 +55,12 @@ export function useMetaData() {
 
     const getLocationFromAddress = (addressObj) => {
         const cityName = allCities.filter(city => city.id === addressObj.city_id)[0].name
-        return tr(cityName) + ', ' + addressObj.adress
+        return tr(cityName) + '[%address%]' + addressObj.adress
     }
 
     const getLocationFromDeliveryItem = (deliveryObj) => {
         const cityName = allCities.filter(city => city.id === deliveryObj.list[0])[0].name
-        return tr(cityName) + ', ' + deliveryObj.description
+        return tr(cityName) + '[%delivery%]' + deliveryObj.description
     }
 
     const getPartnerCompany = () => {

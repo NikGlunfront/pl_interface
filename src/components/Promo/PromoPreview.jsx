@@ -35,10 +35,11 @@ const PromoPreview = ({
                     promoImage={promoImage}
                     promoName={promoName}
                 />
-                {inactive === false
+                <PromoLike deleted={deleted} />
+                {/* {inactive === false
                     ? <PromoLike deleted={deleted} />
                     : ''
-                }
+                } */}
                 <PromoBadges 
                     days_amount_left={dateEnd}
                     gifts_amount_left={amountLeft}
