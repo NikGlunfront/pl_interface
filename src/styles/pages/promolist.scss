@@ -7,7 +7,7 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    padding-bottom: 1rem;
+    padding-bottom: 1.6rem;
     z-index: 97;
     width: 100%;
     background-color: var(--pl-primary-background-color);
@@ -342,11 +342,23 @@
                 font-size: 1.6rem;
                 color: $white_c;
 
-                .pl-input-checkbox__name {
-                    color: $white_c;
-                    font-weight: 400;
+                .pl-input-checkbox {
+                    border-radius: 2.4rem;
+                    background: var(--pl-primary-darkblue-color);
+                    padding: 0 0.7rem;
+                    height: 2.3rem;
+
+                    &__name {
+                        color: $white_c;
+                        font-weight: 400;
+                        opacity: 1;
+                        margin-right: 0;
+                        font-size: 1.4rem;
+                        line-height: 1;
+                    }
                 }
             }
+            
         }
 
         & > a {
@@ -822,7 +834,7 @@
         align-items: center;
         flex: 0 0 calc(100% - 3.5rem);
         overflow: auto;
-        padding-bottom: 0.5rem;
+        padding-bottom: 0;
     }
 
     .filters-pl-select__search {

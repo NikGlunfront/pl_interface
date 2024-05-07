@@ -7,13 +7,13 @@ import SpinLoader from "../../components/UI/SpinLoader/SpinLoader";
 import TagFilter from "../../components/UI/TagFilter/TagFilter";
 import { setActiveWishlistTag } from "../../store/slices/filters/filtersSlice";
 import { useTranslate } from "../../hooks/useTranslate";
-import brandMegafon from '../../assets/img/icons/partners/megafon.png'
-import brandMts from '../../assets/img/icons/partners/mts.png'
+import brandMegafon from '../../assets/img/icons/partners/citilink_logo.jpg'
+import brandMts from '../../assets/img/icons/partners/cum_logo.png'
 import PromoFilter from "../../components/Filters/PromoFilters/PromoFilter";
 
 const tags = [
-    {name: 'Мегафон', value: 'megafon', brandImg: brandMegafon},
-    {name: 'МТС', value: 'MTS', brandImg: brandMts},
+    {name: 'Ситилинк', value: 'megafon', brandImg: brandMegafon},
+    {name: 'ЦУМ', value: 'MTS', brandImg: brandMts},
 ]
 
 const Wishlist = ({

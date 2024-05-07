@@ -80,7 +80,6 @@ const ManageAdress = ({
             sendAlert(tr(checkIsValidAdress.error))
             return
         }
-        console.log(editedAdress)
         if (editedAdress.id !== 0) {
             if (isEditing) {
                 manageAdressData(...adressData, editedAdress)

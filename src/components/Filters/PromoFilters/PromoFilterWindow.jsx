@@ -22,6 +22,12 @@ const PromoFilterWindow = ({
     const dispatch = useDispatch()
 
     useEffect(() => {
+        if (active_filters.activeCategoryTag) {
+            setCatOpened(active_filters.activeCategoryTag)
+        }
+    }, [active_filters.activeCategoryTag])
+
+    useEffect(() => {
         if (active_filters.categories?.length) {
             setChoosenCats(initData.categories.filter(cat => active_filters.categories.includes(cat.id)))
             if (catOpened === null) {
@@ -67,6 +73,27 @@ const PromoFilterWindow = ({
                 <div className="pl-return-toppanel__title">{tr('Search.Title.SearchSettings')}</div>
                 <div className="pl-reset-filters" onClick={handleResetFilters}>{tr('Reset')}</div>
             </div>
+            
+            <div className="filters-pl-select__tags">
+                <TagFilter 
+                    name={tr('TagFilter.Categories.All')}
+                    filterValue={0} 
+                    key={'all'} 
+                    changeActiveTag={handleNewTagFilter} 
+                    activeTag={catOpened === 0} 
+                />
+                {choosenCats.length > 0 && choosenCats.map(cat => (
+                    <TagFilter 
+                        name={tr(cat.name)} 
+                        filterValue={cat.id} 
+                        key={cat.id} 
+                        changeActiveTag={handleNewTagFilter} 
+                        activeTag={catOpened === cat.id}
+                        customDot={active_filters.tags[cat.id] !== initData.tags[cat.id]} 
+                    />
+                ))}
+            </div>
+            <div className="filter-pl-select__tags_more">{tr('More')} 23</div>
             <div className="filters-pl-select__search">
                 <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" clipRule="evenodd" d="M13.1875 7.09375C13.1875 10.4594 10.4594 13.1875 7.09375 13.1875C3.72813 13.1875 1 10.4594 1 7.09375C1 3.72813 3.72813 1 7.09375 1C10.4594 1 13.1875 3.72813 13.1875 7.09375Z" stroke={pageMeta.darkTheme ? "white" : "black"} strokeLinecap="round" strokeLinejoin="round"/>
@@ -83,19 +110,6 @@ const PromoFilterWindow = ({
                         <path d="M10 1.00011L1 10M10 9.99989L1 1" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                 </div>
-            </div>
-            <div className="filters-pl-select__tags">
-                {choosenCats.length > 0 && choosenCats.map(cat => (
-                    <TagFilter 
-                        name={tr(cat.name)} 
-                        filterValue={cat.id} 
-                        key={cat.id} 
-                        changeActiveTag={handleNewTagFilter} 
-                        activeTag={catOpened === cat.id}
-                        customDot={active_filters.tags[cat.id] !== initData.tags[cat.id]} 
-                    />
-                ))}
-                <div className="filter-pl-select__tags_more">{tr('More')} 23</div>
             </div>
             <SearchTagsField 
                 tagsData={initData.tags}

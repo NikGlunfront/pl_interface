@@ -29,6 +29,18 @@
     .pl-info-group__content {
         padding-bottom: 0;
         padding-top: 0;
+        font-weight: 400;
+        color: #5f5d5d;
+        font-size: 1.6rem;
+
+        .pl-select__filters {
+            color: var(--pl-primary-text-color);
+
+            .adress-item {
+                padding-bottom: 1.5rem;
+            }
+        }
+
         .adress-item  {
             padding-bottom: 0;
 
@@ -40,6 +52,7 @@
                 padding-left: 0;
                 background: none;
                 font-weight: 700;
+                color: var(--pl-primary-text-color);
 
                 &::before {
                     content: "";
@@ -55,7 +68,7 @@
 
                 & > span {
                     font-weight: 400;
-                    color: var(--pl-grey-text-color);
+                    color: #5f5d5d;
                     display: block;
                 }
             }
@@ -63,15 +76,19 @@
     }
 
     .pl-promo-page-delivery {
+        b {
+            color: var(--pl-primary-text-color);
+        }
+
         & > span {
             display: block;
             font-weight: 400;
-            color: var(--pl-grey-text-color);
+            color: #5f5d5d;
         }
     }
 
     .pl-promo {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
 }
 

@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import {BrowserRouter, RouterProvider, createBrowserRouter} from 'react-router-dom'
+import {BrowserRouter, RouterProvider, ScrollRestoration, createBrowserRouter} from 'react-router-dom'
 import HomePage from './pages/Home/HomePage';
 import PromosPage from './pages/Promos/PromosMainPage';
 import PromoPage from './pages/Promos/PromoPage';

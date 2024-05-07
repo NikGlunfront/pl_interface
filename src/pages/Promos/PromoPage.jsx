@@ -20,6 +20,7 @@ const PromoPage = ({
     const { id } = useParams()
     const dispatch = useDispatch()
     const promoData = useSelector(state => state.promos.currentPromo)
+    const { tags: activeTags } = useSelector(state => state.filters)
     const [partnerData, setPartnerData] = useState(null)
 
     useEffect(() => {
@@ -79,7 +80,7 @@ const PromoPage = ({
             <PromoAdress adresses={promoData.adresses} />
             <PromoDelivery delivery={promoData.delivery} />
             <PromoDescription>{promoData.description}</PromoDescription>
-            <PromoTags tags={[1,2,3,4,7,8,9,10,11,12,13]} activeTagsList={[]}>{promoData.tags}</PromoTags>
+            <PromoTags tags={[1,2,3,4,7,8,9,10,11,12,13]} activeTagsList={activeTags}>{promoData.tags}</PromoTags>
             <PromoGallery images={promoData.img} />
         </div>
     )

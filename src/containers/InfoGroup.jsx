@@ -8,6 +8,7 @@ const InfoGroup = ({
     subTitleClass,
     subTitleNum,
     data,
+    titleOnClick = () => {}
 }) => {
     let basicClassName = 'pl-info-group '
 
@@ -15,7 +16,7 @@ const InfoGroup = ({
         <div className={basicClassName + (className ? ` ${className} ` : '')}>
             {data
                 ? <NavLink to={`/partners/${data.id}`} state={{partner: data}} className="pl-info-group__title">{title}</NavLink>
-                : <div className="pl-info-group__title">
+                : <div className="pl-info-group__title" onClick={titleOnClick}>
                     {title}
                     {subTitleNum
                         ? <span className={subTitleClass}>{subTitleNum}</span>

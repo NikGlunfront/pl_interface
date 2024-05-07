@@ -12,6 +12,17 @@
 .pl-page-create-partner {
     background-color: var(--pl-primary-background-color);
 
+    .input-container__inner {
+        textarea {
+            min-height: unset;
+            height: 7rem;
+        }
+
+        input {
+            color: var(--pl-primary-blue-color);
+        }
+    }
+
     &__title {
         font-size: 1.6rem;
         margin-bottom: 1rem;
@@ -19,7 +30,7 @@
     }
 
     &__bio {
-        margin-bottom: 3.3rem;
+        margin-bottom: 1.5rem;
     }
 
     .pl-button {
@@ -30,7 +41,7 @@
     }
 
     &__upload_logo {
-        padding: 2.1rem 0 3.5rem;
+        padding: 2.1rem 0 2.5rem;
         @include flex_col;
         align-items: center;
         justify-content: center;

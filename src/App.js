@@ -1,7 +1,7 @@
 import { createRef, useEffect } from 'react';
 import './App.scss';
 import { useTelegram } from './hooks/useTelegram';
-import { useLocation, useNavigate, useOutlet} from 'react-router-dom'
+import { ScrollRestoration, useLocation, useNavigate, useOutlet} from 'react-router-dom'
 import HomePage from './pages/Home/HomePage';
 import PromosPage from './pages/Promos/PromosMainPage';
 import PromoPage from './pages/Promos/PromoPage';

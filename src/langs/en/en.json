@@ -9,7 +9,7 @@
     "More": "more",
     "Further": "Next",
     "Addresses": "Addresses",
-    "Delivery": "Delivery",
+    "Delivery": "Shipping",
 
     "Menu.PartnerCabinet": "Partner Cabinet",
     "Menu.MyGifts": "My Gifts",
@@ -36,7 +36,7 @@
     "Promo.PreviewImg.Recieved": "Gift recieved",
 
     "Promo.InfoGroup.Title.Adress": "Address",
-    "Promo.InfoGroup.Title.Delivery": "Delivery",
+    "Promo.InfoGroup.Title.Delivery": "Shipping",
     "Promo.InfoGroup.Title.Addresses": "Addresses",
     "Promo.InfoGroup.Title.Description": "Description",
     "Promo.InfoGroup.Title.Tags": "Tags",

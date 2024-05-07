@@ -8,7 +8,8 @@ const AdressCityGroupControls = ({
     city,
     adresses,
     searchQ,
-    creatorRef
+    creatorRef,
+    controlsActive = true
 }) => {
     const [opened, setIsOpened] = useState(true)
     const [adressByCity, setAdressByCity] = useState([])
@@ -55,7 +56,7 @@ const AdressCityGroupControls = ({
                     <AdressItem 
                         key={adress.id}
                         adress={adress}
-                        controlsActive={true}
+                        controlsActive={controlsActive}
                         creatorRef={creatorRef}
                     />
                     ))

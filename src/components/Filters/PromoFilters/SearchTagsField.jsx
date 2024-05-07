@@ -21,11 +21,14 @@ const SearchTagsField = ({
     useEffect(() => {
         if (openedCat) {
             setCurrentTags(tagsData[openedCat])
+            console.log(tagsData[openedCat])
             let newPickedState = []
             if (tagsIniState[openedCat] !== tagsState[openedCat]) {
                 newPickedState = [...tagsState[openedCat]]
             }
             setPickedTags(newPickedState)
+        } else {
+            setCurrentTags(Object.values(tagsDataIni))
         }
     }, [openedCat])
 
