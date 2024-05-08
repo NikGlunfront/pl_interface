@@ -20,7 +20,7 @@ body {
     height: 100%;
     @include flex_col;
     overflow: auto;
-    background-color: #ffffff;
+    background-color: var(--pl-primary-background-color);
 }
 
 .testbtn {
@@ -82,7 +82,7 @@ html {
     // overflow-x: hidden;
     height: 100vh;
     // overflow: hidden;
-    background: var(--pl-primary-background-color);
+    // background: var(--pl-primary-background-color);
     color: var(--pl-primary-text-color);
     font-size: 1.6rem;
     font-family: $font;

@@ -52,7 +52,7 @@ const PromoPage = ({
 
     return (
         <div className="pl-page-container pl-promo-page">
-            <FixedPromoTopper promoName={promoData.name} promoPreview={promoData.img[0]} />
+            <FixedPromoTopper promoName={promoData.name} promoPreview={promoData.img[0]} partnerImg={partnerData.img} />
             <PromoTopper 
                 promoData={promoData}
                 promoName={promoData.name}

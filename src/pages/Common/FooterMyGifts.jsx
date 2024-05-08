@@ -1,19 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslate } from '../../hooks/useTranslate';
+import { PL_APP_ROUTES } from '../../vars/routes';
 
 const FooterMyGifts = () => {
     const location = useLocation()
+    const navigate = useNavigate()
+    const [targetLink, setTargetLink] = useState(PL_APP_ROUTES.CLIENT.MY_GIFTS)
     const { tr } = useTranslate()
     const { darkTheme: isDarkTheme, pageNotifications: nums } = useSelector(state => state.pageMeta)
+
+    useEffect(() => {
+        if (location.pathname === '/my-gifts') {
+            setTargetLink(PL_APP_ROUTES.CLIENT.PROMO_LIST)
+        } else {
+            setTargetLink(PL_APP_ROUTES.CLIENT.MY_GIFTS)
+        }
+    }, [location.pathname])
+
+    const navigateToPage = () => {
+        navigate(targetLink, {replace: false})
+    }
+
     return (
-        <Link
+        <div
             className={
                 "pl-app-footer__numlink pl-app-footer__numlink_gifts " 
                 + (location.pathname === '/my-gifts' ? 'pl-app-footer__numlink_gifts_onpage ' : '')
             }
-            to={'/my-gifts'}
+            onClick={navigateToPage}
         >
             {isDarkTheme 
                 ?
@@ -37,7 +53,7 @@ const FooterMyGifts = () => {
             }
             <div>{tr('Menu.MyGifts')}</div>
             <span>{nums.gifts}</span>
-        </Link>
+        </div>
     );
 };
 

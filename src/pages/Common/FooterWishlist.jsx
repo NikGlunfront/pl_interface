@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslate } from '../../hooks/useTranslate';
+import { PL_APP_ROUTES } from '../../vars/routes';
 
 const FooterWishlist = () => {
     const location = useLocation()
+    const navigate = useNavigate()
+    const [targetLink, setTargetLink] = useState(PL_APP_ROUTES.CLIENT.WISHLIST)
     const { tr } = useTranslate()
     const { darkTheme: isDarkTheme, pageNotifications: nums } = useSelector(state => state.pageMeta)
+
+    useEffect(() => {
+        if (location.pathname === '/wishlist') {
+            setTargetLink(PL_APP_ROUTES.CLIENT.PROMO_LIST)
+        } else {
+            setTargetLink(PL_APP_ROUTES.CLIENT.WISHLIST)
+        }
+    }, [location.pathname])
+
+    const navigateToPage = () => {
+        navigate(targetLink, {replace: false})
+    }
     return (
-        <Link
+        <div
             className={
                 "pl-app-footer__numlink pl-app-footer__numlink_wishlist " 
                 + (location.pathname === '/wishlist' ? 'pl-app-footer__numlink_wishlist_onpage ' : '')
             }
-            
-            to={'/wishlist'}
+            onClick={navigateToPage}
         >
             {isDarkTheme 
                 ?
@@ -29,7 +43,7 @@ const FooterWishlist = () => {
             }
             <div>{tr('Menu.Wishlist')}</div>
             <span>{nums.wishlist}</span>
-        </Link>
+        </div>
     );
 };
 

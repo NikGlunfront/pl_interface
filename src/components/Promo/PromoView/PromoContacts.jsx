@@ -29,7 +29,10 @@ const PromoContacts = ({
     return (
         <div className="pl-promo-page-contacts">
             <NavLink to={`/partners/${partner.id}`} state={{partner: partner}} className="pl-info-group__title">
-                {partner?.name}
+                <div className="pl-promo-page-contacts__company">
+                    <img src={partner.img} alt="" />
+                    {partner?.name}
+                </div>
                 <div className="pl-promo-page-contacts__reviews">
                     <div>
                         <img src={dialogSvg} alt="Отзывы" />

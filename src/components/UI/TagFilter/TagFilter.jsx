@@ -7,6 +7,7 @@ const TagFilter = ({
     changeActiveTag,
     activeTag,
     customDot,
+    removeFunc = null,
     counter = 0
 }) => {
     let className = 'pl-filter-tag '
@@ -31,12 +32,18 @@ const TagFilter = ({
         changeActiveTag(filterValue)
     }
     return (
-        <div className={className} onClick={handleFilterClick} data-counter={counter}>
+        <div className={className} data-counter={counter}>
             {icon
                 ?   <img src={icon} alt="" />
                 :   <></>
             }
-            {name}
+            <div onClick={handleFilterClick}>{name}</div>
+            {removeFunc !== null
+                ?
+                <div className='pl-filter-tag__removebtn' onClick={removeFunc}></div>
+                :
+                <></>
+            }
         </div>
     );
 };

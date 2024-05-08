@@ -21,7 +21,7 @@ const BurgerItemIcon = ({
             }
             {type === 'gifts'
                 ?
-                <div className="pl-burger-list__icon">
+                <div className="pl-burger-list__icon pl-burger-list__icon_gifts">
                     <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fillRule="evenodd" clipRule="evenodd" d="M25 14.3332H1V10.3332C1 8.85984 2.19333 7.6665 3.66666 7.6665H22.3333C23.8066 7.6665 25 8.85984 25 10.3332V14.3332Z" stroke={isDarkTheme ? "#78779A" : "black"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         <path fillRule="evenodd" clipRule="evenodd" d="M19.6663 24.9997H6.333C4.12367 24.9997 2.33301 23.209 2.33301 20.9997V14.333H23.6663V20.9997C23.6663 23.209 21.8756 24.9997 19.6663 24.9997Z" stroke={isDarkTheme ? "#78779A" : "black"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

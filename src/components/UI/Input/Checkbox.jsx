@@ -5,6 +5,7 @@ const Checkbox = ({
     name,
     id,
     isChecked,
+    subName = null,
     amount = 0
 }) => {
     // if (amount === 0) return true;
@@ -20,7 +21,15 @@ const Checkbox = ({
     return (
         <div className={className} onClick={onClickHandler}>
             <div className="pl-input-checkbox__checkbox"><span></span></div>
-            <div className="pl-input-checkbox__name">{name}</div>
+            {subName === null
+                ?
+                <div className="pl-input-checkbox__name">
+                    <span>{name}</span>
+                    <span>{subName}</span>
+                </div>
+                :
+                <div className="pl-input-checkbox__name">{name}</div>
+            }
             {amount === 0
                 ? <></>
                 : <div className="pl-input-checkbox__amount">{amount}</div>

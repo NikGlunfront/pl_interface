@@ -229,6 +229,31 @@
 
         .pl-filter-tag {
             margin-bottom: 1rem;
+            @include flex_row;
+            align-items: center;
+
+            & > div {
+                display: inline-block;
+            }
+
+            &_active {
+                .pl-filter-tag__removebtn {
+                    background-image: url('../../assets/img/icons/close_white.svg');
+                    background-repeat: no-repeat;
+                    background-size: 0.9rem;
+                    background-position: right center;
+                }
+            }
+
+            &__removebtn {
+                width: 1.5rem;
+                height: 2rem;
+                display: inline-block;
+                background-image: url('../../assets/img/icons/close.svg');
+                background-repeat: no-repeat;
+                background-size: 0.9rem;
+                background-position: right center;
+            }
         }
 
     }

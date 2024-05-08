@@ -10,9 +10,6 @@ const PromoTags = ({
 }) => {
     const { tr } = useTranslate()
     const { getTagNameById } = useMetaData()
-    useEffect(() => {
-        console.log(activeTagsList[0])
-    }, [])
     if (tags.length === 0) {
         return
     }

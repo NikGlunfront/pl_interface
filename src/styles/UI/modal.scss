@@ -15,8 +15,10 @@
     justify-content: center;
 
     &__close {
-        width: 3rem;
-        height: 3rem;
+        width: 6rem;
+        height: 6rem;
+        padding-left: 3rem;
+        padding-bottom: 3rem;
         @include flex_row;
         align-items: center;
         justify-content: center;

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState ={
     tg_id: '',
     hasCompany: false,
-    lang: 'en',
+    lang: 'ru',
     company: {
         name: '',
         description: '',

@@ -62,6 +62,10 @@ const PromoFilterWindow = ({
         closeWindow()
     }
 
+    const removeTagFilter = (id) => {
+        console.log(`FilterCat: ${id}`)
+    }
+
     return (
         <FilterWindow visible={visible}>
             <div className="pl-return-toppanel">
@@ -90,6 +94,7 @@ const PromoFilterWindow = ({
                         changeActiveTag={handleNewTagFilter} 
                         activeTag={catOpened === cat.id}
                         customDot={active_filters.tags[cat.id] !== initData.tags[cat.id]} 
+                        removeFunc={removeTagFilter}
                     />
                 ))}
             </div>

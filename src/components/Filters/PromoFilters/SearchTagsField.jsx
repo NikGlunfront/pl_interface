@@ -21,14 +21,23 @@ const SearchTagsField = ({
     useEffect(() => {
         if (openedCat) {
             setCurrentTags(tagsData[openedCat])
-            console.log(tagsData[openedCat])
             let newPickedState = []
             if (tagsIniState[openedCat] !== tagsState[openedCat]) {
                 newPickedState = [...tagsState[openedCat]]
             }
             setPickedTags(newPickedState)
+            console.log(tagsIniState[openedCat])
         } else {
-            setCurrentTags(Object.values(tagsDataIni))
+            let allCurrentTagsArray = [];
+            Object.keys(tagsData).forEach(tagKey => {
+                allCurrentTagsArray = [...allCurrentTagsArray, ...tagsData[tagKey]]
+            })
+            let newPickedState = []
+            if (tagsIniState[openedCat] !== tagsState[openedCat]) {
+                newPickedState = [...tagsState[openedCat]]
+            }
+            setPickedTags(newPickedState)
+            setCurrentTags(allCurrentTagsArray)
         }
     }, [openedCat])
 
@@ -57,11 +66,16 @@ const SearchTagsField = ({
     }
 
     const toggleTag = (id) => {
+        console.log(pickedTags)
         if (pickedTags.indexOf(id) != -1) {
             removeTag(id)
         } else {
             addTag(id)
         }
+    }
+
+    if (!currentTags) {
+        return
     }
 
     return (
@@ -70,10 +84,11 @@ const SearchTagsField = ({
                 <Checkbox 
                     name={tr(tag.name)} 
                     id={tag.id}
-                    isChecked={pickedTags.indexOf(tag.id) != -1 ? true : false}
+                    isChecked={pickedTags.indexOf(tag.id) !== -1 ? true : false}
                     // amount={tagsDataNums.filter(item => item.id == cat.id)[0].amount}
                     amount={50}
                     toggleFunc={toggleTag}
+                    subName={'test category'}
                     key={tag.id}
                 />
             ))}
