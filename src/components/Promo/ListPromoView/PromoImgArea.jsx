@@ -5,7 +5,8 @@ import { register } from 'swiper/element/bundle'
 const PromoImgArea = ({
     promoImage,
     promoName,
-    inactive
+    inactive,
+    deleted = false
 }) => {
     const swiperRef = useRef(null);
 
@@ -63,8 +64,8 @@ const PromoImgArea = ({
     }
 
     return (
-        <div className="list-item__thumbs">
-            {promoImage.length > 1
+        <div className={"list-item__thumbs" + (deleted ? " list-item__thumbs_deleted" : '')}>
+            {promoImage.length > 1 && !deleted
                 ?
                 <swiper-container init="false" ref={swiperRef}>
                     {promoImage.map((img, index) => (

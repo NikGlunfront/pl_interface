@@ -1,4 +1,6 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import { useLocation } from "react-router-dom";
+import Modal from "../../UI/Modal/Modal";
 
 const PromoBio = ({
     name = '',
@@ -6,10 +8,45 @@ const PromoBio = ({
     location = '',
     isDeliveryLocation = false
 }) => {
+    const locationPath = useLocation()
+    const [isDisplayedActions,  setIsDisplayedActions] = useState(false)
+    const [isModalActive, setIsModalActive] = useState(false)
+
+    useEffect(() => {
+        if  (locationPath.pathname.includes('promos')) {
+            setIsDisplayedActions(true)
+        } else {
+            setIsDisplayedActions(false)
+        }
+    }, [])
 
     return (
         <>
-            <div className={"pl-promo__title " + (name.length === 0 ? 'pl-promo__title_skeleton' : '')}>{name}</div>
+            <div className={"pl-promo__title " + (name.length === 0 ? 'pl-promo__title_skeleton' : '') + (isDisplayedActions ? " _with_actions" : '')}>
+                {name}
+                {isDisplayedActions
+                    ?
+                    <>
+                        <div className="pl-promo__actions" onClick={() => setIsModalActive(true)}><span></span></div>
+                        <Modal
+                            className={'promo-actions-modal'}
+                            isActive={isModalActive}
+                            setActive={setIsModalActive}
+                        >
+                            <ul>
+                                <li>
+                                    <div>Удалить промо из ленты</div>
+                                </li>
+                                <li>
+                                    <div>Кинуть страйк</div>
+                                </li>
+                            </ul>
+                        </Modal>
+                    </>
+                    :
+                    <></>
+                }
+            </div>
             <div className={"pl-promo__description " + (description.length === 0 ? 'pl-promo__description_skeleton' : '')}>{description}</div>
             <div 
                 className={"pl-promo__location " 

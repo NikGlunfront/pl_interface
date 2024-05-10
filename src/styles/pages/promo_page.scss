@@ -96,9 +96,18 @@
 
         &__location {
             padding-left: 1.5rem;
+
+            &_delivery {
+                padding-left: 2rem;
+
+                &::before {
+                    background-position: left 0.1rem;
+                }
+            }
             &::before {
                 position: absolute;
-                top: 0.2rem;
+                // top: 0.2rem;
+                top: 0;
                 left: 0;
             }
         }

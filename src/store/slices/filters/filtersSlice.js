@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
     city: null,
     categories: null,
-    activeCategoryTag: [],
+    activeCategoryTag: null,
     activeMyGiftsTag: null,
     activeWishlistTag: null,
     activeCity: {
@@ -62,8 +62,22 @@ export const filtersSlice = createSlice({
                 ...state,
                 activeWishlistTag: action.payload
             }
+        },
+        resetCategoryFilters: (state, action) => {
+            if (state.tags[action.payload]) {
+                return {
+                    ...state,
+                    tags: {...state.tags}
+                }
+            }
+        },
+        resetAllCategoryFilters: (state, action) => {
+            return {
+                ...state,
+                tags: null
+            }
         }
-    }
+     }
 })
 
 export const {
@@ -74,7 +88,9 @@ export const {
     setActiveTags,
     setActiveCategoryTag,
     setActiveMyGiftsTag,
-    setActiveWishlistTag
+    setActiveWishlistTag,
+    resetAllCategoryFilters,
+    resetCategoryFilters
 } = filtersSlice.actions
 
 export default filtersSlice.reducer

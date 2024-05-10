@@ -81,6 +81,13 @@
         transform: translate(0, 0);
     }
 
+    .no-results {
+        min-height: 30rem;
+        @include flex_row;
+        justify-content: center;
+        padding-top: 5rem;
+    }
+
     &__close {
         @include flex_row;
         align-items: center;

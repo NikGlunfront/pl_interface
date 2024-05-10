@@ -4,6 +4,7 @@ import bannerImg from '../../assets/img/promos/banner.png'
 import PromoListFilter from "../../components/Filters/PromoFilters/PromoListFilter";
 import { useDispatch, useSelector } from "react-redux";
 import { setListingData, setNullListingData } from "../../store/slices/promos/promosSlice";
+import { setActiveCategoryTag } from "../../store/slices/filters/filtersSlice";
 
 const banners = [
     // {banner_id: 1, banner_src: bannerImg, banner_position: 3, banner_title: 'Новогодняя реклама'}
@@ -18,6 +19,9 @@ const PromosPage = ({
     const dispatch = useDispatch()
 
     useEffect(() => {
+        if (activeCategoryTag === null) {
+            dispatch(setActiveCategoryTag(0))
+        }
         setTimeout(() => {
             dispatch(setListingData())
         }, 300);

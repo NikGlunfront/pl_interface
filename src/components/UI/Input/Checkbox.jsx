@@ -18,10 +18,13 @@ const Checkbox = ({
     if (isChecked) {
         className += 'pl-input-checkbox_active'
     }
+    if (subName !== null) {
+        className += ' pl-input-checkbox_sub'
+    }
     return (
         <div className={className} onClick={onClickHandler}>
             <div className="pl-input-checkbox__checkbox"><span></span></div>
-            {subName === null
+            {subName !== null
                 ?
                 <div className="pl-input-checkbox__name">
                     <span>{name}</span>

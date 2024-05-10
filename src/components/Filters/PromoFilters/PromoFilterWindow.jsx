@@ -59,7 +59,8 @@ const PromoFilterWindow = ({
             resetObj[cat] = initData.tags[cat]
         }
         dispatch(setActiveTags(resetObj))
-        closeWindow()
+        setCatOpened(0)
+        // closeWindow()
     }
 
     const removeTagFilter = (id) => {
@@ -87,7 +88,7 @@ const PromoFilterWindow = ({
                     activeTag={catOpened === 0} 
                 />
                 {choosenCats.length > 0 && choosenCats.map(cat => (
-                    <TagFilter 
+                    <TagFilter
                         name={tr(cat.name)} 
                         filterValue={cat.id} 
                         key={cat.id} 
@@ -120,6 +121,7 @@ const PromoFilterWindow = ({
                 tagsData={initData.tags}
                 tagsDataNums={initData.tagsNums}
                 openedCat={catOpened}
+                searchQ={searchQ}
             />
             <div className="filters-pl-select__bottom">
                 <SmartButton color="red" number={300}>

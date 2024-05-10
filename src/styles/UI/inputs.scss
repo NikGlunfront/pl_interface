@@ -130,6 +130,25 @@
         }
     }
 
+    &_sub {
+        .pl-input-checkbox {
+            &__name {
+                position: relative;
+                // padding-bottom: 2rem;
+
+                & > span {
+                    display: block;
+
+                    &:last-child {
+                        font-size: 1.4rem;
+                        margin-top: 1rem;
+                        color: var(--pl-grey-text-color);
+                    }
+                }
+            }
+        }
+    }
+
     &__name {
         flex: 1;
         margin-right: 1.5rem;

@@ -34,6 +34,7 @@ const PromoPreview = ({
                     inactive={inactive}
                     promoImage={promoImage}
                     promoName={promoName}
+                    deleted={deleted}
                 />
                 <PromoLike deleted={deleted} />
                 {/* {inactive === false

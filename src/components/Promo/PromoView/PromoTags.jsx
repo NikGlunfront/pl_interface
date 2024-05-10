@@ -19,7 +19,6 @@ const PromoTags = ({
         let isActive = false
         for (let i = 0; i < Object.keys(activeTagsList).length; i++) {
             const chosenTagList = activeTagsList[Object.keys(activeTagsList)[i]];
-            console.log(chosenTagList)
             if (chosenTagList.includes(tag)) {
                 isActive = true
                 break;

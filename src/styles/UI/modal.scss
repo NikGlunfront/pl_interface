@@ -221,3 +221,27 @@
         }
     }
 }
+
+.promo-actions-modal {
+    margin-top: auto;
+    border-radius: 1rem;
+    width: calc(100% - 3rem);
+    margin-bottom: 2rem;
+
+    transform: translate(0, 4rem);
+
+    & > div {
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        width: 100%;
+        li {
+            width: 100%;
+            font-size: 1.4rem;
+            font-weight: 400;
+            padding: 1.5rem 0.5rem;
+            
+        }
+    }
+}
