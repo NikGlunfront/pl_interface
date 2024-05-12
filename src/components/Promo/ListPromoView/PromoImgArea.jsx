@@ -18,6 +18,16 @@ const PromoImgArea = ({
         const params = {
             injectStyles: [
                 `
+                .swiper-pagination-bullet {
+                  background: #E10001 !important;
+                  width: 0.4rem;
+                  height: 0.4rem;
+                  margin: 0 0.4rem !important;
+                }
+                .swiper-pagination {
+                    bottom: -0.2rem !important;
+                    display: none !important;
+                }
                 .swiper-pagination-bullet-active {
                   background: #E10001 !important;
                 }

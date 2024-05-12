@@ -1,4 +1,4 @@
-import { createRef, useEffect } from 'react';
+import { createRef, useEffect, useState } from 'react';
 import './App.scss';
 import { useTelegram } from './hooks/useTelegram';
 import { ScrollRestoration, useLocation, useNavigate, useOutlet} from 'react-router-dom'
@@ -20,6 +20,7 @@ import ChatReviewPage from './pages/Chat/ChatReviewPage';
 import CreatePartner from './pages/Create/CreatePartner';
 import CreatePromo from './pages/Create/CreatePromo';
 import { useTranslate } from './hooks/useTranslate';
+import GlobalSearch from './components/GlobalSearch/GlobalSearch';
 
 const routes = [
     { path: '/', name: 'Home', element: <HomePage />, nodeRef: createRef() },
@@ -48,6 +49,7 @@ function App() {
     const { nodeRef } = routes.find((route) => route.path === location.pathname) ?? {}
     const navigate = useNavigate()
     const { tr } = useTranslate()
+    const [searchActive, setSearchActive] = useState(false)
 
     function getInitialData() {
         dispatch(getCities())
@@ -79,12 +81,16 @@ function App() {
         <div className={"App pl-app " + (isDarkTheme ? 'pl-app_darktheme' : '')}>
             {/* <div className="testbtn" onClick={changeTheme}></div> */}
             <ScrollTopRoutes />
-            <div className='pl-app__wrapper'>
+            <div className={'pl-app__wrapper' + (location.pathname.includes('promos') && searchActive ? ' pl-app__wrapper_search' : "")}>
                 {location.pathname !== '/' &&
                     <Header 
                         title={pageTitle} 
                         type={location.pathname === '/promos' ? 'filter' : ''}
+                        searchToggler={setSearchActive}
                     />
+                }
+                {location.pathname.includes('promos') &&
+                    <GlobalSearch />
                 }
                 <div className='pl-app__innercontainer'>
                     <SwitchTransition>

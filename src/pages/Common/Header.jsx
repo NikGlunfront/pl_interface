@@ -3,16 +3,24 @@ import HeaderFilterBtn from "./HeaderFilterBtn";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import HeaderSearchBtn from "./HeaderSearchBtn";
-import { setPageTitle, setSearchAvailable } from "../../store/slices/pageSlice/pageSlice";
+import { setIsContentHidden, setPageTitle, setSearchAvailable } from "../../store/slices/pageSlice/pageSlice";
 import { setCreatePromoStepPosition } from "../../store/slices/createPromo/createPromoSlice";
 import { useTranslate } from "../../hooks/useTranslate";
+import { setActiveCity } from "../../store/slices/filters/filtersSlice";
+import CityFilterWindow from "../../components/Filters/CityFilter/CityFilterWindow";
+import { useCategoryChanger } from "../../hooks/useCategoryChanger";
+import { PL_APP_ROUTES } from "../../vars/routes";
 
 const Header = ({
-    type
+    type,
+    searchToggler = () => {}
 }) => {
     const location = useLocation()
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const pageMeta = useSelector(state => state.pageMeta)
+    const iniData = useSelector(state => state.iniData)
+    const {setAllCategoriesActive} = useCategoryChanger()
     const { tr } = useTranslate()
     const createPromoStep = useSelector(state => state.createPromo.lastStep)
     const { activeCity } = useSelector(state => state.filters)
@@ -21,7 +29,30 @@ const Header = ({
     const [isChatPage, setIsChatPage] = useState(false)
     const [isPromoPage, setIsPromoPage] = useState(false)
 
-    const dispatch = useDispatch()
+    const [listVisible, setListVisible] = useState(false)
+
+    const openFilterList = (e) => {
+        e.stopPropagation()
+        setListVisible(true)
+        // dispatch(setIsContentHidden(true))
+    }
+    const updateFilterData = (data = 0) => {
+        setListVisible(false)
+        dispatch(setIsContentHidden(false))
+        if (data !== 0) {
+            const cityName = iniData.cities.filter(city => city.id == data)[0].name
+            dispatch(setActiveCity({id: data, name: cityName}))
+            setAllCategoriesActive()
+            
+        }
+    }
+
+    useEffect(() => {
+        dispatch(setPageTitle(activeCity.name))
+    }, [listVisible])
+
+    useEffect(() => {console.log(listVisible)}, [listVisible])
+
     let className = 'pl-app-header '
     if (type !== "filter") {
         className += 'pl-app-header_casual '
@@ -107,9 +138,24 @@ const Header = ({
                 ? <HeaderFilterBtn />
                 : <div onClick={returnFunction} className="pl-app-header__returnbtn"></div>
             }
-            <div className="pl-app-header__title">{tr(pageMeta.title)}</div>
+            {location.pathname.includes('promos') && pageMeta.title.includes('City')
+                ?
+                <>
+                <div className="pl-app-header__title" onClick={e => openFilterList(e)}>
+                    {tr(pageMeta.title)}
+                </div>
+                <CityFilterWindow 
+                    visible={listVisible}
+                    updateFilterData={updateFilterData}
+                    cityData={iniData.cities}
+                    cityDataNums={iniData.citiesNums}
+                />
+                </>
+                :
+                <div className="pl-app-header__title">{tr(pageMeta.title)}</div>
+            }
             {pageMeta.searchAvailable
-                ? <HeaderSearchBtn />
+                ? <HeaderSearchBtn searchToggler={searchToggler} />
                 : ""
             }             
             {isChatPage 

@@ -5,6 +5,7 @@ const Checkbox = ({
     name,
     id,
     isChecked,
+    bigImg = null,
     subName = null,
     amount = 0
 }) => {
@@ -21,9 +22,15 @@ const Checkbox = ({
     if (subName !== null) {
         className += ' pl-input-checkbox_sub'
     }
+    if (bigImg !== null) {
+        className += ' pl-input-checkbox_imgbig'
+    }
     return (
         <div className={className} onClick={onClickHandler}>
             <div className="pl-input-checkbox__checkbox"><span></span></div>
+            {bigImg !== null &&
+                <img src={bigImg} alt="" />
+            }
             {subName !== null
                 ?
                 <div className="pl-input-checkbox__name">

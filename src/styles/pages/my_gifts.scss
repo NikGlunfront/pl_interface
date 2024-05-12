@@ -140,9 +140,6 @@
 }
 
 .pl-page-wishlist {
-    .pl-promo-filters__btn  {
-        pointer-events: none;
-    }
     &__tags {
         @include flex_row;
         align-items: center;

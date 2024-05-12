@@ -10,6 +10,7 @@ import { useTranslate } from "../../hooks/useTranslate";
 import brandMegafon from '../../assets/img/icons/partners/citilink_logo.jpg'
 import brandMts from '../../assets/img/icons/partners/cum_logo.png'
 import PromoFilter from "../../components/Filters/PromoFilters/PromoFilter";
+import PartnerFilter from "../../components/Filters/PartnerFilter/PartnerFilter";
 
 const tags = [
     {name: 'Ситилинк', value: 'megafon', brandImg: brandMegafon},
@@ -34,7 +35,6 @@ const Wishlist = ({
             }, 300);
         }
     }, [])
-    
     useEffect(() => {
         dispatch(setNullWishlistData())
         setTimeout(() => {
@@ -49,7 +49,7 @@ const Wishlist = ({
     return (
         <div className="pl-page-container pl-page-wishlist">
             <div className="pl-page-wishlist__filters">
-                <PromoFilter />
+                <PartnerFilter />
                 <div className="pl-page-wishlist__tags no-scroll-visual">
                     <TagFilter 
                         name={tr('TagFilter.Categories.All')}

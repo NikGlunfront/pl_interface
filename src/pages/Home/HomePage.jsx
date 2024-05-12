@@ -82,9 +82,9 @@ const HomePage = ({
                     <CityFilter 
                         isDarkTheme={isDarkTheme} 
                     />
-                    <CategoryFilter
+                    {/* <CategoryFilter
                         isDarkTheme={isDarkTheme}
-                    />
+                    /> */}
                 </div>
                 <div className="home-page__btns">
                     <SmartButton

@@ -190,6 +190,8 @@
         line-height: 2rem;
         overflow: hidden;
         text-overflow: ellipsis;
+        flex: 1;
+        text-align: center;
     }
 
     &__filter {
@@ -281,7 +283,7 @@
     &__thumbs {
         width: 100%;
         overflow: hidden;
-        height: 18.5rem;
+        height: 22rem;
         // border-radius: 1rem;
         position: relative;
         width: 100%;
@@ -383,13 +385,24 @@
             & > div {
                 font-size: 1.6rem;
                 color: $white_c;
+                margin-top: 0.7rem;
 
                 .pl-input-checkbox {
                     border-radius: 2.4rem;
                     background: var(--pl-primary-darkblue-color);
                     padding: 0 0.7rem;
-                    height: 2.3rem;
+                    height: 2.4rem;
 
+                    &__checkbox {
+                        width: 1.4rem;
+                        height: 1.4rem;
+                        flex: 0 0 1.4rem;
+
+                        span {
+                            width: 0.8rem;
+                            height: 0.8rem;
+                        }
+                    }
                     &__name {
                         color: $white_c;
                         font-weight: 400;
@@ -410,13 +423,13 @@
             img {
                 width: 100%;
                 object-fit: cover;
-                height: 18.5rem;
+                height: 22rem;
             }
         }
         img {
             width: 100%;
             object-fit: cover;
-            height: 18.5rem;
+            height: 22rem;
             background-color: var(--pl-primary-background-color);
         }
 
@@ -580,8 +593,8 @@
         font-size: 1.8rem;
         font-weight: 500;
         margin-bottom: 0;
-        min-height: 2rem;
-        margin-bottom: 0.3rem;
+        // min-height: 2rem;
+        margin-bottom: 0.4rem;
         width: fit-content;
         min-width: 40%;
         display: -webkit-box;
@@ -591,6 +604,7 @@
         text-overflow: ellipsis;
         line-height: 1.1;
         width: 100%;
+        word-wrap: break-word;
 
         &_skeleton {
             background-color: var(--pl-skeleton-color);
@@ -601,7 +615,7 @@
     &__description {
         font-size: 1.6rem;
         font-weight: 400;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.4rem;
         // min-height: 2rem;
         min-width: 60%;
         display: -webkit-box;
@@ -610,6 +624,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         line-height: 1.1;
+        word-wrap: break-word;
 
         &_skeleton {
             background-color: var(--pl-skeleton-color);
@@ -621,14 +636,15 @@
         margin-bottom: 0.5rem;
         font-size: 1.4rem;
         position: relative;
+        word-wrap: break-word;
         // padding-left: 1.9rem;
         // background-image: url('../../assets/img/icons/location_red.svg');
         // background-size: 1.1rem 1.4rem;
         // background-repeat: no-repeat;
         // background-position: left 0.1rem;
         
-        min-height: 2rem;
-        line-height: 1.2;
+        // min-height: 2rem;
+        line-height: 1.1;
         min-width: 60%;
         width: fit-content;
         display: -webkit-box;
@@ -637,6 +653,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         color: #8a8a8a;
+        padding-left: 1.5rem;
         
         b {
             color: var(--pl-primary-text-color);
@@ -652,14 +669,18 @@
             display: inline-block;
             margin-right: 0.5rem;
             width: 1.1rem;
-            height: 1.2rem;
+            height: 1.5rem;
             background-image: url('../../assets/img/icons/location_red.svg');
             background-size: contain;
             background-repeat: no-repeat;
-            background-position: left 0rem;
+            background-position: left 0rem;position: absolute;
+            // top: 0.2rem;
+            top: 0;
+            left: 0;
         }
 
         &_delivery {
+            padding-left: 2rem;
             &::before {
                 width: 1.5rem;
                 height: 1.5rem;
@@ -667,7 +688,11 @@
                 background-image: url('../../assets/img/icons/delivery.svg');
                 background-size: contain;
                 background-repeat: no-repeat;
-                background-position: left 0.3rem;
+                background-position: left 0;
+                position: absolute;
+                // top: 0.2rem;
+                top: 0;
+                left: 0;
             }
         }
 
@@ -839,7 +864,7 @@
     position: fixed;
     top: 5rem;
     left: 0;
-    z-index: 100;
+    z-index: 99;
     background: var(--pl-primary-background-color);
     width: 100%;
     padding: 0.5rem 1.8rem 0.5rem 1rem;
@@ -1091,7 +1116,7 @@
     .pl-promo {
         &__title {
             font-size: 1.6rem;
-            margin-bottom: 0;
+            // margin-bottom: 0;
         }
 
         &__description {
@@ -1102,10 +1127,10 @@
         .pl-promo {
             &__title {
                 font-size: 1.6rem;
-                margin-bottom: 0;
+                // margin-bottom: 0;
 
                 &._with_actions {
-                    padding-right: 4rem;
+                    padding-right: 1rem;
                     position: relative;
                 }
             }
@@ -1117,7 +1142,60 @@
 
             &__location {
                 // margin-bottom: 0.2rem;
-                line-height: 1.2;
+                // line-height: 1.2;
+            }
+        }
+    }
+}
+
+
+.pl-app__wrapper {
+    .pl-page-listview {
+        padding-top: 6rem;
+    }
+    &_search {
+        
+        .global-search-field {
+            position: fixed;
+            top: 5rem;
+            left: 0;
+            width: 100%;
+            z-index: 5;
+            background-color: var(--pl-primary-background-color);
+            padding: 0 1.7rem 0.5rem;
+
+            .search-clear {
+                @include flex_row;
+                justify-content: flex-end;
+                padding-right: 0.9rem;
+                align-items: center;
+                position: absolute;
+                top: 50%;
+                right: 0;
+                height: 100%;
+                width: 4rem;
+                transform: translate(0, -50%);
+                display: none;
+        
+                &_visible {
+                    display: flex;
+                }
+        
+                svg {
+                    width: 1.2rem;
+                    height: 1.2rem;
+                    object-fit: contain;
+                }
+            }
+        }
+
+        .pl-page-container {
+            &.pl-page-listview {
+                padding-top: 13rem;
+
+                .pl-promo-filters {
+                    top: 9rem;
+                }
             }
         }
     }

@@ -22,8 +22,8 @@ const PromoBio = ({
 
     return (
         <>
-            <div className={"pl-promo__title " + (name.length === 0 ? 'pl-promo__title_skeleton' : '') + (isDisplayedActions ? " _with_actions" : '')}>
-                {name}
+            <div className={"pl-promo__title " + (name.length === 0 ? 'pl-promo__title_skeleton' : '') + (isDisplayedActions ? " _with_actions" : '') + " pl-promo__description"}>
+                {description}
                 {isDisplayedActions
                     ?
                     <>
@@ -35,10 +35,19 @@ const PromoBio = ({
                         >
                             <ul>
                                 <li>
-                                    <div>Удалить промо из ленты</div>
+                                    <div>Поделиться</div>
                                 </li>
                                 <li>
-                                    <div>Кинуть страйк</div>
+                                    <div>Добавить в избранное</div>
+                                </li>
+                                <li>
+                                    <div>Не интересует</div>
+                                </li>
+                                <li>
+                                    <div>Не показывать подарки от этого партнёра</div>
+                                </li>
+                                <li>
+                                    <div>Пожаловаться</div>
                                 </li>
                             </ul>
                         </Modal>
@@ -47,7 +56,7 @@ const PromoBio = ({
                     <></>
                 }
             </div>
-            <div className={"pl-promo__description " + (description.length === 0 ? 'pl-promo__description_skeleton' : '')}>{description}</div>
+            {/* <div className={"pl-promo__description " + (description.length === 0 ? 'pl-promo__description_skeleton' : '')}>{description}</div> */}
             <div 
                 className={"pl-promo__location " 
                     + (location.length === 0 ? 'pl-promo__location_skeleton ' : '')
