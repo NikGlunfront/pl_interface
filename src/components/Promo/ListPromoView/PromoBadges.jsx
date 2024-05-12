@@ -37,11 +37,11 @@ const PromoBadges = ({
 
     return (
         <div className="badges-list-item">
-            {gifts_amount_left >= 0 && inactive !== true && !isConfirmedGifts && (activeMyGiftsTag !== 'waiting' || location.pathname.includes('my-gifts')) && !deleted
+            {gifts_amount_left >= 0 && inactive !== true && !isConfirmedGifts && (activeMyGiftsTag !== 'waiting' || location.pathname.includes('my-gifts') || !isConfirmedGifts) && !deleted
                 ? <div className="badges-list-item__gifts_left">{tr('Promo.PreviewImg.GiftsLeft')}: <span>{gifts_amount_left}</span></div>
                 : ""
             }
-            {days_amount_left && inactive !== true && !isConfirmedGifts && (activeMyGiftsTag !== 'waiting' || location.pathname.includes('my-gifts')) && !deleted
+            {days_amount_left && inactive !== true && !isConfirmedGifts && (activeMyGiftsTag !== 'waiting' || location.pathname.includes('my-gifts') || !isConfirmedGifts) && !deleted
                 ?   <div className="badges-list-item__days_left">{translateTimeString(days_amount_left)}</div>
                 :   ""
             }
