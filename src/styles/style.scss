@@ -37,11 +37,16 @@ body {
 
 
 .isloadingpage {
-    height: 56.6rem;
+    height: 51rem;
     padding: 6rem 0;
 }
 .home-page {
-    min-height: 56.6rem;
+    min-height: 51rem;
+    
+    &__inner {
+        min-height: 51rem;
+        
+    }
 }
 
 .pl-app-sizechanger {

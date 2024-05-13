@@ -68,7 +68,7 @@ const MyGiftsPromoListItem = ({
                             setActive={setIsModalActive}
                         >
                             <div className="qr-code-popup__title">Получить подарок</div>
-                            <div className="qr-code-popup__subtitle">Покажите этот куаркод или отправьте ссылку партнёру, для подтверждения вашей заявки.</div>
+                            <div className="qr-code-popup__subtitle">Покажите этот куаркод на месте получения подарка или отправьте ссылку партнёру для подтверждения вашей заявки.</div>
                             <div className="qr-code-popup__code">
                                 <img src={qrCodeImage} alt="" />
                             </div>

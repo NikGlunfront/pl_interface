@@ -89,7 +89,7 @@ function App() {
                         searchToggler={setSearchActive}
                     />
                 }
-                {location.pathname.includes('promos') &&
+                {location.pathname.includes('promos') && pageTitle.includes('City') &&
                     <GlobalSearch />
                 }
                 <div className='pl-app__innercontainer'>

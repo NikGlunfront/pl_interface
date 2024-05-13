@@ -39,7 +39,7 @@
     "Promo.InfoGroup.Title.Delivery": "Доставка",
     "Promo.InfoGroup.Title.Addresses": "Адреса",
     "Promo.InfoGroup.Title.Description": "Описание",
-    "Promo.InfoGroup.Title.Tags": "Теги",
+    "Promo.InfoGroup.Title.Tags": "Категории",
     "Promo.InfoGroup.Title.Gallery": "Галерея",
     "Promo.InfoGroup.Title.Contacts": "Контакты",
     "Promo.InfoGroup.Title.Preview": "Превью",
@@ -74,7 +74,7 @@
     "Search.Placeholder.City": "Поиск города",
     "Search.Placeholder.Category": "Поиск категории",
     "Search.Placeholder.Addresses": "Поиск адреса",
-    "Search.Placeholder.Tags": "Поиск тега",
+    "Search.Placeholder.Tags": "Поиск категории",
     "Search.Result.Noresults": "Нет результатов",
     "Search.Result.NoAddresses": "Нет адресов",
 
@@ -167,7 +167,7 @@
     "CreatePromo.InputFields.RemoteJob": "Удаленная работа",
     "CreatePromo.InputFields.NoEndDate": "Без ограничений",
     "CreatePromo.InputFields.Description": "Описание",
-    "CreatePromo.InputFields.Tags": "Теги",
+    "CreatePromo.InputFields.Tags": "Категории",
     "CreatePromo.InputFields.LocationReference": "Ориентир",
 
     "Alerts.DatePicker.NotValidDate": "Вы выбрали некорректную дату. \nПожалуйста выберите корректную дату завершения промо.",

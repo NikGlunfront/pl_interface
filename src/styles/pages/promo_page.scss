@@ -122,6 +122,14 @@
     }
 }
 
+.promo-description {
+    span {
+        b {
+            font-weight: 400;
+        }
+    }
+}
+
 .pl-promo-page-tags {
     &__item {
         display: inline-block;

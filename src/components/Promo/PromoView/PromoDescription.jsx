@@ -10,8 +10,8 @@ const PromoDescription = ({
 
     return (
         <InfoGroup title={tr('Promo.InfoGroup.Title.Description')} >
-            <div className={isSkeleton ? "skeleton-ui" : ""}>
-                {children}
+            <div className={isSkeleton ? "skeleton-ui" : "promo-description"}>
+                <span dangerouslySetInnerHTML={{ __html: children }} />
             </div>
         </InfoGroup>
     )
