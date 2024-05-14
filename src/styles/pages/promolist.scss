@@ -113,6 +113,30 @@
     } 
 }
 
+.pl-app {
+    &:not(._nav_in_view) {
+        .pl-app__wrapper {
+            .pl-app-header:not(.pl-app-header_promopage) {
+                top: -5rem;
+            }
+            .pl-promo-filters,
+            .pl-page-gifts__tags,
+            .pl-page-wishlist__filters {
+                top: -9rem;
+            }
+
+            &_search {
+                .pl-promo-filters {
+                    top: -13rem !important;
+                }
+                .global-search-field {
+                    top: -9.5rem;
+                }
+            }
+        }
+    }
+}
+
 .pl-app-header {
     @include flex_row;
     justify-content: space-between;
@@ -124,6 +148,12 @@
     top: 0;
     left: 0;
     width: 100%;
+    -webkit-transition: -webkit-transform 225ms cubic-bezier(0,0,.2,1);
+    transition: -webkit-transform 225ms cubic-bezier(0,0,.2,1);
+    transition: transform 225ms cubic-bezier(0,0,.2,1);
+    transition: transform 225ms cubic-bezier(0,0,.2,1), -webkit-transform 225ms cubic-bezier(0,0,.2,1);
+    -webkit-transition-property: all;
+    transition-property: all;
 
     &::after {
         content: "";
@@ -873,6 +903,12 @@
     background: var(--pl-primary-background-color);
     width: 100%;
     padding: 0.5rem 1.8rem 0.5rem 1rem;
+    -webkit-transition: -webkit-transform 225ms cubic-bezier(0,0,.2,1);
+    transition: -webkit-transform 225ms cubic-bezier(0,0,.2,1);
+    transition: transform 225ms cubic-bezier(0,0,.2,1);
+    transition: transform 225ms cubic-bezier(0,0,.2,1), -webkit-transform 225ms cubic-bezier(0,0,.2,1);
+    -webkit-transition-property: all;
+    transition-property: all;
 
     .pl-reset-filters {
         position: absolute;
@@ -1156,7 +1192,16 @@
 
 .pl-app__wrapper {
     .pl-page-listview {
-        padding-top: 6rem;
+        // padding-top: 6rem;
+    }
+    .global-search-field {
+        display: none;
+        -webkit-transition: -webkit-transform 225ms cubic-bezier(0,0,.2,1);
+        transition: -webkit-transform 225ms cubic-bezier(0,0,.2,1);
+        transition: transform 225ms cubic-bezier(0,0,.2,1);
+        transition: transform 225ms cubic-bezier(0,0,.2,1), -webkit-transform 225ms cubic-bezier(0,0,.2,1);
+        -webkit-transition-property: all;
+        transition-property: all;
     }
     &_search {
         .pl-app-header__globalsearch {
@@ -1168,6 +1213,7 @@
         
         .global-search-field {
             position: fixed;
+            display: flex;
             top: 5rem;
             left: 0;
             width: 100%;

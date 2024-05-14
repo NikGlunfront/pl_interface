@@ -35,7 +35,7 @@ const routes = [
     { path: '/chat/review/:brand_id/:promo_id', name: 'ChatReviewPage', element: <ChatReviewPage />, nodeRef: createRef() },
 ]
   
-
+let lastScroll = 0
 
 function App() {
     const {tg} = useTelegram();
@@ -50,6 +50,7 @@ function App() {
     const navigate = useNavigate()
     const { tr } = useTranslate()
     const [searchActive, setSearchActive] = useState(false)
+    const [navigationInView, setNavigationInView] = useState(true)
 
     function getInitialData() {
         dispatch(getCities())
@@ -59,6 +60,23 @@ function App() {
         dispatch(getTags())
         dispatch(getTagsNums())
     }
+
+    const listenToScroll = () => {
+        const topScroll = document.querySelector('#root').scrollTop
+        if (topScroll <= 100 || topScroll <= lastScroll) {
+            setNavigationInView(true)
+        } else {
+            setNavigationInView(false)
+        }
+        console.log(lastScroll)
+        lastScroll = topScroll
+    }
+
+    useEffect(() => {
+        document.querySelector('#root').addEventListener("scroll", listenToScroll);
+
+        return () => document.querySelector('#root').removeEventListener("scroll", listenToScroll); 
+    }, [])
     
     // useGetInitAppData()
     useEffect(() => {
@@ -78,7 +96,7 @@ function App() {
 
 
     return (
-        <div className={"App pl-app " + (isDarkTheme ? 'pl-app_darktheme' : '')}>
+        <div className={"App pl-app " + (isDarkTheme ? 'pl-app_darktheme' : '') + (navigationInView ? " _nav_in_view" : '')}>
             {/* <div className="testbtn" onClick={changeTheme}></div> */}
             <ScrollTopRoutes />
             <div className={'pl-app__wrapper' + (location.pathname.includes('promos') && searchActive ? ' pl-app__wrapper_search' : "")}>
