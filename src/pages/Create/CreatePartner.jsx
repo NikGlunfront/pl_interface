@@ -23,7 +23,7 @@ const CreatePartner = () => {
 
     useEffect(() => {
         dispatch(setSearchAvailable(false))
-        requestContact()
+        // requestContact()
     }, [])
     
     useEffect(() => {

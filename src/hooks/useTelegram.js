@@ -26,8 +26,11 @@ export function useTelegram() {
         }
     }
 
-    const requestContact = () => {
-        tg.requestContact()
+    const requestContact = async () => {
+        let result = await tg.requestContact(function(objectPhone) {
+            return objectPhone
+        })
+        return result
     }
 
     return {
