@@ -26,11 +26,16 @@ export function useTelegram() {
         }
     }
 
+    const requestContact = () => {
+        tg.requestContact()
+    }
+
     return {
         onClose,
         onToggleButton,
         sendDataToBot,
         sendAlert,
+        requestContact,
         tg,
         user: tg.initDataUnsafe?.user,
         queryId: tg.initDataUnsafe?.query_id

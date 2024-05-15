@@ -19,10 +19,11 @@ const CreatePartner = () => {
     const [partnerBio, setPartnerBio] = useState(null)
     const [companyInfo, setCompanyInfo] = useState(null)
     const [isReady, setIsReady] = useState(false)
-    const { user } = useTelegram()
+    const { user, requestContact } = useTelegram()
 
     useEffect(() => {
         dispatch(setSearchAvailable(false))
+        requestContact()
     }, [])
     
     useEffect(() => {

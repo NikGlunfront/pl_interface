@@ -8,6 +8,7 @@ import AdressCreator from '../../../components/Adress/AdressCreator';
 import { setIsContentHidden } from '../../../store/slices/pageSlice/pageSlice';
 import ManageAdress from '../../../components/Adress/ManageAdress';
 import AdressItem from '../../../components/Adress/AdressItem';
+import { useTelegram } from '../../../hooks/useTelegram';
 
 const partnerInputs = [
     {id: 'phone', icon: 'phone', placeholder: 'Partner.InputFields.Phone'},
@@ -25,12 +26,16 @@ const PartnerInputGroup = ({
     const { tr } = useTranslate()
     const { contacts: contactsState, adress: adressState } = useSelector(state => state.user.company)
     const { getIcon } = useIcons()
+    const { user } = useTelegram()
     const dispatch = useDispatch()
     const [contacts, setContacts] = useState({})
     const [adressData, setAdressData] = useState([])
     const [listVisible, setListVisible] = useState(false)
 
     useEffect(() => {
+        if (user?.username) {
+            setContacts({tg: user.username})
+        }
         if (contactsState !== null) {
             setContacts(contactsState)
         }

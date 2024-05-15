@@ -3,6 +3,7 @@ import TextInput from '../../../components/UI/Input/TextInput';
 import TextArea from '../../../components/UI/Input/TextArea';
 import { useSelector } from 'react-redux';
 import { useTranslate } from '../../../hooks/useTranslate';
+import { useTelegram } from '../../../hooks/useTelegram';
 
 const partnerBio = [
     {placeholder: 'Имя или название компании'},
@@ -16,6 +17,7 @@ const PartnerBio = ({
     const { name: compName, description: compDescription } = useSelector(state => state.user.company)
     const [companyName, setCompanyName] = useState(null)
     const [companyDescription, setCompanyDescription] = useState(null)
+    const { user } = useTelegram()
 
     const changeCompanyName = (name) => {
         setCompanyName(name)
@@ -26,6 +28,9 @@ const PartnerBio = ({
     }
     
     useEffect(() => {
+        if (user?.username) {
+            changeCompanyName(user.username)
+        }
         changeCompanyName(compName)
         changeCompanyDescription(compDescription)
     }, [])
