@@ -78,9 +78,7 @@ const CreatePartner = () => {
             <PartnerBio changeFunc={setCompanyBio} />
             <PartnerInputGroup updatePartnerInputs={updateCompanyInfo} />
             <pre className='debug_panel'>
-                {user.map((item, key) => (
-                    <p>{item} == {key}</p>
-                ))}
+                {JSON.stringify(user, undefined, 1)}
             </pre>
             <SmartButton 
                 color="red"
