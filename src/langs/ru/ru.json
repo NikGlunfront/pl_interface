@@ -1,8 +1,8 @@
 {
     "Save": "Сохранить",
     "City": "Город",
-    "Category": "Категория",
-    "Categories": "Категории",
+    "Category": "Раздел",
+    "Categories": "Разделы",
     "Contacts": "Контакты",
     "Menu": "Меню",
     "Reset": "Сбросить",
@@ -10,6 +10,7 @@
     "Further": "Далее",
     "Addresses": "Адреса",
     "Delivery": "Доставка",
+    "Tags": "Категории",
 
     "Menu.PartnerCabinet": "Кабинет партнера",
     "Menu.MyGifts": "Мои подарки",
@@ -72,7 +73,7 @@
 
     "Search.Title.SearchSettings": "Настройка ленты",
     "Search.Placeholder.City": "Поиск города",
-    "Search.Placeholder.Category": "Поиск категории",
+    "Search.Placeholder.Category": "Поиск раздела",
     "Search.Placeholder.Addresses": "Поиск адреса",
     "Search.Placeholder.Tags": "Поиск категории",
     "Search.Result.Noresults": "Нет результатов",

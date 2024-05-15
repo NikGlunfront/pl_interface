@@ -445,3 +445,17 @@
         }
     }
 }
+
+.no-scroll-visual::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 0;
+    height: 0;
+}
+
+.debug_panel {
+    width: 100%;
+    max-height: 50rem;
+    overlay: auto;
+    background-color: var(--pl-primary-popup-background);
+    color: var(--pl-primary-text-color);
+}

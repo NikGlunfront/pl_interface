@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { PL_APP_ROUTES } from '../../vars/routes';
 import { setCompany, setCompanyContacts } from '../../store/slices/user/userSlice';
 import { useTranslate } from '../../hooks/useTranslate';
+import { useTelegram } from '../../hooks/useTelegram';
 
 const CreatePartner = () => {
     const dispatch = useDispatch()
@@ -18,6 +19,7 @@ const CreatePartner = () => {
     const [partnerBio, setPartnerBio] = useState(null)
     const [companyInfo, setCompanyInfo] = useState(null)
     const [isReady, setIsReady] = useState(false)
+    const { user } = useTelegram()
 
     useEffect(() => {
         dispatch(setSearchAvailable(false))
@@ -75,6 +77,7 @@ const CreatePartner = () => {
             <PartnerLogoLoader changeFunc={setImageToCompany} />
             <PartnerBio changeFunc={setCompanyBio} />
             <PartnerInputGroup updatePartnerInputs={updateCompanyInfo} />
+            <pre className='debug_panel'>{user}</pre>
             <SmartButton 
                 color="red"
                 onClick={handleGoToPromoCreate}

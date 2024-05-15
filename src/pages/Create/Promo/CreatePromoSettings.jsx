@@ -70,19 +70,19 @@ const CreatePromoSettings = ({
 
     return (
         <div className="settings-create-promo">
-            <InfoGroup title={tr("Promo.InfoGroup.Title.ShowInFeeds")}>
+            <CategorySelector 
+                callbackCategory={setCatsToShowIn}
+                withIcon={true}
+                stateData={settingsState.catsToShowIn}
+            />
+            {/* <InfoGroup title={tr("Promo.InfoGroup.Title.ShowInFeeds")}>
                 <CitySelector 
                     callbackCity={setCitiesToShowIn}
                     withIcon={true}
                     stateData={settingsState.citiesToShowIn}
                 />
-                <CategorySelector 
-                    callbackCategory={setCatsToShowIn}
-                    withIcon={true}
-                    stateData={settingsState.catsToShowIn}
-                />
-            </InfoGroup>
-            <InfoGroup title={tr('Promo.InfoGroup.Title.PromoAmount')}>
+            </InfoGroup> */}
+            {/* <InfoGroup title={tr('Promo.InfoGroup.Title.PromoAmount')}>
                 <RangeSlider 
                     max={999}
                     min={0}
@@ -100,7 +100,7 @@ const CreatePromoSettings = ({
                     iniValue={priceAmount}
                     onChange={setPriceAmount}
                 />
-            </InfoGroup>
+            </InfoGroup> */}
             <InfoGroup title={tr('Promo.InfoGroup.Title.ExpirationDate')} >
                 <div className={"settings-create-promo__date " + (isNoDate ? 'settings-create-promo__date_nolimits ' : '')}>
                     <Datepicker 

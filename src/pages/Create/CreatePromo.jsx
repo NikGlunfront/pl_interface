@@ -87,11 +87,11 @@ const CreatePromo = ({
 
     return (
         <div className={'pl-page-container pl-page-create-promo'}>
-            <CreatePromoSteps 
+            {/* <CreatePromoSteps 
                 stepsData={promoCreateSteps}
                 step={step}
-            />
-            {step === 1
+            /> */}
+            {step === 1 || true
                 ? 
                 <CreatePromoFirstStep 
                     getData={getDataFirstStep}
@@ -100,7 +100,7 @@ const CreatePromo = ({
                 />
                 : ""
             }
-            {step === 2
+            {step === 2 || true
                 ? 
                 <CreatePromoSecondStep 
                     getData={getDataSecondStep}
@@ -110,7 +110,7 @@ const CreatePromo = ({
             }
 
 
-            {step === 1 || step === 2
+            {/* {step === 1 || step === 2
                 ? <CreatePromoPreview 
                     name={firstStepData?.name ? firstStepData.name : ''}
                     description={firstStepData?.shortDescription ? firstStepData.shortDescription : ''}
@@ -122,16 +122,16 @@ const CreatePromo = ({
                     promoDescription={secondStepData?.description ? secondStepData.description : "" }
                 />
                 : ""
-            }
+            } */}
 
-            {step === 3
+            {step === 3 || true
                 ?   <CreatePromoSettings 
                         getData={setThirdStepData}
                         setIsCompleted={setIsCompletedThirdStep}
                     />
                 : ""
             }
-            <div className="pl-bottom-button-container">
+            {/* <div className="pl-bottom-button-container">
                 <SmartButton 
                     color="red"
                     onClick={handleMainButtonClick}
@@ -143,7 +143,7 @@ const CreatePromo = ({
                         : true
                     }
                 >{step === 3 ? tr('Button.Publicate') : tr('Button.Next')}</SmartButton>
-            </div>
+            </div> */}
         </div>
     )
 };

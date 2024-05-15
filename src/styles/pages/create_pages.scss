@@ -12,14 +12,12 @@
 .pl-page-create-partner {
     background-color: var(--pl-primary-background-color);
 
-    .input-container__inner {
-        textarea {
-            min-height: unset;
-            height: 7rem;
-        }
-
-        input {
-            color: var(--pl-primary-blue-color);
+    &__inputs {
+        .input-container__inner {
+    
+            input {
+                color: var(--pl-primary-blue-color);
+            }
         }
     }
 
@@ -31,6 +29,13 @@
 
     &__bio {
         margin-bottom: 1.5rem;
+        
+        .input-container__inner {
+            textarea {
+                min-height: unset;
+                height: 7rem;
+            }
+        }
     }
 
     .pl-button {
@@ -99,6 +104,11 @@
         z-index: 2;
         background-color: var(--pl-primary-popup-background);
         padding-top: 2rem;
+    }
+
+    .input-container,
+    .firststep-create-promo__city {
+        margin-bottom: 1.2rem;
     }
 
     .pl-promo {
@@ -287,6 +297,27 @@
 }
 
 .firststep-create-promo {
+    @include flex_row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    .img-uploader-create-promo, .input-container,
+    .firststep-create-promo__city {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .firststep-create-promo__city {
+        // flex: 0 0 calc((100% - 2rem) / 2);
+    }
+
+    .input-container__inner {
+        textarea {
+            height: 7rem;
+            min-height: 7rem;
+        }
+    }
     &__city {
         @include flex_row;
         margin-bottom: 0.7rem;
@@ -371,7 +402,7 @@
 }
 
 .img-uploader-create-promo {
-    margin-bottom: 2.7rem;
+    margin-bottom: 1.3rem;
     @include flex_col;
 
     .no-img-ico {
@@ -591,8 +622,8 @@
 
     &__adress {
         margin-bottom: 1rem;
-        font-size: 1.2rem;
-        line-height: 1.5;
+        font-size: 1.6rem;
+        line-height: 1.25;
         min-height: 2rem;
         padding-left: 2rem;
         background-image: url('../../assets/img/icons/location_red.svg');
@@ -602,7 +633,7 @@
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
-        height: 3.5rem;
+        // height: 3.5rem unset;
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -841,7 +872,7 @@
     .pl-info-group__title {
         @include flex_row;
         justify-content: space-between;
-        padding-right: 3rem;
+        padding-right: 2rem;
         background-image: url('../../assets/img/icons/expand_right.svg');
         background-repeat: no-repeat;
         background-size: 0.6rem 1.2rem;
@@ -882,6 +913,8 @@
             .adress-creator-container {
                 position: relative;
                 z-index: 1000;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
                 background-color: var(--pl-primary-background-color);
             }
 
@@ -907,7 +940,7 @@
 
 
 .adress-creator-container {
-    padding: 2rem 1rem 2rem;
+    padding: 0 1rem 0;
     border-radius: 2rem;
 
     .adress-creator__cityfilter {
