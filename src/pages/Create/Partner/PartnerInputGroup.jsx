@@ -34,7 +34,7 @@ const PartnerInputGroup = ({
 
     useEffect(() => {
         if (user?.username) {
-            setContacts({tg: user.username})
+            setContacts({tg: `https://t.me/${user.username}`})
         }
         if (contactsState !== null) {
             setContacts(contactsState)
