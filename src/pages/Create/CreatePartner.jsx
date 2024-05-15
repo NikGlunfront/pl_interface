@@ -77,7 +77,11 @@ const CreatePartner = () => {
             <PartnerLogoLoader changeFunc={setImageToCompany} />
             <PartnerBio changeFunc={setCompanyBio} />
             <PartnerInputGroup updatePartnerInputs={updateCompanyInfo} />
-            <pre className='debug_panel'>{user}</pre>
+            <pre className='debug_panel'>
+                {user.map((item, key) => (
+                    <p>{item} == {key}</p>
+                ))}
+            </pre>
             <SmartButton 
                 color="red"
                 onClick={handleGoToPromoCreate}
