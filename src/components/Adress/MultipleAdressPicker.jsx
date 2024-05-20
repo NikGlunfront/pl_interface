@@ -79,7 +79,6 @@ const MultipleAdressPicker = ({
             sendAlert(tr(checkIsValidAdress.error))
             return
         }
-        console.log(editedAdress)
         sendAlert(tr('Alerts.NewAddress.SuccessfullyAdded'))
         // dispatch(setCompany({
         //     ...companyState,

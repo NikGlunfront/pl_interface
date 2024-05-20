@@ -10,6 +10,7 @@ import { PL_APP_ROUTES } from '../../vars/routes';
 import { setCompany, setCompanyContacts } from '../../store/slices/user/userSlice';
 import { useTranslate } from '../../hooks/useTranslate';
 import { useTelegram } from '../../hooks/useTelegram';
+import CreateNav from './CreateNav';
 
 const CreatePartner = () => {
     const dispatch = useDispatch()
@@ -75,17 +76,20 @@ const CreatePartner = () => {
 
     return (
         <div className={'pl-page-container pl-page-create-partner'}>
+            <CreateNav step={0} />
             <PartnerLogoLoader changeFunc={setImageToCompany} />
             <PartnerBio changeFunc={setCompanyBio} />
             <PartnerInputGroup updatePartnerInputs={updateCompanyInfo} />
             <pre className='debug_panel'>
                 {JSON.stringify(user, undefined, 1)}
             </pre>
-            <SmartButton 
-                color="red"
-                onClick={handleGoToPromoCreate}
-                disabled={!isReady}
-            >{tr('Save')}</SmartButton>
+            <div className="filters-pl-select__bottom">
+                <SmartButton 
+                    color="red"
+                    onClick={handleGoToPromoCreate}
+                    disabled={!isReady}
+                >{tr('Save')}</SmartButton>
+            </div>
         </div>
     );
 };

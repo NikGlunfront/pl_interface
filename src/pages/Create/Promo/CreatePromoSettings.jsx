@@ -75,46 +75,13 @@ const CreatePromoSettings = ({
                 withIcon={true}
                 stateData={settingsState.catsToShowIn}
             />
-            {/* <InfoGroup title={tr("Promo.InfoGroup.Title.ShowInFeeds")}>
-                <CitySelector 
-                    callbackCity={setCitiesToShowIn}
-                    withIcon={true}
-                    stateData={settingsState.citiesToShowIn}
-                />
-            </InfoGroup> */}
-            {/* <InfoGroup title={tr('Promo.InfoGroup.Title.PromoAmount')}>
-                <RangeSlider 
-                    max={999}
-                    min={0}
-                    step={1}
-                    iniValue={giftsAmount}
-                    onChange={setGiftsAmount}
-                    type="amount"
-                />
-            </InfoGroup>
-            <InfoGroup title={tr('Promo.InfoGroup.Title.ClickPrice')}>
-                <RangeSlider 
-                    max={999}
-                    min={0}
-                    step={1}
-                    iniValue={priceAmount}
-                    onChange={setPriceAmount}
-                />
-            </InfoGroup> */}
-            <InfoGroup title={tr('Promo.InfoGroup.Title.ExpirationDate')} >
-                <div className={"settings-create-promo__date " + (isNoDate ? 'settings-create-promo__date_nolimits ' : '')}>
-                    <Datepicker 
-                        localeLang={langCode}
-                        onChange={setDateValue}
-                        value={dateValue}
-                        iniValue={dateValue}
-                        title={'Page.Title.DateEnd'}
-                    />
-                    <div className='settings-create-promo__nolimit'>
-                        <YesNo toggleFunc={toggleNoDate} isChecked={isNoDate} name={tr('CreatePromo.InputFields.NoEndDate')} color="#000000" />
-                    </div>
-                </div>
-            </InfoGroup>
+            <Datepicker 
+                localeLang={langCode}
+                onChange={setDateValue}
+                value={dateValue}
+                iniValue={dateValue}
+                title={'Page.Title.DateEnd'}
+            />
         </div>
     )
 };

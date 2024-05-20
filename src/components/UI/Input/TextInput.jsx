@@ -8,7 +8,8 @@ const TextInput = ({
     handleChange,
     tagFunc = null,
     validateFunc = null,
-    required
+    required,
+    symbolNum = 0
 }) => {
     const [value, setValue] = useState('')
 
@@ -30,6 +31,9 @@ const TextInput = ({
     return (
         <div className={'input-container ' + (icon !== null ? 'input-container_with_icon' : '')}>
             <div className="input-container__inner">
+                {symbolNum !== 0 &&
+                    <div className="input-container__symbols">{symbolNum - value.length}</div>
+                }
                 {icon !== null
                     ? <span><img src={icon} alt="" /></span>
                     : ""

@@ -13,11 +13,11 @@ import { useTelegram } from '../../../hooks/useTelegram';
 const partnerInputs = [
     {id: 'phone', icon: 'phone', placeholder: 'Partner.InputFields.Phone'},
     {id: 'tg', icon: 'tg', placeholder: 'Partner.InputFields.Telegram'},
-    {id: 'whatsapp', icon: 'whatsapp', placeholder: 'Partner.InputFields.WhatsApp'},
-    {id: 'facebook', icon: 'facebook', placeholder: 'Partner.InputFields.Facebook'},
-    {id: 'instagram', icon: 'instagram', placeholder: 'Partner.InputFields.Instagram'},
-    {id: 'website', icon: 'website', placeholder: 'Partner.InputFields.Website'},
-    {id: 'email', icon: 'email', placeholder: 'Partner.InputFields.Email'},
+    // {id: 'whatsapp', icon: 'whatsapp', placeholder: 'Partner.InputFields.WhatsApp'},
+    // {id: 'facebook', icon: 'facebook', placeholder: 'Partner.InputFields.Facebook'},
+    // {id: 'instagram', icon: 'instagram', placeholder: 'Partner.InputFields.Instagram'},
+    // {id: 'website', icon: 'website', placeholder: 'Partner.InputFields.Website'},
+    // {id: 'email', icon: 'email', placeholder: 'Partner.InputFields.Email'},
 ]
 
 const PartnerInputGroup = ({
@@ -79,7 +79,7 @@ const PartnerInputGroup = ({
     }
     return (
         <div className='pl-page-create-partner__inputs'>
-            <InfoGroup title={tr('Contacts')}>
+            <InfoGroup title={tr('Contacts')} className={'pl-page-create-partner__contactsfield'}>
                 {partnerInputs.map(item => (
                     <TextInput 
                         placeholder={tr(item.placeholder)}

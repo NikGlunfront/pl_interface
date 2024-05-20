@@ -75,6 +75,36 @@ export function useMetaData() {
         return allCategoriesList.filter(cat => cat.id === id)[0].name
     }
 
+    const getCitiesString = (cityIdArr) => {
+        let cityString = ''
+        for (let i = 0; i < cityIdArr.length; i++) {
+            const cityId = cityIdArr[i];
+            if (i !== 0) {
+                cityString += ` • ${tr(getCityName(cityId))}`
+            } else {
+                cityString += tr(getCityName(cityId))
+            }
+        }
+        return cityString
+    }
+    const getCitiesFromAddressesString = (addrObj) => {
+        let cityString = ''
+        let usedIds = []
+        console.log(addrObj)
+        for (let i = 0; i < addrObj.length; i++) {
+            const cityId = addrObj[i].city_id;
+            if (!usedIds.includes(cityId)) {
+                if (i !== 0) {
+                    cityString += ` • ${tr(getCityName(cityId))}`
+                } else {
+                    cityString += tr(getCityName(cityId))
+                }
+                usedIds = [...usedIds, cityId]
+            }
+        }
+        return cityString
+    }
+
     return {
         getLangsData,
         getMenuData,
@@ -85,6 +115,8 @@ export function useMetaData() {
         getTagNameById,
         getCategoryNameById,
         handleCreatePromoBtn,
-        getPartnerCompany
+        getPartnerCompany,
+        getCitiesString,
+        getCitiesFromAddressesString
     }
 }

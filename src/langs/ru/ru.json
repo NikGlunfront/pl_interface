@@ -60,8 +60,8 @@
     "Button.Publicate": "Опубликовать",
     "Button.AddMoreAddress": "Добавить еще адрес",
     "Button.AddAddress": "Добавить адрес",
-    "Button.EditAddresses": "Редактировать адреса",
-    "Button.Cancel": "Отмиенить",
+    "Button.EditAddresses": "Добавить еще адрес",
+    "Button.Cancel": "Отменить",
     "Button.Save": "Сохранить",
     
     "ActionsList.Edit": "Изменить",
@@ -154,7 +154,7 @@
     "Partner.InputFields.Adress": "Адрес",
     "Partner.InputFields.GoogleMapsLink": "Ссылка  на Google Maps ",
 
-    "Datepicker.Placeholder": "дд.мм.гг",
+    "Datepicker.Placeholder": "Дата завершения акции",
 
     "Review.MakeReview": "Оцените подарок",
     "Review.Message.YourReview": "Ваш отзыв",
@@ -163,7 +163,7 @@
     "CreatePromo.Steps.Preview": "Превью",
     "CreatePromo.Steps.Description": "Описание",
     "CreatePromo.Steps.Settings": "Настройки",
-    "CreatePromo.InputFields.PromoName": "Название подарка",
+    "CreatePromo.InputFields.PromoName": "Заголовок",
     "CreatePromo.InputFields.ShortDescription": "Короткое описание вашего предложения",
     "CreatePromo.InputFields.RemoteJob": "Удаленная работа",
     "CreatePromo.InputFields.NoEndDate": "Без ограничений",
