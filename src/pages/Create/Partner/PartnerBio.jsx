@@ -31,8 +31,8 @@ const PartnerBio = ({
         if (user?.username) {
             changeCompanyName(user.username)
         }
-        changeCompanyName(compName)
-        changeCompanyDescription(compDescription)
+        changeCompanyName(compName !== '' ? compName : 'Andrew Gor')
+        changeCompanyDescription(compDescription !== '' ? compDescription : 'Crypto-investor')
     }, [])
 
     useEffect(() => {

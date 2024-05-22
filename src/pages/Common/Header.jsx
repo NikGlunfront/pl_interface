@@ -3,7 +3,7 @@ import HeaderFilterBtn from "./HeaderFilterBtn";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import HeaderSearchBtn from "./HeaderSearchBtn";
-import { setIsContentHidden, setPageTitle, setSearchAvailable } from "../../store/slices/pageSlice/pageSlice";
+import { setHeaderSearchList, setIsContentHidden, setPageTitle, setSearchAvailable } from "../../store/slices/pageSlice/pageSlice";
 import { setCreatePromoStepPosition } from "../../store/slices/createPromo/createPromoSlice";
 import { useTranslate } from "../../hooks/useTranslate";
 import { setActiveCity } from "../../store/slices/filters/filtersSlice";
@@ -34,10 +34,12 @@ const Header = ({
     const openFilterList = (e) => {
         e.stopPropagation()
         setListVisible(true)
+        dispatch(setHeaderSearchList(true))
         // dispatch(setIsContentHidden(true))
     }
     const updateFilterData = (data = 0) => {
         setListVisible(false)
+        dispatch(setHeaderSearchList(false))
         dispatch(setIsContentHidden(false))
         if (data !== 0) {
             const cityName = iniData.cities.filter(city => city.id == data)[0].name
@@ -133,7 +135,7 @@ const Header = ({
     }
 
     return (
-        <div className={className}>
+        <div className={className + (pageMeta.isHeaderSearchActive && ' overheader')}>
             {type === 'filter'
                 ? <HeaderFilterBtn />
                 : <div onClick={returnFunction} className="pl-app-header__returnbtn"></div>

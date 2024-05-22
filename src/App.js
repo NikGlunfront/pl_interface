@@ -95,7 +95,7 @@ function App() {
 
 
     return (
-        <div className={"App pl-app " + (isDarkTheme ? 'pl-app_darktheme' : '') + (navigationInView ? " _nav_in_view" : '')}>
+        <div className={"App pl-app _nav_in_view " + (isDarkTheme ? 'pl-app_darktheme' : '') + (navigationInView ? " _nav_in_view" : '')}>
             {/* <div className="testbtn" onClick={changeTheme}></div> */}
             <ScrollTopRoutes />
             <div className={'pl-app__wrapper' + (location.pathname.includes('promos') && searchActive ? ' pl-app__wrapper_search' : "")}>

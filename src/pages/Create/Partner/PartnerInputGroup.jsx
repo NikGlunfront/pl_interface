@@ -33,9 +33,9 @@ const PartnerInputGroup = ({
     const [listVisible, setListVisible] = useState(false)
 
     useEffect(() => {
-        if (user?.username) {
-            setContacts({tg: `https://t.me/${user.username}`})
-        }
+        // if (user?.username) {
+        //     setContacts({tg: `https://t.me/${user.username}`})
+        // }
         if (contactsState !== null) {
             setContacts(contactsState)
         }

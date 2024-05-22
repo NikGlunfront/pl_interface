@@ -54,7 +54,7 @@
 
         span {
             position: absolute;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
             width: 1.8rem;
             height: 1.8rem;
@@ -63,13 +63,18 @@
             color: $black_c;
             text-align: center;
             line-height: 1.8rem;
+            @include flex_row;
+            align-items: center;
+            justify-content: center;
             top: 0;
             right: 0;
-            transform: translate(calc(-25% - 1rem), -25%);
+            transform: translate(calc(-25% - 1.8rem), -25%);
         }
         
         &_gifts {
             span {
+                background-color: $red_c;
+                color: $white_c;
                 transform: translate(calc(-25% - 2rem), -25%);
             }
         }
@@ -154,6 +159,10 @@
     transition: transform 225ms cubic-bezier(0,0,.2,1), -webkit-transform 225ms cubic-bezier(0,0,.2,1);
     -webkit-transition-property: all;
     transition-property: all;
+
+    &.overheader {
+        z-index: 9999999;
+    }
 
     &::after {
         content: "";
@@ -297,6 +306,7 @@
             border-radius: 50%;
             background-color: var(--pl-primary-black-color);
             margin: 0.2rem 0;
+            margin-left: 0.5rem;
         }
         
         &::before,
@@ -307,6 +317,7 @@
             height: 0.3rem;
             border-radius: 50%;
             background-color: var(--pl-primary-black-color);
+            margin-left: 0.5rem;
         }
     }
 
@@ -644,7 +655,7 @@
     
     &__description {
         font-size: 1.6rem;
-        font-weight: 400;
+        font-weight: 500;
         margin-bottom: 0.4rem;
         // min-height: 2rem;
         min-width: 60%;
@@ -667,7 +678,7 @@
     }
 
     &__location {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.8rem;
         font-size: 1.4rem;
         position: relative;
         word-wrap: break-word;
@@ -696,7 +707,7 @@
         }
 
         span {
-            display: block;
+            display: inline;
         }
 
         &::before {
@@ -795,8 +806,8 @@
 
     &__num {
         padding-left: 1.8rem;
-        font-size: 1.1rem;
-        font-weight: 700;
+        font-size: 1.4rem;
+        font-weight: 500;
         color: var(--pl-primary-text-color);
         margin-right: 0.9rem;
         position: relative;
@@ -805,27 +816,27 @@
             background-image: url('../../assets/img/icons/view.svg');
             background-repeat: no-repeat;
             background-size: 1.6rem 1.1rem;
-            background-position: left top;
+            background-position: left 0.2rem;
         }
 
         &_gifts {
             background-image: url('../../assets/img/icons/gift-ico.svg');
             background-repeat: no-repeat;
             background-size: 1.3rem 1.3rem;
-            background-position: left -0.2rem;
+            background-position: left 0.1rem;
         }
 
         &_wishes {
             background-image: url('../../assets/img/icons/heart-red_nonwish.svg');
             background-repeat: no-repeat;
-            background-size: 1.4rem 1.2rem;
-            background-position: left 0rem;
+            background-size: 1.3rem 1.2rem;
+            background-position: left 0.2rem;
             
             &_full {
                 background-image: url('../../assets/img/icons/heart-red.svg');
                 background-repeat: no-repeat;
-                background-size: 1.4rem 1.2rem;
-                background-position: left 0rem;
+                background-size: 1.3rem 1.2rem;
+                background-position: left 0.2rem;
             }
         }
     }
@@ -892,23 +903,33 @@
     }
 }
 
+.pl-page-container_hidden {
+    .pl-promo-filters {
+        z-index: 99;
+    }
+}
+
 .pl-promo-filters {
     @include flex_row;
     align-items: center;
     width: 100%;
     position: fixed;
-    top: 4.9rem;
+    top: 3.9rem;
     left: 0;
-    z-index: 99;
+    z-index: 105;
     background: var(--pl-primary-background-color);
     width: 100%;
-    padding: 0.5rem 1.8rem 0.5rem 1rem;
+    padding: 0.5rem 1.8rem 0.5rem 1.7rem;
     -webkit-transition: -webkit-transform 225ms cubic-bezier(0,0,.2,1);
     transition: -webkit-transform 225ms cubic-bezier(0,0,.2,1);
     transition: transform 225ms cubic-bezier(0,0,.2,1);
     transition: transform 225ms cubic-bezier(0,0,.2,1), -webkit-transform 225ms cubic-bezier(0,0,.2,1);
     -webkit-transition-property: all;
     transition-property: all;
+
+    .pl-filter-tag {
+        border-radius: 0.8rem;
+    }
 
     .pl-reset-filters {
         position: absolute;
@@ -925,6 +946,9 @@
         cursor: pointer;
         width: 3.5rem;
         padding: 0 0.75rem;
+        border-radius: 0.8rem;
+        margin-right: 0.6rem;
+        background-color: var(--pl-primary-tag-color);
         background-image: url('../../assets/img/icons/filter.svg');
         background-size: 1.8rem 1.4rem;
         background-repeat: no-repeat;
@@ -969,7 +993,7 @@
 
 
 .pl-page-listview {
-    padding-top: 9rem;
+    padding-top: 8rem;
 
     .filters-pl-select__bottom {
         padding: 8rem 0 4rem;
@@ -977,7 +1001,7 @@
 }
 
 .pl-page-wishlist {
-    padding-top: 10rem;
+    padding-top: 8rem;
 }
 
 .pending-order-list-item {
@@ -1171,8 +1195,12 @@
                 // margin-bottom: 0;
 
                 &._with_actions {
-                    padding-right: 1rem;
+                    padding-right: 1.5rem;
                     position: relative;
+
+                    & + .pl-promo__location {
+                        padding-right: 1.5rem;
+                    }
                 }
             }
             &__description {
@@ -1205,21 +1233,21 @@
     }
     &_search {
         .pl-app-header__globalsearch {
-            background-image: url(../../assets/img/icons/close.svg);
-            background-repeat: no-repeat;
-            background-size: 1.3rem;
-            background-position: calc(100% - 0.2rem) center;
+            // background-image: url(../../assets/img/icons/close.svg);
+            // background-repeat: no-repeat;
+            // background-size: 1.3rem;
+            // background-position: calc(100% - 0.2rem) center;
         }
         
         .global-search-field {
             position: fixed;
             display: flex;
-            top: 5rem;
+            top: 4.5rem;
             left: 0;
             width: 100%;
-            z-index: 5;
+            z-index: 105;
             background-color: var(--pl-primary-background-color);
-            padding: 0 1.7rem 0.5rem;
+            padding: 0 1.7rem 1.5rem;
 
             .search-clear {
                 @include flex_row;

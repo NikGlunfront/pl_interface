@@ -98,8 +98,8 @@ const PromoBio = ({
                     :   <><b>{location.substring(0, location.indexOf('[%delivery%]'))}</b><span>{location.substring(location.indexOf('%]') + 2)}</span></>
                 }  */}
                 {location.includes('[%address%]')
-                    ?   <>{location.substring(0, location.indexOf('[%address%]'))}, {location.substring(location.indexOf('%]') + 2)}</>
-                    :   <>{location.substring(0, location.indexOf('[%delivery%]'))}, {location.substring(location.indexOf('%]') + 2)}</>
+                    ?   <><span dangerouslySetInnerHTML={{__html: location.substring(0, location.indexOf('[%address%]'))}} /> {location.substring(location.indexOf('%]') + 2)}</>
+                    :   <><span dangerouslySetInnerHTML={{__html: location.substring(0, location.indexOf('[%delivery%]'))}} /> {location.substring(location.indexOf('%]') + 2)}</>
                 } 
             </div>
         </>

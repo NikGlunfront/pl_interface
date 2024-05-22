@@ -9,6 +9,7 @@ const initialState = {
     adressToEdit: null,
     adressToDelete: null,
     scrollToRef: null,
+    isHeaderSearchActive: false,
     chatMeta: {
         brandId: null,
         brandName: null,
@@ -93,6 +94,12 @@ export const pageSlice = createSlice({
                 ...state,
                 scrollToRef: action.payload
             }
+        },
+        setHeaderSearchList: (state, action) => {
+            return {
+                ...state,
+                isHeaderSearchActive: action.payload
+            }
         }
     }
 })
@@ -108,6 +115,7 @@ export const {
     setScrollRef,
     setAdressToDelete,
     setAdressToEdit,
+    setHeaderSearchList,
     setPageFreezedParam
 } = pageSlice.actions
 

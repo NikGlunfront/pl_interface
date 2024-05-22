@@ -1,12 +1,12 @@
 .pl-page-gifts {
-    padding-top: 10rem;
+    padding-top: 8rem;
     &__tags {
         @include flex_row;
         align-items: center;
         position: fixed;
-        top: 5rem;
+        top: 4rem;
         left: 0;
-        z-index: 100;
+        z-index: 105;
         background: var(--pl-primary-background-color);
         width: 100%;
         padding: 0.9rem 1.8rem 0.5rem;
@@ -156,9 +156,9 @@
         @include flex_row;
         align-items: center;
         position: fixed;
-        top: 5rem;
+        top: 4rem;
         left: 0;
-        z-index: 100;
+        z-index: 105;
         background: var(--pl-primary-background-color);
         width: 100%;
         padding: 0.5rem 1.7rem 0.5rem 1rem;
