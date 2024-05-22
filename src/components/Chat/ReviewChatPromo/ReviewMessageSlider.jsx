@@ -8,7 +8,8 @@ import Modal from '../../UI/Modal/Modal';
 
 const ReviewMessageSlider = ({
     userReview = null,
-    companyReply = null
+    companyReply = null,
+    userName = null
 }) => {
     const swiperRef = useRef(null)
     const { tr } = useTranslate()
@@ -46,7 +47,7 @@ const ReviewMessageSlider = ({
                     <div className="review-message__content">
                         <div className="review-message__user">
                             <img src={userImg} alt="" />
-                            <div className="review-message__name">{tr('Review.Message.YourReview')}</div>
+                            <div className="review-message__name">{userName === null ? tr('Review.Message.YourReview') : userName}</div>
                         </div>
                         <div className="review-message__rate">
                             <StarRating initRating={4} />
@@ -107,7 +108,7 @@ const ReviewMessageSlider = ({
                             <div className="review-message__content">
                                 <div className="review-message__user">
                                     <img src={userImg} alt="" />
-                                    <div className="review-message__name">{tr('Review.Message.YourReview')}</div>
+                                    <div className="review-message__name">{userName === null ? tr('Review.Message.YourReview') : userName}</div>
                                 </div>
                                 <div className="review-message__rate">
                                     <StarRating initRating={4} />
@@ -159,7 +160,7 @@ const ReviewMessageSlider = ({
                     <div className="review-message__content">
                         <div className="review-message__user">
                             <img src={userImg} alt="" />
-                            <div className="review-message__name">Ваш отзыв</div>
+                            <div className="review-message__name">{userName === null ? tr('Review.Message.YourReview') : userName}</div>
                         </div>
                         <div className="review-message__rate">
                             <StarRating initRating={4} />

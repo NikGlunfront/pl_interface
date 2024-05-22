@@ -68,7 +68,6 @@ function App() {
         } else {
             setNavigationInView(false)
         }
-        console.log(lastScroll)
         lastScroll = topScroll
     }
 
