@@ -29,10 +29,14 @@ const CreateFilter = ({
 
     return (
         <div className="" style={{width: '100%'}}>
-            <div className={"firststep-create-promo__filter" + (tagsApplied.length > 0 ? " _picked" : '')} onClick={openFilterList}>
-                <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13 6.83333C13 11.8333 7 16 7 16C7 16 1 11.8333 1 6.83333C1 3.61167 3.68629 1 7 1C10.3137 1 13 3.61167 13 6.83333Z" stroke="#E10001" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 7C9 8.105 8.105 9 7 9C5.895 9 5 8.105 5 7C5 5.895 5.895 5 7 5C8.105 5 9 5.895 9 7Z" stroke="#E10001" stroke-linecap="round" stroke-linejoin="round"/>
+            <div className={"firststep-create-promo__filter _filter" + (tagsApplied.length > 0 ? " _picked" : '')} onClick={openFilterList}>
+                <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.5 3.91667H16" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M1 3.91667H3.5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8.5 10.5832H1" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 10.5832H13.5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6 6V6C4.61917 6 3.5 4.88083 3.5 3.5V3.5C3.5 2.11917 4.61917 1 6 1V1C7.38083 1 8.5 2.11917 8.5 3.5V3.5C8.5 4.88083 7.38083 6 6 6Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 7.6665V7.6665C12.3808 7.6665 13.5 8.78567 13.5 10.1665V10.1665C13.5 11.5473 12.3808 12.6665 11 12.6665V12.6665C9.61917 12.6665 8.5 11.5473 8.5 10.1665V10.1665C8.5 8.78567 9.61917 7.6665 11 7.6665Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 {tr('Выберите раздел и категории')}
             </div>

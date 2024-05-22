@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslate } from '../../../hooks/useTranslate';
 import FilterWindow from '../../UI/SmartSelect/FilterWindow';
@@ -21,6 +21,7 @@ const PartnerFilter = ({
     const [listVisible, setListVisible] = useState(false)
     const dispatch = useDispatch()
     const { tr } = useTranslate()
+    const [partFilter, setPartFilter] = useState(partnersData)
 
     const openFilterList = () => {
         setListVisible(true)
@@ -33,7 +34,14 @@ const PartnerFilter = ({
 
     const toggleCat = (id) => {
         // toggleCategory(id)
+        if (partFilter.filter(item => item.id === id).length > 0 && partFilter.length > 0) {
+            setPartFilter(partFilter.filter(item => item.id !== id))
+        } else {
+            setPartFilter([...partFilter, ...partnersData.filter(item => item.id === id)])
+        }
     }
+
+    useEffect(() => {console.log(partFilter)}, [partFilter])
     
     
     const closeWindow = () => {
@@ -54,7 +62,7 @@ const PartnerFilter = ({
                         <Checkbox 
                             name={tr(partner.company)} 
                             id={partner.id}
-                            isChecked={true}
+                            isChecked={partFilter.filter(item => item.id === partner.id).length > 0}
                             amount={40}
                             toggleFunc={toggleCat}
                             key={partner.id}

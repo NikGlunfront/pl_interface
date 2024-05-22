@@ -44,8 +44,8 @@ const PartnerLogoLoader = ({
                 getPreview={getPreviewImg} 
                 className={'pl-page-create-partner__medialoader'} 
                 label={tr("Default.Input.Placeholder.Image")}
-                cropHeight={160}
-                cropWidth={160}
+                cropHeight={400}
+                cropWidth={400}
             />
         </div>
     )

@@ -38,7 +38,7 @@ const Checkbox = ({
                     <span>{subName}</span>
                 </div>
                 :
-                <div className="pl-input-checkbox__name">{name}</div>
+                <div className="pl-input-checkbox__name" dangerouslySetInnerHTML={{__html: name}} />
             }
             {amount === 0
                 ? <></>

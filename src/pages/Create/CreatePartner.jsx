@@ -80,15 +80,15 @@ const CreatePartner = () => {
             <PartnerLogoLoader changeFunc={setImageToCompany} />
             <PartnerBio changeFunc={setCompanyBio} />
             <PartnerInputGroup updatePartnerInputs={updateCompanyInfo} />
-            <pre className='debug_panel'>
+            {/* <pre className='debug_panel'>
                 {JSON.stringify(user, undefined, 1)}
-            </pre>
+            </pre> */}
             <div className="filters-pl-select__bottom">
                 <SmartButton 
                     color="red"
                     onClick={handleGoToPromoCreate}
                     disabled={!isReady}
-                >{tr('Save')}</SmartButton>
+                >{tr('Далее')}</SmartButton>
             </div>
         </div>
     );

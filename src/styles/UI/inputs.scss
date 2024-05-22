@@ -240,11 +240,11 @@
     
     &__symbols {
         position: absolute;
-        bottom: 0;
+        bottom: 0.5rem;
         right: 1rem;
         font-size: 1.4rem;
         color:#E0E0E0;
-        line-height: 3.7rem;
+        line-height: 1;
         background-color: var(--pl-primary-background-color);
     }
     &__inner {

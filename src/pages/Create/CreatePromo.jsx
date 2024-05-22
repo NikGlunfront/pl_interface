@@ -134,14 +134,13 @@ const CreatePromo = ({
                 <SmartButton 
                     color="red"
                     onClick={handleMainButtonClick}
-                    // disabled={
-                    //     (step === 1 && isCompletedFirstStep     === true)   ||
-                    //     (step === 2 && isCompletedSecondStep    === true)  ||
-                    //     (step === 3 && isCompletedThirdStep     === true)
-                    //     ? false 
-                    //     : true
-                    // }
-                >{step === 2 ? tr('Button.Publicate') : tr('Button.Next')}</SmartButton>
+                    disabled={
+                            (step === 1) ||
+                           (step === 2 && isCompletedSecondStep    === true)
+                            ? false 
+                            : true
+                    }
+                >{step === 2 ? tr('Button.Publicate') : ''}{step === 1 ? tr('Button.Next') : ''}</SmartButton>
             </div>
         </div>
     )

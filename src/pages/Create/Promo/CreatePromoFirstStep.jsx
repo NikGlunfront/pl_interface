@@ -153,7 +153,7 @@ const CreatePromoFirstStep = ({
     return (
         <div className='firststep-create-promo'>
             <CreatePromoImagesUpload completedImages={completedData.images} />
-            <TextInput 
+            <TextArea 
                 placeholder={tr('CreatePromo.InputFields.PromoName')}
                 handleChange={handleNameChange}
                 iniValue={name}

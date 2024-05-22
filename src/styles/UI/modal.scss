@@ -377,6 +377,13 @@
         font-size: 1.2rem;
         line-height: 2.2rem;
         background-color: var(--pl-primary-background-color);
+        font-size: 1.4rem;
+        line-height: 2.8rem;
+        white-space: nowrap;
+        color: var(--pl-primary-text-color);
+        padding: 0 0.9rem;
+        background-color: var(--pl-primary-tag-color);
+        border-radius: 3.6rem;
 
         svg {
             margin-right: 0.5rem;

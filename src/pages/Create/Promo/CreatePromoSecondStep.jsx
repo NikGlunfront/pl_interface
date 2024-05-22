@@ -12,7 +12,12 @@ const CreatePromoSecondStep = ({
     isCompletedSecondStep
 }) => {
     const { tr } = useTranslate()
-    const [rulesAccepted, setRulesAccepted] = useState(true)
+    const [rulesAccepted, setRulesAccepted] = useState(false)
+
+    const handleRulesClick = (val) => {
+        setRulesAccepted(val)
+        isCompletedSecondStep(val)
+    }
     
 
 
@@ -75,8 +80,9 @@ const CreatePromoSecondStep = ({
                 </ul>
                 <Checkbox 
                     isChecked={rulesAccepted} 
-                    name={'Я прочитал/а и принимаю все правила.'} 
-                    toggleFunc={setRulesAccepted} 
+                    id={!rulesAccepted}
+                    name={'Я прочитал/а и принимаю <b>все правила.</b>'} 
+                    toggleFunc={handleRulesClick} 
                 />
             </div>
         </div>

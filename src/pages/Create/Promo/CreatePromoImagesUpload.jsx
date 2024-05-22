@@ -54,8 +54,8 @@ const CreatePromoImagesUpload = ({
                     ?
                     <MediaLoader 
                         getPreview={getPreviewImg}
-                        aspectRatio={3 / 1}
-                        cropHeight={155}
+                        aspectRatio={2 / 1}
+                        cropHeight={220}
                         cropWidth={414}
                         className={'pl-page-create-partner__medialoader'} 
                         label={tr('Default.Input.Placeholder.Image')}

@@ -39,20 +39,15 @@ const CreateFilterWindow = ({
         }
     }, [searchQ])
 
-    useEffect(() => {
-        // if (catOpened) {
+    const handleCatPick = (id) => {
+        
+        if (currentTags.length > 0 && currentTags.filter(item => item.id === id).length > 0) {
+            setCurrentTags(currentTags.filter(item => item.id !== id))
+        } else {
+            setCurrentTags([...currentTags, ...initData.tagsData.filter(item => item.id  === id)])
             
-        //     setDisplayedList(initData.tagsData.filter(tag => initData.tagsData[catOpened].includes(tag.id)))
-        // } else {
-        //     if (catOpened === 0) {
-        //         let allCurrentTagsArray = [];
-        //         Object.keys(initData.tagsData).forEach(tagKey => {
-        //             allCurrentTagsArray = [...allCurrentTagsArray, ...initData.tagsData[tagKey]]
-        //         })
-        //         setDisplayedList(initData.tagsData.filter(tag =>allCurrentTagsArray.includes(tag.id)))
-        //     }
-        // }
-    }, [catOpened])
+        }
+    }
 
     const handleNewTagFilter = (tagValue) => {
         setCatOpened(tagValue)
@@ -140,10 +135,10 @@ const CreateFilterWindow = ({
                     <Checkbox 
                         name={tr(tag.name)} 
                         id={tag.id}
-                        isChecked={false}
+                        isChecked={currentTags.filter(item => item.id === tag.id).length > 0}
                         // amount={tagsDataNums.filter(item => item.id == cat.id)[0].amount}
                         amount={50}
-                        toggleFunc={() => {}}
+                        toggleFunc={handleCatPick}
                         subName={tr(getCategoryNameById(tag.cat_id))}
                         key={tag.id}
                     />
