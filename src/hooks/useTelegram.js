@@ -26,6 +26,14 @@ export function useTelegram() {
         }
     }
 
+    const requestConfirmation = (text) => {
+        if (tg.initDataUnsafe?.user) {
+            tg.showConfirm(text)
+        } else {
+            alert(text)
+        }
+    }
+
     const requestContact = async () => {
         let result = await tg.requestContact(function(objectPhone) {
             return objectPhone
@@ -39,6 +47,7 @@ export function useTelegram() {
         sendDataToBot,
         sendAlert,
         requestContact,
+        requestConfirmation,
         tg,
         user: tg.initDataUnsafe?.user,
         queryId: tg.initDataUnsafe?.query_id

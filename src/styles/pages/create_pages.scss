@@ -10,11 +10,12 @@
     }
 }
 .pl-page-create-promo {
-    padding-top: 5rem;
+    padding-top: 10rem;
 }
 .pl-page-create-partner {
     background-color: var(--pl-primary-background-color);
     padding-bottom: 13rem;
+    padding-top: 8rem;
 
     &__inputs {
         .input-container__inner {
@@ -127,6 +128,11 @@
     .input-container,
     .firststep-create-promo__city {
         margin-bottom: 1.2rem;
+
+        .adress-search {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
         .adress-item  {
             // padding-bottom: 0;
 
@@ -137,8 +143,8 @@
                 display: block;
                 padding-left: 0;
                 background: none;
-                font-weight: 400;
-                color: var(--pl-primary-text-color);
+                font-weight: 500;
+                color: #5f5d5d;
 
                 &::before {
                     content: "";
@@ -420,7 +426,7 @@
         color: var(--pl-grey-text-color);
         border: 0.1rem solid var(--pl-primary-light-border-color);
         overflow: hidden;
-        padding-left: 1.6rem;
+        padding-left: 1.6rem !important;
         padding-right: 1.6rem;
         background-color: var(--pl-primary-background-color);
         border-radius: 5rem;
@@ -435,6 +441,7 @@
 
         svg {
             margin-right: 1rem;
+            width: 16px;
 
             path {
                 stroke: var(--pl-primary-black-color);
@@ -700,7 +707,7 @@
     line-height: 3.5rem;
     color: var(--pl-primary-text-color);
     overflow: hidden;
-    padding-left: 1.4rem;
+    padding-left: 1.6rem;
     padding-right: 2.2rem;
     // background-color: var(--pl-primary-popup-background);
     border: 0.1rem solid var(--pl-primary-light-border-color);
@@ -1151,12 +1158,33 @@
         font-size: 1.7rem;
         font-weight: 700;
         text-align: center;
+        position: relative;
+
+        & > div {
+            & > span {
+                display: block;
+                width: 100%;
+                padding-bottom: 39%;
+                background-color: var(--pl-primary-popup-background);
+                z-index: 10;
+                border-radius: 1.5rem;
+                position: relative;
+                margin-bottom: 1.8rem;
+
+                &._loaded {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+        }
         
         img {
             width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
             object-fit: contain;
             display: block;
-            margin-bottom: 1.8rem;
         }
 
     }
@@ -1191,6 +1219,7 @@
             display: block;
             font-size: 1.5rem;
             line-height: 1;
+            font-weight: 700;
             color: var(--pl-primary-blue-color);
         }
     }
@@ -1286,7 +1315,7 @@
 
         b {
             color: var(--pl-primary-blue-color);
-            font-weight: 400;
+            font-weight: 700;
         }
     }
 
@@ -1339,5 +1368,12 @@
                 }
             }
         }
+    }
+}
+
+.cats-create {
+    .pl-filter-tag {
+        border-radius: 0.8rem;
+        font-weight: 500;
     }
 }

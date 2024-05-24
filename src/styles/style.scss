@@ -156,4 +156,11 @@ html {
 @import './pages/darktheme.scss';
 @import './pages/create_pages.scss';
 
+::-webkit-scrollbar { 
+    display: none; 
+    width: 0px;
+    background: transparent;
+    -webkit-appearance: none;
+}
+
 

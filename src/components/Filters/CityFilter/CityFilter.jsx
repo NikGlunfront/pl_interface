@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActiveCity } from "../../../store/slices/filters/filtersSlice";
 import { setIsContentHidden } from "../../../store/slices/pageSlice/pageSlice";
 import { useTranslate } from "../../../hooks/useTranslate";
+import { useCategoryChanger } from "../../../hooks/useCategoryChanger";
+import { useNavigate } from "react-router-dom";
+import { PL_APP_ROUTES } from "../../../vars/routes";
 
 const CityFilter = ({
     isDarkTheme
@@ -14,6 +17,8 @@ const CityFilter = ({
 
     const iniData = useSelector(state => state.iniData)
     const dispatch = useDispatch()
+    const {setAllCategoriesActive} = useCategoryChanger()
+    const navigate = useNavigate()
     const { tr } = useTranslate()
 
     const [listVisible, setListVisible] = useState(false)
@@ -31,6 +36,9 @@ const CityFilter = ({
             setFilterCity(data)
             const cityName = iniData.cities.filter(city => city.id == data)[0].name
             dispatch(setActiveCity({id: data, name: cityName}))
+            setAllCategoriesActive()
+            navigate(PL_APP_ROUTES.CLIENT.PROMO_LIST, {replace: false})
+            console.log('testCITYFILTER')
         }
     }
 

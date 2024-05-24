@@ -216,7 +216,7 @@ const CreatePromoFirstStep = ({
                     <div className="gifts-popup__title">Количество подарков</div>
                     <div className="gifts-popup__list">
                         {giftsVars.map(item  => (
-                            <div className="gifts-popup__item" onClick={() => setGiftsNumber(item.value)}>{item.value}</div>
+                            <div className="gifts-popup__item" key={item.value} onClick={() => setGiftsNumber(item.value)}>{item.value}</div>
                         ))}
                         <div className="gifts-popup__item _other"><svg width="23" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 2.10975C0 1.51952 0.16972 1.02348 0.50916 0.621622C0.860305 0.207207 1.36361 0 2.01908 0C2.67455 0 3.17201 0.207207 3.51145 0.621622C3.8626 1.02348 4.03817 1.51952 4.03817 2.10975C4.03817 2.68741 3.8626 3.17718 3.51145 3.57903C3.17201 3.98089 2.67455 4.18182 2.01908 4.18182C1.36361 4.18182 0.860305 3.98089 0.50916 3.57903C0.16972 3.17718 0 2.68741 0 2.10975Z" fill="black"/>

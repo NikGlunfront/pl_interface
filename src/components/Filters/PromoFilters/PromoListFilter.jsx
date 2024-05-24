@@ -40,6 +40,13 @@ const PromoListFilter = ({
                     changeActiveTag={handleNewTagFilter} 
                     activeTag={active_filters.activeCategoryTag === 0} 
                 />
+                <TagFilter 
+                    name={tr('Просто дарю')}
+                    filterValue={9999} 
+                    key={'free'} 
+                    changeActiveTag={handleNewTagFilter} 
+                    activeTag={active_filters.activeCategoryTag === 9999} 
+                />
                 {choosenCats.length > 0 && choosenCats.map(cat => (
                     <TagFilter
                         name={tr(cat.name)} 

@@ -93,13 +93,6 @@ const CreateFilterWindow = ({
             </div>
             
             <div className="filters-pl-select__tags">
-                <TagFilter 
-                    name={tr('TagFilter.Categories.All')}
-                    filterValue={0} 
-                    key={'all'} 
-                    changeActiveTag={handleNewTagFilter} 
-                    activeTag={catOpened === 0} 
-                />
                 {choosenCats.length > 0 && choosenCats.map(cat => (
                     <TagFilter
                         name={tr(cat.name)} 

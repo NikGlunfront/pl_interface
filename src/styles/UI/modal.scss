@@ -57,7 +57,7 @@
 
 .qr-code-popup {
     text-align: center;
-    padding: 5.3rem 3.5rem;
+    padding: 5.3rem 2.5rem;
     width: 100%;
     height: calc(100vh - 10rem);
     margin-top: auto;
@@ -73,7 +73,7 @@
         font-size: 1.3rem;
         color: var(--pl-grey-text-color);
         margin: 0 auto 0.7rem;
-        max-width: 26.6rem;
+        max-width: 41rem;
     }
     &__code {
         width: 24.8rem;
@@ -244,7 +244,7 @@
 
         textarea {
             width: 100%;
-            font-size: 1.3rem;
+            font-size: 1.6rem;
             height: 8.3rem;
             min-height: 8.3rem;
         }
@@ -262,6 +262,7 @@
         font-size: 1.2rem;
     }
 }
+
 
 .reviews-popup {
     width: calc(100% - 2.6rem);
@@ -281,7 +282,8 @@
     }
 }
 
-.promo-actions-modal {
+.promo-actions-modal,
+.reset-filter-modal {
     margin-top: auto;
     border-radius: 1rem;
     width: calc(100% - 3rem);
@@ -353,7 +355,7 @@
         line-height: 3.5rem;
         font-size: 1.4rem;
         color: var(--pl-primary-white-color);
-        background-color: var(--pl-primary-black-color);
+        background-color: var(--pl-primary-red-color);
         padding: 0 1.3rem;
         border-radius: 5.4rem;
 
@@ -367,6 +369,11 @@
     margin-bottom: 2.3rem;
     @include flex_row;
     align-items: center;
+    position: fixed;
+    top: 5rem;
+    z-index: 10;
+    padding-bottom: 0.6rem;
+    background: var(--pl-primary-background-color);
 
     &__item {
         margin-right: 0.6rem;
@@ -433,6 +440,43 @@
             &:nth-child(2) {
                 background-color: var(--pl-primary-green-color);
             }
+        }
+    }
+}
+
+.reset-filter-modal {
+    padding-top: 3rem;
+    margin: auto;
+
+    &__title {
+        font-weight: 500;
+    }
+
+    ul {
+        margin-top: 2rem;
+        .pl-input-checkbox {
+            &:first-child {
+                border-top: 0.1rem solid var(--pl-primary-light-border-color);
+            }
+        }
+    }
+
+    &__btn {
+        @include flex_row;
+        text-align: center;
+        justify-content: center;
+        line-height: 3.5rem;
+        padding: 0 1rem;
+        width: 15.8rem;
+        background-color: $red_c;
+        color: $white_c;
+        border-radius: 5.5rem;
+        font-size: 1.4rem;
+        margin-top: 3rem;
+
+        &._disabled {
+            opacity: 0.3;
+            pointer-events: none;
         }
     }
 }

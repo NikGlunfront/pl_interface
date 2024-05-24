@@ -87,14 +87,14 @@ const HomePage = ({
                     /> */}
                 </div>
                 <div className="home-page__btns">
-                    <SmartButton
+                    {/* <SmartButton
                         disabled={activeCityId ? false : true}
                         color="red"
                         number={236}
                         onClick={handleGoToPromoClick}
                         >
                         {tr('Button.ShowGifts')}
-                    </SmartButton>
+                    </SmartButton> */}
                     <SmartButton
                         onClick={handleCreatePromoBtn}
                         icon={isDarkTheme === true ? giftSvgDarkTheme : giftSvg}

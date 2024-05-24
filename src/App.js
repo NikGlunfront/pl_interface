@@ -104,10 +104,11 @@ function App() {
                         title={pageTitle} 
                         type={location.pathname === '/promos' ? 'filter' : ''}
                         searchToggler={setSearchActive}
+                        isActiveSearch={searchActive}
                     />
                 }
                 {location.pathname.includes('promos') && pageTitle.includes('City') &&
-                    <GlobalSearch />
+                    <GlobalSearch setSearchActive={setSearchActive} />
                 }
                 <div className='pl-app__innercontainer'>
                     <SwitchTransition>

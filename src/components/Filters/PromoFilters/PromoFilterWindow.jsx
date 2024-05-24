@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import SearchTagsField from "./SearchTagsField";
 import { setActiveTags } from "../../../store/slices/filters/filtersSlice";
 import { useTranslate } from "../../../hooks/useTranslate";
+import Modal from "../../UI/Modal/Modal";
+import Checkbox from "../../UI/Input/Checkbox";
 
 const PromoFilterWindow = ({
     visible,
@@ -18,12 +20,18 @@ const PromoFilterWindow = ({
     const [choosenCats, setChoosenCats] = useState([])
     const [catOpened, setCatOpened] = useState(null)
     const [clearActive, setClearActive] = useState(true)
+    const [modalVisible, setModalVisible] = useState(false)
     const [searchQ, setSearchQ] = useState('')
+    const [resetOption, setResetOption] = useState(0)
     const dispatch = useDispatch()
 
     useEffect(() => {
         if (active_filters.activeCategoryTag) {
-            setCatOpened(active_filters.activeCategoryTag)
+            if (active_filters.activeCategoryTag === 9999) {
+                setCatOpened(0)
+            } else {
+                setCatOpened(active_filters.activeCategoryTag)
+            }
         }
     }, [active_filters.activeCategoryTag])
 
@@ -48,11 +56,18 @@ const PromoFilterWindow = ({
         setSearchQ('')
     }
 
+    const openResetModal = () => {
+        setModalVisible(true)
+        setResetOption(0)
+    }
+
     const onChangeSearch = (e) => {
         setSearchQ(e.target.value)
     }
 
     const handleResetFilters = () => {
+        setResetOption(0)
+        setModalVisible(false)
         let resetObj = {}
         for (let i = 0; i < active_filters.categories.length; i++) {
             const cat = active_filters.categories[i];
@@ -61,6 +76,14 @@ const PromoFilterWindow = ({
         dispatch(setActiveTags(resetObj))
         setCatOpened(0)
         // closeWindow()
+    }
+
+    const setReset = (id) => {
+        if (id && resetOption !== id) {
+            setResetOption(id)
+        } else {
+            setResetOption(0)
+        }
     }
 
     const removeTagFilter = (id) => {
@@ -76,8 +99,24 @@ const PromoFilterWindow = ({
                     </svg>
                 </div>
                 <div className="pl-return-toppanel__title">{tr('Search.Title.SearchSettings')}</div>
-                <div className="pl-reset-filters" onClick={handleResetFilters}>{tr('Reset')}</div>
+                <div className="pl-reset-filters" onClick={openResetModal}>{tr('Reset')}</div>
             </div>
+
+            <Modal
+                className={'reset-filter-modal'}
+                setActive={setModalVisible}
+                isActive={modalVisible}
+            >
+                <div className="reset-filter-modal__title">Сбросить настройки?</div>
+                <ul>
+                    <Checkbox id={1} isChecked={resetOption === 1} name={'Все'} toggleFunc={setReset} />
+                    <Checkbox id={2} isChecked={resetOption === 2} name={'В этом разделе'} toggleFunc={setReset} />
+                </ul>
+                <div 
+                    className={"reset-filter-modal__btn " + (resetOption === 0 && ' _disabled')}
+                    onClick={handleResetFilters}
+                >Сбросить</div>
+            </Modal>
             
             <div className="filters-pl-select__tags">
                 <TagFilter 

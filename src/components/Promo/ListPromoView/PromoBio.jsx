@@ -10,15 +10,15 @@ const PromoBio = ({
     isDeliveryLocation = false
 }) => {
     const locationPath = useLocation()
-    const [isDisplayedActions,  setIsDisplayedActions] = useState(false)
+    const [isDisplayedActions,  setIsDisplayedActions] = useState(true)
     const [isModalActive, setIsModalActive] = useState(false)
     const { title: pageTitle } = useSelector(state => state.pageMeta)
 
     useEffect(() => {
         if  (locationPath.pathname.includes('promos') && pageTitle.includes('City')) {
-            setIsDisplayedActions(true)
+            // setIsDisplayedActions(true)
         } else {
-            setIsDisplayedActions(false)
+            // setIsDisplayedActions(false)
         }
     }, [])
 

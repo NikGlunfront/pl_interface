@@ -28,7 +28,7 @@ const CreateFilter = ({
     }
 
     return (
-        <div className="" style={{width: '100%'}}>
+        <div className="cats-create" style={{width: '100%'}}>
             <div className={"firststep-create-promo__filter _filter" + (tagsApplied.length > 0 ? " _picked" : '')} onClick={openFilterList}>
                 <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.5 3.91667H16" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>

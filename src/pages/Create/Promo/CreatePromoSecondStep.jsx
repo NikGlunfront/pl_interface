@@ -13,10 +13,15 @@ const CreatePromoSecondStep = ({
 }) => {
     const { tr } = useTranslate()
     const [rulesAccepted, setRulesAccepted] = useState(false)
+    const [imgLoaded, setImgLoaded] = useState(false)
 
     const handleRulesClick = (val) => {
         setRulesAccepted(val)
         isCompletedSecondStep(val)
+    }
+
+    const handleImgLoad = () => {
+        setImgLoaded(true)
     }
     
 
@@ -24,7 +29,12 @@ const CreatePromoSecondStep = ({
     return (
         <div className="publicate-promo">
             <div className="publicate-promo__title">
-                <img src={giftImg} alt="" />
+                <div>
+                    <img onLoad={handleImgLoad} src={giftImg} alt="" />
+                    <span className={imgLoaded ? '_loaded' : ''}>
+                        
+                    </span>
+                </div>
                 Ваш подарок готов к публикации
             </div>
             <div className="publicate-promo__row">

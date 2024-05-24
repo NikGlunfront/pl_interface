@@ -3,13 +3,13 @@ import { useDispatch } from "react-redux";
 import { setHeaderSearchList } from "../../store/slices/pageSlice/pageSlice";
 
 const HeaderSearchBtn = ({
-    searchToggler
+    searchToggler,
+    isActiveSearch
 }) => {
     const [isActive, setIsActive] = useState(false)
 
     const handleSearchClick = () => {
-        setIsActive(!isActive)
-        searchToggler(!isActive)
+        searchToggler(!isActiveSearch)
     }
 
     return (

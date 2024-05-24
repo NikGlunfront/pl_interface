@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslate } from '../../hooks/useTranslate';
+import { setHeaderSearchList } from '../../store/slices/pageSlice/pageSlice';
 
 const GlobalSearch = ({
-    isActive
+    isActive,
+    setSearchActive
 }) => {
     const { tr } = useTranslate()
     const { darkTheme: isDarkTheme } = useSelector(state => state.pageMeta)
     const [searchQ, setSearchQ] = useState('')
-    const [clearActive, setClearActive] = useState(false)
+    const [clearActive, setClearActive] = useState(true)
+    const dispatch = useDispatch()
 
     const onChangeSearch = (e) => {
         setSearchQ(e.target.value)
@@ -22,15 +25,20 @@ const GlobalSearch = ({
     useEffect(() => {
         if (searchQ !== '') {
             // setVisibleFilters(cityData.filter(city => city.name.toLowerCase().includes(searchQ.toLowerCase())))
-            setClearActive(true)
+            // setClearActive(true)
         } else {
             // setVisibleFilters(cityData)
-            setClearActive(false)
+            // setClearActive(false)
         }
     }, [searchQ])
 
     const clearSearch = () => {
-        setSearchQ('')
+        if (searchQ !== '') {
+            setSearchQ('')
+            console.log('test')
+        } else {
+            setSearchActive(false)
+        }
     }
 
     return (

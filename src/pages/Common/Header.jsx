@@ -13,6 +13,7 @@ import { PL_APP_ROUTES } from "../../vars/routes";
 
 const Header = ({
     type,
+    isActiveSearch,
     searchToggler = () => {}
 }) => {
     const location = useLocation()
@@ -157,7 +158,7 @@ const Header = ({
                 <div className="pl-app-header__title">{tr(pageMeta.title)}</div>
             }
             {pageMeta.searchAvailable
-                ? <HeaderSearchBtn searchToggler={searchToggler} />
+                ? <HeaderSearchBtn searchToggler={searchToggler} isActiveSearch={isActiveSearch} />
                 : ""
             }             
             {isChatPage 
