@@ -136,7 +136,7 @@ const Header = ({
     }
 
     return (
-        <div className={className + (pageMeta.isHeaderSearchActive && ' overheader')}>
+        <div className={className + (pageMeta.isHeaderSearchActive && ' overheader') + (pageMeta.isContentHidden && "_hidden_content")}>
             {type === 'filter'
                 ? <HeaderFilterBtn />
                 : <div onClick={returnFunction} className="pl-app-header__returnbtn"></div>

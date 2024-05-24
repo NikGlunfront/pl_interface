@@ -162,11 +162,11 @@ const PromoFilterWindow = ({
                 openedCat={catOpened}
                 searchQ={searchQ}
             />
-            <div className="filters-pl-select__bottom">
+            {/* <div className="filters-pl-select__bottom">
                 <SmartButton color="red" number={300}>
                     {tr('Button.ShowGifts')}
                 </SmartButton>
-            </div>
+            </div> */}
         </FilterWindow>
     )
 };

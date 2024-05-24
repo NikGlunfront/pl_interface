@@ -11,6 +11,7 @@ import { useMetaData } from "../../../hooks/useMetaData";
 
 const CreateFilterWindow = ({
     visible,
+    filtersHandler,
     closeWindow
 }) => {
     const { tr } = useTranslate()
@@ -33,11 +34,25 @@ const CreateFilterWindow = ({
 
     useEffect(() => {
         if (searchQ !== '') {
-            setDisplayedList(initData.tagsData.filter(tag => (tr(tag.name).toLowerCase().includes(searchQ.toLowerCase()) || tr(getCategoryNameById(tag.cat_id)).toLowerCase().includes(searchQ.toLowerCase()))))
+            setDisplayedList(initData.tagsData.filter(tag => tag.cat_id === catOpened && ((tr(tag.name).toLowerCase().includes(searchQ.toLowerCase()) || tr(getCategoryNameById(tag.cat_id)).toLowerCase().includes(searchQ.toLowerCase())))))
         } else {
-            setDisplayedList(initData.tagsData)
+            setDisplayedList(initData.tagsData.filter(tag => tag.cat_id === catOpened))
         }
-    }, [searchQ])
+    }, [searchQ, catOpened])
+
+    useEffect(() => {
+        filtersHandler(null)
+        setCurrentTags([])
+        console.log(catOpened)
+    } , [catOpened])
+
+    useEffect(() => {
+        if (catOpened !== null && currentTags.length > 0) {
+            filtersHandler({cat: catOpened, tags: currentTags, tags_left: initData.tagsData.filter(tag => tag.cat_id === catOpened && !currentTags.includes(tag)).length})
+        } else {
+            filtersHandler(null)
+        }
+    } , [currentTags])
 
     const handleCatPick = (id) => {
         
@@ -130,7 +145,7 @@ const CreateFilterWindow = ({
                         id={tag.id}
                         isChecked={currentTags.filter(item => item.id === tag.id).length > 0}
                         // amount={tagsDataNums.filter(item => item.id == cat.id)[0].amount}
-                        amount={50}
+                        // amount={50}
                         toggleFunc={handleCatPick}
                         subName={tr(getCategoryNameById(tag.cat_id))}
                         key={tag.id}
@@ -142,11 +157,6 @@ const CreateFilterWindow = ({
                     :
                     <></>
                 }
-            </div>
-            <div className="filters-pl-select__bottom">
-                <SmartButton color="red" number={300}>
-                    {tr('Button.ShowGifts')}
-                </SmartButton>
             </div>
         </FilterWindow>
     )

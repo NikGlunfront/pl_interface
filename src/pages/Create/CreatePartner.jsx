@@ -48,6 +48,7 @@ const CreatePartner = () => {
         } else {
             newReadyState = false
         }
+        console.log(companyInfo)
         setIsReady(newReadyState)
         // console.log(isReady)
     }, [companyImg, partnerBio, companyInfo])

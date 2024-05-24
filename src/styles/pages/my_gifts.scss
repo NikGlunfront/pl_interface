@@ -22,6 +22,7 @@
         .pl-filter-tag {
             @include flex_row;
             align-items: center;
+            height: 2.5rem;
             img {
                 width: 1.5rem;
                 height: 1.5rem;
@@ -150,6 +151,14 @@
         @include flex_row;
         align-items: center;
         overflow-y: auto;
+
+        .pl-filter-tag,
+        .pl-promo-filters__btn  {
+            height: 2.5rem;
+        }
+    }
+    .pl-promo-filters__btn  {
+        height: 2.5rem;
     }
     
     &__filters {

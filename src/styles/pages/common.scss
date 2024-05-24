@@ -5,7 +5,7 @@
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 999999;
     background-color: var(--pl-primary-background-color);
     height: 5rem;
 
@@ -336,6 +336,25 @@
         background-position: calc(100% - 1rem) center;
         border: 0.1rem solid var(--pl-primary-light-border-color);
         margin-bottom: 0.7rem;
+        @include flex_row;
+        align-items: center;
+
+        svg {
+            margin-right: 1rem;
+            width: 16px;
+
+            path {
+                stroke: var(--pl-primary-black-color);
+            }
+        }
+
+        &._active {
+            svg {
+                path {
+                    stroke: var(--pl-primary-red-color);
+                }
+            }
+        }
     }
 
     &__more {

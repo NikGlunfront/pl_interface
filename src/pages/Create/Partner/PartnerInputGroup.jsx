@@ -30,6 +30,7 @@ const PartnerInputGroup = ({
     const dispatch = useDispatch()
     const [contacts, setContacts] = useState({})
     const [adressData, setAdressData] = useState([])
+    const [semiAdrState, setSemiAdrState] = useState(null)
     const [listVisible, setListVisible] = useState(false)
 
     useEffect(() => {
@@ -57,10 +58,11 @@ const PartnerInputGroup = ({
 
     const updateAdressData = (adress) => {
         if (adress !== null) {
-            setAdressData([...adressData, adress])
+            setAdressData([adress])
         } else {
-            setAdressData(adressData.slice(0, -1))
+            setAdressData([])
         }
+        console.log(adress)
     }
 
     const closeList = () => {
@@ -95,7 +97,7 @@ const PartnerInputGroup = ({
                 title={tr('Promo.InfoGroup.Title.Adress')} 
                 className={"editable-addresses"}
                 subTitleClass={'editable-adresses__amount'}
-                subTitleNum={adressData.length}
+                subTitleNum={adressData?.length ? adressData?.length  : ""}
             >
                 {adressData.length <= 1
                     ?
@@ -104,12 +106,14 @@ const PartnerInputGroup = ({
                         iniValue={adressData.length === 0 ? null : adressData[0]}
                     />
                     :
-                    <AdressItem 
-                        key={adressData[0].id}
-                        adress={adressData[0]}
-                    />
+                    <>
+                        <AdressItem 
+                            key={adressData[0].id}
+                            adress={adressData[0]}
+                        />
+                        <div className="adress-creator__more" onClick={openFilterList}>{tr('Button.EditAddresses')}</div>
+                    </>
                 }
-                <div className="adress-creator__more" onClick={openFilterList}>{tr('Button.EditAddresses')}</div>
                 <ManageAdress
                     adressData={adressData}
                     manageAdressData={manageAdressData} 

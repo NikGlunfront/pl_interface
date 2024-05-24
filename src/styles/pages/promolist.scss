@@ -12,6 +12,10 @@
     width: 100%;
     background-color: var(--pl-primary-background-color);
 
+    &._hidden_content {
+        z-index: 40;
+    }
+
     &__inner {
         width: 100%;
         @include flex_row;
@@ -159,6 +163,10 @@
     transition: transform 225ms cubic-bezier(0,0,.2,1), -webkit-transform 225ms cubic-bezier(0,0,.2,1);
     -webkit-transition-property: all;
     transition-property: all;
+
+    &._hidden_content {
+        z-index: 50;
+    }
 
     &.overheader {
         z-index: 9999999;

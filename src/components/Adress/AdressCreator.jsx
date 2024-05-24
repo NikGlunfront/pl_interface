@@ -50,13 +50,19 @@ const AdressCreator = ({
         })
     }
 
+    function formatGoogleMapsUrl(url) {
+        const regex = /(https?:\/\/www.google.com\/maps\/embed\?pb=[^&]+)/;
+        const match = url.match(regex);
+        return match ? match[1] : null;
+      }
+
     useEffect(() => {
-        if (textAdress !== '' && mapLink !== '' && city) {
+        if (textAdress !== '' && mapLink !== '' !==null && city) {
             valueGetter({
                 city_id: city.id,
                 map_url: mapLink,
                 adress: textAdress,
-                id: iniValue?.id | 0
+                id: iniValue?.id | 99992
             })
         } else {
             valueGetter(null)
@@ -79,7 +85,11 @@ const AdressCreator = ({
     }
     return (
         <div className="adress-creator">
-            <div className={"adress-creator__cityfilter " + (iniValue !== null ? " _disabled" : '')} onClick={openFilterList}>
+            <div className={"adress-creator__cityfilter " + (iniValue !== null ? " _disabled" : '') + (city?.id ? " _active" : "")} onClick={openFilterList}>
+                <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13 6.83333C13 11.8333 7 16 7 16C7 16 1 11.8333 1 6.83333C1 3.61167 3.68629 1 7 1C10.3137 1 13 3.61167 13 6.83333Z" stroke="#E10001" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 7C9 8.105 8.105 9 7 9C5.895 9 5 8.105 5 7C5 5.895 5.895 5 7 5C8.105 5 9 5.895 9 7Z" stroke="#E10001" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
                 <span>{city?.id ? tr(city.name) : tr('City')}</span>
             </div>
             <CityFilterWindow
