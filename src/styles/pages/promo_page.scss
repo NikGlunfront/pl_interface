@@ -42,6 +42,28 @@
             }
         }
 
+        & > .pl-promo-page-delivery {
+            & > svg {
+                display: none !important;
+            }
+            & > span {
+                padding-left: 0;
+            }
+        }
+
+        & > .adress-item {
+            background-image: none !important;
+            padding-left: 0 !important;
+            & > .adress-item__adress {
+                &::before {
+                    display: none !important;
+                }
+                & > span {
+                    padding-left: 0 !important;
+                }
+            }
+        }
+
         .adress-item  {
             padding-bottom: 0;
 
@@ -92,7 +114,7 @@
     }
 
     .pl-promo {
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
 
         &__title {
             font-size: 1.8rem;
@@ -185,7 +207,7 @@
     }
 
     .pl-info-group__content {
-        margin-bottom: 1rem;
+        margin-bottom: 1.6rem;
     }
 
 
