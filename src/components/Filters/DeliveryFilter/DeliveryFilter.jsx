@@ -41,7 +41,7 @@ const DeliveryFilter = ({
 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5741 11.6884C15.5741 12.7621 14.7045 13.6318 13.6308 13.6318C12.5571 13.6318 11.6875 12.7621 11.6875 11.6884C11.6875 10.6148 12.5571 9.74512 13.6308 9.74512C14.7045 9.74512 15.5741 10.6148 15.5741 11.6884Z" fill="white" stroke="#E10001" stroke-linecap="round" stroke-linejoin="round"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M5.85734 11.6884C5.85734 12.7621 4.98771 13.6318 3.91402 13.6318C2.84034 13.6318 1.9707 12.7621 1.9707 11.6884C1.9707 10.6148 2.84034 9.74512 3.91402 9.74512C4.98771 9.74512 5.85734 10.6148 5.85734 11.6884Z" fill="white" stroke="#E10001" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-                <div>{deliveryData.description.length > 0 && deliveryData.list.length > 0 ? getCitiesString(deliveryData.list) : tr('Delivery')}</div>
+                <div>{deliveryData.list.length > 0 ? getCitiesString(deliveryData.list) : tr('Delivery')}</div>
                 {deliveryData.list.length > 0 && (cities.length - deliveryData.list.length !== 0) &&
                     <div className="promo-create-filter-more">еще {cities.length - deliveryData.list.length}</div>
                 }

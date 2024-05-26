@@ -312,6 +312,10 @@
         border: 0.1rem solid var(--pl-primary-light-border-color);
         border-radius: 0.5rem;
         overflow: hidden;
+        background-image: url('../../assets/img/icons/service/location_placeholder.svg');
+        background-repeat: no-repeat;
+        background-size: 3.1rem 4rem;
+        background-position: center;
 
         iframe {
             width: 100%;

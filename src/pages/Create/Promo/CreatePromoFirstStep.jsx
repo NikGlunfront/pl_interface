@@ -59,7 +59,15 @@ const CreatePromoFirstStep = ({
         }
     }, []) 
 
-    useEffect(() => {console.log(adressList)}, [adressList])
+
+    const clickNumberGifts = () => {
+        let giftNum = prompt('Введите кол-во подарков')
+        giftNum = parseInt(giftNum)
+        if (Number.isInteger(giftNum)) {
+            setGiftsNum(giftNum)
+        }
+        setIsModalActive(false)
+    }
 
     const setGiftsNumber = (value) => {
         setGiftsNum(value)
@@ -218,7 +226,7 @@ const CreatePromoFirstStep = ({
                         {giftsVars.map(item  => (
                             <div className="gifts-popup__item" key={item.value} onClick={() => setGiftsNumber(item.value)}>{item.value}</div>
                         ))}
-                        <div className="gifts-popup__item _other"><svg width="23" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <div className="gifts-popup__item _other" onClick={clickNumberGifts}><svg width="23" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 2.10975C0 1.51952 0.16972 1.02348 0.50916 0.621622C0.860305 0.207207 1.36361 0 2.01908 0C2.67455 0 3.17201 0.207207 3.51145 0.621622C3.8626 1.02348 4.03817 1.51952 4.03817 2.10975C4.03817 2.68741 3.8626 3.17718 3.51145 3.57903C3.17201 3.98089 2.67455 4.18182 2.01908 4.18182C1.36361 4.18182 0.860305 3.98089 0.50916 3.57903C0.16972 3.17718 0 2.68741 0 2.10975Z" fill="black"/>
 <path d="M9.48092 2.10975C9.48092 1.51952 9.65064 1.02348 9.99008 0.621622C10.3412 0.207207 10.8445 0 11.5 0C12.1555 0 12.6529 0.207207 12.9924 0.621622C13.3435 1.02348 13.5191 1.51952 13.5191 2.10975C13.5191 2.68741 13.3435 3.17718 12.9924 3.57903C12.6529 3.98089 12.1555 4.18182 11.5 4.18182C10.8445 4.18182 10.3412 3.98089 9.99008 3.57903C9.65064 3.17718 9.48092 2.68741 9.48092 2.10975Z" fill="black"/>
 <path d="M18.9618 2.10975C18.9618 1.51952 19.1316 1.02348 19.471 0.621622C19.8221 0.207207 20.3254 0 20.9809 0C21.6364 0 22.1338 0.207207 22.4733 0.621622C22.8244 1.02348 23 1.51952 23 2.10975C23 2.68741 22.8244 3.17718 22.4733 3.57903C22.1338 3.98089 21.6364 4.18182 20.9809 4.18182C20.3254 4.18182 19.8221 3.98089 19.471 3.57903C19.1316 3.17718 18.9618 2.68741 18.9618 2.10975Z" fill="black"/>

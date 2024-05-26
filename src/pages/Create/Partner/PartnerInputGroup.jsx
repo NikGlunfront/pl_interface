@@ -95,7 +95,7 @@ const PartnerInputGroup = ({
             </InfoGroup>
             <InfoGroup 
                 title={tr('Promo.InfoGroup.Title.Adress')} 
-                className={"editable-addresses"}
+                className={"editable-addresses" + (adressData.length === 0 ? " _empty" : "")}
                 subTitleClass={'editable-adresses__amount'}
                 subTitleNum={adressData?.length ? adressData?.length  : ""}
             >

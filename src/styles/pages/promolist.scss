@@ -1212,6 +1212,7 @@
 
                     & + .pl-promo__location {
                         padding-right: 1.5rem;
+                        -webkit-line-clamp: 1;
                     }
                 }
             }

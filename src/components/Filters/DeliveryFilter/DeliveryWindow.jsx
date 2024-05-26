@@ -48,7 +48,8 @@ const DeliveryWindow = ({
 
     const handleDescrChange = (value) => {
         setDeliveryDescr(value)
-        updateDeliveryList({list: deliveryDescr.length > 0 ? deliveryList : [], description: value})
+        // updateDeliveryList({list: deliveryDescr.length > 0 ? deliveryList : [], description: value})
+        updateDeliveryList({list: deliveryList, description: value})
     }
 
     const callbackDelivery = (id) => {
@@ -59,7 +60,8 @@ const DeliveryWindow = ({
             newList = [...newList, id]
         }
         setDeliveryList(newList)
-        updateDeliveryList({list: deliveryDescr.length > 0 ? newList : [], description: deliveryDescr})
+        // updateDeliveryList({list: deliveryDescr.length > 0 ? newList : [], description: deliveryDescr})
+        updateDeliveryList({list: deliveryList, description: deliveryDescr})
     }
 
     const clearSearch = () => {

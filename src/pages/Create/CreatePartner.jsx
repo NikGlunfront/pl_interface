@@ -42,9 +42,9 @@ const CreatePartner = () => {
             if (companyInfo.contacts === null) {
                 newReadyState = false
             }
-            if (!companyInfo.adress.length > 0) {
-                newReadyState = false
-            }
+            // if (!companyInfo.adress.length > 0) {
+            //     newReadyState = false
+            // }
         } else {
             newReadyState = false
         }

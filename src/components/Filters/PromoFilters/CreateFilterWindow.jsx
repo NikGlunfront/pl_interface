@@ -43,14 +43,18 @@ const CreateFilterWindow = ({
     useEffect(() => {
         filtersHandler(null)
         setCurrentTags([])
-        console.log(catOpened)
+        if (catOpened === 100) {
+            filtersHandler({cat: 100, tags:null, tags_left: 0})
+        }
     } , [catOpened])
 
     useEffect(() => {
         if (catOpened !== null && currentTags.length > 0) {
             filtersHandler({cat: catOpened, tags: currentTags, tags_left: initData.tagsData.filter(tag => tag.cat_id === catOpened && !currentTags.includes(tag)).length})
         } else {
-            filtersHandler(null)
+            if (catOpened !== 100) {
+                filtersHandler(null)
+            }
         }
     } , [currentTags])
 
@@ -108,6 +112,15 @@ const CreateFilterWindow = ({
             </div>
             
             <div className="filters-pl-select__tags">
+                <TagFilter
+                    name={tr("Просто дарю")} 
+                    filterValue={100} 
+                    key={100} 
+                    changeActiveTag={handleNewTagFilter} 
+                    activeTag={catOpened === 100}
+                    customDot={false} 
+                    // removeFunc={removeTagFilter}
+                />
                 {choosenCats.length > 0 && choosenCats.map(cat => (
                     <TagFilter
                         name={tr(cat.name)} 

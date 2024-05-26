@@ -48,7 +48,7 @@ const CreateFilter = ({
                 {pickedVar !== null
                     ?
                         <>
-                           <div>{tr(getCategoryNameById(pickedVar.cat))} • {iniTags.map(tag => (
+                           <div><b>{pickedVar.cat !== 100 ? tr(getCategoryNameById(pickedVar.cat)) + " • " : "Просто дарю"}</b>{pickedVar.tags !== null && iniTags.map(tag => (
                                 pickedVar.tags.includes(tag) && tr(tag.name) + " • "
                            ))}</div>
                            {pickedVar.tags_left !== 0 &&

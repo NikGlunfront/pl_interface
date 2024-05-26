@@ -73,9 +73,16 @@
         margin-bottom: 2.5rem;
         
         .input-container__inner {
+
+            &_textarea {
+                @include flex_row;
+            }
             textarea {
                 min-height: unset;
                 height: 7rem;
+                line-height: 2.4rem;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
             }
         }
     }
@@ -1062,6 +1069,9 @@
 }
 
 .editable-addresses {
+    &._empty .pl-info-group__title {
+        background-image: none;
+    }
     .pl-info-group__title {
         @include flex_row;
         justify-content: space-between;
@@ -1072,6 +1082,8 @@
         background-position: calc(100% - 0rem) center;
         align-items: center;
         margin-bottom: 0;
+
+        
 
         & ~ .pl-info-group__content {
             padding-top: 0;

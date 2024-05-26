@@ -24,7 +24,7 @@ const Header = ({
     const {setAllCategoriesActive} = useCategoryChanger()
     const { tr } = useTranslate()
     const createPromoStep = useSelector(state => state.createPromo.lastStep)
-    const { activeCity } = useSelector(state => state.filters)
+    const { activeCity, cityId } = useSelector(state => state.filters)
     const { brandImg, brandName } = pageMeta.chatMeta
     const [returnPath, setReturnPath] = useState('-1')
     const [isChatPage, setIsChatPage] = useState(false)
@@ -113,7 +113,7 @@ const Header = ({
             break;
                 
             case '/create-partner':
-                dispatch(setPageTitle('Page.Title.Profile'))
+                dispatch(setPageTitle('Page.Title.NewPromo'))
                 setReturnPath(-1)
                 dispatch(setSearchAvailable(true))
             break;
@@ -125,18 +125,23 @@ const Header = ({
 
     const returnFunction = () => {
         if (location.pathname === '/create-promo') {
-            if (createPromoStep > 1) {
-                dispatch(setCreatePromoStepPosition(createPromoStep - 1))
+            if (cityId !== null) {
+                navigate(returnPath)
             } else {
-                navigate(-1)
+                navigate("/")
             }
+            // if (createPromoStep > 1) {
+            //     dispatch(setCreatePromoStepPosition(createPromoStep - 1))
+            // } else {
+            //     navigate(-1)
+            // }
         } else {
             navigate(returnPath)
         }
     }
 
     return (
-        <div className={className + (pageMeta.isHeaderSearchActive && ' overheader') + (pageMeta.isContentHidden && "_hidden_content")}>
+        <div className={className + (pageMeta.isHeaderSearchActive && ' overheader ') + (pageMeta.isContentHidden && " _hidden_content")}>
             {type === 'filter'
                 ? <HeaderFilterBtn />
                 : <div onClick={returnFunction} className="pl-app-header__returnbtn"></div>

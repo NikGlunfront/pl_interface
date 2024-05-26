@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const TextArea = ({
     placeholder = "",
@@ -8,16 +8,25 @@ const TextArea = ({
     iniValue = null,
     symbolNum = 0
 }) => {
+    const textareaRef = useRef(null);
     const [value, setValue] = useState('')
+    const [height, setHeight] = useState(35)
 
     useEffect(() => {
         if (iniValue !== null) {
             setValue(iniValue)
         }
+        // setHeight(textareaRef.current.scrollHeight)
+        // console.log(textareaRef.current.scrollHeight)
     }, [iniValue])
+
+    useEffect(() => {
+        setHeight(textareaRef.current.scrollHeight)
+    }, [value])
 
     const handleOnChange = (e) => {
         setValue(e.target.value)
+        setHeight(e.target.scrollHeight)
         handleChange(e.target.value)
     }
 
@@ -34,8 +43,10 @@ const TextArea = ({
                     : ""
                 }
                 <textarea 
+                    ref={textareaRef}
                     className='text-textarea' 
                     placeholder={placeholder}
+                    style={{height: height}}
                     onChange={handleOnChange}
                     value={value}
                 />
