@@ -125,7 +125,7 @@ const Header = ({
 
     const returnFunction = () => {
         if (location.pathname === '/create-promo') {
-            if (cityId !== null) {
+            if (activeCity.id !== null) {
                 navigate(returnPath)
             } else {
                 navigate("/")

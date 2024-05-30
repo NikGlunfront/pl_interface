@@ -166,6 +166,7 @@
 
     &._hidden_content {
         z-index: 50;
+        // transform: translate(0, -100%);
         .pl-app-header__filter,
         .pl-app-header__title,
         .pl-app-header__globalsearch {

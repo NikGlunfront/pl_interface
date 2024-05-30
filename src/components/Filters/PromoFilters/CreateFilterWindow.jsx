@@ -18,6 +18,7 @@ const CreateFilterWindow = ({
     const active_filters = useSelector(state => state.filters)
     const initData = useSelector(state => state.iniData)
     const pageMeta = useSelector(state => state.pageMeta)
+    const promoCats = useSelector(state => state.createPromo.promoCats)
     const { getCategoryNameById } = useMetaData()
     const [choosenCats, setChoosenCats] = useState([])
     const [catOpened, setCatOpened] = useState(null)
@@ -29,7 +30,14 @@ const CreateFilterWindow = ({
 
     useEffect(() => {
         setChoosenCats(initData.categories)
-        setCatOpened(1)
+        
+        if (promoCats !== null) {
+            setCatOpened(promoCats.cat)
+            setCurrentTags(promoCats.tags)
+            filtersHandler({cat: promoCats.cat, tags: promoCats.tags, tags_left: initData.tagsData.filter(tag => tag.cat_id === catOpened && !promoCats.tags.includes(tag)).length})
+        } else {
+            setCatOpened(1)
+        }
     }, [])
 
     useEffect(() => {
@@ -41,19 +49,18 @@ const CreateFilterWindow = ({
     }, [searchQ, catOpened])
 
     useEffect(() => {
-        filtersHandler(null)
-        setCurrentTags([])
+        // setCurrentTags([])
         if (catOpened === 100) {
-            filtersHandler({cat: 100, tags:null, tags_left: 0})
+            filtersHandler({cat: 100, tags:[], tags_left: 0})
         }
     } , [catOpened])
 
     useEffect(() => {
-        if (catOpened !== null && currentTags.length > 0) {
+        if (catOpened !== null && currentTags?.length > 0) {
             filtersHandler({cat: catOpened, tags: currentTags, tags_left: initData.tagsData.filter(tag => tag.cat_id === catOpened && !currentTags.includes(tag)).length})
         } else {
             if (catOpened !== 100) {
-                filtersHandler(null)
+                // filtersHandler(null)
             }
         }
     } , [currentTags])

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setCreatePromoStepPosition } from '../../store/slices/createPromo/createPromoSlice';
@@ -14,6 +14,31 @@ const CreateNav = ({
 }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const userCompany = useSelector(state => state.user.company)
+    const createPromoData = useSelector(state => state.createPromo)
+    const [isActiveCompany, setIsActiveCompany] = useState(false)
+    const [isActivePromo, setIsActivePromo] = useState(false)
+
+    useEffect(() => {
+        if (userCompany.name !== '' && userCompany.description !== '' && userCompany.icon !== '') {
+            setIsActiveCompany(true)
+        } else {
+            setIsActiveCompany(false)
+        }
+    }, [userCompany])
+    useEffect(() => {
+        if (createPromoData.name !== '' 
+            && createPromoData.shortDescription !== '' 
+            && createPromoData.promoCats !== null
+            && createPromoData.settings.giftsAmount !== 0
+            && createPromoData.settings.date_end !== null
+            && (createPromoData.adresses.length > 0 || createPromoData.delivery.list.length > 0)
+        ) {
+            setIsActivePromo(true)
+        } else {
+            setIsActivePromo(false)
+        }
+    }, [createPromoData])
 
     const handleNavClick = (id) => {
         switch (id) {
@@ -28,6 +53,12 @@ const CreateNav = ({
                 if (step == 2) {
                     // navigate('/create-partner')
                     dispatch(setCreatePromoStepPosition(1))
+                    console.log('check')
+                } else {
+                    if (step !== 1 && isActivePromo) {
+                        navigate('/create-promo')
+                        dispatch(setCreatePromoStepPosition(1))
+                    }
                 }
                 
                 break;
@@ -40,12 +71,17 @@ const CreateNav = ({
                 break;
         }
     }
+
+
     return (
         <div className={'create-nav' + ` create-nav_${step}`}>
             {createNavItems.map(item => (
                 <div 
                     key={item.id} 
-                    className={"create-nav__item" + (step === item.step ? " _active" : '')}
+                    className={"create-nav__item" + (step === item.step ? " _active" : '') + 
+                        (item.step === 0 && isActiveCompany ? " _filled" : '') +
+                        (item.step === 1 && isActivePromo ? " _filled" : '')
+                    }
                     onClick={() => {handleNavClick(item.id)}}
                 >
                     {item.step === 0 &&

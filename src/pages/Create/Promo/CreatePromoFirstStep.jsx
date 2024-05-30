@@ -12,6 +12,7 @@ import CategorySelector from '../../../components/Selectors/CategorySelector/Cat
 import Datepicker from '../../../components/UI/Datepicker/Datepicker';
 import Modal from '../../../components/UI/Modal/Modal';
 import CreateFilter from '../../../components/Filters/PromoFilters/CreateFilter';
+import { setCreatePromoSettings } from '../../../store/slices/createPromo/createPromoSlice';
 
 const giftsVars = [
     {id:1, value: 1},
@@ -38,6 +39,7 @@ const CreatePromoFirstStep = ({
     const [adressListVisible, setAdressListVisible] = useState(false)
     const langCode = useSelector(state => state.user.lang)
     const settingsState = useSelector(state => state.createPromo.settings)
+    const createPromoData = useSelector(state => state.createPromo)
     const [giftsAmount, setGiftsAmount] = useState(0)
     const [priceAmount, setPriceAmount] = useState(0)
     const [dateValue, setDateValue] = useState(null)
@@ -57,6 +59,12 @@ const CreatePromoFirstStep = ({
         if (completedData.shortDescription) {
             setDescription(completedData.shortDescription)
         }
+        if (settingsState.giftsAmount) {
+            setGiftsNum(settingsState.giftsAmount)
+        }
+        if (settingsState.date_end) {
+            setDateValue(settingsState.date_end)
+        }
     }, []) 
 
 
@@ -65,12 +73,22 @@ const CreatePromoFirstStep = ({
         giftNum = parseInt(giftNum)
         if (Number.isInteger(giftNum)) {
             setGiftsNum(giftNum)
+            dispatch(setCreatePromoSettings(
+                {...settingsState,
+                    giftsAmount: giftNum
+                }
+            ))
         }
         setIsModalActive(false)
     }
 
     const setGiftsNumber = (value) => {
         setGiftsNum(value)
+        dispatch(setCreatePromoSettings(
+            {...settingsState,
+                giftsAmount: value
+            }
+        ))
         setIsModalActive(false)
     }
 
@@ -107,17 +125,17 @@ const CreatePromoFirstStep = ({
     }
 
     const validateFirstStepData = () => {
-        if (name === '') {
-            return false
-        }
-        if (description === '') {
-            return false
-        }
-        if (adressList.length === 0 && deliveryList.list.length === 0) {
-            return false
-        }
+        if (createPromoData.name !== '' 
+            && createPromoData.shortDescription !== '' 
+            && createPromoData.promoCats !== null
+            && createPromoData.settings.giftsAmount !== 0
+            && createPromoData.settings.date_end !== null
+            && (createPromoData.adresses.length > 0 || createPromoData.delivery.list.length > 0)
+        ) {
+            return true
+        } 
 
-        return true
+        return false
     }
 
     const validatePromoSettings = () => {
@@ -139,6 +157,37 @@ const CreatePromoFirstStep = ({
         return true
     }
 
+    const setNewDate = (newDate) => {
+        setDateValue(newDate)
+        dispatch(setCreatePromoSettings(
+            {...settingsState,
+                date_end: newDate
+            }
+        ))
+    }
+
+    useEffect(() => {
+        isCompletedFirstStep(validateFirstStepData())
+    }, [createPromoData])
+
+    const setDeliveryNewData = (val) => {
+        setDeliveryList(val)
+        let location = ''
+        if (adressList.length > 0) {
+            location = getLocationFromAddress(partnerAddresses.filter(item => item.id === adressList[0])[0])
+        }
+        if (adressList.length === 0 && val.list.length > 0) {
+            location = getLocationFromDeliveryItem(val)
+        }
+        getData({
+            name: name,
+            shortDescription: description,
+            addresses: adressList,
+            location: location,
+            delivery: val
+        })
+    }
+
 
     useEffect(() => {
         let location = ''
@@ -155,8 +204,7 @@ const CreatePromoFirstStep = ({
             location: location,
             delivery: deliveryList
         })
-        isCompletedFirstStep(validateFirstStepData())
-    }, [name, description, adressList, deliveryList])
+    }, [name, description, adressList])
 
     return (
         <div className='firststep-create-promo'>
@@ -201,7 +249,7 @@ const CreatePromoFirstStep = ({
                     updateAdressList={updateAdressList}
                 />
             </div>
-            <DeliveryFilter  callbackDelivery={setDeliveryList} />
+            <DeliveryFilter  callbackDelivery={setDeliveryNewData} />
             <div className="settings-create-promo">
                 <div className={"firststep-create-promo__filter gifts-amount" + (giftsNum > 0 ? " _picked" : '')} onClick={() => setIsModalActive(true)}>
                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -241,7 +289,7 @@ const CreatePromoFirstStep = ({
                 </Modal>
                 <Datepicker
                     localeLang={langCode}
-                    onChange={setDateValue}
+                    onChange={setNewDate}
                     value={dateValue}
                     iniValue={dateValue}
                     title={'Page.Title.DateEnd'}

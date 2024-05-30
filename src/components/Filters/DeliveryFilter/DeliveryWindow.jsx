@@ -21,7 +21,7 @@ const DeliveryWindow = ({
     const [deliveryDescr, setDeliveryDescr] = useState('')
 
     useEffect(() => {
-        console.log(deliveryState)
+        // console.log(deliveryState)
         if (deliveryState?.list.length > 0) {
             setDeliveryList(deliveryState.list)
             setDeliveryDescr(deliveryState.description)
@@ -61,7 +61,7 @@ const DeliveryWindow = ({
         }
         setDeliveryList(newList)
         // updateDeliveryList({list: deliveryDescr.length > 0 ? newList : [], description: deliveryDescr})
-        updateDeliveryList({list: deliveryList, description: deliveryDescr})
+        updateDeliveryList({list: newList, description: deliveryDescr})
     }
 
     const clearSearch = () => {

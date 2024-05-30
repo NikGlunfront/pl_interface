@@ -15,7 +15,7 @@ const DeliveryFilter = ({
     const {cities} = useSelector(state => state.iniData)
     const [deliveryData, setDeliveryData] = useState({list: [], description: ''})
 
-    useEffect(() => {console.log(deliveryData)}, [deliveryData])
+    // useEffect(() => {console.log(deliveryData)}, [deliveryData])
 
     const openFilterList = () => {
         setListVisible(true)
@@ -25,6 +25,7 @@ const DeliveryFilter = ({
     const handleCallbackDelivery = (data) => {
         setDeliveryData(data)
         callbackDelivery(data)
+        console.log(data)
     }
 
     const closeList = () => {

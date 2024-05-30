@@ -5,25 +5,29 @@ import { setIsContentHidden } from "../../../store/slices/pageSlice/pageSlice";
 import CreateFilterWindow from "./CreateFilterWindow";
 import { useTranslate } from "../../../hooks/useTranslate";
 import { useMetaData } from "../../../hooks/useMetaData";
+import { setCreatePromoCats } from "../../../store/slices/createPromo/createPromoSlice";
 
 
 
 const CreateFilter = ({
 }) => {
     const { tr } = useTranslate()
-    // const { tags: activeTags}  = useSelector(state => state.filters)
     const { categories: activeCats }  = useSelector(state => state.filters)
     const { tagsData: iniTags }  = useSelector(state => state.iniData)
+    const promoCats = useSelector(state => state.createPromo.promoCats)
     const { getCategoryNameById } = useMetaData()
     const [listVisible, setListVisible] = useState(false)
     const [pickedVar, setPickedVar] = useState(null)
-    const [tagsApplied, setTagsApplied] = useState(false)
     const dispatch = useDispatch()
 
     useEffect(() => {
         console.log(pickedVar)
     }, [pickedVar])
 
+    const setPromoCats = (pickedCats) => {
+        setPickedVar(pickedCats)
+        dispatch(setCreatePromoCats(pickedCats))
+    }
     const openFilterList = () => {
         setListVisible(true)
         dispatch(setIsContentHidden(true))
@@ -64,7 +68,7 @@ const CreateFilter = ({
             <CreateFilterWindow 
                 visible={listVisible}
                 closeWindow={closeWindow}
-                filtersHandler={setPickedVar}
+                filtersHandler={setPromoCats}
             />
         </div>
     )

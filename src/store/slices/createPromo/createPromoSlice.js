@@ -10,6 +10,7 @@ const initialState = {
     locationRef: "",
     isRemote: false,
     lastStep: 1,
+    promoCats: null,
     adresses: [],
     tags: [],
     settings: {
@@ -44,6 +45,12 @@ export const createPromoSlice = createSlice({
             return {
                 ...state,
                 location: action.payload
+            }
+        },
+        setCreatePromoCats: (state, action) => {
+            return {
+                ...state,
+                promoCats: action.payload
             }
         },
         setCreatePromoFirstStep: (state, action) => {
@@ -103,7 +110,8 @@ export const {
     setCreatePromoStepPosition,
     setCreatePromoSecondStep,
     resetCreatePromo,
-    setCreatePromoSettings
+    setCreatePromoSettings,
+    setCreatePromoCats
 } = createPromoSlice.actions
 
 export default createPromoSlice.reducer
