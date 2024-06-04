@@ -6,6 +6,7 @@ import promosSlice from "./slices/promos/promosSlice";
 import pageSlice from "./slices/pageSlice/pageSlice";
 import userSlice from "./slices/user/userSlice";
 import createPromoSlice from "./slices/createPromo/createPromoSlice";
+import accountSlice from "./slices/account/accountSlice";
 
 export const store = configureStore({
     reducer: {
@@ -14,7 +15,8 @@ export const store = configureStore({
         promos: promosSlice,
         pageMeta: pageSlice,
         user: userSlice,
-        createPromo: createPromoSlice
+        createPromo: createPromoSlice,
+        account: accountSlice
     },
     middleware: (getDefaultMiddleware) => 
         getDefaultMiddleware().concat(paylessApi.middleware)

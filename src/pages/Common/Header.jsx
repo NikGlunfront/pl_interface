@@ -21,6 +21,7 @@ const Header = ({
     const dispatch = useDispatch()
     const pageMeta = useSelector(state => state.pageMeta)
     const iniData = useSelector(state => state.iniData)
+    const accountData = useSelector(state => state.account)
     const {setAllCategoriesActive} = useCategoryChanger()
     const { tr } = useTranslate()
     const createPromoStep = useSelector(state => state.createPromo.lastStep)
@@ -29,6 +30,7 @@ const Header = ({
     const [returnPath, setReturnPath] = useState('-1')
     const [isChatPage, setIsChatPage] = useState(false)
     const [isPromoPage, setIsPromoPage] = useState(false)
+    const [isAccountPage, setIsAccountPage] = useState(false)
 
     const [listVisible, setListVisible] = useState(false)
 
@@ -76,6 +78,7 @@ const Header = ({
     useEffect(() => {
         setIsChatPage(false)
         setIsPromoPage(false)
+        setIsAccountPage(false)
         if (location.pathname.includes('chat/')) {
             setReturnPath(-1)
             setIsChatPage(true)
@@ -87,6 +90,12 @@ const Header = ({
             return
         }
         if (location.pathname.includes('partners/')) {
+            setReturnPath(-1)
+            return
+        }
+        if (location.pathname.includes('account')) {
+            setIsAccountPage(true)
+            dispatch(setPageTitle('$' + accountData.balance))
             setReturnPath(-1)
             return
         }
@@ -117,7 +126,6 @@ const Header = ({
                 setReturnPath(-1)
                 dispatch(setSearchAvailable(true))
             break;
-        
             default:
                 break;
         }
@@ -173,6 +181,10 @@ const Header = ({
             {isPromoPage 
                 ? <div className="pl-app-header__share"></div>
                 : ""
+            }
+            {isAccountPage
+                ?   <div className="pl-app-header__cash">Пополнить</div>
+                :   ""
             }             
         </div> 
     )

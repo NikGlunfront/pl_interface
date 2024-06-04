@@ -55,6 +55,10 @@ const HomePage = ({
         navigate(PL_APP_ROUTES.CLIENT.PROMO_LIST, {replace: false})
     }
 
+    const goToCabinet = () => {
+        navigate(PL_APP_ROUTES.PARTNER.ACCOUNT, {replace: false})
+    }
+
     if (isLoading) {
         return (
             <div className="isloadingpage">
@@ -101,6 +105,7 @@ const HomePage = ({
                     >
                         {tr('Button.NewGift')}
                     </SmartButton>
+                    <div onClick={goToCabinet}>ACCOUNT</div>
                 </div>
             </div>
         </div>

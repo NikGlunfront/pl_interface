@@ -8,6 +8,7 @@ export const PL_APP_ROUTES = {
     },
     PARTNER: {
         CREATE_PROMO: '/create-promo',
-        CREATE_PARTNER: '/create-partner'
+        CREATE_PARTNER: '/create-partner',
+        ACCOUNT: '/account'
     }
 }

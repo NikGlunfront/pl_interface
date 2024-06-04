@@ -14,6 +14,7 @@ import ChatPage from './pages/Chat/ChatPage';
 import ChatReviewPage from './pages/Chat/ChatReviewPage';
 import CreatePartner from './pages/Create/CreatePartner';
 import CreatePromo from './pages/Create/CreatePromo';
+import Account from './pages/Account/Account';
 
 const routes = [
     { path: '/', name: 'Home', element: <HomePage />, nodeRef: createRef() },
@@ -26,6 +27,7 @@ const routes = [
     { path: '/create-partner', name: 'CreatePartner', element: <CreatePartner />, nodeRef: createRef() },
     { path: '/chat/:brand_id/:promo_id', name: 'CreatePromo', element: <ChatPage />, nodeRef: createRef() },
     { path: '/chat/review/:brand_id/:promo_id', name: 'ChatReviewPage', element: <ChatReviewPage />, nodeRef: createRef() },
+    { path: '/account', name: 'Account', element: <Account />, nodeRef: createRef() },
 ]
 
 const router = createBrowserRouter([
