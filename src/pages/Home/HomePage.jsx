@@ -105,7 +105,6 @@ const HomePage = ({
                     >
                         {tr('Button.NewGift')}
                     </SmartButton>
-                    <div onClick={goToCabinet}>ACCOUNT</div>
                 </div>
             </div>
         </div>

@@ -18,12 +18,17 @@ const countries = [
 ]
 
 const citiesData = [
-    {id: 1, name: 'City.Mandrem', country_name: 'Country.India', country_id: 1},
-    {id: 2, name: 'City.Moscow', country_name: 'Country.RussianFederation', country_id: 2},
-    {id: 3, name: 'City.Arambol', country_name: 'Country.India', country_id: 1},
+    {id: 1, name: 'City.Mandrem', country_name: 'Country.India', country_id: 2},
+    {id: 2, name: 'City.Moscow', country_name: 'Country.RussianFederation', country_id: 1},
+    {id: 3, name: 'City.Arambol', country_name: 'Country.India', country_id: 2},
     {id: 4, name: 'City.Samui', country_name: 'Country.Thailand', country_id: 3},
-    {id: 5, name: 'City.Mordjim', country_name: 'Country.India', country_id: 1},
-    {id: 6, name: 'City.Mumbai', country_name: 'Country.India', country_id: 1},
+    {id: 5, name: 'City.Mordjim', country_name: 'Country.India', country_id: 2},
+    {id: 6, name: 'City.Mumbai', country_name: 'Country.India', country_id: 2},
+    {id: 7, name: 'City.SPeterburg', country_name: 'Country.RussianFederation', country_id: 1},
+    {id: 8, name: 'City.Ekaterinburg', country_name: 'Country.RussianFederation', country_id: 1},
+    {id: 9, name: 'City.Voronezh', country_name: 'Country.RussianFederation', country_id: 1},
+    {id: 10, name: 'City.Chelyabinsk', country_name: 'Country.RussianFederation', country_id: 1},
+    {id: 11, name: 'City.Tver', country_name: 'Country.RussianFederation', country_id: 1},
 ]
 
 const cityDataNums = [
@@ -33,6 +38,11 @@ const cityDataNums = [
     {id: 4, amount: 63},
     {id: 5, amount: 114},
     {id: 6, amount: 252},
+    {id: 7, amount: 134},
+    {id: 8, amount: 434},
+    {id: 9, amount: 23},
+    {id: 10, amount: 63},
+    {id: 11, amount: 114},
 ]
 
 const catsData = [

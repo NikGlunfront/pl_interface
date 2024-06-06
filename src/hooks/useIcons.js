@@ -18,6 +18,7 @@ import plus from '../assets/img/icons/plus.svg'
 import plusWhite from '../assets/img/icons/plus_white.svg'
 import ruLang from '../assets/img/icons/langs/ru.svg'
 import enLang from '../assets/img/icons/langs/en.svg'
+import hiLang from '../assets/img/icons/langs/hi.svg'
 import actionDelete from '../assets/img/icons/actions/delete_ico.svg'
 import actionEdit from '../assets/img/icons/actions/edit_ico.svg'
 import actionDrag from '../assets/img/icons/actions/drag_ico.svg'
@@ -46,6 +47,8 @@ export function useIcons() {
         'delete': isDarkTheme ? actionDeleteWhite : actionDelete,
         'drag': isDarkTheme ? actionDragWhite : actionDrag,
         'lang-ru': ruLang,
+        'lang-th': hiLang,
+        'lang-hi': hiLang,
         'lang-en': enLang,
         'waiting': isDarkTheme ? waitingWhite : waiting,
         'confirmed': isDarkTheme ? confirmedWhite : confirmed,

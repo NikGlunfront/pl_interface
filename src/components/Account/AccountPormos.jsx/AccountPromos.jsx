@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AccountPromoItem from './AccountPromoItem';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 import item1 from '../../../assets/img/promos/citilink_main.jpg'
@@ -12,6 +12,9 @@ import brandApple from '../../../assets/img/icons/partners/apple.svg'
 import SpinLoader from '../../UI/SpinLoader/SpinLoader';
 import TagFilter from '../../UI/TagFilter/TagFilter';
 import { useTranslate } from '../../../hooks/useTranslate';
+import FilterWindow from '../../UI/SmartSelect/FilterWindow';
+import { setIsContentHidden } from '../../../store/slices/pageSlice/pageSlice';
+import AccountPromoStats from './components/AccountPromoStats';
 export const adresses = [
     {id: 1, city_id: 2, adress: 'metro2 metro2 произвольный адрес - ориентир на карте, чтобы легче было найти место', map_url: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d34945.33441969031!2d60.51966905593872!3d56.81020010921794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43c16f19ce9d6961%3A0x9fdd3fc86c3eb2f1!2z0KHQstC10YDQtNC70L7QstGB0LrQsNGPINC-0LHQu9Cw0YHRgtC90LDRjyDQutC70LjQvdC40YfQtdGB0LrQsNGPINCx0L7Qu9GM0L3QuNGG0LAg4oSWMQ!5e0!3m2!1sru!2sru!4v1711017618097!5m2!1sru!2sr'},
     {id: 2, city_id: 1, adress: 'metro3 metro2 произвольный адрес - ориентир на карте, чтобы легче было найти место', map_url: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d34945.33441969031!2d60.51966905593872!3d56.81020010921794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43c16f19ce9d6961%3A0x9fdd3fc86c3eb2f1!2z0KHQstC10YDQtNC70L7QstGB0LrQsNGPINC-0LHQu9Cw0YHRgtC90LDRjyDQutC70LjQvdC40YfQtdGB0LrQsNGPINCx0L7Qu9GM0L3QuNGG0LAg4oSWMQ!5e0!3m2!1sru!2sru!4v1711017618097!5m2!1sru!2sr'},
@@ -34,17 +37,40 @@ const promos = [
 ]
 
 const promoNav = [
-    {id: 1, name: 'Все', counter: 9},
+    {id: 1, name: 'Все', counter: 6},
     {id: 2, name: 'Идут показы', counter: 0},
-    {id: 3, name: 'На паузе', counter: 1},
-    {id: 4, name: 'Архив', counter: 2},
+    {id: 3, name: 'На паузе', counter: 6},
+    {id: 4, name: 'Архив', counter: 6},
 ]
 
 const AccountPromos = ({
 
 }) => {
     const { tr } = useTranslate()
+    const dispatch = useDispatch()
+    const pageMeta = useSelector(state => state.pageMeta)
     const [isLoaded, setIsLoaded] = useState(false)
+    const [statsVisible, setStatsVisible] = useState(false)
+    const [currentTag, setCurrentTag] = useState(1)
+    const [promosList, setPromosList] = useState(promos)
+
+    const closeStatsList = () => {
+        setStatsVisible(false)
+        setIsContentHidden(false)
+    }
+    
+    const openStatsList = () => {
+        setStatsVisible(true)
+        setIsContentHidden(true)
+    }
+
+    const changeActiveTag = (id) => {
+        setCurrentTag(id)
+        setIsLoaded(false)
+        setTimeout(() => {
+            setIsLoaded(true)
+        }, 300);
+    }
 
     useEffect(() => {
         setTimeout(() => {
@@ -54,23 +80,39 @@ const AccountPromos = ({
 
     return (
         <div className='promos-account'>
+            <FilterWindow visible={statsVisible}>
+                <div className="pl-return-toppanel">
+                    <div className="pl-return-toppanel__return" onClick={closeStatsList}>
+                        <svg width="4" height="8" viewBox="0 0 4 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.45318 3.52858L0 0.666588L0.571371 0L4 4L3.71431 4.33329L0.571371 8L0 7.33341L2.45318 4.47142L2.79387 4L2.45318 3.52858Z" fill={pageMeta.darkTheme ? "white" : "black"} />
+                        </svg>
+                    </div>
+                    <div className="pl-return-toppanel__title">{tr('Статистика')}</div>
+                    <div className="pl-return-toppanel__search">
+                    </div>
+                </div>
+                <div className="sidewindow__content">
+                    <AccountPromoStats />
+                </div>
+            </FilterWindow>
             <div className="promos-account__nav">
                 {promoNav.map(item => (
                     <TagFilter 
                         name={tr(item.name)}
                         filterValue={item.id} 
                         key={item.id} 
-                        changeActiveTag={() => {}} 
-                        activeTag={item.id === 1}
+                        changeActiveTag={changeActiveTag} 
+                        activeTag={currentTag === item.id}
                         counter={item.counter}
                     />
                 ))}
             </div>
             {isLoaded ?
-                promos.map(promoData => (
+                promosList.map(promoData => (
                     <AccountPromoItem 
                         promoData={promoData} 
                         key={promoData.id} 
+                        openStats={openStatsList}
 
                     />
                 ))

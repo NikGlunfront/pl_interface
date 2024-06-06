@@ -494,3 +494,38 @@
         border-radius: 1rem;
     }
 }
+
+.pl-toggler {
+    width: 3.2rem;
+    flex: 0 0 3.2rem;
+    @include flex_row;
+    align-items: center;
+    justify-content: center;
+    background-color: #BDBDBD;
+    border-radius: 2.3rem;
+    position: relative;
+    height: 1.8rem;
+    opacity: 0.5;
+    transition: $transition;
+
+    &._active {
+        opacity: 1;
+
+        & > span {
+            left: calc(100% - 0.2rem - 1.4rem);
+        }
+    }
+
+    & > span {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0.2rem;
+        transform: translate(0, -50%);
+        border-radius: 50%;
+        transition: $transition;
+        background-color: white;
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+}

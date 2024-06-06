@@ -19,7 +19,8 @@ export function useMetaData() {
     const { 
         cities: allCities, 
         tagsData: allTagsList,
-        categories: allCategoriesList 
+        categories: allCategoriesList,
+        countries: allCountries 
     } = useSelector(state => state.iniData)
     const partnersCompany = useSelector(state => state.user.company)
     const { tr } = useTranslate()
@@ -90,7 +91,6 @@ export function useMetaData() {
     const getCitiesFromAddressesString = (addrObj) => {
         let cityString = ''
         let usedIds = []
-        console.log(addrObj)
         for (let i = 0; i < addrObj.length; i++) {
             const cityId = addrObj[i].city_id;
             if (!usedIds.includes(cityId)) {
@@ -105,6 +105,10 @@ export function useMetaData() {
         return cityString
     }
 
+    const getCountryObject = (countryId) => {
+        return allCountries.filter(country => country.id === countryId)[0];
+    }
+
     return {
         getLangsData,
         getMenuData,
@@ -117,6 +121,7 @@ export function useMetaData() {
         handleCreatePromoBtn,
         getPartnerCompany,
         getCitiesString,
-        getCitiesFromAddressesString
+        getCitiesFromAddressesString,
+        getCountryObject
     }
 }

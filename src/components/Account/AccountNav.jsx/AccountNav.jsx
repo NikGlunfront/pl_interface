@@ -4,9 +4,14 @@ import { useTranslate } from '../../../hooks/useTranslate';
 import giftIco from '../../../assets/img/icons/account/nav/gifts.svg'
 import franchiseIco from '../../../assets/img/icons/account/nav/franchise.svg'
 import requestIco from '../../../assets/img/icons/account/nav/requests.svg'
+import appealIco from '../../../assets/img/icons/account/nav/appeal.svg'
+import historyIco from '../../../assets/img/icons/account/nav/history.svg'
+import reviewIco from '../../../assets/img/icons/account/nav/review.svg'
 import giftIcoW from '../../../assets/img/icons/account/nav/gifts_w.svg'
 import franchiseIcoW from '../../../assets/img/icons/account/nav/franchise_w.svg'
 import requestIcoW from '../../../assets/img/icons/account/nav/requests_w.svg'
+import historyIcoW from '../../../assets/img/icons/account/nav/history_w.svg'
+import reviewIcoW from '../../../assets/img/icons/account/nav/review_w.svg'
 
 const AccountNav = ({
     currentContentId
@@ -17,6 +22,9 @@ const AccountNav = ({
         {id: 1, name: 'Франшиза', icon: franchiseIco, activeIcon: franchiseIcoW},
         {id: 2, name: 'Подарки', icon: giftIco, activeIcon: giftIcoW},
         {id: 3, name: 'Заявки', icon: requestIco, activeIcon: requestIcoW},
+        {id: 4, name: 'Отзывы', icon: reviewIco, activeIcon: reviewIcoW},
+        {id: 5, name: 'Жалобы', icon: appealIco, activeIcon: appealIco},
+        {id: 6, name: 'История', icon: historyIco, activeIcon: historyIcoW},
     ]
 
     return (
