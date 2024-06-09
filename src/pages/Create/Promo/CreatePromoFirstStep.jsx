@@ -48,6 +48,7 @@ const CreatePromoFirstStep = ({
     const [catsToShowIn, setCatsToShowIn] = useState([])
     const [giftsNum, setGiftsNum] = useState(0)
     const [isModalActive, setIsModalActive] = useState(false)
+    const [isCompleted, setIsCompleted] = useState(false)
 
     useEffect(() => {
         if (completedData.name) {
@@ -131,30 +132,12 @@ const CreatePromoFirstStep = ({
             && createPromoData.settings.giftsAmount !== 0
             && createPromoData.settings.date_end !== null
             && (createPromoData.adresses.length > 0 || createPromoData.delivery.list.length > 0)
+            && createPromoData.images.length > 0
         ) {
             return true
         } 
 
         return false
-    }
-
-    const validatePromoSettings = () => {
-        if (dateValue === null && !isNoDate) {
-            return false
-        }
-        if (priceAmount === 0) {
-            return false
-        }
-        if (giftsAmount === 0) {
-            return false
-        }
-        if (catsToShowIn.length === 0) {
-            return false
-        }
-        if (citiesToShowIn.length === 0) {
-            return false
-        }
-        return true
     }
 
     const setNewDate = (newDate) => {
@@ -168,6 +151,7 @@ const CreatePromoFirstStep = ({
 
     useEffect(() => {
         isCompletedFirstStep(validateFirstStepData())
+        setIsCompleted(validateFirstStepData())
     }, [createPromoData])
 
     const setDeliveryNewData = (val) => {
@@ -295,7 +279,7 @@ const CreatePromoFirstStep = ({
                     title={'Page.Title.DateEnd'}
                 />
             </div>
-            <div className="preview-btn-promo">Предпросмотр</div>
+            {isCompleted && <div className="preview-btn-promo">Предпросмотр</div>}
         </div>
     );
 };

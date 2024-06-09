@@ -15,6 +15,7 @@ import { useTranslate } from '../../../hooks/useTranslate';
 import FilterWindow from '../../UI/SmartSelect/FilterWindow';
 import { setIsContentHidden } from '../../../store/slices/pageSlice/pageSlice';
 import AccountPromoStats from './components/AccountPromoStats';
+import { NavLink } from 'react-router-dom';
 export const adresses = [
     {id: 1, city_id: 2, adress: 'metro2 metro2 произвольный адрес - ориентир на карте, чтобы легче было найти место', map_url: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d34945.33441969031!2d60.51966905593872!3d56.81020010921794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43c16f19ce9d6961%3A0x9fdd3fc86c3eb2f1!2z0KHQstC10YDQtNC70L7QstGB0LrQsNGPINC-0LHQu9Cw0YHRgtC90LDRjyDQutC70LjQvdC40YfQtdGB0LrQsNGPINCx0L7Qu9GM0L3QuNGG0LAg4oSWMQ!5e0!3m2!1sru!2sru!4v1711017618097!5m2!1sru!2sr'},
     {id: 2, city_id: 1, adress: 'metro3 metro2 произвольный адрес - ориентир на карте, чтобы легче было найти место', map_url: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d34945.33441969031!2d60.51966905593872!3d56.81020010921794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43c16f19ce9d6961%3A0x9fdd3fc86c3eb2f1!2z0KHQstC10YDQtNC70L7QstGB0LrQsNGPINC-0LHQu9Cw0YHRgtC90LDRjyDQutC70LjQvdC40YfQtdGB0LrQsNGPINCx0L7Qu9GM0L3QuNGG0LAg4oSWMQ!5e0!3m2!1sru!2sru!4v1711017618097!5m2!1sru!2sr'},
@@ -96,6 +97,7 @@ const AccountPromos = ({
                 </div>
             </FilterWindow>
             <div className="promos-account__nav">
+            <NavLink className="promos-account__addpromo" to={'/create-promo'}><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 8H1" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 15V1" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path></svg></NavLink>
                 {promoNav.map(item => (
                     <TagFilter 
                         name={tr(item.name)}

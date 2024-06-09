@@ -33,10 +33,12 @@ const AccountPromoGlobalStat = ({
                 <li>
                     Общие данные
                     <div>
-                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 7.5C1 8.78558 1.38122 10.0423 2.09545 11.1112C2.80968 12.1801 3.82484 13.0132 5.01256 13.5052C6.20028 13.9972 7.50721 14.1259 8.76808 13.8751C10.029 13.6243 11.1871 13.0052 12.0962 12.0962C13.0052 11.1871 13.6243 10.029 13.8751 8.76808C14.1259 7.50721 13.9972 6.20028 13.5052 5.01256C13.0132 3.82484 12.1801 2.80968 11.1112 2.09545C10.0423 1.38122 8.78558 1 7.5 1C5.68285 1.00684 3.9387 1.71588 2.63222 2.97889L1 4.61111M1 4.61111V1M1 4.61111H4.61111M7.5 3.88889V7.5L10.3889 8.94444" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                        45 дней
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                    <path d="M7 3.5V8.61111L9.88889 10.0556" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+
+                        <div>45 дней</div>
                     </div>
                 </li>
                 <li>
@@ -96,7 +98,7 @@ const AccountPromoGlobalStat = ({
                 </li>
                 <li>
                     <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M8.00012 13C8.00012 13 2.79495 9.71182 1.36616 6.56049C-0.542758 2.35146 5.51239 -1.48891 8.00012 3.03646C10.4879 -1.48891 16.5422 2.35146 14.6341 6.56049C13.2053 9.71182 8.00012 13 8.00012 13Z" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path fillRule="evenodd" clipRule="evenodd" d="M8.00012 13C8.00012 13 2.79495 9.71182 1.36616 6.56049C-0.542758 2.35146 5.51239 -1.48891 8.00012 3.03646C10.4879 -1.48891 16.5422 2.35146 14.6341 6.56049C13.2053 9.71182 8.00012 13 8.00012 13Z" stroke="#00C900" fill='#00C900' strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     В избранном
                     <div>
@@ -134,6 +136,9 @@ const AccountPromoGlobalStat = ({
                     <div>
                         5
                         <span>5</span>
+                        <div>
+                        <svg width="12" height="6" viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.70713 2.32023L11.0001 6L12 5.14294L6 0L5.50006 0.428528L0 5.14294L0.999884 6L5.29287 2.32023L6 1.80919L6.70713 2.32023Z" fill="black"></path></svg>
+                        </div>
                     </div>
                 </li>
             </ul>

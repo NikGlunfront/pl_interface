@@ -8,7 +8,7 @@
     "Reset": "Сбросить",
     "More": "еще",
     "Further": "Далее",
-    "Addresses": "Адреса",
+    "Addresses": "Адрес",
     "Delivery": "Доставка",
     "Tags": "Категории",
 
@@ -36,9 +36,9 @@
     "Promo.PreviewImg.Deleted": "Предложение удалено",
     "Promo.PreviewImg.Recieved": "Подарок получен",
 
-    "Promo.InfoGroup.Title.Adress": "Адреса",
+    "Promo.InfoGroup.Title.Adress": "Адрес",
     "Promo.InfoGroup.Title.Delivery": "Доставка",
-    "Promo.InfoGroup.Title.Addresses": "Адреса",
+    "Promo.InfoGroup.Title.Addresses": "Адрес",
     "Promo.InfoGroup.Title.Description": "Описание",
     "Promo.InfoGroup.Title.Tags": "Категории",
     "Promo.InfoGroup.Title.Gallery": "Галерея",
@@ -84,7 +84,7 @@
     "TagFilter.Categories.All": "Все",
 
     "Country.India": "Индия",
-    "Country.RussianFederation": "РФ",
+    "Country.RussianFederation": "Россия",
     "Country.Thailand": "Тайланд",
 
     "City.Samui": "Самуи",
@@ -156,7 +156,7 @@
     "Partner.InputFields.Email": "E-mail",
     "Partner.InputFields.PartnerName": "Имя или название компании",
     "Partner.InputFields.About": "О себе",
-    "Partner.InputFields.Adress": "Адреса",
+    "Partner.InputFields.Adress": "Адрес",
     "Partner.InputFields.GoogleMapsLink": "Ссылка  на Google Maps ",
 
     "Datepicker.Placeholder": "Дата завершения акции",

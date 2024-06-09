@@ -598,7 +598,7 @@
 .stats-sort-modal {
     border: 0.1rem solid #e1e1e1;
     box-shadow: 0.2rem 0.2rem 0.4rem 0px #43424240;
-    padding: 4.3rem 0;
+    padding: 2.3rem 0;
     width: 100%;
     height: auto;
     margin-top: auto;
@@ -614,8 +614,17 @@
                 align-items: center;
                 padding: 1.2rem 1.7rem;
                 border-bottom: 0.1rem solid var(--pl-primary-light-border-color);
+                line-height: 1.8rem;
+
+                &:first-child {
+                    svg {
+                        transform: translate(0, -0.1rem);
+                    }
+                }
 
                 svg {
+                    width: 1.8rem;
+                    height: 1.6rem;
                     margin-right: 1rem;
                 }
 

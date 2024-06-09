@@ -21,6 +21,26 @@
 .pl-moderate-promo {
     margin-bottom: 2.5rem;
 
+    &__share {
+        position: absolute;
+        flex: 0 0 2.6rem;
+        width: 2.6rem;
+        height: 2.6rem;
+        border-radius: 50%;
+        background-color: var(--pl-primary-background-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 1.3rem;
+        right: 1.4rem;
+        z-index: 2;
+
+        svg {
+            width: 2.6rem;
+            height: 2.6rem;
+        }
+    }
+
     &_moderating,
     &_paused {
         display: flex;
@@ -47,6 +67,7 @@
             border-radius: 2.4rem;
             padding: 0 1rem;
             font-weight: 400;
+            margin-top: 0.7rem;
 
             svg {
                 margin-right: 0.5rem;
@@ -148,6 +169,8 @@
             background-repeat: no-repeat;
             background-size: 1.4rem 1.4rem;
             background-position: left 0.2rem;
+            color: var(--pl-primary-blue-color);
+            text-decoration: underline;
         }
 
         &_4 {
@@ -160,6 +183,7 @@
         &_5 {
             padding-left: 0;
             color: var(--pl-primary-blue-color);
+            text-decoration: underline;
             // transform: translate(0, -0.1rem);
             svg {
                 margin-right: 0.3rem;
@@ -185,6 +209,7 @@
                 height: 4.8rem;
                 justify-content: center;
                 border-radius: 0.5rem;
+                border: 0.1rem  solid #dbdbdb;
 
                 svg {
                     margin-bottom: 0.5rem;
@@ -242,6 +267,22 @@
 
 .promos-account {
     padding-top: 3rem;
+
+    &__addpromo {
+        height: 2.5rem;
+        flex: 0 0 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+        border: 0.1rem solid var(--pl-primary-red-color);
+        @include flex_row;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0.6rem;
+        svg {
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+    }
 
     .pl-return-toppanel__search {
         @include flex_row;
@@ -316,6 +357,13 @@
 
 .account-promo-stats {
 
+    .pl-moderate-promo__info .list-item__num_gifts  {
+        background-position: left 0;
+    }
+    .pl-moderate-promo__info .list-item__num_wishes_full
+    .pl-moderate-promo__interact_5 {
+        top: -0.1rem;
+    }
     &__total {
         @include flex_row;
         align-items: center;
@@ -346,10 +394,11 @@
     &__reviews {
         margin: 0 4rem;
         color: var(--pl-primary-blue-color);
+        text-decoration: underline;
     }
 
     &__percent {
-
+        
     }
 
     &__globalstat {
@@ -370,6 +419,12 @@
                 &:first-child {
                     font-weight: 700;
                     font-size: 1.6rem;
+                    & > div {
+                        font-size: 1.4rem;
+                        & > svg {
+                            height: 1.6rem;
+                        }
+                    }
                 }
 
                 & > div {
@@ -403,6 +458,7 @@
                 &:nth-child(2),
                 &:nth-child(3) {
                     padding-right: 0;
+                    font-weight: 500;
                     & > div {
                         flex: 0 0 6rem;
                         font-size: 1.6rem;
@@ -421,6 +477,19 @@
                     & > div {
                         span {
                             color: #FF3526;
+                        }
+                    }
+                }
+
+                &:nth-child(10) {
+                    & > div {
+                        & > div {
+                            flex: 0 0 2rem;
+                            width: 1.3rem;
+                            svg {
+                                transform-origin: center;
+                                transform: translate(0, -0.2rem) rotate(90deg);
+                            }
                         }
                     }
                 }
@@ -448,10 +517,6 @@
         &_5 {
             transform: translate(0, -0.1rem);
         }
-    }
-
-    .pl-toggler {
-        pointer-events: none;
     }
 
     &._disabled  {
@@ -500,6 +565,8 @@
             }
         }
     }
+
+    
     &__title {
         line-height: 3.6rem;
         height: 3.6rem;
@@ -568,5 +635,14 @@
             margin-right: 0.4rem;
             transform: translate(0, -0.1rem);
         }
+    }
+}
+
+.promos-account {
+    .pl-moderate-promo__info .list-item__num_views {
+        padding-left: 2rem;
+    }
+    .pl-moderate-promo__interact_4 svg {
+        margin-right: 0.5rem;
     }
 }
