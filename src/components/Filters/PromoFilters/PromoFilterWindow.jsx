@@ -91,7 +91,7 @@ const PromoFilterWindow = ({
     }
 
     return (
-        <FilterWindow visible={visible}>
+        <FilterWindow visible={visible} classNameSub="_main_filter">
             <div className="pl-return-toppanel">
                 <div className="pl-return-toppanel__return" onClick={closeList}>
                     <svg width="4" height="8" viewBox="0 0 4 8" fill="none" xmlns="http://www.w3.org/2000/svg">

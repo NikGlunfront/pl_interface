@@ -26,6 +26,7 @@ const CreateFilterWindow = ({
     const [currentTags, setCurrentTags] = useState([])
     const [searchQ, setSearchQ] = useState('')
     const [displayedList, setDisplayedList] = useState([])
+    const [firstInit, setFirstInit] = useState(false)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -38,6 +39,8 @@ const CreateFilterWindow = ({
         } else {
             setCatOpened(1)
         }
+
+        setFirstInit(true)
     }, [])
 
     useEffect(() => {
@@ -49,9 +52,13 @@ const CreateFilterWindow = ({
     }, [searchQ, catOpened])
 
     useEffect(() => {
-        // setCurrentTags([])
+        if (firstInit) {
+            // setCurrentTags([])
+        }
         if (catOpened === 100) {
             filtersHandler({cat: 100, tags:[], tags_left: 0})
+        } else {
+            filtersHandler({cat: catOpened, tags: currentTags, tags_left: initData.tagsData.filter(tag => tag.cat_id === catOpened).length})
         }
     } , [catOpened])
 
@@ -135,7 +142,7 @@ const CreateFilterWindow = ({
                         key={cat.id} 
                         changeActiveTag={handleNewTagFilter} 
                         activeTag={catOpened === cat.id}
-                        customDot={false} 
+                        customDot={choosenCats.filter(tag => tag.cat_id === cat.id).length !== currentTags.filter(tag => tag.cat_id === cat.id).length && currentTags.length !== 0 && catOpened === cat.id} 
                         // removeFunc={removeTagFilter}
                     />
                 ))}

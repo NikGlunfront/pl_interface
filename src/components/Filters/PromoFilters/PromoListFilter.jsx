@@ -4,6 +4,8 @@ import PromoFilter from './PromoFilter';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveCategoryTag } from '../../../store/slices/filters/filtersSlice';
 import { useTranslate } from '../../../hooks/useTranslate';
+import PromoFilterWindow from './PromoFilterWindow';
+import { setIsContentHidden, setVisibilityMainSort } from '../../../store/slices/pageSlice/pageSlice';
 
 const PromoListFilter = ({
     toggleContentVisibility
@@ -11,6 +13,7 @@ const PromoListFilter = ({
     const { tr } = useTranslate()
     const active_filters = useSelector(state => state.filters)
     const initData = useSelector(state => state.iniData)
+    const { isVisibleMainSort } = useSelector(state => state.pageMeta)
     const dispatch = useDispatch()
     const [choosenCats, setChoosenCats] = useState([])
 
@@ -28,8 +31,19 @@ const PromoListFilter = ({
     const handleNewTagFilter = (tagValue) => {
         dispatch(setActiveCategoryTag(tagValue))
     }
+
+    const closeWindow = () => {
+        dispatch(setVisibilityMainSort(false))
+        dispatch(setIsContentHidden(false))
+    }
     
     return (
+        <>
+            <PromoFilterWindow 
+                visible={isVisibleMainSort}
+                closeWindow={closeWindow}
+            />
+        
         <div className='pl-promo-filters'>
             <PromoFilter />
             <div className="pl-promo-filters__row no-scroll-visual">
@@ -59,6 +73,7 @@ const PromoListFilter = ({
                 ))}
             </div>
         </div>
+        </>
     );
 };
 

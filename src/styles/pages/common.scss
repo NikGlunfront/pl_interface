@@ -83,6 +83,9 @@
         & > .pl-promo-filters {
             // display: none;
             position: static;
+            .filters-pl-select__tags {
+                padding-top: 0;
+            }
         }
     }
 }

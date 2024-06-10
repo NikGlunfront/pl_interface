@@ -10,6 +10,7 @@ const initialState = {
     adressToDelete: null,
     scrollToRef: null,
     isHeaderSearchActive: false,
+    isVisibleMainSort: false,
     chatMeta: {
         brandId: null,
         brandName: null,
@@ -100,6 +101,12 @@ export const pageSlice = createSlice({
                 ...state,
                 isHeaderSearchActive: action.payload
             }
+        },
+        setVisibilityMainSort: (state, action) => {
+            return {
+                ...state,
+                isVisibleMainSort: action.payload
+            }
         }
     }
 })
@@ -116,7 +123,8 @@ export const {
     setAdressToDelete,
     setAdressToEdit,
     setHeaderSearchList,
-    setPageFreezedParam
+    setPageFreezedParam,
+    setVisibilityMainSort
 } = pageSlice.actions
 
 export default pageSlice.reducer

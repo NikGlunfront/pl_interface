@@ -644,5 +644,25 @@
     }
     .pl-moderate-promo__interact_4 svg {
         margin-right: 0.5rem;
+        height: 1.2rem;
+        transform: translate(0, 0.1rem);
+    }
+}
+
+.pl-app-header__title {
+    &._account {
+        height: 2rem;
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 1.9rem;
+            height: 1.9rem;
+            margin-right: 0.5rem;
+            background-image: url('../../assets/img/icons/account/nav/tgstar.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            transform: translate(0, 0.1rem);
+        }
     }
 }

@@ -397,6 +397,11 @@
     align-items: center;
     justify-content: space-between;
 
+    .pl-select__filters {
+        .filters-pl-select__tags {
+            padding-top: 0;
+        }
+    }
     .img-uploader-create-promo, .input-container,
     .firststep-create-promo__city {
         flex: 0 0 100%;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import PromoFilterWindow from "./PromoFilterWindow";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsContentHidden } from "../../../store/slices/pageSlice/pageSlice";
+import { setIsContentHidden, setVisibilityMainSort } from "../../../store/slices/pageSlice/pageSlice";
 
 
 
@@ -33,22 +33,23 @@ const PromoFilter = ({
     }, [activeTags])
 
     const openFilterList = () => {
-        setListVisible(true)
+        dispatch(setVisibilityMainSort(true))
         dispatch(setIsContentHidden(true))
-    }
-    
-    const closeWindow = () => {
+        }
+        
+        const closeWindow = () => {
         setListVisible(false)
+        dispatch(setVisibilityMainSort(false))
         dispatch(setIsContentHidden(false))
     }
 
     return (
         <div className="">
             <div className={"pl-promo-filters__btn " + (tagsApplied ? 'pl-promo-filters__btn_applied' : '')} onClick={openFilterList}></div>
-            <PromoFilterWindow 
+            {/* <PromoFilterWindow 
                 visible={listVisible}
                 closeWindow={closeWindow}
-            />
+            /> */}
         </div>
     )
 };

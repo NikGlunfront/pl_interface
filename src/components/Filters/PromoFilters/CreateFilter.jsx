@@ -49,14 +49,14 @@ const CreateFilter = ({
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M6 6V6C4.61917 6 3.5 4.88083 3.5 3.5V3.5C3.5 2.11917 4.61917 1 6 1V1C7.38083 1 8.5 2.11917 8.5 3.5V3.5C8.5 4.88083 7.38083 6 6 6Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M11 7.6665V7.6665C12.3808 7.6665 13.5 8.78567 13.5 10.1665V10.1665C13.5 11.5473 12.3808 12.6665 11 12.6665V12.6665C9.61917 12.6665 8.5 11.5473 8.5 10.1665V10.1665C8.5 8.78567 9.61917 7.6665 11 7.6665Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                {pickedVar !== null
+                {promoCats !== null && promoCats?.cat !== null
                     ?
                         <>
-                           <div><b>{pickedVar.cat !== 100 ? tr(getCategoryNameById(pickedVar.cat)) + " • " : "Просто дарю"}</b>{pickedVar.tags !== null && iniTags.map(tag => (
-                                pickedVar.tags.includes(tag) && tr(tag.name) + " • "
+                           <div><b>{promoCats.cat !== 100 ? tr(getCategoryNameById(promoCats.cat)) + " • " : "Просто дарю"}</b>{promoCats.tags !== null && iniTags.map(tag => (
+                                promoCats.tags.filter(tagItem => tagItem.cat_id === promoCats.cat).includes(tag) && tr(tag.name) + " • "
                            ))}</div>
-                           {pickedVar.tags_left !== 0 &&
-                            <div className="promo-create-filter-more">еще {pickedVar.tags_left}</div>
+                           {promoCats.tags_left !== 0 &&
+                            <div className="promo-create-filter-more">еще {promoCats.tags_left}</div>
                            }
                         </>
                     :

@@ -79,6 +79,7 @@
 
     &_showed {
         transform: translate(0, 0);
+        z-index: 999999999999;
     }
 
     .no-results {

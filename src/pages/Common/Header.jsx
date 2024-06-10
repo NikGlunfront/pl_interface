@@ -95,7 +95,7 @@ const Header = ({
         }
         if (location.pathname.includes('account')) {
             setIsAccountPage(true)
-            dispatch(setPageTitle('$' + accountData.balance))
+            dispatch(setPageTitle(accountData.balance))
             setReturnPath(-1)
             return
         }
@@ -157,7 +157,7 @@ const Header = ({
             {location.pathname.includes('promos') && pageMeta.title.includes('City')
                 ?
                 <>
-                <div className="pl-app-header__title" onClick={e => openFilterList(e)}>
+                <div className={"pl-app-header__title"} onClick={e => openFilterList(e)}>
                     {tr(pageMeta.title)}
                 </div>
                 <CityFilterWindow 
@@ -168,7 +168,7 @@ const Header = ({
                 />
                 </>
                 :
-                <div className="pl-app-header__title">{tr(pageMeta.title)}</div>
+                <div className={"pl-app-header__title" + (location.pathname.includes('account') ? " _account" : "")}>{tr(pageMeta.title)}</div>
             }
             {pageMeta.searchAvailable
                 ? <HeaderSearchBtn searchToggler={searchToggler} isActiveSearch={isActiveSearch} />
